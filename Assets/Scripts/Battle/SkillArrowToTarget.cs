@@ -17,6 +17,8 @@ namespace Battle
 
         void Update()
         {
+            if (BattleRuler.Instance.IsFighting == false) return;
+            
             if (_source == null || !_targetPosition.HasValue)
             {
                 _spriteRenderer.enabled = false;

@@ -25,6 +25,8 @@ namespace Battle
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            if (BattleRuler.Instance.IsFighting == false) return;
+            
             GameObject arrowObj = Instantiate(_arrowPrefab, transform.position, Quaternion.identity, transform.parent);
             _arrow = arrowObj.GetComponent<SkillArrowToTarget>();
 
