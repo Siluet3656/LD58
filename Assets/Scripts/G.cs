@@ -4,4 +4,5 @@ using Battle;
 public static class G
 {
     public static readonly List<Enemy> Enemies = new List<Enemy>();
+    public static Player Player;
 }
