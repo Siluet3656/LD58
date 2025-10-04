@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Battle;
+using Prepare;
 
 namespace Input
 {
@@ -8,6 +10,7 @@ namespace Input
         private Camera _mainCamera;
         private PlayerControlls _inputActions;
         private PlayerTargeting _targeting;
+        private AbilityDrag _hand;
 
         private void Awake()
         {
@@ -23,17 +26,37 @@ namespace Input
             _inputActions = new PlayerControlls();
             
             _inputActions.UI.LBM.started += ctx => OnLeftMouseButtonClicked();
+            
+            _hand = FindObjectsOfType<AbilityDrag>()[0];
         }
-        
+
+        private void Update()
+        {
+            Vector2 point = _inputActions.UI.MousePosition.ReadValue<Vector2>();
+            
+            _hand.SetPoint(_mainCamera.ScreenToWorldPoint(point));
+        }
+
         private void OnEnable() => _inputActions.Enable();
         private void OnDisable() => _inputActions.Disable();
         
         private void OnLeftMouseButtonClicked()
         {
+            Ray raySpellButton = _mainCamera.ScreenPointToRay(_inputActions.UI.MousePosition.ReadValue<Vector2>());
+            RaycastHit2D hitSpellButton = Physics2D.Raycast(raySpellButton.origin, raySpellButton.direction, Mathf.Infinity, LayerMask.GetMask("AbilityButton"));
+            
             Ray rayTargetable = _mainCamera.ScreenPointToRay(_inputActions.UI.MousePosition.ReadValue<Vector2>());
             RaycastHit2D hitTargetable = Physics2D.Raycast(rayTargetable.origin, rayTargetable.direction, Mathf.Infinity, LayerMask.GetMask("Enemy"));
+            
+            if (_hand.CheckDraggingStatus())
+            {
+                _hand.TryToDropASpell(hitSpellButton);
+            }
 
-            _targeting.OnMouseTargetSelect(hitTargetable);
+            if (hitSpellButton.collider == null)
+            {
+                _targeting.OnMouseTargetSelect(hitTargetable);
+            }
         }
     }
 }

@@ -29,9 +29,14 @@ namespace Battle
         public GameObject GameObject { get; }
         public event Action OnTargetDie;
 
-        public void ApplyAbility()
+        public void ApplyAbility(SkillType skillType)
         {
-            _myHp.TryToTakeDamage(1f, false);   
+            switch (skillType)
+            {
+                case SkillType.Strike:
+                    _myHp.TryToTakeDamage(1f, false);
+                    break;
+            }
         }
     }
 }
