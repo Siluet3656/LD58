@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Linq;
+using UnityEngine;
 
 namespace Battle
 {
@@ -8,9 +10,11 @@ namespace Battle
         
         private ITargetable _currentTarget;
         
-        public bool HasTarget => _currentTarget != null;
-        public ITargetable GetCurrentTarget => _currentTarget;
-        
+        private void Start()
+        {
+            SetTarget(G.Enemies.First());
+        }
+
         private void SetTarget(ITargetable target)
         {
             target.OnTargeted();
@@ -20,6 +24,7 @@ namespace Battle
             if (_currentTarget is Enemy enemy)
             {
                 _arrowToTarget.SetupArrow(transform, enemy.gameObject.transform);
+                OnTargeted?.Invoke(enemy.gameObject.transform);
             }
         }
         
@@ -32,6 +37,11 @@ namespace Battle
                 _currentTarget = null;
             }
         }
+        
+        public bool HasTarget => _currentTarget != null;
+        public ITargetable GetCurrentTarget => _currentTarget;
+
+        public Action<Transform> OnTargeted;
         
         public void OnFastTarget()
         {
@@ -46,7 +56,7 @@ namespace Battle
 
             if (hit.collider != null && hit.collider.TryGetComponent<ITargetable>(out var target))
             {
-                SetTarget(target); Debug.Log($"Target selected:  {target}");
+                SetTarget(target);
             }
         }
     }

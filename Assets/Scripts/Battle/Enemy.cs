@@ -5,6 +5,11 @@ namespace Battle
 {
     public class Enemy : MonoBehaviour, ITargetable
     {
+        private void Awake()
+        {
+            G.Enemies.Add(this);
+        }
+
         public bool IsTargetable { get; }
         public bool IsTargeted { get; }
         public void OnTargeted()
