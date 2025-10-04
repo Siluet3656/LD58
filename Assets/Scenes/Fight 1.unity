@@ -1345,6 +1345,7 @@ GameObject:
   m_Component:
   - component: {fileID: 984525924}
   - component: {fileID: 984525925}
+  - component: {fileID: 984525926}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1381,7 +1382,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8637978cf260d847affeb25b9d5f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 0
+  _maxHealth: 100
+--- !u!114 &984525926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984525923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66e35e01b185664a82f6964b7b22b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthBar: {fileID: 316679100}
 --- !u!1 &1281252068
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,6 +2244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2049961892}
   - component: {fileID: 2049961891}
+  - component: {fileID: 2049961893}
   m_Layer: 0
   m_Name: mainChar
   m_TagString: Untagged
@@ -2267,6 +2282,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2049961893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049961890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66e35e01b185664a82f6964b7b22b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthBar: {fileID: 196089974}
 --- !u!1 &2077716360
 GameObject:
   m_ObjectHideFlags: 0
