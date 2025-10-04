@@ -9,14 +9,21 @@ namespace Battle
         [SerializeField] private ArrowToTarget _arrowToTarget;
         
         private ITargetable _currentTarget;
-        
-        private void Start()
+
+        private void OnEnable()
         {
-            SetTarget(G.Enemies.First());
+            BattleRuler.Instance.OnFighting += AutoTarget;
+        }
+
+        private void OnDisable()
+        {
+            BattleRuler.Instance.OnFighting -= AutoTarget;
         }
 
         private void SetTarget(ITargetable target)
         {
+            if (BattleRuler.Instance.IsFighting == false) return;
+            
             target.OnTargeted();
             target.OnTargetDie += ClearTarget;
             _currentTarget = target;
@@ -36,6 +43,11 @@ namespace Battle
                 _currentTarget.OnTargetDie -= ClearTarget;
                 _currentTarget = null;
             }
+        }
+        
+        private void AutoTarget()
+        {
+            SetTarget(G.Enemies.First());
         }
         
         public bool HasTarget => _currentTarget != null;

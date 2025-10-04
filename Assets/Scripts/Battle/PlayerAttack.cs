@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using EntityResources;
 using View;
@@ -26,17 +25,23 @@ namespace Battle
             _playerView = GetComponent<PlayerView>();
             
             _isReadyToAttack = false;
-            StartAttackCooldown();
         }
 
         private void Update()
         {
+            if (BattleRuler.Instance.IsFighting == false)
+            {
+                StopAllCoroutines();
+                return;
+            }
+            
             PerformAttack();
         }
 
         private void OnEnable()
         {
             _playerTargeting.OnTargeted += SetTargetHp;
+            BattleRuler.Instance.OnFighting += StartAttackCooldown;
             
             _currentSwipeProgress = 0f;
             _playerView.UpdateAttackSwingBar(_currentSwipeProgress);
@@ -45,6 +50,7 @@ namespace Battle
         private void OnDisable()
         {
             _playerTargeting.OnTargeted -= SetTargetHp;
+            BattleRuler.Instance.OnFighting -= StartAttackCooldown;
             
             StopAllCoroutines();
         }

@@ -11,7 +11,7 @@ namespace Battle
         [SerializeField] private float _attackCooldownTime = 3f;
         [SerializeField] private float _attackDamage = 1f;
         
-        private Hp _enemyHp;
+        private Hp _playerHp;
         private EnemyView _playerView;
         
         private float _currentSwipeProgress;
@@ -22,27 +22,36 @@ namespace Battle
             _playerView = GetComponent<EnemyView>();
             
             _isReadyToAttack = false;
-            StartAttackCooldown();
         }
 
         private void Start()
         {
-            _enemyHp = G.Player.GetComponent<Hp>();
+            _playerHp = G.Player.GetComponent<Hp>();
         }
 
         private void Update()
         {
+            if (BattleRuler.Instance.IsFighting == false)
+            {
+                StopAllCoroutines();
+                return;
+            }
+            
             PerformAttack();
         }
 
         private void OnEnable()
         {
+            BattleRuler.Instance.OnFighting += StartAttackCooldown;
+            
             _currentSwipeProgress = 0f;
             _playerView.UpdateAttackSwingBar(_currentSwipeProgress);
         }
 
         private void OnDisable()
         {
+            BattleRuler.Instance.OnFighting -= StartAttackCooldown;
+            
             StopAllCoroutines();
         }
 
@@ -74,9 +83,9 @@ namespace Battle
         {
             if (_isReadyToAttack == false) return;
             
-            if (_enemyHp == null) return;
+            if (_playerHp == null) return;
 
-            _enemyHp.TryToTakeDamage(_attackDamage, false);
+            _playerHp.TryToTakeDamage(_attackDamage, false);
             
             StartAttackCooldown();
         }
