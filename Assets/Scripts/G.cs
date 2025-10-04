@@ -8,4 +8,6 @@ public static class G
     public static Player Player;
     public static AbilityDrag AbilityDrag;
     public static SkillResources SkillResources;
+    public static readonly List<SoulPlace> SoulPlaces = new List<SoulPlace>();
+    public static SoulChecker SoulChecker;
 }

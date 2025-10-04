@@ -1,0 +1,49 @@
+﻿using System.Collections.Generic;
+using UnityEngine;
+
+namespace Data
+{
+    public class SoulDataCms : MonoBehaviour
+    {
+        #region Singleton
+        
+        public static SoulDataCms Instance { get; private set; }
+
+        #endregion
+        
+        [SerializeField] private SoulData _poorMan;
+        
+        
+        private Dictionary<SoulType, SoulData> _spellValues;
+        
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this);
+                return;
+            }
+            Instance = this;
+            
+            UpdateData();
+        }
+
+        public void UpdateData()
+        {
+            _spellValues = new Dictionary<SoulType, SoulData>
+            {
+                { SoulType.PoorMan, _poorMan },
+            };
+        }
+        
+        public SoulData GetSpellConfig(SoulType soulName)
+        {
+            if (_spellValues.TryGetValue(soulName, out SoulData config))
+            {
+                return config;
+            }
+    
+            return null;
+        }
+    }
+}

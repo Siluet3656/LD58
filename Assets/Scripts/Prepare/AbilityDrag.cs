@@ -12,6 +12,9 @@ namespace Prepare
         private SkillType _draggingSpell;
         private Vector3 _point;
         private bool _isDragging;
+        private bool _isDraggingSoul;
+        
+        private SoulType _draggingSoul;
         
         private readonly Vector2 _offset = new Vector2(0.5f,-0.5f); // Костыль
 
@@ -23,11 +26,17 @@ namespace Prepare
             _handIcon = GetComponent<Image>();
             
             _isDragging = false;
+            _isDraggingSoul = false;
         }
 
         private void Update()
         {
             if (_isDragging)
+            {
+                transform.position = _point;
+            }
+            
+            if (_isDraggingSoul)
             {
                 transform.position = _point;
             }
@@ -39,6 +48,7 @@ namespace Prepare
             _handIcon.color = new Color(1,1,1,0);
             _corner.SetActive(false);
             _isDragging = false;
+            _isDraggingSoul = false;
         }
         
         public void TakeSpell(SkillType spellName)
@@ -60,6 +70,25 @@ namespace Prepare
             _handIcon.sprite = config.icon;
         }
         
+        public void TakeSpell(SoulType soulName)
+        {
+            Cursor.visible = false;
+            _handIcon.color = new Color(1,1,1,1);
+            _corner.SetActive(true);
+            _isDraggingSoul = true;
+            
+            SoulData config = SoulDataCms.Instance.GetSpellConfig(soulName);
+
+            if (config == null)
+            {
+                DropSpell();
+                return;
+            }
+            
+            _draggingSoul = soulName;
+            _handIcon.sprite = config.icon;
+        }
+        
         public void TryToDropASpell(RaycastHit2D hit)
         { 
             if (_isDragging)
@@ -73,6 +102,22 @@ namespace Prepare
                 if (spellBarButton != null)
                 {
                     spellBarButton.PlaceSpell(_draggingSpell);
+                }
+                
+                DropSpell();
+            }
+
+            if (_isDraggingSoul)
+            {
+                SoulPlace SoulBarButton = null;
+            
+                if (hit.collider == null) { DropSpell(); return; }
+
+                SoulBarButton = hit.collider.gameObject.GetComponent<SoulPlace>();  
+                
+                if (SoulBarButton != null)
+                {
+                    SoulBarButton.PlaceSpell(_draggingSoul);
                 }
                 
                 DropSpell();
@@ -97,6 +142,11 @@ namespace Prepare
         public bool CheckDraggingStatus()
         {
             return _isDragging;
+        }
+        
+        public bool CheckSoulDraggingStatus()
+        {
+            return _isDraggingSoul;
         }
 
         public void SetPoint(Vector2 point)

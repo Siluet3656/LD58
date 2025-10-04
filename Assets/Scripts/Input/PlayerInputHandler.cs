@@ -45,12 +45,20 @@ namespace Input
             Ray raySpellButton = _mainCamera.ScreenPointToRay(_inputActions.UI.MousePosition.ReadValue<Vector2>());
             RaycastHit2D hitSpellButton = Physics2D.Raycast(raySpellButton.origin, raySpellButton.direction, Mathf.Infinity, LayerMask.GetMask("AbilityButton"));
             
+            Ray raySoulButton = _mainCamera.ScreenPointToRay(_inputActions.UI.MousePosition.ReadValue<Vector2>());
+            RaycastHit2D hitSoulButton = Physics2D.Raycast(raySoulButton.origin, raySoulButton.direction, Mathf.Infinity, LayerMask.GetMask("SoulButton"));
+            
             Ray rayTargetable = _mainCamera.ScreenPointToRay(_inputActions.UI.MousePosition.ReadValue<Vector2>());
             RaycastHit2D hitTargetable = Physics2D.Raycast(rayTargetable.origin, rayTargetable.direction, Mathf.Infinity, LayerMask.GetMask("Enemy"));
             
             if (_hand.CheckDraggingStatus())
             {
                 _hand.TryToDropASpell(hitSpellButton);
+            }
+            
+            if (_hand.CheckSoulDraggingStatus())
+            {
+                _hand.TryToDropASpell(hitSoulButton);
             }
 
             if (hitSpellButton.collider == null)
