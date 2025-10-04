@@ -26,7 +26,10 @@ namespace EntityResources
             if (_isInvulnerable) return;
             
             ApplyDamageToHealth(damage);
-            //DamagePopup.Instance.AddText((int)damage, transform.position);
+            
+            Vector3 randPosition = new Vector3(transform.position.x + Random.Range(-2f, 2f),transform.position.y,transform.position.z);
+            
+            DamagePopup.Instance.AddText((int)damage, randPosition);
         }
 
         private void ApplyDamageToHealth(float damage)
