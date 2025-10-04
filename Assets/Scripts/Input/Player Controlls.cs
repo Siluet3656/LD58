@@ -29,6 +29,14 @@ namespace Input
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""RBM"",
+                    ""type"": ""Button"",
+                    ""id"": ""f1108cdc-2dd1-4fb2-9cbe-2b5b83beaa42"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""MousePosition"",
                     ""type"": ""Value"",
                     ""id"": ""b7f24009-314a-4bc0-807f-b3cc7523d752"",
@@ -59,6 +67,17 @@ namespace Input
                     ""action"": ""MousePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ab23125-5ba9-499c-9680-f79b1989f816"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RBM"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -68,6 +87,7 @@ namespace Input
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_LBM = m_UI.FindAction("LBM", throwIfNotFound: true);
+            m_UI_RBM = m_UI.FindAction("RBM", throwIfNotFound: true);
             m_UI_MousePosition = m_UI.FindAction("MousePosition", throwIfNotFound: true);
         }
 
@@ -119,12 +139,14 @@ namespace Input
         private readonly InputActionMap m_UI;
         private IUIActions m_UIActionsCallbackInterface;
         private readonly InputAction m_UI_LBM;
+        private readonly InputAction m_UI_RBM;
         private readonly InputAction m_UI_MousePosition;
         public struct UIActions
         {
             private @PlayerControlls m_Wrapper;
             public UIActions(@PlayerControlls wrapper) { m_Wrapper = wrapper; }
             public InputAction @LBM => m_Wrapper.m_UI_LBM;
+            public InputAction @RBM => m_Wrapper.m_UI_RBM;
             public InputAction @MousePosition => m_Wrapper.m_UI_MousePosition;
             public InputActionMap Get() { return m_Wrapper.m_UI; }
             public void Enable() { Get().Enable(); }
@@ -138,6 +160,9 @@ namespace Input
                     @LBM.started -= m_Wrapper.m_UIActionsCallbackInterface.OnLBM;
                     @LBM.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnLBM;
                     @LBM.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnLBM;
+                    @RBM.started -= m_Wrapper.m_UIActionsCallbackInterface.OnRBM;
+                    @RBM.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnRBM;
+                    @RBM.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnRBM;
                     @MousePosition.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePosition;
                     @MousePosition.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePosition;
                     @MousePosition.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePosition;
@@ -148,6 +173,9 @@ namespace Input
                     @LBM.started += instance.OnLBM;
                     @LBM.performed += instance.OnLBM;
                     @LBM.canceled += instance.OnLBM;
+                    @RBM.started += instance.OnRBM;
+                    @RBM.performed += instance.OnRBM;
+                    @RBM.canceled += instance.OnRBM;
                     @MousePosition.started += instance.OnMousePosition;
                     @MousePosition.performed += instance.OnMousePosition;
                     @MousePosition.canceled += instance.OnMousePosition;
@@ -158,6 +186,7 @@ namespace Input
         public interface IUIActions
         {
             void OnLBM(InputAction.CallbackContext context);
+            void OnRBM(InputAction.CallbackContext context);
             void OnMousePosition(InputAction.CallbackContext context);
         }
     }

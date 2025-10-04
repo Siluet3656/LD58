@@ -14,6 +14,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "RBM",
+                    "type": "Button",
+                    "id": "f1108cdc-2dd1-4fb2-9cbe-2b5b83beaa42",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "MousePosition",
                     "type": "Value",
                     "id": "b7f24009-314a-4bc0-807f-b3cc7523d752",
@@ -42,6 +50,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0ab23125-5ba9-499c-9680-f79b1989f816",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RBM",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

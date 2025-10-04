@@ -10,7 +10,8 @@ namespace Data
         public static SoulDataCms Instance { get; private set; }
 
         #endregion
-        
+
+        [SerializeField] private SoulData _none;
         [SerializeField] private SoulData _poorMan;
         
         
@@ -32,6 +33,7 @@ namespace Data
         {
             _spellValues = new Dictionary<SoulType, SoulData>
             {
+                { SoulType.None, _none },
                 { SoulType.PoorMan, _poorMan },
             };
         }

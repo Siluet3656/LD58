@@ -45,5 +45,12 @@ namespace Battle
 
             _spriteRenderer.sprite = SoulDataCms.Instance.GetSpellConfig(_skillType).icon;
         }
+
+        public void RemoveSpell()
+        {
+            _skillType = SoulType.None;
+            
+            _spriteRenderer.sprite = SoulDataCms.Instance.GetSpellConfig(SoulType.None).icon;
+        }
     }
 }

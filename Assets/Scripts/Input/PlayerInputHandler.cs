@@ -26,6 +26,7 @@ namespace Input
             _inputActions = new PlayerControlls();
             
             _inputActions.UI.LBM.started += ctx => OnLeftMouseButtonClicked();
+            _inputActions.UI.RBM.started += ctx => OnRightMouseButtonClicked();
             
             _hand = FindObjectsOfType<AbilityDrag>()[0];
         }
@@ -64,6 +65,19 @@ namespace Input
             if (hitSpellButton.collider == null)
             {
                 _targeting.OnMouseTargetSelect(hitTargetable);
+            }
+        }
+
+        private void OnRightMouseButtonClicked()
+        {
+            Ray raySoulButton = _mainCamera.ScreenPointToRay(_inputActions.UI.MousePosition.ReadValue<Vector2>());
+            RaycastHit2D hitSoulButton = Physics2D.Raycast(raySoulButton.origin, raySoulButton.direction, Mathf.Infinity, LayerMask.GetMask("SoulButton"));
+
+            SoulPlace soulPlace = hitSoulButton.collider.GetComponent<SoulPlace>();
+
+            if (soulPlace != null)
+            {
+                soulPlace.RemoveSpell();
             }
         }
     }

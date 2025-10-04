@@ -1918,6 +1918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd63d7bf443b8742a0a5a202a121822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _none: {fileID: 11400000, guid: e3b475f0bebe6144e8c083b35ac04a9d, type: 2}
   _poorMan: {fileID: 11400000, guid: 7495692b85904c243b228fe0e765fe0a, type: 2}
 --- !u!1 &384142504
 GameObject:
