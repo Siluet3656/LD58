@@ -15,9 +15,60 @@ namespace Input
         {
             asset = InputActionAsset.FromJson(@"{
     ""name"": ""Player Controlls"",
-    ""maps"": [],
+    ""maps"": [
+        {
+            ""name"": ""UI"",
+            ""id"": ""91be2380-602a-4b30-a81c-951e03430888"",
+            ""actions"": [
+                {
+                    ""name"": ""LBM"",
+                    ""type"": ""Button"",
+                    ""id"": ""33dd5cce-32b8-4f49-bd7c-54785df2e477"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""b7f24009-314a-4bc0-807f-b3cc7523d752"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""7b138625-de2f-4f84-b8f6-643f1ded5919"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LBM"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f5014725-e9f2-4ccd-b075-658672012e49"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        }
+    ],
     ""controlSchemes"": []
 }");
+            // UI
+            m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+            m_UI_LBM = m_UI.FindAction("LBM", throwIfNotFound: true);
+            m_UI_MousePosition = m_UI.FindAction("MousePosition", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -62,6 +113,52 @@ namespace Input
         public void Disable()
         {
             asset.Disable();
+        }
+
+        // UI
+        private readonly InputActionMap m_UI;
+        private IUIActions m_UIActionsCallbackInterface;
+        private readonly InputAction m_UI_LBM;
+        private readonly InputAction m_UI_MousePosition;
+        public struct UIActions
+        {
+            private @PlayerControlls m_Wrapper;
+            public UIActions(@PlayerControlls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @LBM => m_Wrapper.m_UI_LBM;
+            public InputAction @MousePosition => m_Wrapper.m_UI_MousePosition;
+            public InputActionMap Get() { return m_Wrapper.m_UI; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+            public void SetCallbacks(IUIActions instance)
+            {
+                if (m_Wrapper.m_UIActionsCallbackInterface != null)
+                {
+                    @LBM.started -= m_Wrapper.m_UIActionsCallbackInterface.OnLBM;
+                    @LBM.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnLBM;
+                    @LBM.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnLBM;
+                    @MousePosition.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePosition;
+                    @MousePosition.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePosition;
+                    @MousePosition.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePosition;
+                }
+                m_Wrapper.m_UIActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @LBM.started += instance.OnLBM;
+                    @LBM.performed += instance.OnLBM;
+                    @LBM.canceled += instance.OnLBM;
+                    @MousePosition.started += instance.OnMousePosition;
+                    @MousePosition.performed += instance.OnMousePosition;
+                    @MousePosition.canceled += instance.OnMousePosition;
+                }
+            }
+        }
+        public UIActions @UI => new UIActions(this);
+        public interface IUIActions
+        {
+            void OnLBM(InputAction.CallbackContext context);
+            void OnMousePosition(InputAction.CallbackContext context);
         }
     }
 }
