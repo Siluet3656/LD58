@@ -16,6 +16,7 @@ namespace Battle
         
         private float _currentSwipeProgress;
         private bool _isReadyToAttack;
+        private float _elapsedTime;
         
         private void Awake()
         {
@@ -58,13 +59,13 @@ namespace Battle
         private IEnumerator Cooldown(float cooldown)
         {
             _isReadyToAttack = false;
-            float elapsedTime = 0f;
+            _elapsedTime = 0f;
             _currentSwipeProgress = 0f;
 
-            while (elapsedTime < cooldown)
+            while (_elapsedTime < cooldown)
             {
-                elapsedTime += Time.deltaTime;
-                _currentSwipeProgress = Mathf.Clamp01(elapsedTime / cooldown);
+                _elapsedTime += Time.deltaTime;
+                _currentSwipeProgress = Mathf.Clamp01(_elapsedTime / cooldown);
                 _playerView.UpdateAttackSwingBar(_currentSwipeProgress);
                 yield return null;
             }
@@ -88,6 +89,11 @@ namespace Battle
             _playerHp.TryToTakeDamage(_attackDamage, false);
             
             StartAttackCooldown();
+        }
+
+        public void Interrupt()
+        {
+            _elapsedTime = 0f;
         }
     }
 }

@@ -10,5 +10,7 @@ namespace Data
         [TextArea]
         public string description;
         public SkillType skillType;
+        public int cost;
+        public int damage;
     }
 }

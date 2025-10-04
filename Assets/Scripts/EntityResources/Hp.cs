@@ -44,6 +44,8 @@ namespace EntityResources
         private void Die()
         {
             OnDeath?.Invoke();
+            
+            GetInvulnerable();
         }
         
         public event Action<float> OnHealthChanged;

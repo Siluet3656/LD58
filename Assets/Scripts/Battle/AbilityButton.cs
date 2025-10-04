@@ -33,6 +33,8 @@ namespace Battle
 
         public void OnDrag(PointerEventData eventData)
         {
+            if (BattleRuler.Instance.IsFighting == false) return;
+            
             if (_skillType == SkillType.None) return;
             
             if (_arrow == null) return;

@@ -18,6 +18,8 @@ namespace Battle
 
         private void Awake()
         {
+            G.SkillResources = this;
+            
             _playerView = GetComponent<PlayerView>();
 
             _currentEnergy = _maxEnergy;
@@ -30,6 +32,7 @@ namespace Battle
             {
                 if (_isReadyRestore)
                 {
+                    GainEnergy(_energyRestoredPerRate);
                     StartCoroutine(RestoreEnergy(_energyRestoreRate));
                 }
             }
