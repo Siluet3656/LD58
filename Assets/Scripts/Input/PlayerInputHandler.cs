@@ -73,6 +73,8 @@ namespace Input
             Ray raySoulButton = _mainCamera.ScreenPointToRay(_inputActions.UI.MousePosition.ReadValue<Vector2>());
             RaycastHit2D hitSoulButton = Physics2D.Raycast(raySoulButton.origin, raySoulButton.direction, Mathf.Infinity, LayerMask.GetMask("SoulButton"));
 
+            if (hitSoulButton. collider == null) return;
+            
             SoulPlace soulPlace = hitSoulButton.collider.GetComponent<SoulPlace>();
 
             if (soulPlace != null)

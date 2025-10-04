@@ -12,7 +12,7 @@ namespace Battle
         
         private SkillArrowToTarget _arrow;
         private Camera _mainCamera;
-        private SoulType _skillType;
+        private SoulType _soulType;
         private Image _spriteRenderer;
 
         private void Awake()
@@ -26,13 +26,15 @@ namespace Battle
 
             _spriteRenderer = GetComponent<Image>();
 
-            _skillType = SoulType.None;
+            _soulType = SoulType.None;
         }
+        
+        public SoulType SoulType => _soulType;
 
         public int GetSoulCost()
         {
-            if (_skillType != SoulType.None)
-                return SoulDataCms.Instance.GetSpellConfig(_skillType).cost;
+            if (_soulType != SoulType.None)
+                return SoulDataCms.Instance.GetSpellConfig(_soulType).cost;
 
             return -1;
         }
@@ -41,14 +43,14 @@ namespace Battle
         {
             if (G.SoulChecker.IsSoulPlacingBlocked) return;
             
-            _skillType = skillType;
+            _soulType = skillType;
 
-            _spriteRenderer.sprite = SoulDataCms.Instance.GetSpellConfig(_skillType).icon;
+            _spriteRenderer.sprite = SoulDataCms.Instance.GetSpellConfig(_soulType).icon;
         }
 
         public void RemoveSpell()
         {
-            _skillType = SoulType.None;
+            _soulType = SoulType.None;
             
             _spriteRenderer.sprite = SoulDataCms.Instance.GetSpellConfig(SoulType.None).icon;
         }

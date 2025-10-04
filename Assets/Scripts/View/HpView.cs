@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using EntityResources;
 
@@ -8,6 +9,7 @@ namespace View
     {
         [Header("UI References")]
         [SerializeField] private Image _healthBar;
+        [SerializeField] private Text _healthText;
 
         private Hp _hp;
 
@@ -45,6 +47,7 @@ namespace View
             if (_hp == null || _healthBar == null) return;
             
             _healthBar.fillAmount = currentHealth / _hp.MaxHealth;
+            _healthText.text = $"{currentHealth}/{_hp.MaxHealth}";
         }
     }
 }

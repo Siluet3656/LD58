@@ -9,8 +9,9 @@ namespace EntityResources
     public class Hp : MonoBehaviour
     {
         [Header("Base Stats")]
-        [SerializeField, Min(1)] private int _maxHealth;
+        [SerializeField, Min(1)] private int _defaultMaxHealth;
 
+        private float _maxHealth;
         private float _currentHealth;
         private float _additionalHealth;
         private int _shieldStacks;
@@ -18,6 +19,15 @@ namespace EntityResources
         
         private void Awake()
         {
+            if (CompareTag("Player"))
+            {
+                G.PlayerHp = this;
+            }
+        }
+
+        private void Start()
+        {
+            _maxHealth = _defaultMaxHealth;
             InitializeHealth();
         }
 
@@ -54,6 +64,7 @@ namespace EntityResources
         public event Action<float> OnAnyDamageReceived; 
 
         public bool IsInvulnerable => _isInvulnerable;
+        public float DefaultMaxHealth => _defaultMaxHealth;
         public float MaxHealth => _maxHealth;
         public float CurrentHealth => _currentHealth; 
         
@@ -105,7 +116,7 @@ namespace EntityResources
         {
             if (healAmount <= 0) return;
             
-            float resultHeal = Mathf.Min(_currentHealth + healAmount, _maxHealth); //Debug.Log($"Heal taken by {gameObject}: {resultHeal - _currentHealth}");
+            float resultHeal = Mathf.Min(_currentHealth + healAmount, _defaultMaxHealth); //Debug.Log($"Heal taken by {gameObject}: {resultHeal - _currentHealth}");
             _currentHealth = resultHeal;
             OnHealthChanged?.Invoke(_currentHealth);
         }

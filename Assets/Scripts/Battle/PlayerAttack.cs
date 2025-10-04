@@ -10,7 +10,9 @@ namespace Battle
     public class PlayerAttack : MonoBehaviour
     {
         [SerializeField] private float _attackCooldownTime = 5f;
-        [SerializeField] private float _attackDamage = 50f;
+        [SerializeField] private float _defaultAttackDamage = 50f;
+
+        private float _currentAttackDamage;
         
         private Hp _enemyHp;
         private PlayerTargeting _playerTargeting;
@@ -21,10 +23,14 @@ namespace Battle
         
         private void Awake()
         {
+            G.PlayerAttack = this;
+            
             _playerTargeting = GetComponent<PlayerTargeting>();
             _playerView = GetComponent<PlayerView>();
             
             _isReadyToAttack = false;
+
+            _currentAttackDamage = _defaultAttackDamage;
         }
 
         private void Update()
@@ -85,7 +91,7 @@ namespace Battle
             
             if (_enemyHp == null) return;
 
-            _enemyHp.TryToTakeDamage(_attackDamage, false);
+            _enemyHp.TryToTakeDamage(_currentAttackDamage, false);
             
             StartAttackCooldown();
         }
@@ -93,6 +99,16 @@ namespace Battle
         private void SetTargetHp(Transform target)
         {
             _enemyHp = target.GetComponent<Hp>();
+        }
+
+        public float CurrentDamage => _currentAttackDamage;
+        public float DefaultDamage => _defaultAttackDamage;
+
+        public void AdjustDamage(int amount)
+        {
+            if (amount < 1) return;
+            
+            _currentAttackDamage = amount;
         }
     }
 }
