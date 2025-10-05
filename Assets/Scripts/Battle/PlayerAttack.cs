@@ -11,6 +11,7 @@ namespace Battle
     {
         [SerializeField] private float _attackCooldownTime = 5f;
         [SerializeField] private float _defaultAttackDamage = 50f;
+        [SerializeField] private RandomSoundPlayer _randomSoundPlayer;
 
         private float _currentAttackDamage;
         
@@ -27,6 +28,7 @@ namespace Battle
             
             _playerTargeting = GetComponent<PlayerTargeting>();
             _playerView = GetComponent<PlayerView>();
+            _randomSoundPlayer = GetComponent<RandomSoundPlayer>();
             
             _isReadyToAttack = false;
 
@@ -92,6 +94,8 @@ namespace Battle
             if (_enemyHp == null) return;
 
             _playerView.StartAttackAnimation();
+            
+            _randomSoundPlayer.PlayRandomSound();
             
             _enemyHp.TryToTakeDamage(_currentAttackDamage, false);
             

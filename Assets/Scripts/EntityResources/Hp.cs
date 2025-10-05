@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using View;
@@ -12,6 +13,9 @@ namespace EntityResources
         [SerializeField, Min(1)] private int _defaultMaxHealth;
 
         [SerializeField] private GameObject _floatingTextPrefab;
+        [SerializeField] private GameObject _damageParticles;
+        
+        private RandomSoundPlayer _randomSoundPlayer;
         
         private float _maxHealth;
         private float _currentHealth;
@@ -24,6 +28,10 @@ namespace EntityResources
             if (CompareTag("Player"))
             {
                 G.PlayerHp = this;
+            }
+            else
+            {
+                _randomSoundPlayer = GetComponent<RandomSoundPlayer>();
             }
         }
 
@@ -72,7 +80,10 @@ namespace EntityResources
                     
                 }
                 else
-                {
+                { 
+                    _randomSoundPlayer.PlayRandomSound();
+                    StartCoroutine(ParticlesAndFade());
+                        
                     switch (rand)
                     {
                         case 0:
@@ -90,6 +101,15 @@ namespace EntityResources
             
             if (_currentHealth <= 0)
                 Die();
+        }
+
+        private IEnumerator ParticlesAndFade()
+        {
+            _damageParticles.SetActive(true);
+
+            yield return new WaitForSeconds(1f);
+            
+            _damageParticles.SetActive(false);
         }
 
         private void Die()
