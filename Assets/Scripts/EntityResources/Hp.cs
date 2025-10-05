@@ -69,6 +69,8 @@ namespace EntityResources
 
                 if (_currentHealth <= 1) rand = 7;
                 
+                StartCoroutine(ParticlesAndFade());
+                
                 if (CompareTag("Player"))
                 {
                     switch (rand)
@@ -82,7 +84,6 @@ namespace EntityResources
                 else
                 { 
                     _randomSoundPlayer.PlayRandomSound();
-                    StartCoroutine(ParticlesAndFade());
                         
                     switch (rand)
                     {

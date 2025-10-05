@@ -9,11 +9,13 @@ namespace Battle
     public class Enemy : MonoBehaviour, ITargetable
     {
         [SerializeField] private GameObject _spawnPoint;
+        [SerializeField] private RandomSoundPlayer _randomSoundPlayer;
         
         private Hp _myHp;
         private EnemyAttack _enemyAttack;
 
         public bool IsNeedToGo = false;
+        private bool isPlaying = false;
         
         private void Awake()
         {
@@ -26,8 +28,15 @@ namespace Battle
         {
             if (IsNeedToGo)
             {
+                isPlaying = true;
                 float step = 10f * Time.deltaTime;
                 transform.position = Vector3.MoveTowards(transform.position, _spawnPoint.transform.position, step);
+            }
+
+            if (isPlaying && IsNeedToGo == false)
+            {
+                isPlaying = false;
+                _randomSoundPlayer.PlayRandomSound();
             }
         }
 

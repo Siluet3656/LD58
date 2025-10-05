@@ -3,13 +3,13 @@ using System.Collections;
 
 public class MusicSequencePlayer : MonoBehaviour
 {
-    public AudioClip[] musicTracks; // 0: Track1, 1: Track2, 2: Track3, 3: Track4
+    public AudioClip[] musicTracks; 
     public AudioSource audioSource;
     public float fadeDuration = 3f;
     public float segmentDuration = 30f;
     public float volume = 0.1f;
 
-    private int[] playSequence = new int[] { 3, 1, 3, 1, 0, 2 }; // 1,2,1,3,1,4 (индексы 0-3)
+    private int[] playSequence = new int[] { 0, 1, 0, 1, 0, 0 }; 
     private int currentSegment = 0;
     private bool isPlaying = false;
 
@@ -30,7 +30,7 @@ public class MusicSequencePlayer : MonoBehaviour
 
     public void StartPlayback()
     {
-        if (!isPlaying && musicTracks.Length >= 4)
+        if (!isPlaying && musicTracks.Length >= 2)
         {
             isPlaying = true;
             currentSegment = 0;
@@ -44,20 +44,17 @@ public class MusicSequencePlayer : MonoBehaviour
         {
             int trackIndex = playSequence[currentSegment];
             AudioClip currentTrack = musicTracks[trackIndex];
-
-            // Запускаем трек с плавным затуханием
+            
             yield return StartCoroutine(FadeInAndPlay(currentTrack));
-
-            // Ждем основное время сегмента (30 секунд минус время затухания)
+            
             float playTime = segmentDuration;
-            if (currentSegment < playSequence.Length - 1) // Для всех кроме последнего
+            if (currentSegment < playSequence.Length - 1) 
             {
                 playTime -= fadeDuration;
             }
 
             yield return new WaitForSeconds(playTime);
 
-            // Для всех кроме последнего сегмента - плавное затухание
             if (currentSegment < playSequence.Length - 1)
             {
                 yield return StartCoroutine(FadeOut());
