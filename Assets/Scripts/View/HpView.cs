@@ -10,6 +10,7 @@ namespace View
         [Header("UI References")]
         [SerializeField] private Image _healthBar;
         [SerializeField] private Text _healthText;
+        [SerializeField] private HpBarInertia _inertia;
 
         private Hp _hp;
 
@@ -48,6 +49,7 @@ namespace View
             
             _healthBar.fillAmount = currentHealth / _hp.MaxHealth;
             _healthText.text = $"{currentHealth}/{_hp.MaxHealth}";
+            _inertia.SetHealth(currentHealth / _hp.MaxHealth);
         }
     }
 }
