@@ -107,6 +107,7 @@ namespace EntityResources
         private IEnumerator ParticlesAndFade()
         {
             _damageParticles.SetActive(true);
+            _damageParticles.GetComponent<ParticleSystem>().Play();
 
             yield return new WaitForSeconds(1f);
             

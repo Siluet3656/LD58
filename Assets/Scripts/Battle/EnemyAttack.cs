@@ -10,6 +10,7 @@ namespace Battle
     {
         [SerializeField] private float _attackCooldownTime = 3f;
         [SerializeField] private float _attackDamage = 1f;
+        [SerializeField] private RandomSoundPlayer _randomSoundPlayer;
         
         private Hp _playerHp;
         private EnemyView _myView;
@@ -88,6 +89,8 @@ namespace Battle
             if (_playerHp == null) return;
 
             _myView.StartAttackAnimation();
+            
+            _randomSoundPlayer.PlayRandomSound();
             
             _playerHp.TryToTakeDamage(_attackDamage, false);
             
