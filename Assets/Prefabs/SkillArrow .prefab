@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3626748392202549305}
   - component: {fileID: 3626748392202549304}
   - component: {fileID: 3626748392202549311}
+  - component: {fileID: -822864516434113009}
   m_Layer: 0
   m_Name: 'SkillArrow '
   m_TagString: Untagged
@@ -95,3 +96,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87f69aecff77124caaca21b4ba9ae62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-822864516434113009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3626748392202549310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adc40c16d51d59a4da65314c5a69025e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _color1: {r: 0.7372549, g: 0, b: 1, a: 1}
+  _color2: {r: 0.35890368, g: 0.2277056, b: 0.4056604, a: 0}
+  _duration: 2.5
