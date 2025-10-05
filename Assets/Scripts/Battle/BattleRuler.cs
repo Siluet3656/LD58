@@ -30,7 +30,11 @@ namespace Battle
             _enemiesOnScene.AddRange(FindObjectsOfType<Enemy>());
         }
 
-        
+        private void Start()
+        {
+            G.SmoothSlideY.Show();
+        }
+
         private void OnEnable()
         {
             foreach (var enemy in _enemiesOnScene)

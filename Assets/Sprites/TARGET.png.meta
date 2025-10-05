@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: -4093320955586873979
     second: TARGET_0
+  - first:
+      213: -5141257354833497122
+    second: TARGET_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -119,19 +122,19 @@ TextureImporter:
       name: TARGET_0
       rect:
         serializedVersion: 2
-        x: 48
-        y: 18
-        width: 704
-        height: 162
+        x: 30
+        y: 61
+        width: 756
+        height: 276
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 585f49a374a9137c0800000000000000
-      internalID: -4093320955586873979
+      spriteID: ed3f842eca596a8b0800000000000000
+      internalID: -5141257354833497122
       vertices: []
       indices: 
       edges: []

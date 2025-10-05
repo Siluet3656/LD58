@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Battle;
+using Effects;
 using EntityResources;
 using Prepare;
 using View;
@@ -15,4 +16,5 @@ public static class G
     public static Hp PlayerHp;
     public static PlayerAttack PlayerAttack;
     public static PlayerView  PlayerView;
+    public static SmoothSlideY SmoothSlideY;
 }
