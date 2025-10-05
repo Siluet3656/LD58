@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using View;
 
 namespace Battle
@@ -10,11 +11,13 @@ namespace Battle
         [SerializeField] private int _maxEnergy = 100;
         [SerializeField] private int _energyRestoredPerRate = 20;
         [SerializeField] private float _energyRestoreRate = 1f;
+        [SerializeField] private Image _energyBar;
 
         private PlayerView _playerView;
         
         private int _currentEnergy;
         private bool _isReadyRestore = true;
+        private float _currentSwipeProgress;
 
         private void Awake()
         {
@@ -54,19 +57,24 @@ namespace Battle
         {
             _isReadyRestore = false;
             float elapsedTime = 0f;
-            //_currentSwipeProgress = 0f;
+            _currentSwipeProgress = 0f;
 
             while (elapsedTime < cooldown)
             {
                 elapsedTime += Time.deltaTime;
-                //_currentSwipeProgress = Mathf.Clamp01(elapsedTime / cooldown);
-               // _playerView.UpdateAttackSwingBar(_currentSwipeProgress);
+                _currentSwipeProgress = Mathf.Clamp01(elapsedTime / cooldown);
+               UpdateBar(_currentSwipeProgress);
                 yield return null;
             }
 
             _isReadyRestore = true;
-            //_currentSwipeProgress = 1f;
-            //_playerView.UpdateAttackSwingBar(_currentSwipeProgress);
+            _currentSwipeProgress = 1f;
+            UpdateBar(_currentSwipeProgress);
+        }
+
+        private void UpdateBar(float progress)
+        {
+            _energyBar.fillAmount = progress / 1f ;
         }
         
         public bool HasEnoughResources(int energyCost)

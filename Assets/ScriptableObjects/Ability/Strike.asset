@@ -16,5 +16,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: f052785569161df4082c60875fb6e18e, type: 3}
   description: Deals 1 damage and stagger an enemy
   skillType: 1
-  cost: 40
+  cost: 60
   damage: 1
