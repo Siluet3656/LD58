@@ -4877,6 +4877,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 642461873}
     m_Modifications:
+    - target: {fileID: 8396052896397460259, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
+      propertyPath: m_Volume
+      value: 0.048
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396052896397460259, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8396052896397460269, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -4931,7 +4939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8396052896397460270, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 183
       objectReference: {fileID: 0}
     - target: {fileID: 8396052896397460270, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
       propertyPath: m_SizeDelta.x
