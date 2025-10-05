@@ -91,6 +91,8 @@ namespace Battle
             
             if (_enemyHp == null) return;
 
+            _playerView.StartAttackAnimation();
+            
             _enemyHp.TryToTakeDamage(_currentAttackDamage, false);
             
             StartAttackCooldown();

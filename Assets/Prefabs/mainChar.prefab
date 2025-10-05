@@ -994,6 +994,7 @@ GameObject:
   - component: {fileID: 266820881995396573}
   - component: {fileID: 266820881995396572}
   - component: {fileID: 266820881995396575}
+  - component: {fileID: 1210615562}
   m_Layer: 0
   m_Name: MainCharSprite
   m_TagString: Untagged
@@ -1085,6 +1086,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1210615562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266820881995396546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a844048cfdbc14892c82d81e8741ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &266820882002303699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,6 +1908,8 @@ MonoBehaviour:
   _energyBar: {fileID: 266820881389173310}
   _attackText: {fileID: 266820882781936225}
   _energyText: {fileID: 266820881979172511}
+  _animator: {fileID: 266820881995396575}
+  _animationEventCatcher: {fileID: 1210615562}
 --- !u!114 &266820882849889831
 MonoBehaviour:
   m_ObjectHideFlags: 0
