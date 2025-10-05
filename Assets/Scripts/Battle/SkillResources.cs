@@ -84,7 +84,16 @@ namespace Battle
 
         public void ConsumeResources(int energyCost)
         {
+            if (energyCost <= 0) return;
+            
             _currentEnergy -= (int)energyCost;
+        }
+
+        public void RestoreResources(int energy)
+        {
+            if (energy <= 0) return;
+            
+            GainEnergy(energy);
         }
     }
 }

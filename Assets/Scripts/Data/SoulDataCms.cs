@@ -13,6 +13,7 @@ namespace Data
 
         [SerializeField] private SoulData _none;
         [SerializeField] private SoulData _poorMan;
+        [SerializeField] private SoulData _bandit;
         
         
         private Dictionary<SoulType, SoulData> _spellValues;
@@ -35,6 +36,7 @@ namespace Data
             {
                 { SoulType.None, _none },
                 { SoulType.PoorMan, _poorMan },
+                { SoulType.Bandit, _bandit },
             };
         }
         

@@ -47,6 +47,7 @@ namespace Prepare
             if (BattleRuler.Instance.IsFighting) return;
             
             int poorManSouls = 0;
+            int banditsSouls = 0;
             
             foreach (SoulPlace soulPlace in G.SoulPlaces)
             {
@@ -54,6 +55,9 @@ namespace Prepare
                 {
                     case SoulType.PoorMan:
                         poorManSouls++;
+                        break;
+                    case SoulType.Bandit:
+                        banditsSouls++;
                         break;
                 }
             }
@@ -64,6 +68,8 @@ namespace Prepare
             int attack = (int)G.PlayerAttack.DefaultDamage + (1 * poorManSouls);
             G.PlayerAttack.AdjustDamage(attack);
             G.PlayerView.UpdateAttackText(attack);
+            
+            G.PlayerAttack.SetUpEnergyRestorePerAttack(banditsSouls * 10);
         }
         
         public bool IsSoulPlacingBlocked =>  _isSoulPlacingBlocked;

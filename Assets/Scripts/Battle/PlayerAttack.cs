@@ -18,9 +18,11 @@ namespace Battle
         private Hp _enemyHp;
         private PlayerTargeting _playerTargeting;
         private PlayerView _playerView;
+        private SkillResources _skillResources;
         
         private float _currentSwipeProgress;
         private bool _isReadyToAttack;
+        private int _energyRestorePerAtack = 0;
         
         private void Awake()
         {
@@ -29,6 +31,7 @@ namespace Battle
             _playerTargeting = GetComponent<PlayerTargeting>();
             _playerView = GetComponent<PlayerView>();
             _randomSoundPlayer = GetComponent<RandomSoundPlayer>();
+            _skillResources = GetComponent<SkillResources>();
             
             _isReadyToAttack = false;
 
@@ -99,6 +102,8 @@ namespace Battle
             
             _enemyHp.TryToTakeDamage(_currentAttackDamage, false);
             
+            _skillResources.RestoreResources(_energyRestorePerAtack);
+            
             StartAttackCooldown();
         }
 
@@ -115,6 +120,11 @@ namespace Battle
             if (amount < 1) return;
             
             _currentAttackDamage = amount;
+        }
+
+        public void SetUpEnergyRestorePerAttack(int amount)
+        {
+            _energyRestorePerAtack = amount;
         }
     }
 }

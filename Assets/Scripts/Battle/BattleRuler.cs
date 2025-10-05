@@ -235,6 +235,29 @@ namespace Battle
             _tutorialPanel3.SetActive(false);
         }
 
+        private IEnumerator StartDialogue1()
+        {
+            ShowDialog("We’re just simple hermits. There’s nothing to take from us.", false);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("I could always take your soul — and right now it's the oddest one I've come across.", true);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Alright, all of us, together — now we must finally stop him!", false);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            G.SmoothSlideY.Show();
+        }
+        
         private void Start()
         {
             switch (_sceneID)
@@ -247,6 +270,9 @@ namespace Battle
                     break;
                 case 3:
                     StartCoroutine(StartGameTutorial3());
+                    break;
+                case 4:
+                    StartCoroutine(StartDialogue1());
                     break;
                 default:
                     G.SmoothSlideY.Show();

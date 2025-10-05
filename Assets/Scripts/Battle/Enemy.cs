@@ -10,6 +10,7 @@ namespace Battle
     {
         [SerializeField] private GameObject _spawnPoint;
         [SerializeField] private RandomSoundPlayer _randomSoundPlayer;
+        [SerializeField] private RandomSoundPlayer _strikeSoundPlayer;
         
         private Hp _myHp;
         private EnemyAttack _enemyAttack;
@@ -22,6 +23,11 @@ namespace Battle
             G.Enemies.Add(this);
             _myHp = GetComponent<Hp>();
             _enemyAttack = GetComponent<EnemyAttack>();
+        }
+
+        private void OnDestroy()
+        {
+            G.Enemies.Remove(this);
         }
 
         private void Update()
@@ -63,7 +69,7 @@ namespace Battle
             {
                 case SkillType.Strike:
                     if (G.SkillResources.HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(skillType).cost))
-                    {
+                    {   _strikeSoundPlayer.PlayRandomSound();
                         _myHp.TryToTakeDamage(AbilityDataCms.Instance.GetSpellConfig(skillType).damage, false);
                         G.SkillResources.ConsumeResources(AbilityDataCms.Instance.GetSpellConfig(skillType).cost);
                         _enemyAttack.Interrupt();
