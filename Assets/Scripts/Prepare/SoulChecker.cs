@@ -1,4 +1,5 @@
-﻿using Battle;
+﻿using System;
+using Battle;
 using EntityResources;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,6 +44,8 @@ namespace Prepare
 
         private void UpdatePlayerStatus()
         {
+            if (BattleRuler.Instance.IsFighting) return;
+            
             int poorManSouls = 0;
             
             foreach (SoulPlace soulPlace in G.SoulPlaces)

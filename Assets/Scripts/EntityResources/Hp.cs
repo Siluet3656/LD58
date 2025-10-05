@@ -77,6 +77,7 @@ namespace EntityResources
         public void SetMaxHealth(int health)
         {
             _maxHealth = health;
+            OnHealthChanged?.Invoke(_currentHealth);
         }
 
         public void TryToTakeCriticalDamage(float damage, float criticalMultiply, float criticalChance)
