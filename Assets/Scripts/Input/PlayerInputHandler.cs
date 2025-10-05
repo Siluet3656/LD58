@@ -2,6 +2,7 @@
 using UnityEngine;
 using Battle;
 using Prepare;
+using View;
 
 namespace Input
 {
@@ -36,6 +37,8 @@ namespace Input
             Vector2 point = _inputActions.UI.MousePosition.ReadValue<Vector2>();
             
             _hand.SetPoint(_mainCamera.ScreenToWorldPoint(point));
+            
+            TooltipManager.Instance.SetMousePosition(point);
         }
 
         private void OnEnable() => _inputActions.Enable();
