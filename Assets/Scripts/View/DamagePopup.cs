@@ -73,5 +73,16 @@ namespace View
             activeText.MoveText(_mainCamera);
             _activeTexts.Add(activeText);
         }
+        
+        public void AddText(string message, Vector3 unitPosition)
+        {
+            Text text = _popupPool.Dequeue();
+            text.text = message;
+            text.gameObject.SetActive(true);
+
+            ActiveText activeText = new ActiveText(1f, text, unitPosition);
+            activeText.MoveText(_mainCamera);
+            _activeTexts.Add(activeText);
+        }
     }
 }

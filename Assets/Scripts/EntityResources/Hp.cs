@@ -36,7 +36,7 @@ namespace EntityResources
         private void ShowDialog(string message)
         {
             GameObject ft = Instantiate(_floatingTextPrefab, transform.position, Quaternion.identity);
-            ft.GetComponent<FloatingTextClick>().SetText(message);
+            ft.GetComponent<FloatingText>().SetText(message);
         }
 
         private void TakeDamage(float damage)

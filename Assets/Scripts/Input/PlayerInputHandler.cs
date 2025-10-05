@@ -74,6 +74,8 @@ namespace Input
             {
                 VARIABLE.OnLBM();
             }
+
+            BattleRuler.Instance.IsLBM = true;
         }
 
         private void OnRightMouseButtonClicked()

@@ -95,6 +95,10 @@ namespace Battle
         public void Interrupt()
         {
             _elapsedTime = 0f;
+            
+            Vector3 randPosition = new Vector3(transform.position.x + Random.Range(-2f, 2f),transform.position.y,transform.position.z);
+            
+            DamagePopup.Instance.AddText("interrupt!", randPosition);
         }
     }
 }

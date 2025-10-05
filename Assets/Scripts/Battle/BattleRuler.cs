@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using EntityResources;
 using UnityEngine;
@@ -12,6 +13,11 @@ namespace Battle
         [SerializeField] private bool _isReturnToCity;
         [SerializeField] private GameObject _victoryPanel;
         [SerializeField] private GameObject _floatingTextPrefab;
+        [SerializeField] private GameObject _tutorialPanel1;
+        [SerializeField] private GameObject _tutorialPanel2;
+        [SerializeField] private GameObject _tutorialPanel3;
+
+        [SerializeField] private Enemy[] _enemies;
 
         private readonly List<Enemy> _enemiesOnScene = new List<Enemy>();
         
@@ -29,20 +35,97 @@ namespace Battle
                 Destroy(gameObject);
             }
             
-            _enemiesOnScene.AddRange(FindObjectsOfType<Enemy>());
+            _enemiesOnScene.AddRange(_enemies);
+            
+            //_enemiesOnScene.AddRange(FindObjectsOfType<Enemy>());
         }
         
-        private void ShowDialog(string message)
+        private void ShowDialog(string message, bool isMe)
         {
-            GameObject ft = Instantiate(_floatingTextPrefab, transform.position, Quaternion.identity);
+            GameObject ft;
+            if (isMe)
+            {
+                ft = Instantiate(_floatingTextPrefab, transform.position - new Vector3(transform.position.x + 8f, transform.position.y,transform.position.z), Quaternion.identity);
+            }
+            else
+            {
+                ft = Instantiate(_floatingTextPrefab, transform.position - new Vector3(transform.position.x - 8f, transform.position.y,transform.position.z), Quaternion.identity);
+            }
+            
             ft.GetComponent<FloatingTextClick>().SetText(message);
+        }
+
+        private IEnumerator StartGameTutorial1()
+        {
+            yield return new WaitForSeconds(0.5f);
+            
+            ShowDialog("Is this a city?\n I heard they have these kinds of things on Earth.", true);
+            
+            yield return new WaitForSeconds(0.5f);
+            
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            yield return new WaitForSeconds(0.5f);
+            ShowDialog("I hope it's worth it.", true);
+            
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            yield return new WaitForSeconds(0.5f);
+            
+            _tutorialPanel1.SetActive(true);
+            
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            yield return new WaitForSeconds(0.5f);
+            
+            _tutorialPanel1.SetActive(false);
+            _tutorialPanel2.SetActive(true);
+            
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            yield return new WaitForSeconds(0.5f);
+            
+            _tutorialPanel2.SetActive(false);
+            _tutorialPanel3.SetActive(true);
+            
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            yield return new WaitForSeconds(0.5f);
+            
+            _tutorialPanel3.SetActive(false);
+            
+            _enemies[0].IsNeedToGo = true;
+            
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            yield return new WaitForSeconds(0.5f);
+            
+            ShowDialog("Who are you?\n What’s a thing like you doing around here?", false);
+            
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            yield return new WaitForSeconds(0.5f);
+            
+            ShowDialog("Are you familiar with the concept of a soul?", true);
+            
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            yield return new WaitForSeconds(0.5f);
+            
+            ShowDialog("What? What do you think you are?\n You’re gonna see souls with your own eyes.", false);
+            
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            yield return new WaitForSeconds(0.5f);
+            
+            _enemies[0].IsNeedToGo = false;
+            
+            G.SmoothSlideY.Show();
         }
 
         private void Start()
         {
-            ShowDialog("SOSAL?");
-            
-            G.SmoothSlideY.Show();
+            StartCoroutine(StartGameTutorial1());
         }
 
         private void OnEnable()
@@ -81,6 +164,7 @@ namespace Battle
         public static BattleRuler Instance;
         public bool IsFighting => _isFighting;
         public Action OnFighting;
+        public bool IsLBM = false;
         
         public void StartFight()
         {

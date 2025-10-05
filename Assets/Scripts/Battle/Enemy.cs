@@ -8,13 +8,27 @@ namespace Battle
     [RequireComponent(typeof(Hp))]
     public class Enemy : MonoBehaviour, ITargetable
     {
+        [SerializeField] private GameObject _spawnPoint;
+        
         private Hp _myHp;
         private EnemyAttack _enemyAttack;
+
+        public bool IsNeedToGo = false;
+        
         private void Awake()
         {
             G.Enemies.Add(this);
             _myHp = GetComponent<Hp>();
             _enemyAttack = GetComponent<EnemyAttack>();
+        }
+
+        private void Update()
+        {
+            if (IsNeedToGo)
+            {
+                float step = 10f * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, _spawnPoint.transform.position, step);
+            }
         }
 
         public bool IsTargetable { get; }
