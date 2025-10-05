@@ -19,6 +19,8 @@ namespace Battle
         private bool _isReadyRestore = true;
         private float _currentSwipeProgress;
 
+        private int _adjustedEnergyRestoredPerRate;
+
         private void Awake()
         {
             G.SkillResources = this;
@@ -35,7 +37,7 @@ namespace Battle
             {
                 if (_isReadyRestore)
                 {
-                    GainEnergy(_energyRestoredPerRate);
+                    GainEnergy(_adjustedEnergyRestoredPerRate);
                     StartCoroutine(RestoreEnergy(_energyRestoreRate));
                 }
             }
@@ -94,6 +96,11 @@ namespace Battle
             if (energy <= 0) return;
             
             GainEnergy(energy);
+        }
+
+        public void AdjustResources(int additionalAmount)
+        {
+            _adjustedEnergyRestoredPerRate = _energyRestoredPerRate + additionalAmount;
         }
     }
 }

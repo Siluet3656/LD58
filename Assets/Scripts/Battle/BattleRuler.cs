@@ -12,6 +12,7 @@ namespace Battle
     {
         [SerializeField] private bool _isReturnToCity;
         [SerializeField] private GameObject _victoryPanel;
+        [SerializeField] private GameObject _defeatPanel;
         [SerializeField] private GameObject _floatingTextPrefab;
         [SerializeField] private int _sceneID;
         [SerializeField] private GameObject _tutorialPanel1;
@@ -19,6 +20,7 @@ namespace Battle
         [SerializeField] private GameObject _tutorialPanel3;
 
         [SerializeField] private Enemy[] _enemies;
+        [SerializeField] private Player _player;
 
         private readonly List<Enemy> _enemiesOnScene = new List<Enemy>();
         
@@ -258,6 +260,53 @@ namespace Battle
             G.SmoothSlideY.Show();
         }
         
+        private IEnumerator StartDialogue2()
+        {
+            ShowDialog("So… you’re the one who holds the Pure Soul.", true);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Hold? No. I am the Pure Soul. There’s nothing left to hold onto.", false);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Then you’ve lost what it means to be human.", true);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Human? Humanity is a cage of flesh and fear. I broke it long ago.", false);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("So, what is the Pure Soul?", true);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Emptiness. No pain. No doubt. No desire. Can you imagine how peaceful it feels?", false);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Worth it — just like I thought.", true);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            G.SmoothSlideY.Show();
+        }
+        
         private void Start()
         {
             switch (_sceneID)
@@ -274,6 +323,9 @@ namespace Battle
                 case 4:
                     StartCoroutine(StartDialogue1());
                     break;
+                case 5:
+                    StartCoroutine(StartDialogue2());
+                    break;
                 default:
                     G.SmoothSlideY.Show();
                     break;
@@ -287,6 +339,8 @@ namespace Battle
             {
                 enemy.GetComponent<Hp>().OnDeath += CheckVictory;
             }
+            
+            _player.GetComponent<Hp>().OnDeath += Defeat;
         }
 
         private void OnDisable()
@@ -295,6 +349,12 @@ namespace Battle
             {
                 enemy.GetComponent<Hp>().OnDeath -= CheckVictory;
             }*/
+        }
+
+        private void Defeat()
+        {
+            _isFighting = false;
+            _defeatPanel.SetActive(true);
         }
         
         private void Victory()

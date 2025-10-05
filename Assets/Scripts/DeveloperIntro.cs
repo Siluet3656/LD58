@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class DeveloperIntro : MonoBehaviour
 {
@@ -98,9 +100,7 @@ public class DeveloperIntro : MonoBehaviour
 
         // Final delay before destruction
         yield return new WaitForSeconds(0.5f);
-        Destroy(canvas.gameObject);
-        Destroy(gameObject);
-        Destroy(bg);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     IEnumerator Fade(float startAlpha, float endAlpha)

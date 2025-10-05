@@ -14,6 +14,7 @@ namespace Data
         [SerializeField] private SoulData _none;
         [SerializeField] private SoulData _poorMan;
         [SerializeField] private SoulData _bandit;
+        [SerializeField] private SoulData _exiled;
         
         
         private Dictionary<SoulType, SoulData> _spellValues;
@@ -37,6 +38,7 @@ namespace Data
                 { SoulType.None, _none },
                 { SoulType.PoorMan, _poorMan },
                 { SoulType.Bandit, _bandit },
+                { SoulType.Exiled, _exiled },
             };
         }
         

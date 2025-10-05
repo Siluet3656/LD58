@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Act 0/Start.unity
+    guid: 2561152c34bbb9740be0da6725676844
+  - enabled: 1
     path: Assets/Scenes/Act 0/Fight 1.unity
     guid: 3164d8b2156dd434fbbe43639168fb92
   - enabled: 1
@@ -20,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Act 1/Fight 5.unity
     guid: 36dcc77f9dd89814a9010f0af4dd4b72
+  - enabled: 1
+    path: Assets/Scenes/Act 1/END.unity
+    guid: ff9636333b4c2214da58ec0020055e89
   m_configObjects: {}

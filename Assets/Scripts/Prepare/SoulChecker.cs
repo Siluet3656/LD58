@@ -53,6 +53,7 @@ namespace Prepare
             
             int poorManSouls = 0;
             int banditsSouls = 0;
+            int exiledSouls = 0;
             
             foreach (SoulPlace soulPlace in G.SoulPlaces)
             {
@@ -63,6 +64,9 @@ namespace Prepare
                         break;
                     case SoulType.Bandit:
                         banditsSouls++;
+                        break;
+                    case SoulType.Exiled:
+                        exiledSouls++;
                         break;
                 }
             }
@@ -75,6 +79,8 @@ namespace Prepare
             G.PlayerView.UpdateAttackText(attack);
             
             G.PlayerAttack.SetUpEnergyRestorePerAttack(banditsSouls * 10);
+            
+            G.SkillResources.AdjustResources(exiledSouls * 5);
         }
         
         public bool IsSoulPlacingBlocked =>  _isSoulPlacingBlocked;
