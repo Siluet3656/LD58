@@ -16,7 +16,12 @@ namespace Prepare
         private void Awake()
         {
             G.SoulChecker = this;
-            
+        }
+
+        private void OnDestroy()
+        {
+            G.SoulChecker = null;
+            G.SoulPlaces.Clear();
         }
 
         private void Update()
