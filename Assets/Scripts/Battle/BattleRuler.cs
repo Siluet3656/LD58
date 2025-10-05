@@ -13,6 +13,7 @@ namespace Battle
         [SerializeField] private bool _isReturnToCity;
         [SerializeField] private GameObject _victoryPanel;
         [SerializeField] private GameObject _floatingTextPrefab;
+        [SerializeField] private int _sceneID;
         [SerializeField] private GameObject _tutorialPanel1;
         [SerializeField] private GameObject _tutorialPanel2;
         [SerializeField] private GameObject _tutorialPanel3;
@@ -123,9 +124,95 @@ namespace Battle
             G.SmoothSlideY.Show();
         }
 
+        private IEnumerator StartGameTutorial2()
+        {
+            yield return new WaitForSeconds(0.5f);
+            
+            ShowDialog("Hey! What have you done to him?!", false);
+            
+            yield return new WaitForSeconds(0.5f);
+            IsLBM = false;
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            ShowDialog("His soul is now part of my collection.", true);
+            
+            yield return new WaitForSeconds(0.5f);
+            
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            ShowDialog("If you don't want to end up where he did,\nyou'd better not get in my way.", true);
+            
+            yield return new WaitForSeconds(0.5f);
+            
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            ShowDialog("Uh-huh, like we’d believe you.", false);
+            
+            yield return new WaitForSeconds(0.5f);
+            
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            ShowDialog("You're exactly the kind who waits to stab someone in the back.", false);
+            
+            yield return new WaitForSeconds(0.5f);
+            
+            yield return new WaitUntil(() => IsLBM);
+            
+            G.SmoothSlideY.Show();
+            
+            _tutorialPanel1.SetActive(true);
+            
+            yield return new WaitForSeconds(1.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            _tutorialPanel1.SetActive(false);
+            
+            _tutorialPanel2.SetActive(true);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            _tutorialPanel2.SetActive(false);
+            
+            _tutorialPanel3.SetActive(true);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            _tutorialPanel3.SetActive(false);
+        }
+        
+        private IEnumerator StartGameTutorial3()
+        {
+            yield return new WaitForSeconds(0.5f);
+            
+            ShowDialog("2", true);
+            
+            yield return new WaitForSeconds(0.5f);
+            
+            yield return new WaitUntil(() => IsLBM);
+            
+            G.SmoothSlideY.Show();
+        }
+
         private void Start()
         {
-            StartCoroutine(StartGameTutorial1());
+            switch (_sceneID)
+            {
+                case 1:
+                    StartCoroutine(StartGameTutorial1());
+                    break;
+                case 2:
+                    StartCoroutine(StartGameTutorial2());
+                    break;
+                case 3:
+                    StartCoroutine(StartGameTutorial3());
+                    break;
+            }
+            
         }
 
         private void OnEnable()
