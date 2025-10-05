@@ -189,13 +189,50 @@ namespace Battle
         {
             yield return new WaitForSeconds(0.5f);
             
-            ShowDialog("2", true);
+            ShowDialog("Hey, we’re not your enemies, dude. Got a little mixed up—everyone makes mistakes.", false);
+            
+            yield return new WaitForSeconds(0.5f);
+            IsLBM = false;
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("These souls of yours are very interesting. They’ll surely help me achieve the Pure Soul.", true);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Oh man, bro, looks like we’ve really messed up.", false);
             
             yield return new WaitForSeconds(0.5f);
             
             yield return new WaitUntil(() => IsLBM);
-            
+            IsLBM = false;
             G.SmoothSlideY.Show();
+            
+            _tutorialPanel1.SetActive(true);
+            
+            yield return new WaitForSeconds(1.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            _tutorialPanel1.SetActive(false);
+            
+            _tutorialPanel2.SetActive(true);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            _tutorialPanel2.SetActive(false);
+            
+            _tutorialPanel3.SetActive(true);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            _tutorialPanel3.SetActive(false);
         }
 
         private void Start()
@@ -210,6 +247,9 @@ namespace Battle
                     break;
                 case 3:
                     StartCoroutine(StartGameTutorial3());
+                    break;
+                default:
+                    G.SmoothSlideY.Show();
                     break;
             }
             
