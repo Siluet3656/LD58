@@ -403,6 +403,7 @@ MonoBehaviour:
   _textDamage: {fileID: 4062323350205171543}
   _animator: {fileID: 408782530915683066}
   _animationEventCatcher: {fileID: 1312912982}
+  _myHp: {fileID: 4062323349122862628}
 --- !u!114 &4062323349122862630
 MonoBehaviour:
   m_ObjectHideFlags: 0
