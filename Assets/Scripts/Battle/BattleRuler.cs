@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using EntityResources;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using View;
 
 namespace Battle
 {
@@ -10,6 +11,7 @@ namespace Battle
     {
         [SerializeField] private bool _isReturnToCity;
         [SerializeField] private GameObject _victoryPanel;
+        [SerializeField] private GameObject _floatingTextPrefab;
 
         private readonly List<Enemy> _enemiesOnScene = new List<Enemy>();
         
@@ -29,9 +31,17 @@ namespace Battle
             
             _enemiesOnScene.AddRange(FindObjectsOfType<Enemy>());
         }
+        
+        private void ShowDialog(string message)
+        {
+            GameObject ft = Instantiate(_floatingTextPrefab, transform.position, Quaternion.identity);
+            ft.GetComponent<FloatingTextClick>().SetText(message);
+        }
 
         private void Start()
         {
+            ShowDialog("SOSAL?");
+            
             G.SmoothSlideY.Show();
         }
 

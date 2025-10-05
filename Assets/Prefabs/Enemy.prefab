@@ -357,6 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultMaxHealth: 4
+  _floatingTextPrefab: {fileID: 2715349566576225611, guid: e6eb32b165186e1479191409f19a0b80, type: 3}
 --- !u!114 &4062323349122862635
 MonoBehaviour:
   m_ObjectHideFlags: 0

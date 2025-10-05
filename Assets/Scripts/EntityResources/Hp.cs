@@ -11,6 +11,8 @@ namespace EntityResources
         [Header("Base Stats")]
         [SerializeField, Min(1)] private int _defaultMaxHealth;
 
+        [SerializeField] private GameObject _floatingTextPrefab;
+        
         private float _maxHealth;
         private float _currentHealth;
         private float _additionalHealth;
@@ -30,6 +32,12 @@ namespace EntityResources
             _maxHealth = _defaultMaxHealth;
             InitializeHealth();
         }
+        
+        private void ShowDialog(string message)
+        {
+            GameObject ft = Instantiate(_floatingTextPrefab, transform.position, Quaternion.identity);
+            ft.GetComponent<FloatingTextClick>().SetText(message);
+        }
 
         private void TakeDamage(float damage)
         {
@@ -46,6 +54,39 @@ namespace EntityResources
         {
             _currentHealth = Mathf.Max(0, _currentHealth - damage);
             OnHealthChanged?.Invoke(_currentHealth);
+
+            if (_currentHealth <= _maxHealth / 2)
+            {
+                int rand = Random.Range(0, 10);
+
+                if (_currentHealth <= 1) rand = 7;
+                
+                if (CompareTag("Player"))
+                {
+                    switch (rand)
+                    {
+                        case 7:
+                            ShowDialog("My experiments are at risk");
+                            break;
+                    }
+                    
+                }
+                else
+                {
+                    switch (rand)
+                    {
+                        case 0:
+                            ShowDialog("Help me! Anyone?!");
+                            break;
+                        case 4:
+                            ShowDialog("Not today!");
+                            break;
+                        case 7:
+                            ShowDialog("Too hard!");
+                            break;
+                    }
+                }
+            }
             
             if (_currentHealth <= 0)
                 Die();

@@ -69,6 +69,11 @@ namespace Input
             {
                 _targeting.OnMouseTargetSelect(hitTargetable);
             }
+
+            foreach (var VARIABLE in G.ClickFloatingTexts)
+            {
+                VARIABLE.OnLBM();
+            }
         }
 
         private void OnRightMouseButtonClicked()

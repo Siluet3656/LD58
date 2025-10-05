@@ -5363,6 +5363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isReturnToCity: 0
   _victoryPanel: {fileID: 684353396}
+  _floatingTextPrefab: {fileID: 2715349566576225611, guid: f74d7f7e93a680947b3729e2b7bd975b, type: 3}
 --- !u!4 &2145297815
 Transform:
   m_ObjectHideFlags: 0
@@ -5371,7 +5372,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145297813}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.9, y: -2.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
