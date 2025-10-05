@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab72d22da0485814a9878a9c3cf48998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackCooldownTime: 3
+  _attackCooldownTime: 2
   _attackDamage: 1
 --- !u!114 &4062323349122862631
 MonoBehaviour:
@@ -401,6 +401,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _swingBar: {fileID: 4062323350227013304}
   _textDamage: {fileID: 4062323350205171543}
+  _animator: {fileID: 408782530915683066}
+  _animationEventCatcher: {fileID: 1312912982}
 --- !u!114 &4062323349122862630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,6 +415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abed2f4c89122e044a3d945015c6b2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnPoint: {fileID: 0}
+  IsNeedToGo: 0
 --- !u!61 &4062323349122862633
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1321,6 +1325,7 @@ GameObject:
   - component: {fileID: 4062323350269094057}
   - component: {fileID: 4062323350269094056}
   - component: {fileID: 408782530915683066}
+  - component: {fileID: 1312912982}
   m_Layer: 0
   m_Name: EnemySprite
   m_TagString: Untagged
@@ -1412,6 +1417,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1312912982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4062323350269094054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a844048cfdbc14892c82d81e8741ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4062323350708578496
 GameObject:
   m_ObjectHideFlags: 0
