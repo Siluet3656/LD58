@@ -1,4 +1,5 @@
 ﻿using System;
+using Battle;
 using TMPro;
 using UnityEngine;
 
@@ -23,8 +24,14 @@ namespace View
 
         void Update()
         {
+            if (BattleRuler.Instance.DialogueSkipped)
+            {
+                _clicked = true;
+            }
+            
             if (_clicked)
             {
+                G.ClickFloatingTexts.Remove(this);
                 Destroy(gameObject);
             }
         }
@@ -38,5 +45,7 @@ namespace View
         {
             _clicked = true;
         }
+        
+        
     }
 }

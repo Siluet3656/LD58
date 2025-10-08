@@ -43,6 +43,14 @@ namespace Input
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Skill 1"",
+                    ""type"": ""Button"",
+                    ""id"": ""3e6144ff-eee3-430d-b5d3-e530536d550e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -78,6 +86,17 @@ namespace Input
                     ""action"": ""RBM"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3372f8b7-5749-4186-8cc8-18c6d7f9c18c"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skill 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -89,6 +108,7 @@ namespace Input
             m_UI_LBM = m_UI.FindAction("LBM", throwIfNotFound: true);
             m_UI_RBM = m_UI.FindAction("RBM", throwIfNotFound: true);
             m_UI_MousePosition = m_UI.FindAction("MousePosition", throwIfNotFound: true);
+            m_UI_Skill1 = m_UI.FindAction("Skill 1", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -141,6 +161,7 @@ namespace Input
         private readonly InputAction m_UI_LBM;
         private readonly InputAction m_UI_RBM;
         private readonly InputAction m_UI_MousePosition;
+        private readonly InputAction m_UI_Skill1;
         public struct UIActions
         {
             private @PlayerControlls m_Wrapper;
@@ -148,6 +169,7 @@ namespace Input
             public InputAction @LBM => m_Wrapper.m_UI_LBM;
             public InputAction @RBM => m_Wrapper.m_UI_RBM;
             public InputAction @MousePosition => m_Wrapper.m_UI_MousePosition;
+            public InputAction @Skill1 => m_Wrapper.m_UI_Skill1;
             public InputActionMap Get() { return m_Wrapper.m_UI; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -166,6 +188,9 @@ namespace Input
                     @MousePosition.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePosition;
                     @MousePosition.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePosition;
                     @MousePosition.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePosition;
+                    @Skill1.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSkill1;
+                    @Skill1.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSkill1;
+                    @Skill1.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSkill1;
                 }
                 m_Wrapper.m_UIActionsCallbackInterface = instance;
                 if (instance != null)
@@ -179,6 +204,9 @@ namespace Input
                     @MousePosition.started += instance.OnMousePosition;
                     @MousePosition.performed += instance.OnMousePosition;
                     @MousePosition.canceled += instance.OnMousePosition;
+                    @Skill1.started += instance.OnSkill1;
+                    @Skill1.performed += instance.OnSkill1;
+                    @Skill1.canceled += instance.OnSkill1;
                 }
             }
         }
@@ -188,6 +216,7 @@ namespace Input
             void OnLBM(InputAction.CallbackContext context);
             void OnRBM(InputAction.CallbackContext context);
             void OnMousePosition(InputAction.CallbackContext context);
+            void OnSkill1(InputAction.CallbackContext context);
         }
     }
 }

@@ -1,39 +1,35 @@
-﻿using Data;
+﻿using Input;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Battle
 {
-    public class AbilityButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class AbilityButton : MonoBehaviour
     {
         [SerializeField] private GameObject _arrowPrefab;
+        [SerializeField] private SkillType _skillType;
         
         private SkillArrowToTarget _arrow;
         private Camera _mainCamera;
-        private SkillType _skillType;
+        private PlayerInputHandler _inputHandler;
+        private bool _castStarted = false;
+        
         private Image _spriteRenderer;
 
-        void Start()
+        private void Start()
         {
             _mainCamera = Camera.main;
 
             _spriteRenderer = GetComponent<Image>();
-
-            _skillType = SkillType.None;
-        }
-
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            if (BattleRuler.Instance.IsFighting == false) return;
             
-            GameObject arrowObj = Instantiate(_arrowPrefab, transform.position, Quaternion.identity, transform.parent);
-            _arrow = arrowObj.GetComponent<SkillArrowToTarget>();
+            _inputHandler = G.Player.GetComponent<PlayerInputHandler>();
 
-            _arrow.SetSource(transform);
+            _inputHandler.InputActions.UI.LBM.started += ctx => CheckEnemyOnMouse();
+            _inputHandler.InputActions.UI.Skill1.started += ctx => StartAbilityCast();
         }
 
-        public void OnDrag(PointerEventData eventData)
+        private void Update()
         {
             if (BattleRuler.Instance.IsFighting == false) return;
             
@@ -41,35 +37,60 @@ namespace Battle
             
             if (_arrow == null) return;
             
-            Vector3 mouseWorld = _mainCamera.ScreenToWorldPoint(eventData.position);
+            Vector3 mouseWorld = _mainCamera.ScreenToWorldPoint(_inputHandler.MousePosition);
             mouseWorld.z = 0;
             
             _arrow.SetTargetPosition(mouseWorld);
         }
 
-        public void OnEndDrag(PointerEventData eventData)
+        private void CheckEnemyOnMouse()
         {
-            if (_arrow == null)return;
+            RaycastHit2D hitAbility = Physics2D.Raycast(_mainCamera.ScreenToWorldPoint(_inputHandler.MousePosition), Vector2.zero);
             
-            RaycastHit2D hit = Physics2D.Raycast(_mainCamera.ScreenToWorldPoint(eventData.position), Vector2.zero);
-
-            if (hit.collider != null && hit.collider.TryGetComponent(out Enemy target))
+            if (hitAbility.collider != null && hitAbility.collider.TryGetComponent(out Enemy target) && _castStarted)
             {
-                target.ApplyAbility(_skillType);
+                EndAbilityCast(target);
             }
             else
             {
-                //Debug.Log("Canceled!");
+                CancelAbilityCast();
             }
+        }
+        
+        public void StartAbilityCast()
+        {
+            if (_castStarted) return;
+            
+            if (BattleRuler.Instance.IsFighting == false) return;
+            
+            if (_skillType == SkillType.None) return;
+            
+            GameObject arrowObj = Instantiate(_arrowPrefab, transform.position, Quaternion.identity, transform.parent);
+            _arrow = arrowObj.GetComponent<SkillArrowToTarget>();
 
+            _arrow.SetSource(transform);
+
+            _castStarted = true;
+        }
+
+        public void CancelAbilityCast()
+        {
+            if (_arrow == null) return;
+            
+            _castStarted = false;
+            
             Destroy(_arrow.gameObject);
         }
 
-        public void PlaceSpell(SkillType skillType)
+        public void EndAbilityCast(Enemy target)
         {
-            _skillType = skillType;
+            if (_arrow == null) return;
+            
+            target.ApplyAbility(_skillType);
+            
+            _castStarted = false;
 
-            _spriteRenderer.sprite = AbilityDataCms.Instance.GetSpellConfig(skillType).icon;
+            Destroy(_arrow.gameObject);
         }
     }
 }

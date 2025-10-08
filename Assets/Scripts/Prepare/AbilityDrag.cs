@@ -101,7 +101,7 @@ namespace Prepare
                 
                 if (spellBarButton != null)
                 {
-                    spellBarButton.PlaceSpell(_draggingSpell);
+                    //spellBarButton.PlaceSpell(_draggingSpell);
                 }
                 
                 DropSpell();

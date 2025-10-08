@@ -26,6 +26,7 @@ namespace Battle
         
         private bool _isFighting = false;
         private int _defietedEnemies = 0;
+        private bool _dialogueSkiped = false;
 
         private void Awake()
         {
@@ -398,5 +399,15 @@ namespace Battle
             }
         }
 
+        public void DialogueSkip()
+        {
+            StopAllCoroutines();
+            
+            G.SmoothSlideY.Show();
+
+            _dialogueSkiped = true;
+        }
+
+        public bool DialogueSkipped => _dialogueSkiped;
     }
 }

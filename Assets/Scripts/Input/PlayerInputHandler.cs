@@ -12,6 +12,7 @@ namespace Input
         private PlayerControlls _inputActions;
         private PlayerTargeting _targeting;
         private AbilityDrag _hand;
+        private Vector2 _mousePosition;
 
         private void Awake()
         {
@@ -34,11 +35,11 @@ namespace Input
 
         private void Update()
         {
-            Vector2 point = _inputActions.UI.MousePosition.ReadValue<Vector2>();
+            _mousePosition = _inputActions.UI.MousePosition.ReadValue<Vector2>();
             
-            _hand.SetPoint(_mainCamera.ScreenToWorldPoint(point));
+            _hand.SetPoint(_mainCamera.ScreenToWorldPoint(_mousePosition));
             
-            TooltipManager.Instance.SetMousePosition(point);
+            TooltipManager.Instance.SetMousePosition(_mousePosition);
         }
 
         private void OnEnable() => _inputActions.Enable();
@@ -92,5 +93,8 @@ namespace Input
                 soulPlace.RemoveSpell();
             }
         }
+        
+        public Vector2 MousePosition => _mousePosition;
+        public PlayerControlls InputActions => _inputActions;
     }
 }
