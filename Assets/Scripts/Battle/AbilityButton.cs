@@ -1,7 +1,8 @@
-﻿using Input;
+﻿using Data;
+using Input;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using View;
 
 namespace Battle
 {
@@ -60,6 +61,13 @@ namespace Battle
         public void StartAbilityCast()
         {
             if (_castStarted) return;
+
+            if (G.Player.GetComponent<SkillResources>()
+                    .HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(_skillType).cost) == false)
+            {
+                DamagePopup.Instance.AddText("Not enough energy!!", transform.position);
+                return;
+            }
             
             if (BattleRuler.Instance.IsFighting == false) return;
             
