@@ -1,8 +1,7 @@
-﻿using System;
-using Battle;
-using EntityResources;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using Battle;
+using Data;
 
 namespace Prepare
 {
@@ -21,16 +20,16 @@ namespace Prepare
         private void OnDestroy()
         {
             G.SoulChecker = null;
-            G.SoulPlaces.Clear();
+            //G.SoulPlaces.Clear();
         }
 
         private void Update()
         {
             int sum = 0;
-            foreach (SoulPlace soulPlace in G.SoulPlaces)
+            foreach (var soulPlace in G.SoulPlaces)
             {
-                if (soulPlace.GetSoulCost() > 0)
-                    sum += soulPlace.GetSoulCost();
+                if (SoulDataCms.Instance.GetSpellConfig(soulPlace.Value).cost > 0)
+                    sum += SoulDataCms.Instance.GetSpellConfig(soulPlace.Value).cost;
             }
 
             if (sum >= _maxCost)
@@ -55,9 +54,9 @@ namespace Prepare
             int banditsSouls = 0;
             int exiledSouls = 0;
             
-            foreach (SoulPlace soulPlace in G.SoulPlaces)
+            foreach (var soulPlace in G.SoulPlaces)
             {
-                switch (soulPlace.SoulType)
+                switch (soulPlace.Value)
                 {
                     case SoulType.PoorMan:
                         poorManSouls++;

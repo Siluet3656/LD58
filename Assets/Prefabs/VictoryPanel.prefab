@@ -614,7 +614,7 @@ GameObject:
   - component: {fileID: 8396052897736060232}
   - component: {fileID: 8396052897736060238}
   m_Layer: 5
-  m_Name: Tropy 0-1
+  m_Name: Tropy 1-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -667,7 +667,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a9cc03235bd2afe48ae0bec75a574bd8, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -689,5 +689,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Soul of poor man
-  _abilityDescription: 'Gain +1 to Attack, lose 2 Max HP. Removable. Cost: 1'
+  _title: Pure soul
+  _abilityDescription: ???
