@@ -32,7 +32,7 @@ namespace Prepare
                     sum += SoulDataCms.Instance.GetSpellConfig(soulPlace.Value).cost;
             }
 
-            if (sum >= _maxCost)
+            if (sum + SoulDataCms.Instance.GetSpellConfig(G.AbilityDrag.GetSoul()).cost > _maxCost)
             {
                 _isSoulPlacingBlocked = true;
             }

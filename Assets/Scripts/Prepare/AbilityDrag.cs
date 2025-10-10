@@ -123,6 +123,11 @@ namespace Prepare
                 DropSpell();
             }
         }
+
+        public SoulType GetSoul()
+        {
+            return _draggingSoul;
+        }
         
         public void PlaceSpell(Image place)
         {

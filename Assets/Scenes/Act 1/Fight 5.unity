@@ -1108,6 +1108,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345960441}
   m_CullTransparentMesh: 0
+--- !u!1 &351071877 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2080212302518241689, guid: 70adb13d76d44604495014b7162b1514, type: 3}
+  m_PrefabInstance: {fileID: 2080212301575874624}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &351071878
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351071877}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 919cefefd0ec06f40831448fa6656fcf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &373539406
 GameObject:
   m_ObjectHideFlags: 0
@@ -4729,5 +4753,9 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2145297814}
+    - target: {fileID: 2080212302518241691, guid: 70adb13d76d44604495014b7162b1514, type: 3}
+      propertyPath: m_Transition
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70adb13d76d44604495014b7162b1514, type: 3}
