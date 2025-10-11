@@ -629,6 +629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _arrowPrefab: {fileID: 3626748392202549310, guid: 93b5259e095cba64b8497e20c5a5e299, type: 3}
+  _id: 0
 --- !u!1 &189344229
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,10 +959,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: Soul of poor man
-  _abilityDescription: 'Gain +1 to Attack, lose 2 Max HP. Removable. Cost: 1
-
-    The
-    soul of someone not that important.'
+  _abilityDescription: "Gain +1 to Attack, lose 2 Max HP. Removable. \nCost: 1\nThe
+    soul of someone not that important."
 --- !u!1 &265395471
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,6 +1416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _arrowPrefab: {fileID: 3626748392202549310, guid: 93b5259e095cba64b8497e20c5a5e299, type: 3}
+  _id: 0
 --- !u!1 &345960441
 GameObject:
   m_ObjectHideFlags: 0
@@ -3986,6 +3986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _arrowPrefab: {fileID: 3626748392202549310, guid: 93b5259e095cba64b8497e20c5a5e299, type: 3}
+  _id: 0
 --- !u!1 &1363776962
 GameObject:
   m_ObjectHideFlags: 0
@@ -4103,6 +4104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _arrowPrefab: {fileID: 3626748392202549310, guid: 93b5259e095cba64b8497e20c5a5e299, type: 3}
+  _id: 0
 --- !u!1 &1389881975
 GameObject:
   m_ObjectHideFlags: 0
@@ -4668,9 +4670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: Soul of bandit
-  _abilityDescription: 'Auto-attacks grant 10 Energy. Cost: 2
-
-    Soul of true anarchist.'
+  _abilityDescription: "Auto-attacks grant 10 Energy. \nCost: 2\nSoul of true anarchist."
 --- !u!114 &1587806457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5218,6 +5218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _arrowPrefab: {fileID: 3626748392202549310, guid: 93b5259e095cba64b8497e20c5a5e299, type: 3}
+  _id: 0
 --- !u!114 &1950030096 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5696671073185870406, guid: 0e8021c6c30ae3b46a83ccd997abf973, type: 3}
@@ -5624,6 +5625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _arrowPrefab: {fileID: 3626748392202549310, guid: 93b5259e095cba64b8497e20c5a5e299, type: 3}
+  _id: 0
 --- !u!1 &2077716360
 GameObject:
   m_ObjectHideFlags: 0
