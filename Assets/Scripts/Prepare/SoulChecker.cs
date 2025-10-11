@@ -25,14 +25,15 @@ namespace Prepare
 
         private void Update()
         {
-            int sum = 0;
+            int totalCurrentCost = 0;
+            
             foreach (var soulPlace in G.SoulPlaces)
             {
                 if (SoulDataCms.Instance.GetSpellConfig(soulPlace.Value).cost > 0)
-                    sum += SoulDataCms.Instance.GetSpellConfig(soulPlace.Value).cost;
+                    totalCurrentCost += SoulDataCms.Instance.GetSpellConfig(soulPlace.Value).cost;
             }
 
-            if (sum + SoulDataCms.Instance.GetSpellConfig(G.AbilityDrag.GetSoul()).cost > _maxCost)
+            if (totalCurrentCost + SoulDataCms.Instance.GetSpellConfig(G.AbilityDrag.GetSoul()).cost > _maxCost)
             {
                 _isSoulPlacingBlocked = true;
             }
@@ -43,7 +44,7 @@ namespace Prepare
 
             UpdatePlayerStatus();
             
-            _costText.text = $"{sum} / {_maxCost}";
+            _costText.text = $"{totalCurrentCost} / {_maxCost}";
         }
 
         private void UpdatePlayerStatus()

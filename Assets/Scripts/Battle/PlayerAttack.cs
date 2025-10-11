@@ -22,7 +22,7 @@ namespace Battle
         
         private float _currentSwipeProgress;
         private bool _isReadyToAttack;
-        private int _energyRestorePerAtack = 0;
+        private int _energyRestorePerAttack = 0;
         
         private void Awake()
         {
@@ -102,7 +102,7 @@ namespace Battle
             
             _enemyHp.TryToTakeDamage(_currentAttackDamage, false);
             
-            _skillResources.RestoreResources(_energyRestorePerAtack);
+            _skillResources.RestoreResources(_energyRestorePerAttack);
             
             StartAttackCooldown();
         }
@@ -124,7 +124,9 @@ namespace Battle
 
         public void SetUpEnergyRestorePerAttack(int amount)
         {
-            _energyRestorePerAtack = amount;
+            if (amount <= 0) return;
+            
+            _energyRestorePerAttack = amount;
         }
     }
 }

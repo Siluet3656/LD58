@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using Data;
 
@@ -13,12 +14,14 @@ namespace Battle
         private Camera _mainCamera;
         private SoulType _soulType;
         private Image _spriteRenderer;
-        private int _myKey;
+
+        private void Awake()
+        {
+            _spriteRenderer = GetComponent<Image>();
+        }
 
         private void Start()
         {
-            _spriteRenderer = GetComponent<Image>();
-            
             if (G.SoulPlaces.ContainsKey(_id))
             {
                 G.SoulPlaces.TryGetValue(_id, out _soulType);
@@ -26,13 +29,7 @@ namespace Battle
             }
             else
             {
-                _myKey = _id;
-                G.SoulPlaces.Add(_myKey, _soulType);
-            }
-
-            if (G.SoulPlaces.TryGetValue(_myKey, out var value))
-            {
-                _soulType = value;
+                G.SoulPlaces.Add(_id, _soulType);
             }
         }
         
@@ -44,17 +41,16 @@ namespace Battle
             
             _soulType = skillType;
             
-            G.SoulPlaces.Remove(_myKey);
-            G.SoulPlaces.Add(_myKey, _soulType);
+            G.SoulPlaces[_id] = skillType;
 
             _spriteRenderer.sprite = SoulDataCms.Instance.GetSpellConfig(_soulType).icon;
         }
 
         public void RemoveSpell()
         {
-            G.SoulPlaces.Remove(_myKey);
-            
             _soulType = SoulType.None;
+            
+            G.SoulPlaces[_id] = SoulType.None;
             
             _spriteRenderer.sprite = SoulDataCms.Instance.GetSpellConfig(SoulType.None).icon;
         }

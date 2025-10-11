@@ -100,6 +100,8 @@ namespace Battle
 
         public void AdjustResources(int additionalAmount)
         {
+            if (additionalAmount <= 0) return;
+            
             _adjustedEnergyRestoredPerRate = _energyRestoredPerRate + additionalAmount;
         }
     }
