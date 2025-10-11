@@ -101,9 +101,9 @@ namespace Battle
         {
             _elapsedTime = 0f;
             
-            Vector3 randPosition = new Vector3(transform.position.x + Random.Range(-2f, 2f),transform.position.y,transform.position.z);
+            Vector3 randPosition = new Vector3(transform.position.x + Random.Range(-2f, 2f),transform.position.y + Random.Range(-1f, -2f),transform.position.z);
             
-            DamagePopup.Instance.AddText("interrupt!", randPosition);
+            DamagePopup.Instance.AddText("interrupt!", randPosition, Color.red);
         }
     }
 }

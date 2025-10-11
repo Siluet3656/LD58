@@ -48,6 +48,11 @@ namespace Battle
         private void GainEnergy(int amount)
         {
             _currentEnergy = Mathf.Min(_maxEnergy, _currentEnergy + amount);
+            
+            DamagePopup.Instance.AddText($"+{amount}", new Vector3(_energyBar.transform.position.x + Random.Range(-2f, 2f),
+                                                                            _energyBar.transform.position.y,
+                                                                            _energyBar.transform.position.z), 
+                                                                            new Color(59, 35, 99));
         }
 
         private void UpdateUI()

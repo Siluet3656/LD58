@@ -74,9 +74,10 @@ namespace View
             _activeTexts.Add(activeText);
         }
         
-        public void AddText(string message, Vector3 unitPosition)
+        public void AddText(string message, Vector3 unitPosition, Color textColor)
         {
             Text text = _popupPool.Dequeue();
+            text.color = textColor;
             text.text = message;
             text.gameObject.SetActive(true);
 

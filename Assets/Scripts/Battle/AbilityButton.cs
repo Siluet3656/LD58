@@ -65,7 +65,7 @@ namespace Battle
             if (G.Player.GetComponent<SkillResources>()
                     .HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(_skillType).cost) == false)
             {
-                DamagePopup.Instance.AddText("Not enough energy!!", transform.position);
+                DamagePopup.Instance.AddText("Not enough energy!!", transform.position, Color.red);
                 return;
             }
             
