@@ -41,10 +41,10 @@ namespace View
             _swingBar.fillAmount = currentSwipeProgress;
         }
         
-        public void UpdateEnergyBar(float currentEnergy)
+        public void UpdateEnergyBar(int currentEnergy, int maxEnergy)
         {
-            _energyBar.fillAmount = currentEnergy;
-            _energyText.text = $"{(int)(currentEnergy * 100)}/100";
+            _energyBar.fillAmount = (float)currentEnergy/maxEnergy;
+            _energyText.text = $"{currentEnergy}/{maxEnergy}";
         }
 
         public void UpdateAttackText(int currentAttack)

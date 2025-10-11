@@ -52,7 +52,7 @@ namespace Battle
 
         private void UpdateUI()
         {
-            _playerView.UpdateEnergyBar((float)_currentEnergy / _maxEnergy);
+            _playerView.UpdateEnergyBar(_currentEnergy, _maxEnergy);
         }
         
         private IEnumerator RestoreEnergy(float cooldown)
@@ -88,7 +88,7 @@ namespace Battle
         {
             if (energyCost <= 0) return;
             
-            _currentEnergy -= (int)energyCost;
+            _currentEnergy -= energyCost;
         }
 
         public void RestoreResources(int energy)
@@ -100,8 +100,8 @@ namespace Battle
 
         public void AdjustResources(int additionalAmount)
         {
-            if (additionalAmount <= 0) return;
-            
+            if (additionalAmount < 0) return;
+
             _adjustedEnergyRestoredPerRate = _energyRestoredPerRate + additionalAmount;
         }
     }
