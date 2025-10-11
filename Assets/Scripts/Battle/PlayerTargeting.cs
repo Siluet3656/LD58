@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Linq;
 using UnityEngine;
+using EntityResources;
 
 namespace Battle
 {
@@ -13,6 +13,11 @@ namespace Battle
         private void OnEnable()
         {
             BattleRuler.Instance.OnFighting += AutoTarget;
+
+            foreach (var enemy in G.Enemies)
+            {
+                enemy.GetComponent<Hp>().OnDeath += AutoTarget;
+            }
         }
 
         private void OnDisable()
@@ -22,7 +27,7 @@ namespace Battle
 
         private void SetTarget(ITargetable target)
         {
-            if (BattleRuler.Instance.IsFighting == false) return;
+            //if (BattleRuler.Instance.IsFighting == false) return;
             
             target.OnTargeted();
             target.OnTargetDie += ClearTarget;
@@ -47,7 +52,14 @@ namespace Battle
         
         private void AutoTarget()
         {
-            SetTarget(G.Enemies.First());
+            foreach (var enemy in G.Enemies)
+            {
+                if (enemy.isActiveAndEnabled)
+                {
+                    SetTarget(enemy);
+                    return;
+                }
+            }
         }
         
         public bool HasTarget => _currentTarget != null;
