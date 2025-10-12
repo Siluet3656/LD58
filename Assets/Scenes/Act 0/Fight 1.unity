@@ -2789,7 +2789,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &960917758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4131,10 +4131,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefeatPanel
       objectReference: {fileID: 0}
-    - target: {fileID: 3003693128839469287, guid: 9c85e6c2ed91d6f458d20575c0d8b279, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3003693128839469288, guid: 9c85e6c2ed91d6f458d20575c0d8b279, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4193,7 +4189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3003693128839469288, guid: 9c85e6c2ed91d6f458d20575c0d8b279, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 3003693128839469288, guid: 9c85e6c2ed91d6f458d20575c0d8b279, type: 3}
       propertyPath: m_AnchorMin.x
@@ -4201,7 +4197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3003693128839469288, guid: 9c85e6c2ed91d6f458d20575c0d8b279, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3003693128839469288, guid: 9c85e6c2ed91d6f458d20575c0d8b279, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4209,7 +4205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3003693128839469288, guid: 9c85e6c2ed91d6f458d20575c0d8b279, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3003693128839469288, guid: 9c85e6c2ed91d6f458d20575c0d8b279, type: 3}
       propertyPath: m_Pivot.x
@@ -5291,11 +5287,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7998587780582745917, guid: aa13992279f2cc44fbbd7cf7f366b7ed, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -405.29996
+      value: -405.2998
       objectReference: {fileID: 0}
     - target: {fileID: 7998587780582745917, guid: aa13992279f2cc44fbbd7cf7f366b7ed, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -51.600006
+      value: -51.599854
       objectReference: {fileID: 0}
     - target: {fileID: 7998587780582745917, guid: aa13992279f2cc44fbbd7cf7f366b7ed, type: 3}
       propertyPath: m_SizeDelta.x

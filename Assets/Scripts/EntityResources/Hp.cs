@@ -65,7 +65,7 @@ namespace EntityResources
 
             if (_currentHealth <= _maxHealth / 2)
             {
-                int rand = Random.Range(0, 10);
+                int rand = Random.Range(0, 15);
 
                 if (_currentHealth <= 1) rand = 7;
                 
@@ -77,6 +77,9 @@ namespace EntityResources
                     {
                         case 7:
                             ShowDialog("My experiments are at risk");
+                            break;
+                        case 14:
+                            ShowDialog("Is this really the end?");
                             break;
                     }
                     
@@ -93,8 +96,14 @@ namespace EntityResources
                         case 4:
                             ShowDialog("Not today!");
                             break;
+                        case 6:
+                            ShowDialog("I need a break...");
+                            break;
                         case 7:
                             ShowDialog("Too hard!");
+                            break;
+                        case 13:
+                            ShowDialog("You can’t stop me!");
                             break;
                     }
                 }
