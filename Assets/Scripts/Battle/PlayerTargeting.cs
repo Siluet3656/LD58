@@ -13,16 +13,20 @@ namespace Battle
         private void OnEnable()
         {
             BattleRuler.Instance.OnFighting += AutoTarget;
-
-            foreach (var enemy in G.Enemies)
-            {
-                enemy.GetComponent<Hp>().OnDeath += AutoTarget;
-            }
         }
-
+        
         private void OnDisable()
         {
             BattleRuler.Instance.OnFighting -= AutoTarget;
+        }
+        
+        private void Start()
+        {
+            foreach (var enemy in G.Enemies)
+            {
+                enemy.GetComponent<Hp>().OnDeath += AutoTarget;
+                enemy.GetComponent<Hp>().OnDeath += () => _arrowToTarget.SetupArrow(transform, null);
+            }
         }
 
         private void SetTarget(ITargetable target)
@@ -35,6 +39,8 @@ namespace Battle
 
             if (_currentTarget is Enemy enemy)
             {
+                if (enemy.IsTargetable == false) return;
+                
                 _arrowToTarget.SetupArrow(transform, enemy.gameObject.transform);
                 OnTargeted?.Invoke(enemy.gameObject.transform);
             }
@@ -47,6 +53,7 @@ namespace Battle
                 _currentTarget.OnUntargeted();
                 _currentTarget.OnTargetDie -= ClearTarget;
                 _currentTarget = null;
+                _arrowToTarget.SetupArrow(null, null);
             }
         }
         

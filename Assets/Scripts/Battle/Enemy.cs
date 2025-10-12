@@ -1,7 +1,7 @@
 ﻿using System;
+using UnityEngine;
 using Data;
 using EntityResources;
-using UnityEngine;
 
 namespace Battle
 {
@@ -23,11 +23,13 @@ namespace Battle
             G.Enemies.Add(this);
             _myHp = GetComponent<Hp>();
             _enemyAttack = GetComponent<EnemyAttack>();
+            IsTargetable = true;
         }
 
         private void OnDestroy()
         {
             G.Enemies.Remove(this);
+            IsTargetable = false;
         }
 
         private void Update()
@@ -46,7 +48,7 @@ namespace Battle
             }
         }
 
-        public bool IsTargetable { get; }
+        public bool IsTargetable { get; private set; }
         public bool IsTargeted { get; }
         public void OnTargeted()
         {

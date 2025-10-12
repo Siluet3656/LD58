@@ -40,12 +40,11 @@ namespace Battle
         }
 
         public void SetupArrow(Transform source, Transform target)
-        {
-            if (source is null || target is null) return;
+        { Debug.Log("Setup Arrow");
             if (source  == _target) return;
             
-            _source = source;
-            _target = target;
+            _source = source; Debug.Log(source);
+            _target = target; Debug.Log(target);
         }
     }
 }
