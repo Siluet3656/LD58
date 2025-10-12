@@ -92,6 +92,8 @@ namespace Battle
 
         private void PerformAttack()
         {
+            if (_playerTargeting.HasTarget == false) return;
+            
             if (_isReadyToAttack == false) return;
             
             if (_enemyHp == null) return;
