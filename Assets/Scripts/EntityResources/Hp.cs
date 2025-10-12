@@ -62,14 +62,15 @@ namespace EntityResources
         {
             _currentHealth = Mathf.Max(0, _currentHealth - damage);
             OnHealthChanged?.Invoke(_currentHealth);
-
+            StartCoroutine(ParticlesAndFade());
+            
             if (_currentHealth <= _maxHealth / 2)
             {
                 int rand = Random.Range(0, 15);
 
                 if (_currentHealth <= 1) rand = 7;
                 
-                StartCoroutine(ParticlesAndFade());
+                
                 
                 if (CompareTag("Player"))
                 {

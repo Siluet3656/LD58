@@ -53,32 +53,24 @@ namespace Battle
             _tutorialPanelAnimator =  _tutorialPanel.GetComponent<Animator>();
         }
         
-        private void ShowDialog(string message, bool isMe)
+        private void ShowDialog(string message, string charecterName, VoiceType voiceType)
         {
-            GameObject ft;
-            if (isMe)
-            {
-                ft = Instantiate(_floatingTextPrefab, transform.position - new Vector3(transform.position.x + 8f, transform.position.y,transform.position.z), Quaternion.identity);
-            }
-            else
-            {
-                ft = Instantiate(_floatingTextPrefab, transform.position - new Vector3(transform.position.x - 8f, transform.position.y,transform.position.z), Quaternion.identity);
-            }
-            
-            ft.GetComponent<FloatingTextClick>().SetText(message);
+            GameObject floatingText = Instantiate(_floatingTextPrefab, transform.position, Quaternion.identity);
+            floatingText.GetComponent<FloatingTextClick>().SetTitle(charecterName, voiceType);
+            floatingText.GetComponent<FloatingTextClick>().SetText(message);
         }
 
         private IEnumerator StartGameTutorial1()
         {
             yield return new WaitForSeconds(0.5f);
             
-            ShowDialog("Is this a city?\n I heard they have these kinds of things on Earth.", true);
+            ShowDialog("Is this a city?\n I heard they have these kinds of things on Earth.", "Guest from afar", VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("I hope it's worth it.", true);
+            ShowDialog("I hope it's worth it.", "Guest from afar", VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -114,19 +106,19 @@ namespace Battle
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Who are you?\n What’s a thing like you doing around here?", false);
+            ShowDialog("Who are you?\n What’s a thing like you doing around here?", "Victor", VoiceType.Man);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Are you familiar with the concept of a soul?", true);
+            ShowDialog("Are you familiar with the concept of a soul?", "Guest from afar", VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("What? What do you think you are?\n You’re gonna see souls with your own eyes.", false);
+            ShowDialog("What? What do you think you are?\n You’re gonna see souls with your own eyes.", "Victor", VoiceType.Man);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -141,31 +133,31 @@ namespace Battle
         {
             yield return new WaitForSeconds(0.5f);
             
-            ShowDialog("Hey! What have you done to him?!", false);
+            //ShowDialog("Hey! What have you done to him?!", false);
             
             yield return new WaitForSeconds(0.5f);
             IsLBM = false;
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            ShowDialog("His soul is now part of my collection.", true);
+            //ShowDialog("His soul is now part of my collection.", true);
             
             yield return new WaitForSeconds(0.5f);
             
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            ShowDialog("If you don't want to end up where he did,\nyou'd better not get in my way.", true);
+            //ShowDialog("If you don't want to end up where he did,\nyou'd better not get in my way.", true);
             
             yield return new WaitForSeconds(0.5f);
             
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            ShowDialog("Uh-huh, like we’d believe you.", false);
+            //ShowDialog("Uh-huh, like we’d believe you.", false);
             
             yield return new WaitForSeconds(0.5f);
             
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            ShowDialog("You're exactly the kind who waits to stab someone in the back.", false);
+            //ShowDialog("You're exactly the kind who waits to stab someone in the back.", false);
             
             yield return new WaitForSeconds(0.5f);
             
@@ -202,20 +194,20 @@ namespace Battle
         {
             yield return new WaitForSeconds(0.5f);
             
-            ShowDialog("Hey, we’re not your enemies, dude. Got a little mixed up—everyone makes mistakes.", false);
+            //ShowDialog("Hey, we’re not your enemies, dude. Got a little mixed up—everyone makes mistakes.", false);
             
             yield return new WaitForSeconds(0.5f);
             IsLBM = false;
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("These souls of yours are very interesting. They’ll surely help me achieve the Pure Soul.", true);
+            //ShowDialog("These souls of yours are very interesting. They’ll surely help me achieve the Pure Soul.", true);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Oh man, bro, looks like we’ve really messed up.", false);
+            //ShowDialog("Oh man, bro, looks like we’ve really messed up.", false);
             
             yield return new WaitForSeconds(0.5f);
             
@@ -250,19 +242,19 @@ namespace Battle
 
         private IEnumerator StartDialogue1()
         {
-            ShowDialog("We’re just simple hermits. There’s nothing to take from us.", false);
+            //ShowDialog("We’re just simple hermits. There’s nothing to take from us.", false);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("I could always take your soul — and right now it's the oddest one I've come across.", true);
+            //ShowDialog("I could always take your soul — and right now it's the oddest one I've come across.", true);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Alright, all of us, together — now we must finally stop him!", false);
+            //ShowDialog("Alright, all of us, together — now we must finally stop him!", false);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -273,43 +265,43 @@ namespace Battle
         
         private IEnumerator StartDialogue2()
         {
-            ShowDialog("So… you’re the one who holds the Pure Soul.", true);
+            //ShowDialog("So… you’re the one who holds the Pure Soul.", true);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Hold? No. I am the Pure Soul. There’s nothing left to hold onto.", false);
+            //ShowDialog("Hold? No. I am the Pure Soul. There’s nothing left to hold onto.", false);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Then you’ve lost what it means to be human.", true);
+            //ShowDialog("Then you’ve lost what it means to be human.", true);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Human? Humanity is a cage of flesh and fear. I broke it long ago.", false);
+            //ShowDialog("Human? Humanity is a cage of flesh and fear. I broke it long ago.", false);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("So, what is the Pure Soul?", true);
+            //ShowDialog("So, what is the Pure Soul?", true);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Emptiness. No pain. No doubt. No desire. Can you imagine how peaceful it feels?", false);
+            //ShowDialog("Emptiness. No pain. No doubt. No desire. Can you imagine how peaceful it feels?", false);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Worth it — just like I thought.", true);
+            //ShowDialog("Worth it — just like I thought.", true);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
