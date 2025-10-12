@@ -34,7 +34,12 @@ namespace Battle
         private const string TutorialText2 = "Your auto-attack power. \nAuto-attacks are performed automatically every 1.5 seconds.";
         private const string TutorialText3 = "The white bar below your health bar indicates auto-attack progress.";
         
+        private const string TutorialText4 = "All souls you've collected will appear here.";
+        private const string TutorialText5 = "You can drag and drop souls into upgrade slots. Each upgrade has limits on how many identical souls can be used and on total capacity.";
+        private const string TutorialText6 = ".";
+        
         private static readonly int StartTutorial1 = Animator.StringToHash("StartTutorial1");
+        private static readonly int StartTutorial2 = Animator.StringToHash("StartTutorial2");
         private static readonly int TutorialStep = Animator.StringToHash("TutorialStep");
 
         private void Awake()
@@ -131,63 +136,62 @@ namespace Battle
 
         private IEnumerator StartGameTutorial2()
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(2f);
             
-            //ShowDialog("Hey! What have you done to him?!", false);
+            ShowDialog("Hey! What have you done to him?!", "Alice", VoiceType.Woman);
             
             yield return new WaitForSeconds(0.5f);
-            IsLBM = false;
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            //ShowDialog("His soul is now part of my collection.", true);
+            
+            ShowDialog("His soul is now part of my collection.", "Guest from afar", VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
-            
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            //ShowDialog("If you don't want to end up where he did,\nyou'd better not get in my way.", true);
+            
+            ShowDialog("If you don't want to end up where he did,\nyou'd better not get in my way.", "Guest from afar", VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
-            
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            //ShowDialog("Uh-huh, like we’d believe you.", false);
+            
+            ShowDialog("Uh-huh, like we’d believe you.", "Alice", VoiceType.Woman);
             
             yield return new WaitForSeconds(0.5f);
-            
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            //ShowDialog("You're exactly the kind who waits to stab someone in the back.", false);
+            
+            ShowDialog("You're exactly the kind who waits to stab someone in the back.", "Alex", VoiceType.Man);
             
             yield return new WaitForSeconds(0.5f);
-            
             yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
             
             G.SmoothSlideY.Show();
-            
-            //_tutorialPanel1.SetActive(true);
+            _tutorialPanel.SetActive(true);
+            _tutorialPanelAnimator.SetTrigger(StartTutorial2);
+            _tutorialText.text = TutorialText4;
             
             yield return new WaitForSeconds(1.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            //_tutorialPanel1.SetActive(false);
-            
-            //_tutorialPanel2.SetActive(true);
+            _tutorialPanelAnimator.SetTrigger(TutorialStep);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
+            _tutorialText.text = TutorialText5;
             
-            //_tutorialPanel2.SetActive(false);
-            
-            //_tutorialPanel3.SetActive(true);
+            _tutorialPanelAnimator.SetTrigger(TutorialStep);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
-            //_tutorialPanel3.SetActive(false);
+            _tutorialText.text = TutorialText6;
+
+            _tutorialPanel.SetActive(false);
         }
         
         private IEnumerator StartGameTutorial3()
