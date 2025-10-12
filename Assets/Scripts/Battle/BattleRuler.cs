@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using EntityResources;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using View;
 
 namespace Battle
@@ -15,18 +16,26 @@ namespace Battle
         [SerializeField] private GameObject _defeatPanel;
         [SerializeField] private GameObject _floatingTextPrefab;
         [SerializeField] private int _sceneID;
-        [SerializeField] private GameObject _tutorialPanel1;
-        [SerializeField] private GameObject _tutorialPanel2;
-        [SerializeField] private GameObject _tutorialPanel3;
+        [SerializeField] private GameObject _tutorialPanel;
+        [SerializeField] private Text _tutorialText;
 
         [SerializeField] private Enemy[] _enemies;
         [SerializeField] private Player _player;
 
         private readonly List<Enemy> _enemiesOnScene = new List<Enemy>();
         
+        private Animator _tutorialPanelAnimator;
+        
         private bool _isFighting = false;
         private int _defietedEnemies = 0;
         private bool _dialogueSkiped = false;
+        
+        private const string TutorialText1 = "Your health. If it reaches 0, your journey ends.";
+        private const string TutorialText2 = "Your auto-attack power. \nAuto-attacks are performed automatically every 1.5 seconds.";
+        private const string TutorialText3 = "The white bar below your health bar indicates auto-attack progress.";
+        
+        private static readonly int StartTutorial1 = Animator.StringToHash("StartTutorial1");
+        private static readonly int TutorialStep = Animator.StringToHash("TutorialStep");
 
         private void Awake()
         {
@@ -41,7 +50,7 @@ namespace Battle
             
             _enemiesOnScene.AddRange(_enemies);
             
-            //_enemiesOnScene.AddRange(FindObjectsOfType<Enemy>());
+            _tutorialPanelAnimator =  _tutorialPanel.GetComponent<Animator>();
         }
         
         private void ShowDialog(string message, bool isMe)
@@ -66,61 +75,62 @@ namespace Battle
             ShowDialog("Is this a city?\n I heard they have these kinds of things on Earth.", true);
             
             yield return new WaitForSeconds(0.5f);
-            
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            yield return new WaitForSeconds(0.5f);
+            
             ShowDialog("I hope it's worth it.", true);
             
+            yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
+            
+            _tutorialPanel.SetActive(true);
+            _tutorialPanelAnimator.SetTrigger(StartTutorial1);
+            _tutorialText.text = TutorialText1;
+            
             yield return new WaitForSeconds(0.5f);
-            
-            _tutorialPanel1.SetActive(true);
-            
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
+            
+            _tutorialPanelAnimator.SetTrigger(TutorialStep);
+            _tutorialText.text = TutorialText2;
+            
             yield return new WaitForSeconds(0.5f);
-            
-            _tutorialPanel1.SetActive(false);
-            _tutorialPanel2.SetActive(true);
-            
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
+            
+            _tutorialPanelAnimator.SetTrigger(TutorialStep);
+            _tutorialText.text = TutorialText3;
+            
             yield return new WaitForSeconds(0.5f);
-            
-            _tutorialPanel2.SetActive(false);
-            _tutorialPanel3.SetActive(true);
-            
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            yield return new WaitForSeconds(0.5f);
             
-            _tutorialPanel3.SetActive(false);
+            _tutorialPanel.SetActive(false);
             
             _enemies[0].IsNeedToGo = true;
             
+            yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            yield return new WaitForSeconds(0.5f);
             
             ShowDialog("Who are you?\n What’s a thing like you doing around here?", false);
             
+            yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            yield return new WaitForSeconds(0.5f);
             
             ShowDialog("Are you familiar with the concept of a soul?", true);
             
+            yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            yield return new WaitForSeconds(0.5f);
             
             ShowDialog("What? What do you think you are?\n You’re gonna see souls with your own eyes.", false);
             
+            yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            yield return new WaitForSeconds(0.5f);
             
             _enemies[0].IsNeedToGo = false;
             
@@ -163,29 +173,29 @@ namespace Battle
             
             G.SmoothSlideY.Show();
             
-            _tutorialPanel1.SetActive(true);
+            //_tutorialPanel1.SetActive(true);
             
             yield return new WaitForSeconds(1.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            _tutorialPanel1.SetActive(false);
+            //_tutorialPanel1.SetActive(false);
             
-            _tutorialPanel2.SetActive(true);
-            
-            yield return new WaitForSeconds(0.5f);
-            yield return new WaitUntil(() => IsLBM);
-            IsLBM = false;
-            
-            _tutorialPanel2.SetActive(false);
-            
-            _tutorialPanel3.SetActive(true);
+            //_tutorialPanel2.SetActive(true);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            _tutorialPanel3.SetActive(false);
+            //_tutorialPanel2.SetActive(false);
+            
+            //_tutorialPanel3.SetActive(true);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            //_tutorialPanel3.SetActive(false);
         }
         
         private IEnumerator StartGameTutorial3()
@@ -213,7 +223,7 @@ namespace Battle
             IsLBM = false;
             G.SmoothSlideY.Show();
             
-            _tutorialPanel1.SetActive(true);
+            /*_tutorialPanel1.SetActive(true);
             
             yield return new WaitForSeconds(1.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -235,7 +245,7 @@ namespace Battle
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            _tutorialPanel3.SetActive(false);
+            _tutorialPanel3.SetActive(false);*/
         }
 
         private IEnumerator StartDialogue1()

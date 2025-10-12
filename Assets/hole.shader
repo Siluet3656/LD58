@@ -1,10 +1,15 @@
-﻿Shader "UI/TransparentHole"
+﻿Shader "UI/TransparentHoleGlow"
 {
     Properties
     {
         _Color ("Overlay Color", Color) = (0,0,0,1)
         _HoleCenter ("Hole Center (UV)", Vector) = (0.5, 0.5, 0, 0)
         _HoleSize ("Hole Size (UV)", Vector) = (0.2, 0.2, 0, 0)
+
+        // 🔹 Новые свойства
+        _HighlightColor ("Highlight Color", Color) = (1,1,1,1)
+        _HighlightWidth ("Highlight Width", Range(0.001, 0.3)) = 0.05
+        _HighlightIntensity ("Highlight Intensity", Range(0, 3)) = 1
     }
 
     SubShader
@@ -33,9 +38,14 @@
                 float2 uv : TEXCOORD0;
             };
 
-            float4 _Color;
+            fixed4 _Color;
             float2 _HoleCenter;
             float2 _HoleSize;
+
+            // 🔹 Новые параметры подсветки
+            fixed4 _HighlightColor;
+            float _HighlightWidth;
+            float _HighlightIntensity;
 
             v2f vert (appdata v)
             {
@@ -52,15 +62,23 @@
                 float2 minR = _HoleCenter - halfSize;
                 float2 maxR = _HoleCenter + halfSize;
 
-                // 1 — непрозрачный, 0 — прозрачный
+                // Проверка — внутри дырки или нет
                 float insideX = step(minR.x, uv.x) * step(uv.x, maxR.x);
                 float insideY = step(minR.y, uv.y) * step(uv.y, maxR.y);
                 float inside = insideX * insideY;
 
-                // Если внутри "дырки", делаем альфу = 0
+                // Базовая альфа (0 внутри дырки)
                 float alpha = (1 - inside) * _Color.a;
 
-                return fixed4(_Color.rgb, alpha);
+                // 🔹 Подсветка по расстоянию от границы окна
+                float2 distToEdge = max(abs(uv - _HoleCenter) - halfSize, 0);
+                float edgeDist = length(distToEdge); // 0 на границе
+                float glow = exp(-pow(edgeDist / _HighlightWidth, 2.0)) * _HighlightIntensity;
+
+                // 🔹 Смешиваем подсветку и фон
+                fixed3 finalColor = lerp(_Color.rgb, _HighlightColor.rgb, saturate(glow));
+
+                return fixed4(finalColor, alpha);
             }
             ENDCG
         }
