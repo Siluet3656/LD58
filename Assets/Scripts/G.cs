@@ -18,4 +18,5 @@ public static class G
     public static PlayerView  PlayerView;
     public static SmoothSlideY SmoothSlideY;
     public static readonly List<FloatingTextClick>  ClickFloatingTexts = new List<FloatingTextClick>();
+    public static ScreenFader ScreenFader;
 }

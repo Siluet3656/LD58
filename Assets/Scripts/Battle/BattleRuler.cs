@@ -62,7 +62,7 @@ namespace Battle
 
         private IEnumerator StartGameTutorial1()
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(2f);
             
             ShowDialog("Is this a city?\n I heard they have these kinds of things on Earth.", "Guest from afar", VoiceType.Alien);
             
@@ -353,6 +353,24 @@ namespace Battle
                 enemy.GetComponent<Hp>().OnDeath -= CheckVictory;
             }*/
         }
+        
+        private IEnumerator LoadSceneWithFade()
+        {
+            yield return StartCoroutine(G.ScreenFader.FadeOut());
+            LoadScene();
+        }
+
+        private void LoadScene()
+        {
+            if (_isReturnToCity)
+            {
+                // SceneManager.LoadScene(id scene of city);
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+        }
 
         private void Defeat()
         {
@@ -391,14 +409,7 @@ namespace Battle
         
         public void ChangeScene()
         {
-            if (_isReturnToCity)
-            {
-                // SceneManager.LoadScene(id scene of city);
-            }
-            else
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
+            StartCoroutine(LoadSceneWithFade());
         }
 
         public void DialogueSkip()
