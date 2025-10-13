@@ -13,8 +13,12 @@ public class DeveloperIntro : MonoBehaviour
     public Color textColor = Color.white;
 
     [Header("Content")]
+    [TextArea]
     public string firstScreenText = "Studio";
+    [TextArea]
     public string secondScreenText = "Developer Name";
+    [TextArea]
+    public string thirdScreenText = "Something";
     
     [Header("Font Settings")]
     public TMP_FontAsset fontAsset;
@@ -94,6 +98,11 @@ public class DeveloperIntro : MonoBehaviour
 
         // Second screen
         textComponent.text = secondScreenText;
+        yield return Fade(0, 1); // Fade in
+        yield return new WaitForSeconds(screenDuration);
+        yield return Fade(1, 0); // Fade out
+        
+        textComponent.text = thirdScreenText;
         yield return Fade(0, 1); // Fade in
         yield return new WaitForSeconds(screenDuration);
         yield return Fade(1, 0); // Fade out

@@ -320,8 +320,12 @@ MonoBehaviour:
   fadeDuration: 1
   textColor: {r: 1, g: 1, b: 1, a: 1}
   firstScreenText: Game by SiluetSalat
-  secondScreenText: Made in 48h for Ludum Dare 58
-  fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  secondScreenText: 'Post jam version
+
+    Originally created for Ludum Dare 58 within
+    48 hours.'
+  thirdScreenText: PURE SOUL
+  fontAsset: {fileID: 11400000, guid: d44c1b05592294d469b8c21852a0af0a, type: 2}
   fontSize: 72
   fontSpacing: 0.1
   bg: {fileID: 0}
