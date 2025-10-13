@@ -25,6 +25,7 @@ namespace Battle
         [SerializeField] private GameObject _fightButton;
         [SerializeField] private GameObject _putSoul;
         [SerializeField] private GameObject _targetSwitch;
+        [SerializeField] private GameObject _handAnim;
 
         private readonly List<Enemy> _enemiesOnScene = new List<Enemy>();
         
@@ -33,6 +34,7 @@ namespace Battle
         private bool _isFighting = false;
         private int _defietedEnemies = 0;
         private bool _dialogueSkiped = false;
+        private bool _tutorEnd = false;
         
         private const string TutorialText1 = "Your health. If it reaches 0, your journey ends.";
         private const string TutorialText2 = "Your auto-attack power. \nAuto-attacks are performed automatically every 1.5 seconds.";
@@ -198,6 +200,7 @@ namespace Battle
 
             _tutorialPanel.SetActive(false);
             GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
+            _tutorEnd = true;
             _targetSwitch.SetActive(true);
             _putSoul.SetActive(true);
         }
@@ -356,11 +359,14 @@ namespace Battle
                 {
                     _putSoul.SetActive(false);
                     _fightButton.SetActive(true);
+                    _handAnim.SetActive(false);
                 }
                 else
                 {
                     _putSoul.SetActive(true);
                     _fightButton.SetActive(false);
+                    if (_tutorEnd)
+                        _handAnim.SetActive(true);
                 }
             }
         }
@@ -448,6 +454,7 @@ namespace Battle
             G.SmoothSlideY.Show();
 
             _dialogueSkiped = true;
+            _tutorEnd = true;
         }
 
         public bool DialogueSkipped => _dialogueSkiped;
