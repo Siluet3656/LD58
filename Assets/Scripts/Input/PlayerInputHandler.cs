@@ -75,19 +75,16 @@ namespace Input
             if (_hand.CheckDraggingStatus())
             {
                 _hand.TryToDropASpell(hitSpellButton);
-                return;
             }
             
             if (_hand.CheckSoulDraggingStatus())
             {
                 _hand.TryToDropASpell(hitSoulButton);
-                return;
             }
 
             if (hitSpellButton.collider == null)
             {
                 _targeting.OnMouseTargetSelect(hitTargetable);
-                return;
             }
 
             foreach (var VARIABLE in G.ClickFloatingTexts)

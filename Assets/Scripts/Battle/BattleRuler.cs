@@ -66,7 +66,8 @@ namespace Battle
             
             _enemiesOnScene.AddRange(_enemies);
             
-            _tutorialPanelAnimator =  _tutorialPanel.GetComponent<Animator>();
+            if (_tutorialPanelAnimator != null)
+                _tutorialPanelAnimator =  _tutorialPanel.GetComponent<Animator>();
         }
         
         private void ShowDialog(string message, string charecterName, VoiceType voiceType)
@@ -265,19 +266,22 @@ namespace Battle
 
         private IEnumerator StartDialogue1()
         {
-            //ShowDialog("We’re just simple hermits. There’s nothing to take from us.", false);
+            yield return new WaitForSeconds(2f);
+            IsLBM = false;
+            
+            ShowDialog("We’re just simple hermits. There’s nothing to take from us.", "Igor", VoiceType.Man);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            //ShowDialog("I could always take your soul — and right now it's the oddest one I've come across.", true);
+            ShowDialog("I could always take your soul — and right now it's the oddest one I've come across.", "Guest from afar", VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            //ShowDialog("Alright, all of us, together — now we must finally stop him!", false);
+            ShowDialog("Alright, all of us, together — now we must finally stop him!", "Igor", VoiceType.Man);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -288,6 +292,9 @@ namespace Battle
         
         private IEnumerator StartDialogue2()
         {
+            yield return new WaitForSeconds(2f);
+            IsLBM = false;
+
             //ShowDialog("So… you’re the one who holds the Pure Soul.", true);
             
             yield return new WaitForSeconds(0.5f);
