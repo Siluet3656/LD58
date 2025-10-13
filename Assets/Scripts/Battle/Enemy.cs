@@ -26,8 +26,9 @@ namespace Battle
             IsTargetable = true;
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
+            OnTargetDie?.Invoke();
             G.Enemies.Remove(this);
             IsTargetable = false;
         }

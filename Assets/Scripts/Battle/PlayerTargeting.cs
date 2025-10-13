@@ -24,23 +24,20 @@ namespace Battle
         {
             foreach (var enemy in G.Enemies)
             {
-                enemy.GetComponent<Hp>().OnDeath += AutoTarget;
+                enemy.GetComponent<Enemy>().OnTargetDie += AutoTarget;
                 enemy.GetComponent<Hp>().OnDeath += () => _arrowToTarget.SetupArrow(transform, null);
             }
         }
 
         private void SetTarget(ITargetable target)
         {
-            //if (BattleRuler.Instance.IsFighting == false) return;
-            
             target.OnTargeted();
-            target.OnTargetDie += ClearTarget;
             _currentTarget = target;
 
             if (_currentTarget is Enemy enemy)
-            {
+            { 
                 if (enemy.IsTargetable == false) return;
-                
+
                 _arrowToTarget.SetupArrow(transform, enemy.gameObject.transform);
                 OnTargeted?.Invoke(enemy.gameObject.transform);
             }
@@ -59,7 +56,7 @@ namespace Battle
         
         private void AutoTarget()
         {
-            foreach (var enemy in G.Enemies)
+            foreach (Enemy enemy in G.Enemies)
             {
                 if (enemy.isActiveAndEnabled)
                 {
@@ -67,6 +64,8 @@ namespace Battle
                     return;
                 }
             }
+            
+            ClearTarget();
         }
         
         public bool HasTarget => _currentTarget != null;
