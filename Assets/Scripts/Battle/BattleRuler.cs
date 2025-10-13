@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using EntityResources;
+using Prepare;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,6 +22,9 @@ namespace Battle
 
         [SerializeField] private Enemy[] _enemies;
         [SerializeField] private Player _player;
+        [SerializeField] private GameObject _fightButton;
+        [SerializeField] private GameObject _putSoul;
+        [SerializeField] private GameObject _targetSwitch;
 
         private readonly List<Enemy> _enemiesOnScene = new List<Enemy>();
         
@@ -35,8 +39,8 @@ namespace Battle
         private const string TutorialText3 = "The white bar below your health bar indicates auto-attack progress.";
         
         private const string TutorialText4 = "All souls you've collected will appear here.";
-        private const string TutorialText5 = "You can drag and drop souls into upgrade slots. Each upgrade has limits on how many identical souls can be used and on total capacity.";
-        private const string TutorialText6 = ".";
+        private const string TutorialText5 = "You can drag and drop souls into upgrade slots.";
+        private const string TutorialText6 = "Upgrade has limits on how many souls can be used on total capacity.";
         
         private static readonly int StartTutorial1 = Animator.StringToHash("StartTutorial1");
         private static readonly int StartTutorial2 = Animator.StringToHash("StartTutorial2");
@@ -178,20 +182,24 @@ namespace Battle
             IsLBM = false;
             
             _tutorialPanelAnimator.SetTrigger(TutorialStep);
-            
-            yield return new WaitForSeconds(0.5f);
-            yield return new WaitUntil(() => IsLBM);
-            IsLBM = false;
             _tutorialText.text = TutorialText5;
             
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            
             _tutorialPanelAnimator.SetTrigger(TutorialStep);
+            _tutorialText.text = TutorialText6;
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            _tutorialText.text = TutorialText6;
 
             _tutorialPanel.SetActive(false);
+            GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
+            _targetSwitch.SetActive(true);
+            _putSoul.SetActive(true);
         }
         
         private IEnumerator StartGameTutorial3()
@@ -338,6 +346,23 @@ namespace Battle
                     break;
             }
             
+        }
+
+        private void Update()
+        {
+            if (_sceneID == 2)
+            {
+                if (G.SoulChecker.IsSoulPlacingBlocked)
+                {
+                    _putSoul.SetActive(false);
+                    _fightButton.SetActive(true);
+                }
+                else
+                {
+                    _putSoul.SetActive(true);
+                    _fightButton.SetActive(false);
+                }
+            }
         }
 
         private void OnEnable()

@@ -5084,6 +5084,9 @@ MonoBehaviour:
   _enemies:
   - {fileID: 297432356}
   _player: {fileID: 266820881672802702}
+  _fightButton: {fileID: 0}
+  _putSoul: {fileID: 0}
+  _targetSwitch: {fileID: 0}
   IsLBM: 0
 --- !u!4 &2145297815
 Transform:
@@ -5278,6 +5281,10 @@ PrefabInstance:
     - target: {fileID: 4062323349122862626, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062323349122862628, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
+      propertyPath: _defaultMaxHealth
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862629, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: m_LocalPosition.x

@@ -65,7 +65,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GlowWidth: 0.05
-    - _HighlightIntensity: 0.8927965
+    - _HighlightIntensity: 0.952724
     - _HighlightWidth: 0.007
     - _Metallic: 0
     - _Mode: 0
@@ -80,6 +80,6 @@ Material:
     - _Color: {r: 0, g: 0, b: 0, a: 0.9019608}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HighlightColor: {r: 0.8746439, g: 1, b: 0.033018887, a: 1}
-    - _HoleCenter: {r: 0.5604688, g: 2.0045834, b: 0, a: 0}
-    - _HoleSize: {r: 1.0399294, g: 0.3988735, b: 0, a: 0}
+    - _HoleCenter: {r: 0.5753125, g: 2.023125, b: 0, a: 0}
+    - _HoleSize: {r: 1.0588883, g: 0.39400572, b: 0, a: 0}
   m_BuildTextureStacks: []

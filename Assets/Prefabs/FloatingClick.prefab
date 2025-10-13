@@ -427,8 +427,8 @@ MonoBehaviour:
   minDelay: 0.7
   minPitch: 1
   maxPitch: 1.2
-  minValue: 1
-  maxValue: 2
+  minValue: 2
+  maxValue: 3
   Play: 0
 --- !u!1 &5419359989358119120
 GameObject:
