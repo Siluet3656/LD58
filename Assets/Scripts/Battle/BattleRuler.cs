@@ -368,6 +368,11 @@ namespace Battle
                     if (_tutorEnd)
                         _handAnim.SetActive(true);
                 }
+
+                if (_tutorEnd)
+                {
+                    _targetSwitch.SetActive(true);
+                }
             }
         }
 

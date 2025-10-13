@@ -82,7 +82,7 @@ namespace Battle
 
         public void OnMouseTargetSelect(RaycastHit2D hit)
         {
-            ClearTarget();
+            //ClearTarget();
 
             if (hit.collider != null && hit.collider.TryGetComponent<ITargetable>(out var target))
             {
