@@ -44,8 +44,13 @@ namespace Battle
         private const string TutorialText5 = "You can drag and drop souls into upgrade slots.";
         private const string TutorialText6 = "Upgrade has limits on how many souls can be used on total capacity.";
         
+        private const string TutorialText7 = "Here’s your abilities panel.";
+        private const string TutorialText8 = "Energy is consumed when using abilities. It recovers at 20 Energy per second.";
+        private const string TutorialText9 = "Click the ability icon or press (Q) to use it.";
+        
         private static readonly int StartTutorial1 = Animator.StringToHash("StartTutorial1");
         private static readonly int StartTutorial2 = Animator.StringToHash("StartTutorial2");
+        private static readonly int StartTutorial3 = Animator.StringToHash("StartTutorial3");
         private static readonly int TutorialStep = Animator.StringToHash("TutorialStep");
 
         private void Awake()
@@ -74,6 +79,7 @@ namespace Battle
         private IEnumerator StartGameTutorial1()
         {
             yield return new WaitForSeconds(2f);
+            IsLBM = false;
             
             ShowDialog("Is this a city?\n I heard they have these kinds of things on Earth.", "Guest from afar", VoiceType.Alien);
             
@@ -143,6 +149,7 @@ namespace Battle
         private IEnumerator StartGameTutorial2()
         {
             yield return new WaitForSeconds(2f);
+            IsLBM = false;
             
             ShowDialog("Hey! What have you done to him?!", "Alice", VoiceType.Woman);
             
@@ -207,52 +214,53 @@ namespace Battle
         
         private IEnumerator StartGameTutorial3()
         {
-            yield return new WaitForSeconds(0.5f);
-            
-            //ShowDialog("Hey, we’re not your enemies, dude. Got a little mixed up—everyone makes mistakes.", false);
-            
-            yield return new WaitForSeconds(0.5f);
-            IsLBM = false;
-            yield return new WaitUntil(() => IsLBM);
+            yield return new WaitForSeconds(2f);
             IsLBM = false;
             
-            //ShowDialog("These souls of yours are very interesting. They’ll surely help me achieve the Pure Soul.", true);
+            ShowDialog("Hey, we’re not your enemies, dude. Got a little mixed up—everyone makes mistakes.", "Anton", VoiceType.Man);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            //ShowDialog("Oh man, bro, looks like we’ve really messed up.", false);
+            ShowDialog("These souls of yours are very interesting. They’ll surely help me achieve the Pure Soul.", "Guest from afar", VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
-            
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
+            
+            ShowDialog("Oh man, bro, looks like we’ve really messed up.", "Nikita", VoiceType.Man);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
             G.SmoothSlideY.Show();
-            
-            /*_tutorialPanel1.SetActive(true);
-            
-            yield return new WaitForSeconds(1.5f);
-            yield return new WaitUntil(() => IsLBM);
-            IsLBM = false;
-            
-            _tutorialPanel1.SetActive(false);
-            
-            _tutorialPanel2.SetActive(true);
+            _tutorialPanel.SetActive(true);
+            _tutorialPanelAnimator.SetTrigger(StartTutorial3);
+            _tutorialText.text = TutorialText7;
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            _tutorialPanel2.SetActive(false);
-            
-            _tutorialPanel3.SetActive(true);
+            _tutorialPanelAnimator.SetTrigger(TutorialStep);
+            _tutorialText.text = TutorialText8;
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            _tutorialPanel3.SetActive(false);*/
+            _tutorialPanelAnimator.SetTrigger(TutorialStep);
+            _tutorialText.text = TutorialText9;
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            _tutorialPanel.SetActive(false);
+            GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
+            _tutorEnd = true;
         }
 
         private IEnumerator StartDialogue1()
@@ -423,6 +431,11 @@ namespace Battle
             _isFighting = false;
             //Анимация победы?
             _victoryPanel.SetActive(true);
+            
+            if (_sceneID == 3)
+            {
+                _handAnim.SetActive(false);
+            }
         }
 
         private void CheckVictory()
@@ -445,6 +458,11 @@ namespace Battle
             _isFighting = true;
             
             OnFighting?.Invoke();
+
+            if (_sceneID == 3)
+            {
+                _handAnim.SetActive(true);
+            }
         }
         
         public void ChangeScene()

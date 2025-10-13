@@ -26,7 +26,7 @@ namespace Battle
             
             _inputHandler = G.Player.GetComponent<PlayerInputHandler>();
 
-            _inputHandler.InputActions.UI.LBM.started += ctx => CheckEnemyOnMouse();
+            //_inputHandler.InputActions.UI.LBM.started += ctx => CheckEnemyOnMouse();
             _inputHandler.InputActions.UI.Skill1.started += ctx => StartAbilityCast();
         }
 
@@ -43,20 +43,8 @@ namespace Battle
             
             _arrow.SetTargetPosition(mouseWorld);
         }
-
-        private void CheckEnemyOnMouse()
-        {
-            RaycastHit2D hitAbility = Physics2D.Raycast(_mainCamera.ScreenToWorldPoint(_inputHandler.MousePosition), Vector2.zero);
-            
-            if (hitAbility.collider != null && hitAbility.collider.TryGetComponent(out Enemy target) && _castStarted)
-            {
-                EndAbilityCast(target);
-            }
-            else
-            {
-                CancelAbilityCast();
-            }
-        }
+        
+        public bool CastStarted => _castStarted;
         
         public void StartAbilityCast()
         {

@@ -11,7 +11,6 @@ namespace Battle
         [SerializeField] private GameObject _spawnPoint;
         [SerializeField] private RandomSoundPlayer _randomSoundPlayer;
         [SerializeField] private RandomSoundPlayer _strikeSoundPlayer;
-        [SerializeField] private GameObject _soul;
         
         private Hp _myHp;
         private EnemyAttack _enemyAttack;
@@ -29,9 +28,6 @@ namespace Battle
 
         private void OnDisable()
         {
-            WavyMoveToTarget soul = Instantiate(_soul, transform.position, Quaternion.identity).GetComponent<WavyMoveToTarget>();
-            soul.target = G.Player.transform;
-            
             OnTargetDie?.Invoke();
             G.Enemies.Remove(this);
             IsTargetable = false;

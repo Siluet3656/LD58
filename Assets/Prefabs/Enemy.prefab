@@ -5368,9 +5368,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8637978cf260d847affeb25b9d5f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultMaxHealth: 4
+  _defaultMaxHealth: 20
   _floatingTextPrefab: {fileID: 2715349566576225611, guid: e6eb32b165186e1479191409f19a0b80, type: 3}
   _damageParticles: {fileID: 1411055456}
+  _soul: {fileID: 7080890843211138509, guid: b5ddf179ba54992478b962d94ff97fbe, type: 3}
 --- !u!114 &4062323349122862635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5433,7 +5434,6 @@ MonoBehaviour:
   _spawnPoint: {fileID: 0}
   _randomSoundPlayer: {fileID: 9117308464112057382}
   _strikeSoundPlayer: {fileID: 7882529653921982154}
-  _soul: {fileID: 7080890843211138509, guid: b5ddf179ba54992478b962d94ff97fbe, type: 3}
   IsNeedToGo: 0
 --- !u!61 &4062323349122862633
 BoxCollider2D:

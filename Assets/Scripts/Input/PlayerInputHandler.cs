@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Battle;
 using Prepare;
 using View;
@@ -8,6 +7,8 @@ namespace Input
 {
     public class PlayerInputHandler : MonoBehaviour
     {
+        [SerializeField] AbilityButton[] _abilityButtons;
+        
         private Camera _mainCamera;
         private PlayerControlls _inputActions;
         private PlayerTargeting _targeting;
@@ -56,19 +57,37 @@ namespace Input
             Ray rayTargetable = _mainCamera.ScreenPointToRay(_inputActions.UI.MousePosition.ReadValue<Vector2>());
             RaycastHit2D hitTargetable = Physics2D.Raycast(rayTargetable.origin, rayTargetable.direction, Mathf.Infinity, LayerMask.GetMask("Enemy"));
             
+            RaycastHit2D hitAbility = Physics2D.Raycast(_mainCamera.ScreenToWorldPoint(MousePosition), Vector2.zero);
+
+            foreach (AbilityButton button in _abilityButtons)
+            {
+                if (hitAbility.collider != null && hitAbility.collider.TryGetComponent(out Enemy target) && button.CastStarted)
+                {
+                    button.EndAbilityCast(target);
+                    return;
+                }
+                else
+                {
+                    button.CancelAbilityCast();
+                }
+            }
+            
             if (_hand.CheckDraggingStatus())
             {
                 _hand.TryToDropASpell(hitSpellButton);
+                return;
             }
             
             if (_hand.CheckSoulDraggingStatus())
             {
                 _hand.TryToDropASpell(hitSoulButton);
+                return;
             }
 
             if (hitSpellButton.collider == null)
             {
                 _targeting.OnMouseTargetSelect(hitTargetable);
+                return;
             }
 
             foreach (var VARIABLE in G.ClickFloatingTexts)

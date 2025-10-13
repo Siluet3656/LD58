@@ -15,6 +15,8 @@ namespace EntityResources
         [SerializeField] private GameObject _floatingTextPrefab;
         [SerializeField] private GameObject _damageParticles;
         
+        [SerializeField] private GameObject _soul;
+        
         private RandomSoundPlayer _randomSoundPlayer;
         
         private float _maxHealth;
@@ -129,6 +131,12 @@ namespace EntityResources
             OnDeath?.Invoke();
             
             GetInvulnerable();
+
+            if (CompareTag("Enemy"))
+            {
+                WavyMoveToTarget soul = Instantiate(_soul, transform.position, Quaternion.identity).GetComponent<WavyMoveToTarget>();
+                soul.target = G.Player.transform;
+            }
         }
         
         public event Action<float> OnHealthChanged;

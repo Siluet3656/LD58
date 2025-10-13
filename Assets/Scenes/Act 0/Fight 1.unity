@@ -5087,6 +5087,7 @@ MonoBehaviour:
   _fightButton: {fileID: 0}
   _putSoul: {fileID: 0}
   _targetSwitch: {fileID: 0}
+  _handAnim: {fileID: 0}
   IsLBM: 0
 --- !u!4 &2145297815
 Transform:
