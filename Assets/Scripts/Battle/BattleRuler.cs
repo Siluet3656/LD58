@@ -26,6 +26,7 @@ namespace Battle
         [SerializeField] private GameObject _putSoul;
         [SerializeField] private GameObject _targetSwitch;
         [SerializeField] private GameObject _handAnim;
+        [SerializeField] private GameObject _anotherTutorialText;
 
         private readonly List<Enemy> _enemiesOnScene = new List<Enemy>();
         
@@ -66,7 +67,7 @@ namespace Battle
             
             _enemiesOnScene.AddRange(_enemies);
             
-            if (_tutorialPanelAnimator != null)
+            if (_tutorialPanel != null)
                 _tutorialPanelAnimator =  _tutorialPanel.GetComponent<Animator>();
         }
         
@@ -417,14 +418,8 @@ namespace Battle
 
         private void LoadScene()
         {
-            if (_isReturnToCity)
-            {
-                // SceneManager.LoadScene(id scene of city);
-            }
-            else
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
+            GameState.State++;
+            SceneManager.LoadScene(1);
         }
 
         private void Defeat()
@@ -469,6 +464,7 @@ namespace Battle
             if (_sceneID == 3)
             {
                 _handAnim.SetActive(true);
+                _anotherTutorialText.SetActive(true);
             }
         }
         
