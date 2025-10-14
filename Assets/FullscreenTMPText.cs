@@ -25,6 +25,8 @@ public class FullscreenTMPText : MonoBehaviour
     public AudioClip fadeSound;
     [Range(0f, 1f)] public float soundVolume = 1f;
 
+    [Header("Other")] public GameObject textClick;
+
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     private TextMeshProUGUI tmpText;
@@ -102,6 +104,7 @@ public class FullscreenTMPText : MonoBehaviour
         if (isVisible)
         {
             OnActivate?.Invoke();
+            textClick.SetActive(false);
             StartCoroutine(FadeOut());
         }
     }
