@@ -1566,6 +1566,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 1.877
       objectReference: {fileID: 0}
+    - target: {fileID: 4062323350227013304, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
+      propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4062323350269094056, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2364,7 +2368,7 @@ PrefabInstance:
       objectReference: {fileID: 2145297814}
     - target: {fileID: 2080212302518241691, guid: 70adb13d76d44604495014b7162b1514, type: 3}
       propertyPath: m_Transition
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70adb13d76d44604495014b7162b1514, type: 3}

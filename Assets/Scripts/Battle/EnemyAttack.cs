@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using EntityResources;
+using UnityEngine.UI;
 using View;
 
 namespace Battle
@@ -11,6 +12,7 @@ namespace Battle
         [SerializeField] private float _attackCooldownTime = 3f;
         [SerializeField] private float _attackDamage = 1f;
         [SerializeField] private RandomSoundPlayer _randomSoundPlayer;
+        [SerializeField] private Image _interruptSprite;
         
         private Hp _playerHp;
         private EnemyView _myView;
@@ -96,6 +98,19 @@ namespace Battle
             
             StartAttackCooldown();
         }
+        
+        private IEnumerator InterruptAnimation()
+        {
+            float time = 0f;
+
+            while (_elapsedTime < 1f)
+            {
+                time += Time.deltaTime;
+                _interruptSprite.color = new Color(_interruptSprite.color.r, _interruptSprite.color.g,
+                    _interruptSprite.color.b, 1f - time);
+                yield return null;
+            }
+        }
 
         public void Interrupt()
         {
@@ -104,6 +119,8 @@ namespace Battle
             Vector3 randPosition = new Vector3(transform.position.x + Random.Range(-2f, 2f),transform.position.y + Random.Range(-1f, -2f),transform.position.z);
             
             DamagePopup.Instance.AddText("interrupt!", randPosition, Color.red);
+
+            StartCoroutine(InterruptAnimation());
         }
     }
 }
