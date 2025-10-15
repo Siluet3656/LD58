@@ -11,6 +11,7 @@ namespace Prepare
         [SerializeField] private int _maxCost;
 
         private bool _isSoulPlacingBlocked = false;
+        private int _totalSouls;
         
         private void Awake()
         {
@@ -54,6 +55,8 @@ namespace Prepare
             int poorManSouls = 0;
             int banditsSouls = 0;
             int exiledSouls = 0;
+
+            _totalSouls = 0;
             
             foreach (var soulPlace in G.SoulPlaces)
             {
@@ -61,12 +64,15 @@ namespace Prepare
                 {
                     case SoulType.PoorMan:
                         poorManSouls++;
+                        _totalSouls++;
                         break;
                     case SoulType.Bandit:
                         banditsSouls++;
+                        _totalSouls++;
                         break;
                     case SoulType.Exiled:
                         exiledSouls++;
+                        _totalSouls++;
                         break;
                 }
             }
@@ -84,5 +90,6 @@ namespace Prepare
         }
         
         public bool IsSoulPlacingBlocked =>  _isSoulPlacingBlocked;
+        public int TotalSouls => _totalSouls;
     }
 }

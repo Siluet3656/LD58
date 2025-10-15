@@ -114,6 +114,7 @@ public class FullscreenTMPText : MonoBehaviour
     /// </summary>
     public void ShowText(string message)
     {
+        textClick.SetActive(true);
         StopAllCoroutines();
         tmpText.text = string.IsNullOrEmpty(message) ? defaultMessage : message;
         canvasGroup.alpha = 1f;
