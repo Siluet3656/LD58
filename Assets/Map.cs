@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class Map : MonoBehaviour
 {
     private Animator _animator;
+    private AudioSource _audioSource;
     private void Awake()
     {
         _animator = gameObject.GetComponent<Animator>();
+        _audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -47,5 +49,10 @@ public class Map : MonoBehaviour
     public void LoadSceneMode(int id)
     {
         StartCoroutine(LoadSceneWithFade(id));
+    }
+
+    public void PlaySound()
+    {
+        _audioSource.Play();
     }
 }
