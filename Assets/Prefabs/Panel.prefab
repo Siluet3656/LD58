@@ -764,10 +764,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: Soul of poor man
-  _abilityDescription: 'Gain +1 to Attack, lose 2 Max HP. Removable. Cost: 1
+  _abilityDescription: 'Gain +1 to Attack, lose 2 Max HP.
 
-    The
-    soul of someone not that important.'
+    Cost: 1
+
+    A soul
+    of someone easily forgotten.
+
+    Purity Level: 2.61%'
 --- !u!1 &1260766504067348804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,7 +1626,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: Soul of exiled
-  _abilityDescription: 'Regenerates +5 Energy per tick. Cost: 2'
+  _abilityDescription: "Regenerates +5 Energy per tick. \nCost: 2\nA soul full of
+    determination.\nPurity Level: 12.4%"
 --- !u!1 &1260766504690776021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,9 +1811,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: Soul of bandit
-  _abilityDescription: 'Auto-attacks grant 10 Energy. Cost: 2
-
-    Soul of true anarchist.'
+  _abilityDescription: "Auto-attacks grant 10 Energy. \nCost: 2\nA soul of a true
+    anarchist, untamed and reckless.\nPurity Level: 4.91%"
 --- !u!1 &1260766504843318974
 GameObject:
   m_ObjectHideFlags: 0
