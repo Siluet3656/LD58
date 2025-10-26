@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Globalization;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using View;
@@ -24,12 +25,14 @@ namespace EntityResources
         private float _additionalHealth;
         private int _shieldStacks;
         private bool _isInvulnerable;
+        private int _knightSouls;
         
         private void Awake()
         {
             if (CompareTag("Player"))
             {
                 G.PlayerHp = this;
+                _knightSouls = 0;
             }
             else
             {
@@ -141,7 +144,6 @@ namespace EntityResources
         
         public event Action<float> OnHealthChanged;
         public event Action OnDeath;
-        public event Action OnCriticalDamageReceived; 
         public event Action<float> OnAnyDamageReceived; 
 
         public bool IsInvulnerable => _isInvulnerable;
@@ -159,20 +161,6 @@ namespace EntityResources
         {
             _maxHealth = health;
             OnHealthChanged?.Invoke(_currentHealth);
-        }
-
-        public void TryToTakeCriticalDamage(float damage, float criticalMultiply, float criticalChance)
-        {
-            if (_isInvulnerable) return;
-            
-            bool isCritical = Random.Range(0f, 1f) < criticalChance;
-            float finalDamage = isCritical ? damage * criticalMultiply : damage;
-            
-            if (isCritical) OnCriticalDamageReceived?.Invoke();
-
-            OnAnyDamageReceived?.Invoke(finalDamage);
-            
-            TakeDamage(finalDamage); //Debug.Log($"Damage taken by {gameObject}: {finalDamage}");
         }
 
         public void TryToTakeDamage(float damage, bool isDamageAdditional)
@@ -201,6 +189,22 @@ namespace EntityResources
             float resultHeal = Mathf.Min(_currentHealth + healAmount, _defaultMaxHealth); //Debug.Log($"Heal taken by {gameObject}: {resultHeal - _currentHealth}");
             _currentHealth = resultHeal;
             OnHealthChanged?.Invoke(_currentHealth);
+            
+            Vector3 randPosition = new Vector3(transform.position.x + Random.Range(-2f, 2f),transform.position.y,transform.position.z);
+            
+            DamagePopup.Instance.AddText(healAmount.ToString(CultureInfo.InvariantCulture), randPosition, Color.green);
+        }
+
+        public void RestoreHpForKnightSouls()
+        {
+            Heal(_knightSouls * 2);
+        }
+
+        public void SetKnightSouls(int knightSouls)
+        {
+            if (knightSouls < 0) return;
+            
+            _knightSouls = knightSouls;
         }
     }
 }

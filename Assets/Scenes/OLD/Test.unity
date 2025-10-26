@@ -523,6 +523,17 @@ MonoBehaviour:
   _poorMan: {fileID: 11400000, guid: 7495692b85904c243b228fe0e765fe0a, type: 2}
   _bandit: {fileID: 11400000, guid: 9f2a4b8eca91a724ea7be6afe8ec452f, type: 2}
   _exiled: {fileID: 11400000, guid: 92e51ca714b6c924c87df404518f1d7a, type: 2}
+  _knight: {fileID: 11400000, guid: 7a7e4af762dea58489bdeef3f13cd323, type: 2}
+  _merchant: {fileID: 11400000, guid: 0af25b26803579b479d8c49cc1a1bb0a, type: 2}
+  _follower: {fileID: 11400000, guid: a545e316aa085364b85e808fce705958, type: 2}
+  _berserk: {fileID: 11400000, guid: f18a08aa3cb2d7d4d820f46da69e047d, type: 2}
+  _leader: {fileID: 11400000, guid: 6de8d5454c46a99449eb6fd36ab691bd, type: 2}
+  _soldier: {fileID: 11400000, guid: b1f10fbffef65f14cb3d6a268fc6ff28, type: 2}
+  _suspectDefiled: {fileID: 11400000, guid: c40e607dc03640b44a8c2dbd79518ae4, type: 2}
+  _suspectPure: {fileID: 11400000, guid: 86344d384367d644ab69b5a5e3bab0aa, type: 2}
+  _pureSoul: {fileID: 11400000, guid: 643668cff7edf6440937129147d28ce0, type: 2}
+  _scientist: {fileID: 11400000, guid: f981348b5e5d6194e89a82c4c2275e68, type: 2}
+  _artificialSoul: {fileID: 11400000, guid: bcc1df48559ae4a4fb0c1809fca05f65, type: 2}
 --- !u!114 &504537763 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4062323349122862630, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
@@ -1610,7 +1621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _costText: {fileID: 285924092}
-  _maxCost: 5
+  _maxCost: 999
 --- !u!4 &1069235068
 Transform:
   m_ObjectHideFlags: 0
@@ -1741,26 +1752,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fbbba16bf84f4a48ae1b6047d2877e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1155491247 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 266820883172249107, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
-  m_PrefabInstance: {fileID: 1155491245}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1155491248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1155491247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _title: Strike
-  _abilityDescription: "Deals damage and inflicts Stun. \r\nStun: interrupts and
-    resets target's auto-attack progress. \r\nCost: 60 energy."
 --- !u!224 &1210884570 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2080212302518241690, guid: 70adb13d76d44604495014b7162b1514, type: 3}
@@ -2174,6 +2165,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 642461873}
     m_Modifications:
+    - target: {fileID: 543808600300849657, guid: b6f743290a1ceb34aa1ff65dfdce14df, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 668073763271338545, guid: b6f743290a1ceb34aa1ff65dfdce14df, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1260766503904332241, guid: b6f743290a1ceb34aa1ff65dfdce14df, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2266,6 +2265,42 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2145297814}
+    - target: {fileID: 5280788237564228060, guid: b6f743290a1ceb34aa1ff65dfdce14df, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611488962476547004, guid: b6f743290a1ceb34aa1ff65dfdce14df, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402337657584009768, guid: b6f743290a1ceb34aa1ff65dfdce14df, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781888728091412271, guid: b6f743290a1ceb34aa1ff65dfdce14df, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831488993671564581, guid: b6f743290a1ceb34aa1ff65dfdce14df, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6903095948693149110, guid: b6f743290a1ceb34aa1ff65dfdce14df, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7364135282853337922, guid: b6f743290a1ceb34aa1ff65dfdce14df, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8594923927807837270, guid: b6f743290a1ceb34aa1ff65dfdce14df, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170642158188313542, guid: b6f743290a1ceb34aa1ff65dfdce14df, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6f743290a1ceb34aa1ff65dfdce14df, type: 3}
 --- !u!1001 &2080212301575874624

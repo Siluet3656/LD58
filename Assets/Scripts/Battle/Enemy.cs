@@ -67,6 +67,11 @@ namespace Battle
         public void ApplyAbility(SkillType skillType)
         {
             if (BattleRuler.Instance.IsFighting == false) return;
+
+            if (skillType != SkillType.None)
+            {
+                G.PlayerHp.RestoreHpForKnightSouls();
+            }
             
             switch (skillType)
             {

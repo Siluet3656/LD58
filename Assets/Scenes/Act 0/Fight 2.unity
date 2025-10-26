@@ -2994,6 +2994,7 @@ MonoBehaviour:
   _putSoul: {fileID: 720259113}
   _targetSwitch: {fileID: 142698108}
   _handAnim: {fileID: 677010788}
+  _anotherTutorialText: {fileID: 0}
   IsLBM: 0
 --- !u!4 &2145297815
 Transform:

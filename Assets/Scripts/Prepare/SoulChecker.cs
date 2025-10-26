@@ -55,6 +55,17 @@ namespace Prepare
             int poorManSouls = 0;
             int banditsSouls = 0;
             int exiledSouls = 0;
+            int knightsSouls = 0;
+            int merchantSouls = 0;
+            int followerSouls = 0;
+            int berserkSouls = 0;
+            int leaderSouls = 0;
+            int soldierSouls = 0;
+            int suspiciouslyDefiledSouls = 0;
+            int suspiciouslyPureSouls = 0;
+            int scientistSouls = 0;
+            int pureSouls = 0;
+            int artificialSouls = 0;
 
             _totalSouls = 0;
             
@@ -74,12 +85,55 @@ namespace Prepare
                         exiledSouls++;
                         _totalSouls++;
                         break;
+                    case SoulType.Knight:
+                        knightsSouls++;
+                        _totalSouls++;
+                        break;
+                    case SoulType.Merchant:
+                        merchantSouls++;
+                        _totalSouls++;
+                        break;
+                    case SoulType.Follower:
+                        followerSouls++;
+                        _totalSouls++;
+                        break;
+                    case SoulType.Berserk:
+                        berserkSouls++;
+                        _totalSouls++;
+                        break;
+                    case SoulType.Leader:
+                        leaderSouls++;
+                        _totalSouls++;
+                        break;
+                    case SoulType.Soldier:
+                        soldierSouls++;
+                        _totalSouls++;
+                        break;
+                    case SoulType.SuspiciouslyDefiledSoul:
+                        suspiciouslyDefiledSouls++;
+                        _totalSouls++;
+                        break;
+                    case SoulType.SuspiciouslyPureSoul:
+                        suspiciouslyPureSouls++;
+                        _totalSouls++;
+                        break;
+                    case SoulType.SoulOfScientist:
+                        scientistSouls++;
+                        _totalSouls++;
+                        break;
+                    case SoulType.PureSoul:
+                        pureSouls++;
+                        _totalSouls++;
+                        break;
+                    case SoulType.ArtificialSoul:
+                        artificialSouls++;
+                        _totalSouls++;
+                        break;
                 }
             }
             
             G.PlayerHp.SetMaxHealth((int)G.PlayerHp.DefaultMaxHealth - (2 * poorManSouls));
             G.PlayerHp.InitializeHealth();
-            
             int attack = (int)G.PlayerAttack.DefaultDamage + (1 * poorManSouls);
             G.PlayerAttack.AdjustDamage(attack);
             G.PlayerView.UpdateAttackText(attack);
@@ -87,6 +141,8 @@ namespace Prepare
             G.PlayerAttack.SetUpEnergyRestorePerAttack(banditsSouls * 10);
             
             G.SkillResources.AdjustResources(exiledSouls * 5);
+            
+            G.PlayerHp.SetKnightSouls(knightsSouls);
         }
         
         public bool IsSoulPlacingBlocked =>  _isSoulPlacingBlocked;
