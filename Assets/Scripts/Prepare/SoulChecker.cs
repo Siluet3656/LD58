@@ -132,17 +132,26 @@ namespace Prepare
                 }
             }
 
-            int health = (int)G.PlayerHp.DefaultMaxHealth - (2 * poorManSouls) +
-                         leaderSouls * (5 * (G.Enemies.Count + 1));
+            int health = (int)(G.PlayerHp.DefaultMaxHealth - (2 * poorManSouls) +
+                         leaderSouls * (5 * (G.Enemies.Count + 1))) * (1 + 1 * pureSouls)  ;
             G.PlayerHp.SetMaxHealth(health);
             G.PlayerHp.InitializeHealth();
-            int attack = (int)G.PlayerAttack.DefaultDamage + (1 * poorManSouls) + soldierSouls * (1 * (G.Enemies.Count + 1));
+            int attack = (int)(G.PlayerAttack.DefaultDamage + (1 * poorManSouls) + soldierSouls * (1 * (G.Enemies.Count + 1))) * (1 + 1 * pureSouls);
             G.PlayerAttack.AdjustDamage(attack);
             G.PlayerView.UpdateAttackText(attack);
             
             G.PlayerAttack.SetUpEnergyRestorePerAttack(banditsSouls * 10 - suspiciouslyPureSouls * 10);
             
-            G.SkillResources.AdjustResources(exiledSouls * 5);
+            int baseEnergy = G.SkillResources.DefaultEnergyRestoredPerRate;
+            int bonusFromExiled = exiledSouls * 5;
+
+            int total = baseEnergy + bonusFromExiled;
+
+            if (artificialSouls > 0)
+                total *= 2 * artificialSouls;
+            int extra = total - baseEnergy;
+
+            G.SkillResources.AdjustResources(extra);
             
             G.PlayerHp.SetKnightSouls(knightsSouls);
 
@@ -155,7 +164,22 @@ namespace Prepare
             
             G.PlayerHp.SetBerserkSouls(berserkSouls);
             
-            G.PlayerAttack.SetCooldownTime(G.PlayerAttack.DefaultCooldownTime - suspiciouslyPureSouls * 0.5f);
+            G.PlayerAttack.SetCooldownTime(G.PlayerAttack.DefaultCooldownTime - suspiciouslyPureSouls * 0.5f - suspiciouslyDefiledSouls * 0.5f);
+            
+            G.PlayerAttack.SetDefiledSouls(suspiciouslyDefiledSouls);
+            
+            G.SkillResources.SetScienceSouls(scientistSouls);
+
+            if (pureSouls > 0)
+            {
+                G.SkillResources.IsEnergyRegenerate = false;
+            }
+            else
+            {
+                G.SkillResources.IsEnergyRegenerate = true;
+            }
+            
+            G.SkillResources.AdjustMaxEnergy(G.SkillResources.DefaultMaxEnergy * artificialSouls * 2);
         }
         
         public bool IsSoulPlacingBlocked =>  _isSoulPlacingBlocked;

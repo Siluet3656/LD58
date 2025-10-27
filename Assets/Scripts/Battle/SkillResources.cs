@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using View;
 
@@ -8,8 +9,8 @@ namespace Battle
     [RequireComponent(typeof(PlayerView))]
     public class SkillResources : MonoBehaviour
     {
-        [SerializeField] private int _maxEnergy = 100;
-        [SerializeField] private int _energyRestoredPerRate = 20;
+        [SerializeField] private int _defaultMaxEnergy = 100;
+        [SerializeField] private int _defaultEnergyRestoredPerRate = 20;
         [SerializeField] private float _energyRestoreRate = 1f;
         [SerializeField] private Image _energyBar;
 
@@ -20,6 +21,9 @@ namespace Battle
         private float _currentSwipeProgress;
 
         private int _adjustedEnergyRestoredPerRate;
+        private int _adjustedMaxEnergy;
+        
+        private int _scienceSouls;
 
         private void Awake()
         {
@@ -27,18 +31,24 @@ namespace Battle
             
             _playerView = GetComponent<PlayerView>();
 
-            _currentEnergy = _maxEnergy;
+            _adjustedMaxEnergy = _defaultMaxEnergy;
+            _currentEnergy = _adjustedMaxEnergy;
             UpdateUI();
+            
+            _scienceSouls = 0;
         }
 
         private void Update()
         {
-            if (_currentEnergy != _maxEnergy)
+            if (IsEnergyRegenerate)
             {
-                if (_isReadyRestore)
+                if (_currentEnergy != _adjustedMaxEnergy)
                 {
-                    ChangeEnergy(_adjustedEnergyRestoredPerRate);
-                    StartCoroutine(RestoreEnergy(_energyRestoreRate));
+                    if (_isReadyRestore)
+                    {
+                        ChangeEnergy(_adjustedEnergyRestoredPerRate);
+                        StartCoroutine(RestoreEnergy(_energyRestoreRate));
+                    }
                 }
             }
             
@@ -47,7 +57,9 @@ namespace Battle
 
         private void ChangeEnergy(int amount)
         {
-            _currentEnergy = Mathf.Min(_maxEnergy, _currentEnergy + amount);
+            if (amount == 0) return;
+            
+            _currentEnergy = Mathf.Min(_adjustedMaxEnergy, _currentEnergy + amount);
             _currentEnergy = Mathf.Max(0, _currentEnergy);
 
             if (amount > 0)
@@ -59,6 +71,8 @@ namespace Battle
             }
             else
             {
+                G.PlayerHp.Heal(_scienceSouls * 1f * (amount * -1)/ 10);
+                
                 DamagePopup.Instance.AddText($"{amount}", new Vector3(_energyBar.transform.position.x + Random.Range(-2f, 2f),
                         _energyBar.transform.position.y,
                         _energyBar.transform.position.z), 
@@ -68,7 +82,7 @@ namespace Battle
 
         private void UpdateUI()
         {
-            _playerView.UpdateEnergyBar(_currentEnergy, _maxEnergy);
+            _playerView.UpdateEnergyBar(_currentEnergy, _adjustedMaxEnergy);
         }
         
         private IEnumerator RestoreEnergy(float cooldown)
@@ -94,6 +108,10 @@ namespace Battle
         {
             _energyBar.fillAmount = progress / 1f ;
         }
+
+        public bool IsEnergyRegenerate;
+        public int DefaultMaxEnergy => _defaultMaxEnergy;
+        public int DefaultEnergyRestoredPerRate => _defaultEnergyRestoredPerRate;
         
         public bool HasEnoughResources(int energyCost)
         {
@@ -103,8 +121,8 @@ namespace Battle
         public void ConsumeResources(int energyCost)
         {
             if (energyCost <= 0) return;
-            
-            _currentEnergy -= energyCost;
+
+            ChangeEnergy(energyCost * -1);
         }
 
         public void RestoreResources(int energy)
@@ -116,7 +134,25 @@ namespace Battle
         {
             if (additionalAmount < 0) return;
 
-            _adjustedEnergyRestoredPerRate = _energyRestoredPerRate + additionalAmount;
+            _adjustedEnergyRestoredPerRate = _defaultEnergyRestoredPerRate + additionalAmount;
+        }
+
+        public void AdjustMaxEnergy(int amount)
+        {
+            if (amount <= 0)
+            {
+                _adjustedMaxEnergy = _defaultMaxEnergy;
+                _currentEnergy = _adjustedMaxEnergy;
+                return;
+            }
+            
+            _adjustedMaxEnergy = amount;
+            _currentEnergy = _adjustedMaxEnergy;
+        }
+
+        public void SetScienceSouls(int scienceSouls)
+        {
+            _scienceSouls = scienceSouls;
         }
     }
 }

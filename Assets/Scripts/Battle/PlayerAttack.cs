@@ -27,7 +27,8 @@ namespace Battle
         private int _energyRestorePerAttack = 0;
         private bool _isNeedTODoubled;
         private bool _isDoubled;
-
+        private int _defileSouls;
+        
         private void Awake()
         {
             G.PlayerAttack = this;
@@ -40,10 +41,11 @@ namespace Battle
             _isReadyToAttack = false;
             _isNeedTODoubled = false;
             _isDoubled = false;
-            
 
             _currentAttackDamage = _defaultAttackDamage;
             _currentCooldownTime = _defaultAttackCooldownTime;
+            
+            _defileSouls = 0;
         }
 
         private void Update()
@@ -134,6 +136,11 @@ namespace Battle
             _skillResources.RestoreResources(_energyRestorePerAttack);
             
             StartAttackCooldown();
+            
+            if (_defileSouls > 0)
+            {
+                G.PlayerHp.TryToTakeDamage(2f, false);
+            }
         }
 
         private void SetTargetHp(Transform target)
@@ -165,9 +172,18 @@ namespace Battle
 
         public void SetCooldownTime(float cooldown)
         {
-            if (cooldown <= 0) return;
+            if (cooldown <= 0)
+            {
+                _currentCooldownTime = 0.1f;
+                return;
+            }
             
             _currentCooldownTime = cooldown;
+        }
+
+        public void SetDefiledSouls(int amount)
+        {
+            _defileSouls = amount;
         }
     }
 }
