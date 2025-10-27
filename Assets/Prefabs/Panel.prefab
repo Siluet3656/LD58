@@ -3366,12 +3366,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: Soul of berserk
-  _abilityDescription: 'When health drops below 50%, damage is doubled.
+  _abilityDescription: 'When health below 50%, damage is doubled.
 
-    Cost:
-    4
+    Cost: 4
 
-    The soul of a man who lost all his sanity.
+    The
+    soul of a man who lost all his sanity.
 
     Purity Level: 87.4%'
 --- !u!1 &6903095948693149110

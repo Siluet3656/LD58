@@ -26,13 +26,17 @@ namespace EntityResources
         private int _shieldStacks;
         private bool _isInvulnerable;
         private int _knightSouls;
-        
+        private int _followerSouls;
+        private int _berserkSouls;
+
         private void Awake()
         {
             if (CompareTag("Player"))
             {
                 G.PlayerHp = this;
                 _knightSouls = 0;
+                _followerSouls = 0;
+                _berserkSouls = 0;
             }
             else
             {
@@ -45,7 +49,31 @@ namespace EntityResources
             _maxHealth = _defaultMaxHealth;
             InitializeHealth();
         }
-        
+
+        private void Update()
+        {
+            if (_followerSouls > 0)
+            {
+                if (_currentHealth <= _maxHealth * 0.4f)
+                {
+                    Heal(_maxHealth);
+                    _followerSouls--;
+                }
+            }
+
+            if (_berserkSouls > 0)
+            {
+                if (_currentHealth <= _maxHealth * 0.5f)
+                {
+                    G.PlayerAttack.SetUpDamageDoubling(true);
+                }
+                else
+                {
+                    G.PlayerAttack.SetUpDamageDoubling(false);
+                }
+            }
+        }
+
         private void ShowDialog(string message)
         {
             GameObject ft = Instantiate(_floatingTextPrefab, transform.position, Quaternion.identity);
@@ -54,7 +82,14 @@ namespace EntityResources
 
         private void TakeDamage(float damage)
         {
-            if (_isInvulnerable) return;
+            if (_isInvulnerable)
+            {
+                Vector3 randPos = new Vector3(transform.position.x + Random.Range(-2f, 2f),transform.position.y,transform.position.z);
+                DamagePopup.Instance.AddText("Invulnerable!!", randPos, Color.white);
+                return;
+            }
+            
+            if (damage <= 0) return;
             
             ApplyDamageToHealth(damage);
             
@@ -205,6 +240,20 @@ namespace EntityResources
             if (knightSouls < 0) return;
             
             _knightSouls = knightSouls;
+        }
+
+        public void SetFollowerSouls(int followerSouls)
+        {
+            if (followerSouls < 0) return;
+            
+            _followerSouls = followerSouls;
+        }
+
+        public void SetBerserkSouls(int berserkSouls)
+        {
+            if (berserkSouls < 0) return;
+            
+            _berserkSouls = berserkSouls;
         }
     }
 }

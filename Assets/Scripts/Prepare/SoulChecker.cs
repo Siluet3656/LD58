@@ -148,8 +148,10 @@ namespace Prepare
             {
                 enemy.SetMerchantSouls(merchantSouls);
             }
+
+            G.PlayerHp.SetFollowerSouls(followerSouls);
             
-            
+            G.PlayerHp.SetBerserkSouls(berserkSouls);
         }
         
         public bool IsSoulPlacingBlocked =>  _isSoulPlacingBlocked;

@@ -1555,11 +1555,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862635, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: _attackCooldownTime
-      value: 90
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862635, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: _attackDamage
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349284722988, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1689,7 +1689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 266820882849889828, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
       propertyPath: _attackCooldownTime
-      value: 90
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 266820882849889833, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1739,6 +1739,10 @@ PrefabInstance:
       propertyPath: _arrowToTarget
       value: 
       objectReference: {fileID: 269665744}
+    - target: {fileID: 266820882849889838, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
+      propertyPath: _defaultMaxHealth
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 266820882849889839, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
       propertyPath: m_Name
       value: mainChar

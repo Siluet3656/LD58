@@ -23,7 +23,9 @@ namespace Battle
         private float _currentSwipeProgress;
         private bool _isReadyToAttack;
         private int _energyRestorePerAttack = 0;
-        
+        private bool _isNeedTODoubled;
+        private bool _isDoubled;
+
         private void Awake()
         {
             G.PlayerAttack = this;
@@ -34,6 +36,9 @@ namespace Battle
             _skillResources = GetComponent<SkillResources>();
             
             _isReadyToAttack = false;
+            _isNeedTODoubled = false;
+            _isDoubled = false;
+            
 
             _currentAttackDamage = _defaultAttackDamage;
         }
@@ -44,6 +49,25 @@ namespace Battle
             {
                 StopAllCoroutines();
                 return;
+            }
+
+            if (_isNeedTODoubled)
+            {
+                if (_isDoubled == false)
+                {
+                    _currentAttackDamage *= 2;
+                    _isDoubled = true;
+                    G.PlayerView.UpdateAttackText((int)_currentAttackDamage);
+                }
+            }
+            else
+            {
+                if (_isDoubled)
+                {
+                    _currentAttackDamage /= 2;
+                    _isDoubled = false;
+                    G.PlayerView.UpdateAttackText((int)_currentAttackDamage);
+                }
             }
             
             PerformAttack();
@@ -129,6 +153,11 @@ namespace Battle
             if (amount <= 0) return;
             
             _energyRestorePerAttack = amount;
+        }
+
+        public void SetUpDamageDoubling(bool isbloubled)
+        {
+            _isNeedTODoubled = isbloubled;
         }
     }
 }
