@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using EntityResources;
+using UnityEngine.Serialization;
 using View;
 
 namespace Battle
@@ -9,11 +10,12 @@ namespace Battle
     [RequireComponent(typeof(PlayerView))]
     public class PlayerAttack : MonoBehaviour
     {
-        [SerializeField] private float _attackCooldownTime = 5f;
+        [SerializeField] private float _defaultAttackCooldownTime = 5f;
         [SerializeField] private float _defaultAttackDamage = 50f;
         [SerializeField] private RandomSoundPlayer _randomSoundPlayer;
 
         private float _currentAttackDamage;
+        private float  _currentCooldownTime;
         
         private Hp _enemyHp;
         private PlayerTargeting _playerTargeting;
@@ -41,6 +43,7 @@ namespace Battle
             
 
             _currentAttackDamage = _defaultAttackDamage;
+            _currentCooldownTime = _defaultAttackCooldownTime;
         }
 
         private void Update()
@@ -111,7 +114,7 @@ namespace Battle
 
         private void StartAttackCooldown()
         {
-            StartCoroutine(Cooldown(_attackCooldownTime));
+            StartCoroutine(Cooldown(_currentCooldownTime));
         }
 
         private void PerformAttack()
@@ -140,6 +143,8 @@ namespace Battle
 
         public float CurrentDamage => _currentAttackDamage;
         public float DefaultDamage => _defaultAttackDamage;
+        public float CurrentCooldownTime => _currentCooldownTime;
+        public float DefaultCooldownTime => _defaultAttackCooldownTime;
 
         public void AdjustDamage(int amount)
         {
@@ -150,14 +155,19 @@ namespace Battle
 
         public void SetUpEnergyRestorePerAttack(int amount)
         {
-            if (amount <= 0) return;
-            
             _energyRestorePerAttack = amount;
         }
 
         public void SetUpDamageDoubling(bool isbloubled)
         {
             _isNeedTODoubled = isbloubled;
+        }
+
+        public void SetCooldownTime(float cooldown)
+        {
+            if (cooldown <= 0) return;
+            
+            _currentCooldownTime = cooldown;
         }
     }
 }

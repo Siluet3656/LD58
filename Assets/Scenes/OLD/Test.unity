@@ -1691,6 +1691,10 @@ PrefabInstance:
       propertyPath: _attackCooldownTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 266820882849889828, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
+      propertyPath: _defaultAttackCooldownTime
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 266820882849889833, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.53

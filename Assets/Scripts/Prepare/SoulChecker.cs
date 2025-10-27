@@ -131,14 +131,16 @@ namespace Prepare
                         break;
                 }
             }
-            
-            G.PlayerHp.SetMaxHealth((int)G.PlayerHp.DefaultMaxHealth - (2 * poorManSouls) + leaderSouls * (5 * (G.Enemies.Count + 1)));
+
+            int health = (int)G.PlayerHp.DefaultMaxHealth - (2 * poorManSouls) +
+                         leaderSouls * (5 * (G.Enemies.Count + 1));
+            G.PlayerHp.SetMaxHealth(health);
             G.PlayerHp.InitializeHealth();
-            int attack = (int)G.PlayerAttack.DefaultDamage + (1 * poorManSouls);
+            int attack = (int)G.PlayerAttack.DefaultDamage + (1 * poorManSouls) + soldierSouls * (1 * (G.Enemies.Count + 1));
             G.PlayerAttack.AdjustDamage(attack);
             G.PlayerView.UpdateAttackText(attack);
             
-            G.PlayerAttack.SetUpEnergyRestorePerAttack(banditsSouls * 10);
+            G.PlayerAttack.SetUpEnergyRestorePerAttack(banditsSouls * 10 - suspiciouslyPureSouls * 10);
             
             G.SkillResources.AdjustResources(exiledSouls * 5);
             
@@ -152,6 +154,8 @@ namespace Prepare
             G.PlayerHp.SetFollowerSouls(followerSouls);
             
             G.PlayerHp.SetBerserkSouls(berserkSouls);
+            
+            G.PlayerAttack.SetCooldownTime(G.PlayerAttack.DefaultCooldownTime - suspiciouslyPureSouls * 0.5f);
         }
         
         public bool IsSoulPlacingBlocked =>  _isSoulPlacingBlocked;
