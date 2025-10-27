@@ -132,7 +132,7 @@ namespace Prepare
                 }
             }
             
-            G.PlayerHp.SetMaxHealth((int)G.PlayerHp.DefaultMaxHealth - (2 * poorManSouls));
+            G.PlayerHp.SetMaxHealth((int)G.PlayerHp.DefaultMaxHealth - (2 * poorManSouls) + leaderSouls * (5 * (G.Enemies.Count + 1)));
             G.PlayerHp.InitializeHealth();
             int attack = (int)G.PlayerAttack.DefaultDamage + (1 * poorManSouls);
             G.PlayerAttack.AdjustDamage(attack);
