@@ -143,6 +143,13 @@ namespace Prepare
             G.SkillResources.AdjustResources(exiledSouls * 5);
             
             G.PlayerHp.SetKnightSouls(knightsSouls);
+
+            foreach (Enemy enemy in BattleRuler.Instance.EnemiesOnScene)
+            {
+                enemy.SetMerchantSouls(merchantSouls);
+            }
+            
+            
         }
         
         public bool IsSoulPlacingBlocked =>  _isSoulPlacingBlocked;

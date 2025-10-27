@@ -17,6 +17,7 @@ namespace Battle
 
         public bool IsNeedToGo = false;
         private bool isPlaying = false;
+        private int _merchantSouls;
         
         private void Awake()
         {
@@ -24,6 +25,7 @@ namespace Battle
             _myHp = GetComponent<Hp>();
             _enemyAttack = GetComponent<EnemyAttack>();
             IsTargetable = true;
+            _merchantSouls = 0;
         }
 
         private void OnDisable()
@@ -71,6 +73,13 @@ namespace Battle
             if (skillType != SkillType.None)
             {
                 G.PlayerHp.RestoreHpForKnightSouls();
+
+                foreach (Enemy enemy in BattleRuler.Instance.EnemiesOnScene)
+                {
+                    Hp hp = enemy.GetComponent<Hp>();
+                    hp.TryToTakeDamage(2 * _merchantSouls, false);
+                }
+                G.PlayerHp.TryToTakeDamage(2 * _merchantSouls, false);
             }
             
             switch (skillType)
@@ -84,6 +93,11 @@ namespace Battle
                     }
                     break;
             }
+        }
+
+        public void SetMerchantSouls(int amount)
+        {
+            _merchantSouls = amount;
         }
     }
 }

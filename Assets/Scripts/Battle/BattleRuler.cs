@@ -27,8 +27,6 @@ namespace Battle
         [SerializeField] private GameObject _targetSwitch;
         [SerializeField] private GameObject _handAnim;
         [SerializeField] private GameObject _anotherTutorialText;
-
-        private readonly List<Enemy> _enemiesOnScene = new List<Enemy>();
         
         private Animator _tutorialPanelAnimator;
         
@@ -65,7 +63,7 @@ namespace Battle
                 Destroy(gameObject);
             }
             
-            _enemiesOnScene.AddRange(_enemies);
+            EnemiesOnScene.AddRange(_enemies);
             
             if (_tutorialPanel != null)
                 _tutorialPanelAnimator =  _tutorialPanel.GetComponent<Animator>();
@@ -394,7 +392,7 @@ namespace Battle
 
         private void OnEnable()
         {
-            foreach (var enemy in _enemiesOnScene)
+            foreach (var enemy in EnemiesOnScene)
             {
                 enemy.GetComponent<Hp>().OnDeath += CheckVictory;
             }
@@ -444,7 +442,7 @@ namespace Battle
         {
             _defietedEnemies++;
 
-            if (_defietedEnemies >= _enemiesOnScene.Count)
+            if (_defietedEnemies >= EnemiesOnScene.Count)
             {
                 Victory();
             }
@@ -484,5 +482,7 @@ namespace Battle
         }
 
         public bool DialogueSkipped => _dialogueSkiped;
+        
+        public readonly List<Enemy> EnemiesOnScene = new List<Enemy>();
     }
 }
