@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Data;
 using UnityEngine;
 using EntityResources;
 using UnityEngine.Serialization;
@@ -13,6 +14,8 @@ namespace Battle
         [SerializeField] private float _defaultAttackCooldownTime = 5f;
         [SerializeField] private float _defaultAttackDamage = 50f;
         [SerializeField] private RandomSoundPlayer _randomSoundPlayer;
+        [SerializeField] private GameObject _soul;
+        [SerializeField] private ParticleSystem _soulParticles;
 
         private float _currentAttackDamage;
         private float  _currentCooldownTime;
@@ -184,6 +187,26 @@ namespace Battle
         public void SetDefiledSouls(int amount)
         {
             _defileSouls = amount;
+        }
+
+        public void SoulBeam()
+        {
+            if (G.SkillResources.HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(SkillType.Beam).cost) == false) return;
+
+            _soulParticles.Play();
+            
+            foreach (Enemy enemy in G.Enemies)
+            {
+                enemy.GetComponent<Hp>().TryToTakeDamage(AbilityDataCms.Instance.GetSpellConfig(SkillType.Beam).damage, false);
+                var soul = Instantiate(_soul, transform.position, Quaternion.identity);
+                soul.GetComponent<WavyMoveToTarget>().target = enemy.transform;
+                
+                var ps = soul.GetComponent<ParticleSystem>();
+                var main = ps.main;
+                main.startColor = Color.yellow;
+            }
+            
+            G.SkillResources.ConsumeResources(AbilityDataCms.Instance.GetSpellConfig(SkillType.Beam).cost);
         }
     }
 }

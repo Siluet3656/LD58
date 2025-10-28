@@ -136,7 +136,7 @@ namespace Input
                     G.PlayerHp.ApplyShield();
                     break;
                 case SkillType.Beam:
-                    
+                    G.PlayerAttack.SoulBeam();
                     break;
             }
         }
