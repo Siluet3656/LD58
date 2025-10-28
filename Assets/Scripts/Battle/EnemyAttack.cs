@@ -16,14 +16,21 @@ namespace Battle
         
         private Hp _playerHp;
         private EnemyView _myView;
+        private Hp _myHp;
         
         private float _currentSwipeProgress;
         private bool _isReadyToAttack;
         private float _elapsedTime;
+        private bool _isStunned;
+        private Coroutine _stunCoroutine;
+        private Coroutine _cooldownCoroutine;
+        
+        private float _stunDuration = 3f;
         
         private void Awake()
         {
             _myView = GetComponent<EnemyView>();
+            _myHp = GetComponent<Hp>();
             
             _isReadyToAttack = false;
         }
@@ -42,7 +49,7 @@ namespace Battle
                 return;
             }
             
-            PerformAttack();
+            TryToPerformAttack();
         }
 
         private void OnEnable()
@@ -51,6 +58,8 @@ namespace Battle
             
             _currentSwipeProgress = 0f;
             _myView.UpdateAttackSwingBar(_currentSwipeProgress);
+
+            _myHp.OnAnyDamageReceived += OnTakeDamage;
         }
 
         private void OnDisable()
@@ -59,7 +68,7 @@ namespace Battle
             
             StopAllCoroutines();
         }
-
+        
         private IEnumerator Cooldown(float cooldown)
         {
             _isReadyToAttack = false;
@@ -68,6 +77,12 @@ namespace Battle
 
             while (_elapsedTime < cooldown)
             {
+                if (_isStunned)
+                {
+                    ResetAttackProgress();
+                    yield break;
+                }
+
                 _elapsedTime += Time.deltaTime;
                 _currentSwipeProgress = Mathf.Clamp01(_elapsedTime / cooldown);
                 _myView.UpdateAttackSwingBar(_currentSwipeProgress);
@@ -81,10 +96,15 @@ namespace Battle
 
         private void StartAttackCooldown()
         {
-            StartCoroutine(Cooldown(_attackCooldownTime));
+            if (_isStunned) return;
+
+            if (_cooldownCoroutine != null)
+                StopCoroutine(_cooldownCoroutine);
+
+            _cooldownCoroutine = StartCoroutine(Cooldown(_attackCooldownTime));
         }
 
-        private void PerformAttack()
+        private void TryToPerformAttack()
         {
             if (_isReadyToAttack == false) return;
             
@@ -99,6 +119,35 @@ namespace Battle
             StartAttackCooldown();
         }
         
+        private void ResetAttackProgress()
+        {
+            _isReadyToAttack = false;
+            _currentSwipeProgress = 0f;
+            _myView.UpdateAttackSwingBar(_currentSwipeProgress);
+
+            if (_cooldownCoroutine != null)
+            {
+                StopCoroutine(_cooldownCoroutine);
+                _cooldownCoroutine = null;
+            }
+        }
+
+        private IEnumerator StunRoutine()
+        {
+            _isStunned = true;
+            ResetAttackProgress(); // сбрасываем атаку и кулдаун
+
+            float elapsed = 0f;
+            while (elapsed < _stunDuration)
+            {
+                elapsed += Time.deltaTime;
+                _myView.UpdateStunCircle(1f - elapsed / _stunDuration);
+                yield return null;
+            }
+
+            RemoveStun();
+        }
+
         private IEnumerator InterruptAnimation()
         {
             float time = 0f;
@@ -121,6 +170,37 @@ namespace Battle
             DamagePopup.Instance.AddText("interrupt!", randPosition, Color.red);
 
             StartCoroutine(InterruptAnimation());
+        }
+        
+        public void RemoveStun()
+        {
+            _isStunned = false;
+            if (_stunCoroutine != null)
+            {
+                StopCoroutine(_stunCoroutine);
+                _stunCoroutine = null;
+            }
+
+            StartAttackCooldown();
+            _myView.UpdateStunCircle(0);
+        }
+
+        public void OnTakeDamage(float f)
+        {
+            if (_isStunned)
+            {
+                RemoveStun();
+            }
+
+        }
+        
+        public void ApplyStun()
+        {
+            if (_stunCoroutine != null)
+                StopCoroutine(_stunCoroutine);
+                
+            _myView.UpdateStunCircle(1);
+            _stunCoroutine = StartCoroutine(StunRoutine());
         }
     }
 }

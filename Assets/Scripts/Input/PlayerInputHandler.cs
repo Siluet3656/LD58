@@ -32,6 +32,11 @@ namespace Input
             _inputActions.UI.RBM.started += ctx => OnRightMouseButtonClicked();
             
             _hand = FindObjectsOfType<AbilityDrag>()[0];
+            
+            _inputActions.UI.Skill1.started += ctx => ChooseAbility(SkillType.Strike);
+            _inputActions.UI.Skill2.started += ctx => ChooseAbility(SkillType.Punch);
+            _inputActions.UI.Skill3.started += ctx => ChooseAbility(SkillType.Shield);
+            _inputActions.UI.Skill4.started += ctx => ChooseAbility(SkillType.Beam);
         }
 
         private void Update()
@@ -59,16 +64,19 @@ namespace Input
             
             RaycastHit2D hitAbility = Physics2D.Raycast(_mainCamera.ScreenToWorldPoint(MousePosition), Vector2.zero);
 
-            foreach (AbilityButton button in _abilityButtons)
+            if (BattleRuler.Instance.IsCastStarted)
             {
-                if (hitAbility.collider != null && hitAbility.collider.TryGetComponent(out Enemy target) && button.CastStarted)
+                foreach (AbilityButton button in _abilityButtons)
                 {
-                    button.EndAbilityCast(target);
-                    return;
-                }
-                else
-                {
-                    button.CancelAbilityCast();
+                    if (hitAbility.collider != null && hitAbility.collider.TryGetComponent(out Enemy target) && button.IsArrowExists)
+                    {
+                        button.EndAbilityCast(target);
+                        return;
+                    }
+                    else
+                    {
+                        button.CancelAbilityCast();
+                    }
                 }
             }
             
@@ -110,7 +118,27 @@ namespace Input
             }
         }
         
+        private void ChooseAbility(SkillType skillType)
+        {
+            switch (skillType)
+            {
+                case SkillType.None:
+                    break;
+                case SkillType.Strike:
+                    _abilityButtons[0].StartAbilityCast();
+                    break;
+                case SkillType.Punch:
+                    _abilityButtons[1].StartAbilityCast();
+                    break;
+                case SkillType.Shield:
+                    _abilityButtons[2].StartAbilityCast();
+                    break;
+                case SkillType.Beam:
+                    _abilityButtons[3].StartAbilityCast();
+                    break;
+            }
+        }
+        
         public Vector2 MousePosition => _mousePosition;
-        public PlayerControlls InputActions => _inputActions;
     }
 }

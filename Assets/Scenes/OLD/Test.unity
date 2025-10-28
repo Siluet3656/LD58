@@ -493,6 +493,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _strike: {fileID: 11400000, guid: acec253d22f52da4dbbf5e6f3d234a18, type: 2}
+  _punch: {fileID: 11400000, guid: b4705dc97881fda42b8a594be68c0846, type: 2}
+  _shield: {fileID: 11400000, guid: 1e991c02a96fa174d9c466ac307a7a6b, type: 2}
+  _beam: {fileID: 11400000, guid: ad7b98dfd21cbbc408259e558fa7e84b, type: 2}
 --- !u!4 &373539408
 Transform:
   m_ObjectHideFlags: 0
@@ -1555,7 +1558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862635, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: _attackCooldownTime
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862635, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: _attackDamage
@@ -1693,7 +1696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 266820882849889828, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
       propertyPath: _defaultAttackCooldownTime
-      value: 1.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 266820882849889833, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1750,6 +1753,18 @@ PrefabInstance:
     - target: {fileID: 266820882849889839, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
       propertyPath: m_Name
       value: mainChar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1004650072013074025, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249428641539928496, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342309540402653437, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
@@ -2156,6 +2171,7 @@ MonoBehaviour:
   _handAnim: {fileID: 0}
   _anotherTutorialText: {fileID: 0}
   IsLBM: 0
+  IsCastStarted: 0
 --- !u!4 &2145297815
 Transform:
   m_ObjectHideFlags: 0

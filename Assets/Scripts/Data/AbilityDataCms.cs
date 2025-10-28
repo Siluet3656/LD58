@@ -12,6 +12,9 @@ namespace Data
         #endregion
         
         [SerializeField] private AbilityData _strike;
+        [SerializeField] private AbilityData _punch;
+        [SerializeField] private AbilityData _shield;
+        [SerializeField] private AbilityData _beam;
         
         
         private Dictionary<SkillType, AbilityData> _spellValues;
@@ -33,6 +36,9 @@ namespace Data
             _spellValues = new Dictionary<SkillType, AbilityData>
             {
                 { SkillType.Strike, _strike },
+                { SkillType.Punch, _punch },
+                { SkillType.Shield, _shield },
+                { SkillType.Beam, _beam },
             };
         }
         

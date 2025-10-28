@@ -10,6 +10,7 @@ namespace View
         private static readonly int Attack = Animator.StringToHash("Attack");
         private static readonly int Death = Animator.StringToHash("Death");
         [SerializeField] private Image _swingBar;
+        [SerializeField] private Image _stunSprite;
         [SerializeField] private Text _textDamage;
         
         [SerializeField] private Animator _animator;
@@ -46,6 +47,11 @@ namespace View
         public void StartAttackAnimation()
         {
             _animator.SetTrigger(Attack);
+        }
+
+        public void UpdateStunCircle(float currentStunProgress)
+        {
+            _stunSprite.fillAmount = currentStunProgress;
         }
     }
 }

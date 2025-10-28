@@ -51,6 +51,30 @@ namespace Input
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Skill 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""3a695507-5f82-4244-94d6-c10a903af88c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Skill 3"",
+                    ""type"": ""Button"",
+                    ""id"": ""c7cf7bf9-c01b-47ec-951d-28a922fa1413"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Skill 4"",
+                    ""type"": ""Button"",
+                    ""id"": ""6355f480-bdb5-470b-8290-3f7d65561b01"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -97,6 +121,39 @@ namespace Input
                     ""action"": ""Skill 1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48193f6f-aed2-439a-a125-abbb9ee52871"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skill 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d8e22f14-778e-45ea-8471-6233f1c4650a"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skill 3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f24a899-ae5a-4fa7-900f-d9ce06718e00"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skill 4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -109,6 +166,9 @@ namespace Input
             m_UI_RBM = m_UI.FindAction("RBM", throwIfNotFound: true);
             m_UI_MousePosition = m_UI.FindAction("MousePosition", throwIfNotFound: true);
             m_UI_Skill1 = m_UI.FindAction("Skill 1", throwIfNotFound: true);
+            m_UI_Skill2 = m_UI.FindAction("Skill 2", throwIfNotFound: true);
+            m_UI_Skill3 = m_UI.FindAction("Skill 3", throwIfNotFound: true);
+            m_UI_Skill4 = m_UI.FindAction("Skill 4", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -162,6 +222,9 @@ namespace Input
         private readonly InputAction m_UI_RBM;
         private readonly InputAction m_UI_MousePosition;
         private readonly InputAction m_UI_Skill1;
+        private readonly InputAction m_UI_Skill2;
+        private readonly InputAction m_UI_Skill3;
+        private readonly InputAction m_UI_Skill4;
         public struct UIActions
         {
             private @PlayerControlls m_Wrapper;
@@ -170,6 +233,9 @@ namespace Input
             public InputAction @RBM => m_Wrapper.m_UI_RBM;
             public InputAction @MousePosition => m_Wrapper.m_UI_MousePosition;
             public InputAction @Skill1 => m_Wrapper.m_UI_Skill1;
+            public InputAction @Skill2 => m_Wrapper.m_UI_Skill2;
+            public InputAction @Skill3 => m_Wrapper.m_UI_Skill3;
+            public InputAction @Skill4 => m_Wrapper.m_UI_Skill4;
             public InputActionMap Get() { return m_Wrapper.m_UI; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -191,6 +257,15 @@ namespace Input
                     @Skill1.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSkill1;
                     @Skill1.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSkill1;
                     @Skill1.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSkill1;
+                    @Skill2.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSkill2;
+                    @Skill2.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSkill2;
+                    @Skill2.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSkill2;
+                    @Skill3.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSkill3;
+                    @Skill3.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSkill3;
+                    @Skill3.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSkill3;
+                    @Skill4.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSkill4;
+                    @Skill4.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSkill4;
+                    @Skill4.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSkill4;
                 }
                 m_Wrapper.m_UIActionsCallbackInterface = instance;
                 if (instance != null)
@@ -207,6 +282,15 @@ namespace Input
                     @Skill1.started += instance.OnSkill1;
                     @Skill1.performed += instance.OnSkill1;
                     @Skill1.canceled += instance.OnSkill1;
+                    @Skill2.started += instance.OnSkill2;
+                    @Skill2.performed += instance.OnSkill2;
+                    @Skill2.canceled += instance.OnSkill2;
+                    @Skill3.started += instance.OnSkill3;
+                    @Skill3.performed += instance.OnSkill3;
+                    @Skill3.canceled += instance.OnSkill3;
+                    @Skill4.started += instance.OnSkill4;
+                    @Skill4.performed += instance.OnSkill4;
+                    @Skill4.canceled += instance.OnSkill4;
                 }
             }
         }
@@ -217,6 +301,9 @@ namespace Input
             void OnRBM(InputAction.CallbackContext context);
             void OnMousePosition(InputAction.CallbackContext context);
             void OnSkill1(InputAction.CallbackContext context);
+            void OnSkill2(InputAction.CallbackContext context);
+            void OnSkill3(InputAction.CallbackContext context);
+            void OnSkill4(InputAction.CallbackContext context);
         }
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using EntityResources;
-using Prepare;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -452,6 +451,9 @@ namespace Battle
         public bool IsFighting => _isFighting;
         public Action OnFighting;
         public bool IsLBM = false;
+        public bool DialogueSkipped => _dialogueSkiped;
+        public readonly List<Enemy> EnemiesOnScene = new List<Enemy>();
+        public bool IsCastStarted;
         
         public void StartFight()
         {
@@ -480,9 +482,5 @@ namespace Battle
             _dialogueSkiped = true;
             _tutorEnd = true;
         }
-
-        public bool DialogueSkipped => _dialogueSkiped;
-        
-        public readonly List<Enemy> EnemiesOnScene = new List<Enemy>();
     }
 }

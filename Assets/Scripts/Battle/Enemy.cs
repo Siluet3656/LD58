@@ -86,10 +86,21 @@ namespace Battle
             {
                 case SkillType.Strike:
                     if (G.SkillResources.HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(skillType).cost))
-                    {   _strikeSoundPlayer.PlayRandomSound();
+                    {   
+                        _strikeSoundPlayer.PlayRandomSound();
                         _myHp.TryToTakeDamage(AbilityDataCms.Instance.GetSpellConfig(skillType).damage, false);
                         G.SkillResources.ConsumeResources(AbilityDataCms.Instance.GetSpellConfig(skillType).cost);
                         _enemyAttack.Interrupt();
+                    }
+                    break;
+                case SkillType.Punch:
+                    if (G.SkillResources.HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(skillType).cost))
+                    {
+                        //Sound
+                        _myHp.TryToTakeDamage(AbilityDataCms.Instance.GetSpellConfig(skillType).damage, false);
+                        G.SkillResources.ConsumeResources(AbilityDataCms.Instance.GetSpellConfig(skillType).cost);
+                        _enemyAttack.Interrupt();
+                        _enemyAttack.ApplyStun();
                     }
                     break;
             }

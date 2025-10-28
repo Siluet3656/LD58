@@ -1844,7 +1844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f081e3099608143b785933e9953b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackCooldownTime: 1.5
+  _defaultAttackCooldownTime: 5
   _defaultAttackDamage: 2
   _randomSoundPlayer: {fileID: 193822718}
 --- !u!114 &266820882849889830
@@ -1859,10 +1859,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb7630685ad0d87479f11ff2ecf60f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxEnergy: 100
-  _energyRestoredPerRate: 20
+  _defaultMaxEnergy: 100
+  _defaultEnergyRestoredPerRate: 20
   _energyRestoreRate: 1.5
   _energyBar: {fileID: 315450615}
+  IsEnergyRegenerate: 0
 --- !u!114 &266820882849889835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1890,6 +1891,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _abilityButtons:
   - {fileID: 266820883172249135}
+  - {fileID: 8720711016871857496}
+  - {fileID: 4180809152824593559}
+  - {fileID: 685343874404157445}
 --- !u!114 &266820882849889832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2698,7 +2702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _arrowPrefab: {fileID: 3626748392202549310, guid: 93b5259e095cba64b8497e20c5a5e299, type: 3}
-  _skillType: 1
+  _skillType: 4
 --- !u!114 &2090083528671034900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3031,7 +3035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0be0f2bc3c27584a8d13cf416b0195a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skillType: 1
+  _skillType: 4
   _colorAvailable: {r: 0, g: 1, b: 0, a: 1}
   _colorUnavailable: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &3047145951534977238
@@ -3297,7 +3301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0be0f2bc3c27584a8d13cf416b0195a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skillType: 1
+  _skillType: 2
   _colorAvailable: {r: 0, g: 1, b: 0, a: 1}
   _colorUnavailable: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &5568427422461649674
@@ -8685,7 +8689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _arrowPrefab: {fileID: 3626748392202549310, guid: 93b5259e095cba64b8497e20c5a5e299, type: 3}
-  _skillType: 1
+  _skillType: 3
 --- !u!114 &7187229090258891005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8852,6 +8856,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0be0f2bc3c27584a8d13cf416b0195a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skillType: 1
+  _skillType: 3
   _colorAvailable: {r: 0, g: 1, b: 0, a: 1}
   _colorUnavailable: {r: 1, g: 0, b: 0, a: 1}
