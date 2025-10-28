@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Globalization;
+using Data;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using View;
@@ -15,7 +16,7 @@ namespace EntityResources
 
         [SerializeField] private GameObject _floatingTextPrefab;
         [SerializeField] private GameObject _damageParticles;
-        
+        [SerializeField] private float _shieldDuration;
         [SerializeField] private GameObject _soul;
         
         private RandomSoundPlayer _randomSoundPlayer;
@@ -28,6 +29,7 @@ namespace EntityResources
         private int _knightSouls;
         private int _followerSouls;
         private int _berserkSouls;
+        private bool _isShielded;
 
         private void Awake()
         {
@@ -37,6 +39,7 @@ namespace EntityResources
                 _knightSouls = 0;
                 _followerSouls = 0;
                 _berserkSouls = 0;
+                _isShielded = false;
             }
             else
             {
@@ -177,6 +180,31 @@ namespace EntityResources
             }
         }
         
+        private IEnumerator ShieldRoutine()
+        {
+            _isShielded = true;
+            
+            G.PlayerView.PlayShieldAnimation();
+            GetInvulnerable();
+            
+            Vector3 randPosition = new Vector3(transform.position.x + Random.Range(-2f, 2f),transform.position.y,transform.position.z);
+            DamagePopup.Instance.AddText("Invulnerable!!", randPosition, Color.cyan);
+            
+            float elapsed = 0f;
+            while (elapsed < _shieldDuration)
+            {
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+            
+            GetVulnerable();
+            
+            randPosition = new Vector3(transform.position.x + Random.Range(-2f, 2f),transform.position.y,transform.position.z);
+            DamagePopup.Instance.AddText("Vulnerable!!", randPosition, Color.cyan);
+            
+            _isShielded = false;
+        }
+        
         public event Action<float> OnHealthChanged;
         public event Action OnDeath;
         public event Action<float> OnAnyDamageReceived; 
@@ -254,6 +282,17 @@ namespace EntityResources
             if (berserkSouls < 0) return;
             
             _berserkSouls = berserkSouls;
+        }
+
+        public void ApplyShield()
+        {
+            if (_isShielded) return;
+            
+            if (G.SkillResources.HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(SkillType.Shield).cost) == false) return;
+            
+            StartCoroutine(ShieldRoutine());
+            
+            G.SkillResources.ConsumeResources(AbilityDataCms.Instance.GetSpellConfig(SkillType.Shield).cost);
         }
     }
 }

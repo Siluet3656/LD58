@@ -135,7 +135,7 @@ namespace Battle
         private IEnumerator StunRoutine()
         {
             _isStunned = true;
-            ResetAttackProgress(); // сбрасываем атаку и кулдаун
+            ResetAttackProgress();
 
             float elapsed = 0f;
             while (elapsed < _stunDuration)

@@ -1,5 +1,6 @@
 ﻿using System;
 using EntityResources;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,13 +18,16 @@ namespace View
         
         [SerializeField] private Animator _animator;
         [SerializeField] private AnimationEventCatcher _animationEventCatcher;
+        [SerializeField] private GameObject _shield;
         
         private Hp _myHp;
+        private AnimationEventCatcher _shieldAnimationEventCatcher;
 
         private void Awake()
         {
             G.PlayerView = this;
             _myHp = GetComponent<Hp>();
+            _shieldAnimationEventCatcher = _shield.GetComponent<AnimationEventCatcher>();
         }
 
         private void SetTrigger()
@@ -36,12 +40,14 @@ namespace View
             _animationEventCatcher.OnAttackEnd += SetTrigger;
             _animationEventCatcher.OnDeathAnimEnd += OnDeath;
             _myHp.OnDeath += () => _animator.SetTrigger(Death);
+            _shieldAnimationEventCatcher.OnShieldAnimEnd += StopShieldAnimation;
         }
 
         private void OnDisable()
         {
             _animationEventCatcher.OnAttackEnd -= SetTrigger;
             _animationEventCatcher.OnDeathAnimEnd -= OnDeath;
+            _shieldAnimationEventCatcher.OnShieldAnimEnd -= StopShieldAnimation;
         }
 
         private void OnDeath()
@@ -68,6 +74,16 @@ namespace View
         public void StartAttackAnimation()
         {
             _animator.SetTrigger(Attack);
+        }
+
+        public void PlayShieldAnimation()
+        {
+            _shield.SetActive(true);
+        }
+
+        public void StopShieldAnimation()
+        {
+            _shield.SetActive(false);
         }
     }
 }

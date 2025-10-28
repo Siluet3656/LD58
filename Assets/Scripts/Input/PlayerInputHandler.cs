@@ -120,6 +120,8 @@ namespace Input
         
         private void ChooseAbility(SkillType skillType)
         {
+            if (BattleRuler.Instance.IsFighting == false) return;
+            
             switch (skillType)
             {
                 case SkillType.None:
@@ -131,10 +133,10 @@ namespace Input
                     _abilityButtons[1].StartAbilityCast();
                     break;
                 case SkillType.Shield:
-                    _abilityButtons[2].StartAbilityCast();
+                    G.PlayerHp.ApplyShield();
                     break;
                 case SkillType.Beam:
-                    _abilityButtons[3].StartAbilityCast();
+                    
                     break;
             }
         }
