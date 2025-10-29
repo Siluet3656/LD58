@@ -28,6 +28,7 @@ namespace Battle
         private float _stunDuration = 3f;
 
         private float _restoreHpByAttack;
+        private float _stealEnergyByAttack;
         
         private void Awake()
         {
@@ -118,6 +119,7 @@ namespace Battle
             
             _playerHp.TryToTakeDamage(_attackDamage, false);
             _myHp.Heal(_restoreHpByAttack);
+            G.SkillResources.ConsumeResources((int)_stealEnergyByAttack);
             
             StartAttackCooldown();
         }
@@ -209,6 +211,11 @@ namespace Battle
         public void SetRestoreHpByAttackAmount(float amount)
         {
             _restoreHpByAttack = amount;
+        }
+
+        public void StealEnergyByAttackAmount(float amount)
+        {
+            _stealEnergyByAttack = amount;
         }
     }
 }

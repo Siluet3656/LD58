@@ -72,6 +72,7 @@ namespace Battle
         private void UpdateEnemyStatus()
         {
             _enemyAttack.SetRestoreHpByAttackAmount(_steady * 2f);
+            _enemyAttack.StealEnergyByAttackAmount(_greedy * 10f);
         }
 
         public bool IsTargetable { get; private set; }
