@@ -30,6 +30,7 @@ namespace EntityResources
         private int _followerSouls;
         private int _berserkSouls;
         private bool _isShielded;
+        private int _healAfterHealthDrop;
 
         private void Awake()
         {
@@ -44,6 +45,7 @@ namespace EntityResources
             else
             {
                 _randomSoundPlayer = GetComponent<RandomSoundPlayer>();
+                _healAfterHealthDrop = 0;
             }
         }
 
@@ -73,6 +75,15 @@ namespace EntityResources
                 else
                 {
                     G.PlayerAttack.SetUpDamageDoubling(false);
+                }
+            }
+
+            if (_healAfterHealthDrop > 0)
+            {
+                if (_currentHealth <= _maxHealth * 0.4f)
+                {
+                    Heal(_maxHealth);
+                    _healAfterHealthDrop--;
                 }
             }
         }
@@ -293,6 +304,11 @@ namespace EntityResources
             StartCoroutine(ShieldRoutine());
             
             G.SkillResources.ConsumeResources(AbilityDataCms.Instance.GetSpellConfig(SkillType.Shield).cost);
+        }
+
+        public void SetHealAfterHealthDrop(int amount)
+        {
+            _healAfterHealthDrop = amount;
         }
     }
 }
