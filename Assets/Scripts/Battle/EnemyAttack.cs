@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using EntityResources;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using View;
 
@@ -10,7 +11,7 @@ namespace Battle
     public class EnemyAttack : MonoBehaviour
     {
         [SerializeField] private float _attackCooldownTime = 3f;
-        [SerializeField] private float _attackDamage = 1f;
+        [SerializeField] private float _defaultDamage = 1f;
         [SerializeField] private RandomSoundPlayer _randomSoundPlayer;
         [SerializeField] private Image _interruptSprite;
         
@@ -29,6 +30,9 @@ namespace Battle
 
         private float _restoreHpByAttack;
         private float _stealEnergyByAttack;
+
+        private float _attackDamage;
+        private int _furyTraits;
         
         private void Awake()
         {
@@ -36,6 +40,9 @@ namespace Battle
             _myHp = GetComponent<Hp>();
             
             _isReadyToAttack = false;
+            
+            _attackDamage = _defaultDamage;
+            _furyTraits = 0;
         }
 
         private void Start()
@@ -50,6 +57,18 @@ namespace Battle
             {
                 StopAllCoroutines();
                 return;
+            }
+
+            if (_furyTraits > 0)
+            {
+                if (_myHp.CurrentHealth <= _myHp.MaxHealth * 0.5f)
+                {
+                    SetDamage(_defaultDamage * 2f * _furyTraits);
+                }
+                else
+                {
+                    SetDamage(_defaultDamage);
+                }
             }
             
             TryToPerformAttack();
@@ -166,6 +185,8 @@ namespace Battle
             }
         }
 
+        public float DefaultDamage => _defaultDamage;
+
         public void Interrupt()
         {
             _elapsedTime = 0f;
@@ -216,6 +237,17 @@ namespace Battle
         public void StealEnergyByAttackAmount(float amount)
         {
             _stealEnergyByAttack = amount;
+        }
+
+        public void SetDamage(float amount)
+        {
+            _attackDamage = amount;
+            _myView.UpdateDamage(_attackDamage);
+        }
+
+        public void SetFury(int amount)
+        {
+            _furyTraits = amount;
         }
     }
 }

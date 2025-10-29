@@ -85,6 +85,8 @@ namespace Battle
                 _myHp.SetRegenerate(true);
                 _myHp.SetRegenerateAmount((int)(_myHp.MaxHealth * 0.05f));
             }
+
+            _enemyAttack.SetFury(_fury);
         }
 
         public bool IsTargetable { get; private set; }
