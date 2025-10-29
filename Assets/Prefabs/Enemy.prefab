@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Victor
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 137edcbbd8c81c84e827b6a8b82cf223, type: 2}
+  m_sharedMaterial: {fileID: -3575996941641997046, guid: 137edcbbd8c81c84e827b6a8b82cf223, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5443,6 +5443,7 @@ MonoBehaviour:
   _defaultMaxHealth: 20
   _floatingTextPrefab: {fileID: 2715349566576225611, guid: e6eb32b165186e1479191409f19a0b80, type: 3}
   _damageParticles: {fileID: 1411055456}
+  _shieldDuration: 0
   _soul: {fileID: 7080890843211138509, guid: b5ddf179ba54992478b962d94ff97fbe, type: 3}
 --- !u!114 &4062323349122862635
 MonoBehaviour:
@@ -5457,7 +5458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackCooldownTime: 2
-  _attackDamage: 1
+  _defaultDamage: 1
   _randomSoundPlayer: {fileID: 297432357}
   _interruptSprite: {fileID: 1115265348305811471}
 --- !u!114 &4062323349122862631
@@ -5508,6 +5509,17 @@ MonoBehaviour:
   _spawnPoint: {fileID: 0}
   _randomSoundPlayer: {fileID: 9117308464112057382}
   _strikeSoundPlayer: {fileID: 7882529653921982154}
+  _steady: 0
+  _greedy: 0
+  _hopeful: 0
+  _fury: 0
+  _hateful: 0
+  _leader: 0
+  _wellTrained: 0
+  _scientist: 0
+  _pure: 0
+  _defiled: 0
+  _artificial: 0
   IsNeedToGo: 0
 --- !u!61 &4062323349122862633
 BoxCollider2D:
@@ -6542,7 +6554,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: fb8eaf3ae76385d42ab65b449c8f48aa, type: 3}
+    m_Font: {fileID: 12800000, guid: b2ca34a06cba4f34aa929858718fb9f9, type: 3}
     m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
@@ -6915,7 +6927,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: fb8eaf3ae76385d42ab65b449c8f48aa, type: 3}
+    m_Font: {fileID: 12800000, guid: b2ca34a06cba4f34aa929858718fb9f9, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0

@@ -292,44 +292,14 @@ namespace Battle
         {
             yield return new WaitForSeconds(2f);
             IsLBM = false;
-
-            //ShowDialog("So… you’re the one who holds the Pure Soul.", true);
+            
+            ShowDialog("It seems I've reached the city's entrance.", "Guest from Afar", VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            //ShowDialog("Hold? No. I am the Pure Soul. There’s nothing left to hold onto.", false);
-            
-            yield return new WaitForSeconds(0.5f);
-            yield return new WaitUntil(() => IsLBM);
-            IsLBM = false;
-            
-            //ShowDialog("Then you’ve lost what it means to be human.", true);
-            
-            yield return new WaitForSeconds(0.5f);
-            yield return new WaitUntil(() => IsLBM);
-            IsLBM = false;
-            
-            //ShowDialog("Human? Humanity is a cage of flesh and fear. I broke it long ago.", false);
-            
-            yield return new WaitForSeconds(0.5f);
-            yield return new WaitUntil(() => IsLBM);
-            IsLBM = false;
-            
-            //ShowDialog("So, what is the Pure Soul?", true);
-            
-            yield return new WaitForSeconds(0.5f);
-            yield return new WaitUntil(() => IsLBM);
-            IsLBM = false;
-            
-            //ShowDialog("Emptiness. No pain. No doubt. No desire. Can you imagine how peaceful it feels?", false);
-            
-            yield return new WaitForSeconds(0.5f);
-            yield return new WaitUntil(() => IsLBM);
-            IsLBM = false;
-            
-            //ShowDialog("Worth it — just like I thought.", true);
+            ShowDialog("Countless souls, yet none shine with truth.", "Guest from Afar", VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);

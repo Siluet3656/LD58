@@ -325,7 +325,7 @@ MonoBehaviour:
     Originally created for Ludum Dare 58 within
     48 hours.'
   thirdScreenText: PURE SOUL
-  fontAsset: {fileID: 11400000, guid: d44c1b05592294d469b8c21852a0af0a, type: 2}
+  fontAsset: {fileID: 11400000, guid: 137edcbbd8c81c84e827b6a8b82cf223, type: 2}
   fontSize: 72
   fontSpacing: 0.1
   bg: {fileID: 0}
