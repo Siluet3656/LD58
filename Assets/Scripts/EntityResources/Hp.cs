@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Globalization;
+using Battle;
 using Data;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -31,9 +32,15 @@ namespace EntityResources
         private int _berserkSouls;
         private bool _isShielded;
         private int _healAfterHealthDrop;
+        private bool _isRegenerating;
+        private bool _isRegenerated;
+        private float _regenerationTimer = 1f;
+        private float _regenerationAmount = 3f;
 
         private void Awake()
         {
+            _isRegenerating = false;
+            
             if (CompareTag("Player"))
             {
                 G.PlayerHp = this;
@@ -46,6 +53,7 @@ namespace EntityResources
             {
                 _randomSoundPlayer = GetComponent<RandomSoundPlayer>();
                 _healAfterHealthDrop = 0;
+                _isRegenerated = false;
             }
         }
 
@@ -57,6 +65,8 @@ namespace EntityResources
 
         private void Update()
         {
+            if (BattleRuler.Instance.IsFighting == false) return;
+            
             if (_followerSouls > 0)
             {
                 if (_currentHealth <= _maxHealth * 0.4f)
@@ -84,6 +94,14 @@ namespace EntityResources
                 {
                     Heal(_maxHealth);
                     _healAfterHealthDrop--;
+                }
+            }
+
+            if (_isRegenerating)
+            {
+                if (_isRegenerated == false)
+                {
+                    StartCoroutine(RegenerateRoutine());
                 }
             }
         }
@@ -215,7 +233,23 @@ namespace EntityResources
             
             _isShielded = false;
         }
-        
+
+        private IEnumerator RegenerateRoutine()
+        {
+            _isRegenerated = true;
+            
+            float elapsed = 0f;
+            while (elapsed < _regenerationTimer)
+            {
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+            
+            Heal(_regenerationAmount);
+            
+            _isRegenerated = false;
+        }
+
         public event Action<float> OnHealthChanged;
         public event Action OnDeath;
         public event Action<float> OnAnyDamageReceived; 
@@ -309,6 +343,11 @@ namespace EntityResources
         public void SetHealAfterHealthDrop(int amount)
         {
             _healAfterHealthDrop = amount;
+        }
+
+        public void SetRegenerate(bool regenerate)
+        {
+            _isRegenerating = regenerate;
         }
     }
 }

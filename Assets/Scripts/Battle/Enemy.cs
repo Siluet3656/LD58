@@ -74,6 +74,10 @@ namespace Battle
             _enemyAttack.SetRestoreHpByAttackAmount(_steady * 2f);
             _enemyAttack.StealEnergyByAttackAmount(_greedy * 10f);
             _myHp.SetHealAfterHealthDrop(_hopeful);
+            if (_scientist > 0)
+            {
+                _myHp.SetRegenerate(true);
+            }
         }
 
         public bool IsTargetable { get; private set; }
