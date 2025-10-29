@@ -11,7 +11,7 @@ namespace Battle
 {
     public class BattleRuler : MonoBehaviour
     {
-        [SerializeField] private bool _isReturnToCity;
+        //[SerializeField] private bool _isReturnToCity;
         [SerializeField] private GameObject _victoryPanel;
         [SerializeField] private GameObject _defeatPanel;
         [SerializeField] private GameObject _floatingTextPrefab;
@@ -262,7 +262,7 @@ namespace Battle
             _tutorEnd = true;
         }
 
-        private IEnumerator StartDialogue1()
+        private IEnumerator StartDialogueAct0Fight4()
         {
             yield return new WaitForSeconds(2f);
             IsLBM = false;
@@ -285,10 +285,11 @@ namespace Battle
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
+            GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
             G.SmoothSlideY.Show();
         }
         
-        private IEnumerator StartDialogue2()
+        private IEnumerator StartDialogueAct1Fight5()
         {
             yield return new WaitForSeconds(2f);
             IsLBM = false;
@@ -305,9 +306,54 @@ namespace Battle
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
+            ShowDialog("I must continue. Somewhere among them lies the Pure Soul.", "Guest from Afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            _enemies[0].IsNeedToGo = true;
+            
+            ShowDialog("Halt, intruder!! Don't think your crimes went unnoticed!!", "Victoria", VoiceType.Woman);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Her soul... it resonates differently from the rest.", "Guest from Afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Stop mumbling like I can't hear you!!", "Victoria", VoiceType.Woman);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Guards! We have a situation here!!", "Victoria", VoiceType.Woman);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            _enemies[1].IsNeedToGo = true;
+            _enemies[2].IsNeedToGo = true;
+            
+            GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
             G.SmoothSlideY.Show();
         }
-        
+
+        private IEnumerator StartDialogueAct1Fight6()
+        {
+            yield return new WaitForSeconds(2f);
+            IsLBM = false;
+            
+            GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
+            G.SmoothSlideY.Show();
+        }
+
         private void Start()
         {
             switch (_sceneID)
@@ -322,10 +368,10 @@ namespace Battle
                     StartCoroutine(StartGameTutorial3());
                     break;
                 case 4:
-                    StartCoroutine(StartDialogue1());
+                    StartCoroutine(StartDialogueAct0Fight4());
                     break;
                 case 5:
-                    StartCoroutine(StartDialogue2());
+                    StartCoroutine(StartDialogueAct1Fight5());
                     break;
                 default:
                     G.SmoothSlideY.Show();
@@ -364,6 +410,7 @@ namespace Battle
             foreach (var enemy in EnemiesOnScene)
             {
                 enemy.GetComponent<Hp>().OnDeath += CheckVictory;
+                enemy.GetComponent<Enemy>().OnRetreat += CheckVictory;
             }
             
             _player.GetComponent<Hp>().OnDeath += Defeat;
@@ -393,6 +440,7 @@ namespace Battle
         {
             _isFighting = false;
             _defeatPanel.SetActive(true);
+            _player.GetComponent<PlayerTargeting>().ClearArrow();
         }
         
         private void Victory()
@@ -446,6 +494,11 @@ namespace Battle
         public void DialogueSkip()
         {
             StopAllCoroutines();
+
+            foreach (Enemy enemy in _enemies)
+            {
+                enemy.IsNeedToGo = true;
+            }
             
             G.SmoothSlideY.Show();
 

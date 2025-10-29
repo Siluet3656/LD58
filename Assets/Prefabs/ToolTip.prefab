@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 5696671074648522385}
   - component: {fileID: 5696671074648522399}
   - component: {fileID: 5696671074648522398}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: ToolTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -668,6 +668,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _strike: {fileID: 11400000, guid: acec253d22f52da4dbbf5e6f3d234a18, type: 2}
+  _punch: {fileID: 0}
+  _shield: {fileID: 0}
+  _beam: {fileID: 0}
 --- !u!4 &373539408
 Transform:
   m_ObjectHideFlags: 0
@@ -698,6 +701,17 @@ MonoBehaviour:
   _poorMan: {fileID: 11400000, guid: 7495692b85904c243b228fe0e765fe0a, type: 2}
   _bandit: {fileID: 0}
   _exiled: {fileID: 0}
+  _knight: {fileID: 0}
+  _merchant: {fileID: 0}
+  _follower: {fileID: 0}
+  _berserk: {fileID: 0}
+  _leader: {fileID: 0}
+  _soldier: {fileID: 0}
+  _suspectDefiled: {fileID: 0}
+  _suspectPure: {fileID: 0}
+  _pureSoul: {fileID: 0}
+  _scientist: {fileID: 0}
+  _artificialSoul: {fileID: 0}
 --- !u!1001 &415415292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2480,8 +2494,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8396052897736060238, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
       propertyPath: _abilityDescription
-      value: "Deals damage and inflicts Stun. \nStun: interrupts and resets target's
-        auto-attack progress. \nCost: 60 energy."
+      value: "Deals damage and interrupts the enemy\u2019s attack.\r\nInterrupt:
+        Resets the target\u2019s auto-attack progress.\r\nCost: 60 Energy"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
@@ -2996,6 +3010,7 @@ MonoBehaviour:
   _handAnim: {fileID: 677010788}
   _anotherTutorialText: {fileID: 0}
   IsLBM: 0
+  IsCastStarted: 0
 --- !u!4 &2145297815
 Transform:
   m_ObjectHideFlags: 0

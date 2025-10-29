@@ -710,6 +710,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _strike: {fileID: 11400000, guid: acec253d22f52da4dbbf5e6f3d234a18, type: 2}
+  _punch: {fileID: 0}
+  _shield: {fileID: 0}
+  _beam: {fileID: 0}
 --- !u!4 &373539408
 Transform:
   m_ObjectHideFlags: 0
@@ -740,6 +743,17 @@ MonoBehaviour:
   _poorMan: {fileID: 11400000, guid: 7495692b85904c243b228fe0e765fe0a, type: 2}
   _bandit: {fileID: 0}
   _exiled: {fileID: 0}
+  _knight: {fileID: 0}
+  _merchant: {fileID: 0}
+  _follower: {fileID: 0}
+  _berserk: {fileID: 0}
+  _leader: {fileID: 0}
+  _soldier: {fileID: 0}
+  _suspectDefiled: {fileID: 0}
+  _suspectPure: {fileID: 0}
+  _pureSoul: {fileID: 0}
+  _scientist: {fileID: 0}
+  _artificialSoul: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3290,8 +3304,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Soul of the Bandit
-  _abilityDescription: "Auto-attacks grant 10 Energy. \nCost: 2"
+  _title: Soul of bandit
+  _abilityDescription: "Auto-attacks grant 10 Energy. \r\nCost: 2\r\nA soul of a
+    true anarchist, untamed and reckless.\r\nPurity Level: 2.43%"
 --- !u!1001 &2040810207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3701,6 +3716,7 @@ MonoBehaviour:
   _handAnim: {fileID: 643455756}
   _anotherTutorialText: {fileID: 1948708954}
   IsLBM: 0
+  IsCastStarted: 0
 --- !u!4 &2145297815
 Transform:
   m_ObjectHideFlags: 0

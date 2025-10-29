@@ -1847,7 +1847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f081e3099608143b785933e9953b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultAttackCooldownTime: 5
+  _defaultAttackCooldownTime: 1.5
   _defaultAttackDamage: 2
   _randomSoundPlayer: {fileID: 193822718}
   _soul: {fileID: 7080890843211138509, guid: b5ddf179ba54992478b962d94ff97fbe, type: 3}

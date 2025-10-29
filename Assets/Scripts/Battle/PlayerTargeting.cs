@@ -26,7 +26,14 @@ namespace Battle
             {
                 enemy.GetComponent<Enemy>().OnTargetDie += AutoTarget;
                 enemy.GetComponent<Hp>().OnDeath += () => _arrowToTarget.SetupArrow(transform, null);
+                enemy.GetComponent<Enemy>().OnRetreat += () => _arrowToTarget.SetupArrow(transform, null);
+                enemy.GetComponent<Enemy>().OnRetreat += AutoTarget;
             }
+        }
+
+        private void OnDestroy()
+        {
+            G.Enemies.Clear();
         }
 
         private void SetTarget(ITargetable target)
@@ -88,6 +95,11 @@ namespace Battle
             {
                 SetTarget(target);
             }
+        }
+
+        public void ClearArrow()
+        {
+            _arrowToTarget.SetupArrow(transform, null);
         }
     }
 }

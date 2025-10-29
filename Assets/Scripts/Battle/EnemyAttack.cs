@@ -36,12 +36,15 @@ namespace Battle
 
         private float _healthOnHitConsumed;
         
+        private bool _isCanAttack;
+        
         private void Awake()
         {
             _myView = GetComponent<EnemyView>();
             _myHp = GetComponent<Hp>();
             
             _isReadyToAttack = false;
+            _isCanAttack = true;
             
             _attackDamage = _defaultDamage;
             _furyTraits = 0;
@@ -73,8 +76,11 @@ namespace Battle
                     SetDamage(_defaultDamage);
                 }
             }
-            
-            TryToPerformAttack();
+
+            if (_isCanAttack)
+            {
+                TryToPerformAttack();
+            }
         }
 
         private void OnEnable()
@@ -85,6 +91,7 @@ namespace Battle
             _myView.UpdateAttackSwingBar(_currentSwipeProgress);
 
             _myHp.OnAnyDamageReceived += OnTakeDamage;
+            GetComponent<Enemy>().OnRetreat += () => _isCanAttack = false;
         }
 
         private void OnDisable()

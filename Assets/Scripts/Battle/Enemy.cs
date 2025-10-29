@@ -2,6 +2,7 @@
 using UnityEngine;
 using Data;
 using EntityResources;
+using View;
 
 namespace Battle
 {
@@ -25,6 +26,11 @@ namespace Battle
         [SerializeField] private int _defiled;
         [SerializeField] private int _artificial;
         
+        [Header("Retreat")]
+        [SerializeField] private bool _retreat;
+        [SerializeField, Range(0f,1f)] private float _retreatHealthPercentage;
+        [SerializeField] private SpriteRenderer _spriteRenderer;
+        
         private Hp _myHp;
         private EnemyAttack _enemyAttack;
 
@@ -32,6 +38,7 @@ namespace Battle
         private bool isPlaying = false;
         private int _merchantSouls;
         private int _followerSouls;
+        private bool _isRetreatStarted = false;
         
         private void Awake()
         {
@@ -55,7 +62,7 @@ namespace Battle
             if (IsNeedToGo)
             {
                 isPlaying = true;
-                float step = 10f * Time.deltaTime;
+                float step = 15f * Time.deltaTime;
                 transform.position = Vector3.MoveTowards(transform.position, _spawnPoint.transform.position, step);
             }
 
@@ -68,6 +75,25 @@ namespace Battle
             if (BattleRuler.Instance.IsFighting == false)
             {
                 UpdateEnemyStatus();
+            }
+
+            if (_retreat && _myHp.CurrentHealth <= _myHp.MaxHealth * _retreatHealthPercentage)
+            {
+                if (_isRetreatStarted == false)
+                {
+                    DamagePopup.Instance.AddText("Retreat!!",_spawnPoint.transform.position, Color.white);
+                    _spriteRenderer.flipX = true;
+                    _myHp.GetInvulnerable();
+                    OnRetreat?.Invoke();
+                    G.Enemies.Remove(this);
+                    IsNeedToGo  = false;
+                    _isRetreatStarted = true;
+                }
+                
+                float step = 5f * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(_spawnPoint.transform.position.x + 500f, 
+                    _spawnPoint.transform.position.y,
+                    _spawnPoint.transform.position.z), step);
             }
         }
 
@@ -119,6 +145,7 @@ namespace Battle
 
         public GameObject GameObject { get; }
         public event Action OnTargetDie;
+        public event Action OnRetreat;
 
         public void ApplyAbility(SkillType skillType)
         {
