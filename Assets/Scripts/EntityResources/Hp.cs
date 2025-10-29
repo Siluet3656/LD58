@@ -349,5 +349,10 @@ namespace EntityResources
         {
             _isRegenerating = regenerate;
         }
+
+        public void SetRegenerateAmount(int amount)
+        {
+            _regenerationAmount = amount;
+        }
     }
 }
