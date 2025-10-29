@@ -158,6 +158,7 @@ namespace Prepare
             foreach (Enemy enemy in BattleRuler.Instance.EnemiesOnScene)
             {
                 enemy.SetMerchantSouls(merchantSouls);
+                enemy.SetFollowerSouls(followerSouls);
             }
 
             G.PlayerHp.SetFollowerSouls(followerSouls);

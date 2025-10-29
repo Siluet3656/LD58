@@ -31,6 +31,7 @@ namespace Battle
         public bool IsNeedToGo = false;
         private bool isPlaying = false;
         private int _merchantSouls;
+        private int _followerSouls;
         
         private void Awake()
         {
@@ -39,6 +40,7 @@ namespace Battle
             _enemyAttack = GetComponent<EnemyAttack>();
             IsTargetable = true;
             _merchantSouls = 0;
+            _followerSouls = 0;
         }
 
         private void OnDisable()
@@ -87,6 +89,11 @@ namespace Battle
             }
 
             _enemyAttack.SetFury(_fury);
+
+            if (_hateful > 0 && _followerSouls > 0)
+            {
+                _myHp.LoseHpAtStart(true);
+            }
         }
 
         public bool IsTargetable { get; private set; }
@@ -147,6 +154,11 @@ namespace Battle
         public void SetMerchantSouls(int amount)
         {
             _merchantSouls = amount;
+        }
+
+        public void SetFollowerSouls(int amount)
+        {
+            _followerSouls = amount;
         }
     }
 }

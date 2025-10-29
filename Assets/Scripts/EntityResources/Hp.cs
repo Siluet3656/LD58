@@ -36,10 +36,12 @@ namespace EntityResources
         private bool _isRegenerated;
         private float _regenerationTimer = 1f;
         private float _regenerationAmount = 3f;
+        private bool _isLosingHealthAtStart;
 
         private void Awake()
         {
             _isRegenerating = false;
+            _isLosingHealthAtStart = false;
             
             if (CompareTag("Player"))
             {
@@ -54,6 +56,24 @@ namespace EntityResources
                 _randomSoundPlayer = GetComponent<RandomSoundPlayer>();
                 _healAfterHealthDrop = 0;
                 _isRegenerated = false;
+            }
+        }
+
+        private void OnEnable()
+        {
+            BattleRuler.Instance.OnFighting += TryToLoseHealthAtStart;
+        }
+
+        private void OnDisable()
+        {
+            BattleRuler.Instance.OnFighting -= TryToLoseHealthAtStart;
+        }
+        
+        private void TryToLoseHealthAtStart()
+        {
+            if (_isLosingHealthAtStart)
+            {
+                TryToTakeDamage(_maxHealth * 0.5f, false);
             }
         }
 
@@ -353,6 +373,11 @@ namespace EntityResources
         public void SetRegenerateAmount(int amount)
         {
             _regenerationAmount = amount;
+        }
+
+        public void LoseHpAtStart(bool b)
+        {
+            _isLosingHealthAtStart = b;
         }
     }
 }
