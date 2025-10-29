@@ -33,6 +33,8 @@ namespace Battle
 
         private float _attackDamage;
         private int _furyTraits;
+
+        private float _healthOnHitConsumed;
         
         private void Awake()
         {
@@ -43,6 +45,7 @@ namespace Battle
             
             _attackDamage = _defaultDamage;
             _furyTraits = 0;
+            _healthOnHitConsumed = 0;
         }
 
         private void Start()
@@ -139,6 +142,7 @@ namespace Battle
             _playerHp.TryToTakeDamage(_attackDamage, false);
             _myHp.Heal(_restoreHpByAttack);
             G.SkillResources.ConsumeResources((int)_stealEnergyByAttack);
+            _myHp.TryToTakeDamage(_healthOnHitConsumed,false);
             
             StartAttackCooldown();
         }
@@ -248,6 +252,11 @@ namespace Battle
         public void SetFury(int amount)
         {
             _furyTraits = amount;
+        }
+
+        public void SetHealthOnHitConsumed(float amount)
+        {
+            _healthOnHitConsumed = amount;
         }
     }
 }

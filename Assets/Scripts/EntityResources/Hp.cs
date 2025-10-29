@@ -37,11 +37,13 @@ namespace EntityResources
         private float _regenerationTimer = 1f;
         private float _regenerationAmount = 3f;
         private bool _isLosingHealthAtStart;
+        private bool _isLosingInvulnerablityWhenAllAliesDead;
 
         private void Awake()
         {
             _isRegenerating = false;
             _isLosingHealthAtStart = false;
+            _isLosingInvulnerablityWhenAllAliesDead = false;
             
             if (CompareTag("Player"))
             {
@@ -122,6 +124,14 @@ namespace EntityResources
                 if (_isRegenerated == false)
                 {
                     StartCoroutine(RegenerateRoutine());
+                }
+            }
+
+            if (_isLosingInvulnerablityWhenAllAliesDead)
+            {
+                if (G.Enemies.Count == 1)
+                {
+                    GetVulnerable();
                 }
             }
         }
@@ -288,6 +298,7 @@ namespace EntityResources
         public void SetMaxHealth(int health)
         {
             _maxHealth = health;
+            _currentHealth = health;
             OnHealthChanged?.Invoke(_currentHealth);
         }
 
@@ -378,6 +389,11 @@ namespace EntityResources
         public void LoseHpAtStart(bool b)
         {
             _isLosingHealthAtStart = b;
+        }
+
+        public void LoseInvulerabiltyWhenAllAliesDead()
+        {
+            _isLosingInvulnerablityWhenAllAliesDead = true;
         }
     }
 }

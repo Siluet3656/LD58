@@ -94,6 +94,15 @@ namespace Battle
             {
                 _myHp.LoseHpAtStart(true);
             }
+            
+            _enemyAttack.SetHealthOnHitConsumed(_defiled * 2f);
+
+            if (_artificial > 0)
+            {
+                _myHp.SetMaxHealth(1);
+                _myHp.GetInvulnerable();
+                _myHp.LoseInvulerabiltyWhenAllAliesDead();
+            }
         }
 
         public bool IsTargetable { get; private set; }
