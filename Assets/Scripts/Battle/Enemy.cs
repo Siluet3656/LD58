@@ -11,6 +11,19 @@ namespace Battle
         [SerializeField] private GameObject _spawnPoint;
         [SerializeField] private RandomSoundPlayer _randomSoundPlayer;
         [SerializeField] private RandomSoundPlayer _strikeSoundPlayer;
+
+        [Header("Traits")] 
+        [SerializeField] private int _steady;
+        [SerializeField] private int _greedy;
+        [SerializeField] private int _hopeful;
+        [SerializeField] private int _fury;
+        [SerializeField] private int _hateful;
+        [SerializeField] private int _leader;
+        [SerializeField] private int _wellTrained;
+        [SerializeField] private int _scientist;
+        [SerializeField] private int _pure;
+        [SerializeField] private int _defiled;
+        [SerializeField] private int _artificial;
         
         private Hp _myHp;
         private EnemyAttack _enemyAttack;
@@ -49,6 +62,16 @@ namespace Battle
                 isPlaying = false;
                 _randomSoundPlayer.PlayRandomSound();
             }
+
+            if (BattleRuler.Instance.IsFighting == false)
+            {
+                UpdateEnemyStatus();
+            }
+        }
+
+        private void UpdateEnemyStatus()
+        {
+            _enemyAttack.SetRestoreHpByAttackAmount(_steady * 2f);
         }
 
         public bool IsTargetable { get; private set; }

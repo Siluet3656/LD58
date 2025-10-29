@@ -26,6 +26,8 @@ namespace Battle
         private Coroutine _cooldownCoroutine;
         
         private float _stunDuration = 3f;
+
+        private float _restoreHpByAttack;
         
         private void Awake()
         {
@@ -115,6 +117,7 @@ namespace Battle
             _randomSoundPlayer.PlayRandomSound();
             
             _playerHp.TryToTakeDamage(_attackDamage, false);
+            _myHp.Heal(_restoreHpByAttack);
             
             StartAttackCooldown();
         }
@@ -201,6 +204,11 @@ namespace Battle
                 
             _myView.UpdateStunCircle(1);
             _stunCoroutine = StartCoroutine(StunRoutine());
+        }
+
+        public void SetRestoreHpByAttackAmount(float amount)
+        {
+            _restoreHpByAttack = amount;
         }
     }
 }
