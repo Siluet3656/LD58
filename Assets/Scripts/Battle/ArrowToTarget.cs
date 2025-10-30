@@ -46,5 +46,15 @@ namespace Battle
             _source = source;
             _target = target;
         }
+
+        public void Clear()
+        {
+            _source = null;
+            _target = null;
+            
+            _spriteRenderer.enabled = false;
+            
+            gameObject.SetActive(false);
+        }
     }
 }

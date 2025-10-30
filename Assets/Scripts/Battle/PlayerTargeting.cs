@@ -99,7 +99,7 @@ namespace Battle
 
         public void ClearArrow()
         {
-            _arrowToTarget.SetupArrow(transform, null);
+            _arrowToTarget.Clear();
         }
     }
 }

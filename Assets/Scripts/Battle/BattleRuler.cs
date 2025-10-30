@@ -33,6 +33,7 @@ namespace Battle
         private int _defietedEnemies = 0;
         private bool _dialogueSkiped = false;
         private bool _tutorEnd = false;
+        private bool _afterbattleend = false;
         
         private const string TutorialText1 = "Your health. If it reaches 0, your journey ends.";
         private const string TutorialText2 = "Your auto-attack power. \nAuto-attacks are performed automatically every 1.5 seconds.";
@@ -345,15 +346,85 @@ namespace Battle
             G.SmoothSlideY.Show();
         }
 
+        private IEnumerator Act1Fight5AfterBattle()
+        {
+            ShowDialog("Hostiles neutralized. Her signal is fading...", "Guest from afar", VoiceType.Alien);
+            yield return new WaitForSeconds(2f);
+            IsLBM = false;
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("She's retreating... I must find her again.", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+
+            _afterbattleend = true;
+        }
+        
         private IEnumerator StartDialogueAct1Fight6()
         {
             yield return new WaitForSeconds(2f);
+            IsLBM = false;
+            
+            ShowDialog("Welcome, stranger! Looking to buy? We trade in everything — even souls.", "Richard", VoiceType.Man);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Sell, buy, bargain — same thing. I have anything you need if you have enough money of course.", "Richard", VoiceType.Man);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("I take what I need. I do not pay.", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
             GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
             G.SmoothSlideY.Show();
         }
 
+        private IEnumerator StartDialogueAct1Fight7()
+        {
+            yield return new WaitForSeconds(2f);
+            IsLBM = false;
+            
+            ShowDialog("I can sense the Pure Soul near you. You're hiding it.", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("You defile the sacred with your greed! The Pure Soul will never be yours!", "Ashley", VoiceType.Woman);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("You're cursed! Show no mercy!", "Anna", VoiceType.Woman);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("It blasphemes! Offer your souls for purification!", "Andrey", VoiceType.Man);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
+            G.SmoothSlideY.Show();
+        }
+        
         private void Start()
         {
             switch (_sceneID)
@@ -372,6 +443,12 @@ namespace Battle
                     break;
                 case 5:
                     StartCoroutine(StartDialogueAct1Fight5());
+                    break;
+                case 6:
+                    StartCoroutine(StartDialogueAct1Fight6());
+                    break;
+                case 7:
+                    StartCoroutine(StartDialogueAct1Fight7());
                     break;
                 default:
                     G.SmoothSlideY.Show();
@@ -402,6 +479,11 @@ namespace Battle
                 {
                     _targetSwitch.SetActive(true);
                 }
+            }
+
+            if (_afterbattleend)
+            {
+                Victory();
             }
         }
 
@@ -461,7 +543,17 @@ namespace Battle
 
             if (_defietedEnemies >= EnemiesOnScene.Count)
             {
-                Victory();
+                if (_sceneID == 5)
+                {
+                    _isFighting = false;
+                    G.Player.GetComponent<PlayerTargeting>().ClearArrow();
+                    StartCoroutine(Act1Fight5AfterBattle());
+                    _dialogueSkiped = false;
+                }
+                else
+                {
+                    Victory();
+                }
             }
         }
         

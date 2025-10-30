@@ -61,9 +61,12 @@ namespace Battle
         {
             if (IsNeedToGo)
             {
-                isPlaying = true;
-                float step = 15f * Time.deltaTime;
-                transform.position = Vector3.MoveTowards(transform.position, _spawnPoint.transform.position, step);
+                if (_spawnPoint != null)
+                {
+                    isPlaying = true;
+                    float step = 15f * Time.deltaTime;
+                    transform.position = Vector3.MoveTowards(transform.position, _spawnPoint.transform.position, step);
+                }
             }
 
             if (isPlaying && IsNeedToGo == false)
