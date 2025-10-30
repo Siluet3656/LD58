@@ -479,6 +479,39 @@ namespace Battle
             G.SmoothSlideY.Show();
         }
 
+        private IEnumerator StartDialogueAct1Fight9()
+        {
+            yield return new WaitForSeconds(2f);
+            IsLBM = false;
+            
+            ShowDialog("Halt, intruder! Your greed consumes you!!", "Victoria", VoiceType.Woman);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("It’s not greed. It’s the experiment… the data must be complete.", "Guest from afar", VoiceType.Alien);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Enough of your lies! Your corruption ends here!!", "Victoria", VoiceType.Woman);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Heh... finally found you. Nowhere to run. Nowhere to hide.", "Guest from afar", VoiceType.Alien);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
+            G.SmoothSlideY.Show();
+        }
+        
         private void Start()
         {
             switch (_sceneID)
@@ -506,6 +539,9 @@ namespace Battle
                     break;
                 case 8:
                     StartCoroutine(StartDialogueAct1Fight8());
+                    break;
+                case 9:
+                    StartCoroutine(StartDialogueAct1Fight9());
                     break;
                 default:
                     G.SmoothSlideY.Show();

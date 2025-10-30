@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3351800674917304798, guid: c375d822da67cd3429b0d2def722dc33, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3351800674917304799, guid: c375d822da67cd3429b0d2def722dc33, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1345,7 +1345,7 @@ PrefabInstance:
     - target: {fileID: 8396052897736060232, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b8730a32ae77ac947b9feb591e13f626, type: 3}
+      objectReference: {fileID: 21300000, guid: d2656c9750eb30a498ca40076910b358, type: 3}
     - target: {fileID: 8396052897736060233, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
       propertyPath: m_SizeDelta.x
       value: 200
@@ -1364,18 +1364,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8396052897736060238, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
       propertyPath: _title
-      value: Soul of berserk
+      value: 'Soul splash '
       objectReference: {fileID: 0}
     - target: {fileID: 8396052897736060238, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
       propertyPath: _abilityDescription
-      value: 'When health below 50%, damage is doubled.
+      value: 'Deals 3 damage to all enemies.
 
-        Cost: 4
-
-        The
-        soul of a man who lost all his sanity.
-
-        Purity Level: 87.4%'
+        Cost: 100 Energy'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
@@ -1655,7 +1650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _costText: {fileID: 285924092}
-  _maxCost: 8
+  _maxCost: 9
 --- !u!4 &1069235068
 Transform:
   m_ObjectHideFlags: 0
@@ -1884,7 +1879,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f866642b4086c7c41a12e970cef51591, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d18cbef446472854ca97c715f46f870f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1983,7 +1978,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1-4
+  m_Text: 1-5
 --- !u!222 &1449258803
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1991,6 +1986,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449258800}
+  m_CullTransparentMesh: 0
+--- !u!1 &1493939662
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1493939663}
+  - component: {fileID: 1493939665}
+  - component: {fileID: 1493939664}
+  m_Layer: 0
+  m_Name: Trait 1 (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1493939663
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493939662}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2073349445}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 1.74, y: 0.007}
+  m_SizeDelta: {x: 0.8, y: -0.1496436}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1493939664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493939662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: bd56203e32b3f1e4d8f114d615f7cc88, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1493939665
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493939662}
   m_CullTransparentMesh: 0
 --- !u!1 &1847511284
 GameObject:
@@ -2235,7 +2305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1333776138, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: m_text
-      value: 'Konstantin '
+      value: 'Victoria '
       objectReference: {fileID: 0}
     - target: {fileID: 4062323348838448152, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2252,22 +2322,22 @@ PrefabInstance:
     - target: {fileID: 4062323348891929818, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d18cbef446472854ca97c715f46f870f, type: 3}
+      objectReference: {fileID: 21300000, guid: 5e2501c2a9d8ffc4c82776fa36bdf36b, type: 3}
     - target: {fileID: 4062323349122862626, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862628, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: _defaultMaxHealth
-      value: 100
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862629, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.68
+      value: 3.34
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862629, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.85
+      value: -4.54
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862629, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2307,7 +2377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862630, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: _steady
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862630, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: _greedy
@@ -2319,15 +2389,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862630, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: _hateful
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062323349122862630, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
+      propertyPath: _hopeful
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862635, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: _attackCooldownTime
-      value: 1.75
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862635, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: _defaultDamage
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349284722988, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2348,7 +2422,7 @@ PrefabInstance:
     - target: {fileID: 4062323350269094056, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b8d47a78e298cae4fb4d824826c6f30d, type: 3}
+      objectReference: {fileID: 21300000, guid: 5374d69791696d748a07ce3a5eca48bd, type: 3}
     - target: {fileID: 4062323350269094056, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: m_FlipX
       value: 0
@@ -2433,7 +2507,7 @@ MonoBehaviour:
   _victoryPanel: {fileID: 930759279}
   _defeatPanel: {fileID: 177777013}
   _floatingTextPrefab: {fileID: 2715349566576225611, guid: f74d7f7e93a680947b3729e2b7bd975b, type: 3}
-  _sceneID: 8
+  _sceneID: 9
   _tutorialPanel: {fileID: 0}
   _tutorialText: {fileID: 0}
   _enemies:
@@ -2585,7 +2659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6831488993671564581, guid: b6f743290a1ceb34aa1ff65dfdce14df, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6903095948693149110, guid: b6f743290a1ceb34aa1ff65dfdce14df, type: 3}
       propertyPath: m_IsActive
@@ -2719,11 +2793,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 137065910779205537, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: _title
-      value: Hateful
+      value: Hopeful
       objectReference: {fileID: 0}
     - target: {fileID: 137065910779205537, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: _abilityDescription
-      value: Instantly loses 50% of health if the enemy has the Soul of the Follower.
+      value: 'Once per fight: when health drops below 40%, restores full health.'
       objectReference: {fileID: 0}
     - target: {fileID: 256633630168668128, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_Sprite
@@ -2731,11 +2805,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: d18cbef446472854ca97c715f46f870f, type: 3}
     - target: {fileID: 266048306173626717, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 266048306173626717, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -2
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 422130599867291854, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2751,23 +2825,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1104663212125508706, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1581919458449985232, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f866642b4086c7c41a12e970cef51591, type: 3}
+      objectReference: {fileID: 21300000, guid: 5e2501c2a9d8ffc4c82776fa36bdf36b, type: 3}
     - target: {fileID: 3848729597002618573, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3848729597002618573, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3848729597002618573, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -2
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 4778102628078480539, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_Name
@@ -2823,7 +2897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5918832678313533261, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -177
+      value: -204
       objectReference: {fileID: 0}
     - target: {fileID: 5918832678313533261, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_AnchorMin.x
@@ -2851,7 +2925,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5918832678313533261, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5998679172840352572, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_IsActive
@@ -2865,6 +2939,18 @@ PrefabInstance:
       propertyPath: _abilityDescription
       value: When health drops below 50%, damage is doubled.
       objectReference: {fileID: 0}
+    - target: {fileID: 8130027814575499164, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _title
+      value: Steady
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130027814575499164, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescription
+      value: Each attack restores 2 HP.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294320383138304308, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bd56203e32b3f1e4d8f114d615f7cc88, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
 --- !u!224 &2690180495419647263 stripped
