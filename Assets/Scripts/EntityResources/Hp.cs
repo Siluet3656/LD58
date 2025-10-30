@@ -325,7 +325,7 @@ namespace EntityResources
         {
             if (healAmount <= 0) return;
             
-            float resultHeal = Mathf.Min(_currentHealth + healAmount, _defaultMaxHealth); //Debug.Log($"Heal taken by {gameObject}: {resultHeal - _currentHealth}");
+            float resultHeal = Mathf.Min(_currentHealth + healAmount, _maxHealth); //Debug.Log($"Heal taken by {gameObject}: {resultHeal - _currentHealth}");
             _currentHealth = resultHeal;
             OnHealthChanged?.Invoke(_currentHealth);
             
@@ -359,12 +359,17 @@ namespace EntityResources
             
             _berserkSouls = berserkSouls;
         }
-
-        public void ApplyShield()
+        
+        public void ApplyShield(AbilityButton abilityButton)
         {
             if (_isShielded) return;
             
-            if (G.SkillResources.HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(SkillType.Shield).cost) == false) return;
+            if (G.Player.GetComponent<SkillResources>()
+                    .HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(SkillType.Shield).cost) == false)
+            {
+                DamagePopup.Instance.AddText("Not enough energy!!", abilityButton.transform.position, Color.red);
+                return;
+            }
             
             StartCoroutine(ShieldRoutine());
             

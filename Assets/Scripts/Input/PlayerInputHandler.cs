@@ -8,6 +8,11 @@ namespace Input
     public class PlayerInputHandler : MonoBehaviour
     {
         [SerializeField] AbilityButton[] _abilityButtons;
+        [Header("BLOCK")]
+        [SerializeField] private bool _blockStrike;
+        [SerializeField] private bool _blockPunch;
+        [SerializeField] private bool _blockShield;
+        [SerializeField] private bool _blockBeam;
         
         private Camera _mainCamera;
         private PlayerControlls _inputActions;
@@ -33,10 +38,14 @@ namespace Input
             
             _hand = FindObjectsOfType<AbilityDrag>()[0];
             
-            _inputActions.UI.Skill1.started += ctx => ChooseAbility(SkillType.Strike);
-            _inputActions.UI.Skill2.started += ctx => ChooseAbility(SkillType.Punch);
-            _inputActions.UI.Skill3.started += ctx => ChooseAbility(SkillType.Shield);
-            _inputActions.UI.Skill4.started += ctx => ChooseAbility(SkillType.Beam);
+            if (_blockStrike == false)
+                _inputActions.UI.Skill1.started += ctx => ChooseAbility(SkillType.Strike);
+            if (_blockPunch == false)
+                _inputActions.UI.Skill2.started += ctx => ChooseAbility(SkillType.Punch);
+            if (_blockShield == false)
+                _inputActions.UI.Skill3.started += ctx => ChooseAbility(SkillType.Shield);
+            if (_blockBeam == false)
+                _inputActions.UI.Skill4.started += ctx => ChooseAbility(SkillType.Beam);
         }
 
         private void Update()
@@ -133,10 +142,10 @@ namespace Input
                     _abilityButtons[1].StartAbilityCast();
                     break;
                 case SkillType.Shield:
-                    G.PlayerHp.ApplyShield();
+                    G.PlayerHp.ApplyShield(_abilityButtons[2]);
                     break;
                 case SkillType.Beam:
-                    G.PlayerAttack.SoulBeam();
+                    G.PlayerAttack.SoulBeam(_abilityButtons[3]);
                     break;
             }
         }

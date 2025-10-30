@@ -1899,6 +1899,10 @@ MonoBehaviour:
   - {fileID: 8720711016871857496}
   - {fileID: 4180809152824593559}
   - {fileID: 685343874404157445}
+  _blockStrike: 0
+  _blockPunch: 0
+  _blockShield: 0
+  _blockBeam: 0
 --- !u!114 &266820882849889832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2860,13 +2864,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 685343874404157445}
-        m_TargetAssemblyTypeName: Battle.AbilityButton, Assembly-CSharp
-        m_MethodName: StartAbilityCast
-        m_Mode: 1
+      - m_Target: {fileID: 266820882849889828}
+        m_TargetAssemblyTypeName: Battle.PlayerAttack, Assembly-CSharp
+        m_MethodName: SoulBeam
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 685343874404157445}
+          m_ObjectArgumentAssemblyTypeName: Battle.AbilityButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -13717,13 +13721,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4180809152824593559}
-        m_TargetAssemblyTypeName: Battle.AbilityButton, Assembly-CSharp
-        m_MethodName: StartAbilityCast
-        m_Mode: 1
+      - m_Target: {fileID: 266820882849889838}
+        m_TargetAssemblyTypeName: EntityResources.Hp, Assembly-CSharp
+        m_MethodName: ApplyShield
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 4180809152824593559}
+          m_ObjectArgumentAssemblyTypeName: Battle.AbilityButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

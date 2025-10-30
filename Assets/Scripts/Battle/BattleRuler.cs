@@ -26,27 +26,33 @@ namespace Battle
         [SerializeField] private GameObject _targetSwitch;
         [SerializeField] private GameObject _handAnim;
         [SerializeField] private GameObject _anotherTutorialText;
-        
+
         private Animator _tutorialPanelAnimator;
-        
+
         private bool _isFighting = false;
         private int _defietedEnemies = 0;
         private bool _dialogueSkiped = false;
         private bool _tutorEnd = false;
         private bool _afterbattleend = false;
-        
+
         private const string TutorialText1 = "Your health. If it reaches 0, your journey ends.";
-        private const string TutorialText2 = "Your auto-attack power. \nAuto-attacks are performed automatically every 1.5 seconds.";
+
+        private const string TutorialText2 =
+            "Your auto-attack power. \nAuto-attacks are performed automatically every 1.5 seconds.";
+
         private const string TutorialText3 = "The white bar below your health bar indicates auto-attack progress.";
-        
+
         private const string TutorialText4 = "All souls you've collected will appear here.";
         private const string TutorialText5 = "You can drag and drop souls into upgrade slots.";
         private const string TutorialText6 = "Upgrade has limits on how many souls can be used on total capacity.";
-        
+
         private const string TutorialText7 = "Here’s your abilities panel.";
-        private const string TutorialText8 = "Energy is consumed when using abilities. It recovers at 20 Energy per second.";
+
+        private const string TutorialText8 =
+            "Energy is consumed when using abilities. It recovers at 20 Energy per second.";
+
         private const string TutorialText9 = "Click the ability icon or press (Q) to use it.";
-        
+
         private static readonly int StartTutorial1 = Animator.StringToHash("StartTutorial1");
         private static readonly int StartTutorial2 = Animator.StringToHash("StartTutorial2");
         private static readonly int StartTutorial3 = Animator.StringToHash("StartTutorial3");
@@ -62,13 +68,13 @@ namespace Battle
             {
                 Destroy(gameObject);
             }
-            
+
             EnemiesOnScene.AddRange(_enemies);
-            
+
             if (_tutorialPanel != null)
-                _tutorialPanelAnimator =  _tutorialPanel.GetComponent<Animator>();
+                _tutorialPanelAnimator = _tutorialPanel.GetComponent<Animator>();
         }
-        
+
         private void ShowDialog(string message, string charecterName, VoiceType voiceType)
         {
             GameObject floatingText = Instantiate(_floatingTextPrefab, transform.position, Quaternion.identity);
@@ -80,69 +86,71 @@ namespace Battle
         {
             yield return new WaitForSeconds(2f);
             IsLBM = false;
-            
-            ShowDialog("Is this a city?\n I heard they have these kinds of things on Earth.", "Guest from afar", VoiceType.Alien);
-            
+
+            ShowDialog("Is this a city?\n I heard they have these kinds of things on Earth.", "Guest from afar",
+                VoiceType.Alien);
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             ShowDialog("I hope it's worth it.", "Guest from afar", VoiceType.Alien);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             _tutorialPanel.SetActive(true);
             _tutorialPanelAnimator.SetTrigger(StartTutorial1);
             _tutorialText.text = TutorialText1;
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             _tutorialPanelAnimator.SetTrigger(TutorialStep);
             _tutorialText.text = TutorialText2;
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             _tutorialPanelAnimator.SetTrigger(TutorialStep);
             _tutorialText.text = TutorialText3;
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             _tutorialPanel.SetActive(false);
-            
+
             _enemies[0].IsNeedToGo = true;
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             ShowDialog("Who are you?\n What’s a thing like you doing around here?", "Victor", VoiceType.Man);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             ShowDialog("Are you familiar with the concept of a soul?", "Guest from afar", VoiceType.Alien);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
-            ShowDialog("What? What do you think you are?\n You’re gonna see souls with your own eyes.", "Victor", VoiceType.Man);
-            
+
+            ShowDialog("What? What do you think you are?\n You’re gonna see souls with your own eyes.", "Victor",
+                VoiceType.Man);
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             _enemies[0].IsNeedToGo = false;
-            
+
             G.SmoothSlideY.Show();
         }
 
@@ -150,57 +158,58 @@ namespace Battle
         {
             yield return new WaitForSeconds(2f);
             IsLBM = false;
-            
+
             ShowDialog("Hey! What have you done to him?!", "Alice", VoiceType.Woman);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             ShowDialog("His soul is now part of my collection.", "Guest from afar", VoiceType.Alien);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
-            ShowDialog("If you don't want to end up where he did,\nyou'd better not get in my way.", "Guest from afar", VoiceType.Alien);
-            
+
+            ShowDialog("If you don't want to end up where he did,\nyou'd better not get in my way.", "Guest from afar",
+                VoiceType.Alien);
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             ShowDialog("Uh-huh, like we’d believe you.", "Alice", VoiceType.Woman);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             ShowDialog("You're exactly the kind who waits to stab someone in the back.", "Alex", VoiceType.Man);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             G.SmoothSlideY.Show();
             _tutorialPanel.SetActive(true);
             _tutorialPanelAnimator.SetTrigger(StartTutorial2);
             _tutorialText.text = TutorialText4;
-            
+
             yield return new WaitForSeconds(1.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             _tutorialPanelAnimator.SetTrigger(TutorialStep);
             _tutorialText.text = TutorialText5;
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
-            
+
+
             _tutorialPanelAnimator.SetTrigger(TutorialStep);
             _tutorialText.text = TutorialText6;
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
@@ -211,53 +220,55 @@ namespace Battle
             _targetSwitch.SetActive(true);
             _putSoul.SetActive(true);
         }
-        
+
         private IEnumerator StartGameTutorial3()
         {
             yield return new WaitForSeconds(2f);
             IsLBM = false;
-            
-            ShowDialog("Hey, we’re not your enemies, dude. Got a little mixed up—everyone makes mistakes.", "Anton", VoiceType.Man);
-            
+
+            ShowDialog("Hey, we’re not your enemies, dude. Got a little mixed up—everyone makes mistakes.", "Anton",
+                VoiceType.Man);
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
-            ShowDialog("These souls of yours are very interesting. They’ll surely help me achieve the Pure Soul.", "Guest from afar", VoiceType.Alien);
-            
+
+            ShowDialog("These souls of yours are very interesting. They’ll surely help me achieve the Pure Soul.",
+                "Guest from afar", VoiceType.Alien);
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             ShowDialog("Oh man, bro, looks like we’ve really messed up.", "Nikita", VoiceType.Man);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             G.SmoothSlideY.Show();
             _tutorialPanel.SetActive(true);
             _tutorialPanelAnimator.SetTrigger(StartTutorial3);
             _tutorialText.text = TutorialText7;
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             _tutorialPanelAnimator.SetTrigger(TutorialStep);
             _tutorialText.text = TutorialText8;
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             _tutorialPanelAnimator.SetTrigger(TutorialStep);
             _tutorialText.text = TutorialText9;
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             _tutorialPanel.SetActive(false);
             GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
             _tutorEnd = true;
@@ -267,81 +278,82 @@ namespace Battle
         {
             yield return new WaitForSeconds(2f);
             IsLBM = false;
-            
+
             ShowDialog("We’re just simple hermits. There’s nothing to take from us.", "Igor", VoiceType.Man);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
-            ShowDialog("I could always take your soul — and right now it's the oddest one I've come across.", "Guest from afar", VoiceType.Alien);
-            
+
+            ShowDialog("I could always take your soul — and right now it's the oddest one I've come across.",
+                "Guest from afar", VoiceType.Alien);
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             ShowDialog("Alright, all of us, together — now we must finally stop him!", "Igor", VoiceType.Man);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
             G.SmoothSlideY.Show();
         }
-        
+
         private IEnumerator StartDialogueAct1Fight5()
         {
             yield return new WaitForSeconds(2f);
             IsLBM = false;
-            
+
             ShowDialog("It seems I've reached the city's entrance.", "Guest from Afar", VoiceType.Alien);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             ShowDialog("Countless souls, yet none shine with truth.", "Guest from Afar", VoiceType.Alien);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             ShowDialog("I must continue. Somewhere among them lies the Pure Soul.", "Guest from Afar", VoiceType.Alien);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             _enemies[0].IsNeedToGo = true;
-            
+
             ShowDialog("Halt, intruder!! Don't think your crimes went unnoticed!!", "Victoria", VoiceType.Woman);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             ShowDialog("Her soul... it resonates differently from the rest.", "Guest from Afar", VoiceType.Alien);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             ShowDialog("Stop mumbling like I can't hear you!!", "Victoria", VoiceType.Woman);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             ShowDialog("Guards! We have a situation here!!", "Victoria", VoiceType.Woman);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             _enemies[1].IsNeedToGo = true;
             _enemies[2].IsNeedToGo = true;
-            
+
             GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
             G.SmoothSlideY.Show();
         }
@@ -351,43 +363,45 @@ namespace Battle
             ShowDialog("Hostiles neutralized. Her signal is fading...", "Guest from afar", VoiceType.Alien);
             yield return new WaitForSeconds(2f);
             IsLBM = false;
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             ShowDialog("She's retreating... I must find her again.", "Guest from afar", VoiceType.Alien);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
             _afterbattleend = true;
         }
-        
+
         private IEnumerator StartDialogueAct1Fight6()
         {
             yield return new WaitForSeconds(2f);
             IsLBM = false;
-            
-            ShowDialog("Welcome, stranger! Looking to buy? We trade in everything — even souls.", "Richard", VoiceType.Man);
-            
+
+            ShowDialog("Welcome, stranger! Looking to buy? We trade in everything — even souls.", "Richard",
+                VoiceType.Man);
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
-            ShowDialog("Sell, buy, bargain — same thing. I have anything you need if you have enough money of course.", "Richard", VoiceType.Man);
-            
+
+            ShowDialog("Sell, buy, bargain — same thing. I have anything you need if you have enough money of course.",
+                "Richard", VoiceType.Man);
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             ShowDialog("I take what I need. I do not pay.", "Guest from afar", VoiceType.Alien);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
             G.SmoothSlideY.Show();
         }
@@ -396,27 +410,67 @@ namespace Battle
         {
             yield return new WaitForSeconds(2f);
             IsLBM = false;
-            
+
             ShowDialog("I can sense the Pure Soul near you. You're hiding it.", "Guest from afar", VoiceType.Alien);
-            
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
-            ShowDialog("You defile the sacred with your greed! The Pure Soul will never be yours!", "Ashley", VoiceType.Woman);
-            
+
+            ShowDialog("You defile the sacred with your greed! The Pure Soul will never be yours!", "Ashley",
+                VoiceType.Woman);
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            
+
             ShowDialog("You're cursed! Show no mercy!", "Anna", VoiceType.Woman);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+
+            ShowDialog("It blasphemes! Offer your souls for purification!", "Andrey", VoiceType.Man);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+
+            GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
+            G.SmoothSlideY.Show();
+        }
+
+        private IEnumerator StartDialogueAct1Fight8()
+        {
+            yield return new WaitForSeconds(2f);
+            IsLBM = false;
             
+            ShowDialog("She... doesn’t... understand...", "Konstantin", VoiceType.Man);
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("It blasphemes! Offer your souls for purification!", "Andrey", VoiceType.Man);
+            ShowDialog("I’m in pursuit of the Pure Soul. Step aside if you wish to live.", "Guest from afar", VoiceType.Alien);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
             
+            ShowDialog("I no longer seek any soul... except the Pure one.", "Guest from afar", VoiceType.Alien);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Soul... pure... not... pure...", "Konstantin", VoiceType.Man);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("It’s no use. He can’t hear me.", "Guest from afar", VoiceType.Alien);
+
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
@@ -424,7 +478,7 @@ namespace Battle
             GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
             G.SmoothSlideY.Show();
         }
-        
+
         private void Start()
         {
             switch (_sceneID)
@@ -449,6 +503,9 @@ namespace Battle
                     break;
                 case 7:
                     StartCoroutine(StartDialogueAct1Fight7());
+                    break;
+                case 8:
+                    StartCoroutine(StartDialogueAct1Fight8());
                     break;
                 default:
                     G.SmoothSlideY.Show();

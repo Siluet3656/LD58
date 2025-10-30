@@ -2240,6 +2240,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 266820882849889834, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
+      propertyPath: _blockPunch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 266820882849889834, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
+      propertyPath: _blockShield
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 266820882849889834, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
+      propertyPath: _blockBeam
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 266820882849889835, guid: 5a30194c931abb04b925464bf5099db5, type: 3}
       propertyPath: _arrowToTarget
       value: 

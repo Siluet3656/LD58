@@ -1702,6 +1702,10 @@ PrefabInstance:
       propertyPath: _attackCooldownTime
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4062323349122862635, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
+      propertyPath: _defaultDamage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4062323349284722988, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1.0665
@@ -3492,6 +3496,10 @@ PrefabInstance:
       propertyPath: _attackCooldownTime
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4062323349122862635, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
+      propertyPath: _defaultDamage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4062323349284722988, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1.0771003
@@ -3699,7 +3707,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef27390557582e14e8962d64203e06fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isReturnToCity: 0
   _victoryPanel: {fileID: 684353396}
   _defeatPanel: {fileID: 1315426908}
   _floatingTextPrefab: {fileID: 2715349566576225611, guid: f74d7f7e93a680947b3729e2b7bd975b, type: 3}

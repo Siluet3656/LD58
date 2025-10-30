@@ -189,9 +189,14 @@ namespace Battle
             _defileSouls = amount;
         }
 
-        public void SoulBeam()
+        public void SoulBeam(AbilityButton abilityButton)
         {
-            if (G.SkillResources.HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(SkillType.Beam).cost) == false) return;
+            if (G.Player.GetComponent<SkillResources>()
+                    .HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(SkillType.Beam).cost) == false)
+            {
+                DamagePopup.Instance.AddText("Not enough energy!!", abilityButton.transform.position, Color.red);
+                return;
+            }
 
             _soulParticles.Play();
             
