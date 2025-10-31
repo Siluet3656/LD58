@@ -1368,7 +1368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8396052897736060238, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
       propertyPath: _abilityDescription
-      value: 'Deals 3 damage to all enemies.
+      value: 'Deals 5 damage to all enemies.
 
         Cost: 100 Energy'
       objectReference: {fileID: 0}

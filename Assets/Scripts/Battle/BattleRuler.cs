@@ -511,7 +511,34 @@ namespace Battle
             GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
             G.SmoothSlideY.Show();
         }
-        
+
+        private IEnumerator StartDialogueAct2Fight10()
+        {
+            yield return new WaitForSeconds(2f);
+            IsLBM = false;
+            
+            ShowDialog("She's escaping... again...", "Guest from afar", VoiceType.Alien);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Help me! Someone—help me, I command you!!", "Victoria", VoiceType.Woman);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Yes, Your Holiness!", "Pakhoma", VoiceType.Woman);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
+            G.SmoothSlideY.Show();
+        }
+
         private void Start()
         {
             switch (_sceneID)
@@ -542,6 +569,9 @@ namespace Battle
                     break;
                 case 9:
                     StartCoroutine(StartDialogueAct1Fight9());
+                    break;
+                case 10:
+                    StartCoroutine(StartDialogueAct2Fight10());
                     break;
                 default:
                     G.SmoothSlideY.Show();

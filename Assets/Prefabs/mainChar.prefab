@@ -2889,7 +2889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _title: 'Soul splash '
-  _abilityDescription: 'Deals 3 damage to all enemies.
+  _abilityDescription: 'Deals 5 damage to all enemies.
 
     Cost: 100 Energy'
 --- !u!1 &1249428641539928496
