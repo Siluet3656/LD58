@@ -539,6 +539,27 @@ namespace Battle
             G.SmoothSlideY.Show();
         }
 
+        private IEnumerator StartDialogueAct2Fight11()
+        {
+            yield return new WaitForSeconds(2f);
+            IsLBM = false;
+            
+            ShowDialog("Help me! Someone—help me, I command you!!", "Victoria", VoiceType.Woman);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Yes, Your Holiness!", "Henry", VoiceType.Man);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
+            G.SmoothSlideY.Show();
+        }
+        
         private void Start()
         {
             switch (_sceneID)
@@ -572,6 +593,9 @@ namespace Battle
                     break;
                 case 10:
                     StartCoroutine(StartDialogueAct2Fight10());
+                    break;
+                case 11:
+                    StartCoroutine(StartDialogueAct2Fight11());
                     break;
                 default:
                     G.SmoothSlideY.Show();

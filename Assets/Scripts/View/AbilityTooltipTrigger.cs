@@ -6,7 +6,7 @@ namespace View
     public class AbilityTooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private string _title;
-        [TextArea(2, 5)]
+        [TextArea(5, 10)]
         [SerializeField] private string _abilityDescription;
 
         public void OnPointerEnter(PointerEventData eventData)
