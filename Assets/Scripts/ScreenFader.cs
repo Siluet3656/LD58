@@ -72,4 +72,10 @@ public class ScreenFader : MonoBehaviour
         _fadeImage.color = new Color(_fadeColor.r, _fadeColor.g, _fadeColor.b, 1f);
         _isFading = false;
     }
+
+    public void Clear()
+    {
+        StopAllCoroutines();
+        _fadeImage.color = new Color(_fadeColor.r, _fadeColor.g, _fadeColor.b, 0f);
+    }
 }

@@ -9,6 +9,7 @@ public class Map : MonoBehaviour
     private AudioSource _audioSource;
     private void Awake()
     {
+        G.Map = this;
         _animator = gameObject.GetComponent<Animator>();
         _audioSource = gameObject.GetComponent<AudioSource>();
     }
@@ -32,6 +33,24 @@ public class Map : MonoBehaviour
             case 4:
                 _animator.SetTrigger("City");
                 break;
+            case 5:
+                _animator.SetTrigger("1-1");
+                break;
+            case 6:
+                _animator.SetTrigger("1-2");
+                break;
+            case 7:
+                _animator.SetTrigger("1-3");
+                break;
+            case 8:
+                _animator.SetTrigger("1-4");
+                break;
+            case 9:
+                _animator.SetTrigger("1-5");
+                break;
+            case 10:
+                _animator.SetTrigger("Church");
+                break;
         }
     }
     
@@ -46,6 +65,16 @@ public class Map : MonoBehaviour
         LoadScene(id);
     }
     
+    private IEnumerator GoActWithFade(int id)
+    {
+        yield return StartCoroutine(G.ScreenFader.FadeOut());
+        GameState.State++;
+        G.GameRuler.GoActOne();
+        G.ScreenFader.Clear();
+    }
+
+    public Animator Animator => _animator;
+    
     public void LoadSceneMode(int id)
     {
         StartCoroutine(LoadSceneWithFade(id));
@@ -54,5 +83,10 @@ public class Map : MonoBehaviour
     public void PlaySound()
     {
         _audioSource.Play();
+    }
+
+    public void IncrementGameState()
+    {
+        StartCoroutine(GoActWithFade(0));
     }
 }
