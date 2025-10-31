@@ -12,12 +12,12 @@ namespace Battle
 
         private void OnEnable()
         {
-            BattleRuler.Instance.OnFighting += AutoTarget;
+            BattleRuler.Instance.OnFighting += AutoTargetPlusCheck;
         }
         
         private void OnDisable()
         {
-            BattleRuler.Instance.OnFighting -= AutoTarget;
+            BattleRuler.Instance.OnFighting -= AutoTargetPlusCheck;
         }
         
         private void Start()
@@ -73,6 +73,23 @@ namespace Battle
             }
             
             ClearTarget();
+        }
+        
+        private void AutoTargetPlusCheck()
+        {
+            if (HasTarget == false)
+            {
+                foreach (Enemy enemy in G.Enemies)
+                {
+                    if (enemy.isActiveAndEnabled)
+                    {
+                        SetTarget(enemy);
+                        return;
+                    }
+                }
+            
+                ClearTarget();
+            }
         }
         
         public bool HasTarget => _currentTarget != null;
