@@ -91,6 +91,7 @@ namespace Battle
                     G.Enemies.Remove(this);
                     IsNeedToGo  = false;
                     _isRetreatStarted = true;
+                    G.Player.GetComponent<PlayerTargeting>().ClearArrow();
                 }
                 
                 float step = 5f * Time.deltaTime;
