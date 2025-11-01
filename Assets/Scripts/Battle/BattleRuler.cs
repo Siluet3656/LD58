@@ -695,6 +695,150 @@ namespace Battle
             GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
             G.SmoothSlideY.Show();
         }
+
+        private IEnumerator StartDialogueAct2Fight14()
+        {
+            yield return new WaitForSeconds(2f);
+            IsLBM = false;
+            
+            ShowDialog("This time, I’ve finished what I started.", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("No chance to win... I’m done.", "Victoria", VoiceType.Woman);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Surrendering? Already? Too easy.", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("But... if only... my soul...", "Victoria", VoiceType.Woman);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            // Animation/transition???
+            ShowDialog("Victoria’s body begins to glow, her voice echoing with radiant force.", "", VoiceType.None);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+
+            ShowDialog("Only if my soul burns as bright as a thousand suns... can I defeat you!", "Victoria the Pure Soul", VoiceType.Woman);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
+            G.SmoothSlideY.Show();
+        }
+
+        private IEnumerator StartDialogueAct2Fight15()
+        {
+            yield return new WaitForSeconds(2f);
+            IsLBM = false;
+            
+            ShowDialog("Shadows and silhouettes flicker across the cracked walls of the underground archive. The air hums with static and whispers of forgotten data.", "", VoiceType.None);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("I need answers... I think I can find them here.", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Here—notes.", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("'Experiment failure. Human is dead. Mismatch'", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("'Experiment failure. Human is dead. Mismatch'", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("'Experiment failure. Human is defiled. Mismatch'", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+
+            ShowDialog("He flips through several worn pages, symbols blurring together.", "", VoiceType.None);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+
+            ShowDialog("'Experiment failure. Only 99.1% purity.'", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+
+            ShowDialog("More pages fall away like ash.", "", VoiceType.None);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+
+            ShowDialog("'Experiment failure. Only 99.9% purity. Best result achievable with a living subject'", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("That was last one.", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Pure Soul’? It’s... not actually pure?", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Access denied.", "Archivist", VoiceType.None); //VoiceType.AI
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("What?", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Defense protocol—activated.", "Archivist", VoiceType.None); //VoiceType.AI
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
+            G.SmoothSlideY.Show();
+        }
         
         private void Start()
         {
@@ -738,6 +882,12 @@ namespace Battle
                     break;
                 case 13:
                     StartCoroutine(StartDialogueAct2Fight13());
+                    break;
+                case 14:
+                    StartCoroutine(StartDialogueAct2Fight14());
+                    break;
+                case 15:
+                    StartCoroutine(StartDialogueAct2Fight15());
                     break;
                 default:
                     G.SmoothSlideY.Show();

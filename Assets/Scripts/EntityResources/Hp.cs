@@ -4,6 +4,7 @@ using System.Globalization;
 using Battle;
 using Data;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 using View;
 
@@ -19,6 +20,10 @@ namespace EntityResources
         [SerializeField] private GameObject _damageParticles;
         [SerializeField] private float _shieldDuration;
         [SerializeField] private GameObject _soul;
+        
+        [FormerlySerializedAs("_startHealth")]
+        [Header("Start Health")]
+        [SerializeField, Range(0f,1f)] private float _startHealthPercent = 1f;
         
         private RandomSoundPlayer _randomSoundPlayer;
         
@@ -291,7 +296,7 @@ namespace EntityResources
         
         public void InitializeHealth()
         {
-            _currentHealth = Mathf.Max(_maxHealth, 1);
+            _currentHealth = Mathf.Max(_maxHealth * _startHealthPercent, 1);
             OnHealthChanged?.Invoke(_currentHealth);
         }
 
