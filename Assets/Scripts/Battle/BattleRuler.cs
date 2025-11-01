@@ -560,6 +560,75 @@ namespace Battle
             G.SmoothSlideY.Show();
         }
         
+        private IEnumerator StartDialogueAct2Fight12()
+        {
+            yield return new WaitForSeconds(2f);
+            IsLBM = false;
+            
+            ShowDialog("Help me! Someone—help me, I command you!!", "Victoria", VoiceType.Woman);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Huh?! We’re in the middle of something here.", "Patrick", VoiceType.Man);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Hey! Don’t run in here!", "Bob", VoiceType.Man);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("...", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("...", "Patrick", VoiceType.Man);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Wait... you’re not one of us, are you?", "Patrick", VoiceType.Man);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Not your concern. Get out of my way.", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("You’re talking to the heads of the Soul Project, pal!", "Bob", VoiceType.Man);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Exactly. And since you’ve seen our work... we can’t let you leave alive.", "Patrick", VoiceType.Man);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Heh, yeah. No witnesses — no problem.", "Bob", VoiceType.Man);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
+            G.SmoothSlideY.Show();
+        }
+        
         private void Start()
         {
             switch (_sceneID)
@@ -596,6 +665,9 @@ namespace Battle
                     break;
                 case 11:
                     StartCoroutine(StartDialogueAct2Fight11());
+                    break;
+                case 12:
+                    StartCoroutine(StartDialogueAct2Fight12());
                     break;
                 default:
                     G.SmoothSlideY.Show();
