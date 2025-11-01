@@ -151,6 +151,8 @@ namespace Battle
         public event Action OnTargetDie;
         public event Action OnRetreat;
 
+        public int MerchantSouls => _merchantSouls;
+
         public void ApplyAbility(SkillType skillType)
         {
             if (BattleRuler.Instance.IsFighting == false) return;

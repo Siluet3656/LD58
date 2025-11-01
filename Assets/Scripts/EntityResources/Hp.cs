@@ -363,7 +363,7 @@ namespace EntityResources
         public void ApplyShield(AbilityButton abilityButton)
         {
             if (_isShielded) return;
-            
+            //Sound
             if (G.Player.GetComponent<SkillResources>()
                     .HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(SkillType.Shield).cost) == false)
             {
@@ -374,6 +374,15 @@ namespace EntityResources
             StartCoroutine(ShieldRoutine());
             
             G.SkillResources.ConsumeResources(AbilityDataCms.Instance.GetSpellConfig(SkillType.Shield).cost);
+
+            int merchantSouls = BattleRuler.Instance.EnemiesOnScene[0].MerchantSouls;
+            
+            foreach (Enemy enemy in BattleRuler.Instance.EnemiesOnScene)
+            {
+                Hp hp = enemy.GetComponent<Hp>();
+                hp.TryToTakeDamage(2 * merchantSouls, false);
+            }
+            G.PlayerHp.TryToTakeDamage(2 * merchantSouls, false);
         }
 
         public void SetHealAfterHealthDrop(int amount)

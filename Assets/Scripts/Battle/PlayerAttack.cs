@@ -212,6 +212,15 @@ namespace Battle
             }
             
             G.SkillResources.ConsumeResources(AbilityDataCms.Instance.GetSpellConfig(SkillType.Beam).cost);
+            
+            int merchantSouls = BattleRuler.Instance.EnemiesOnScene[0].MerchantSouls;
+            
+            foreach (Enemy enemy in BattleRuler.Instance.EnemiesOnScene)
+            {
+                Hp hp = enemy.GetComponent<Hp>();
+                hp.TryToTakeDamage(2 * merchantSouls, false);
+            }
+            G.PlayerHp.TryToTakeDamage(2 * merchantSouls, false);
         }
     }
 }
