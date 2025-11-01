@@ -628,6 +628,73 @@ namespace Battle
             GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
             G.SmoothSlideY.Show();
         }
+
+        private IEnumerator StartDialogueAct2Fight13()
+        {
+            yield return new WaitForSeconds(2f);
+            IsLBM = false;
+            
+            ShowDialog("Those two were leaders of some kind of project...", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("What kind of experiments were they conducting here?", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Their souls... they look unnatural.", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Even I couldn’t achieve results like this — not after years of experimentation.", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Definitely... this expedition was worth it.", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+
+            ShowDialog("Footsteps echo nearby", "", VoiceType.None);
+
+            foreach (Enemy enemy in G.Enemies)
+            {
+                enemy.IsNeedToGo = true;
+            }
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+
+            ShowDialog("...", "Scientist", VoiceType.None);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("I'm not alone.", "Guest from afar", VoiceType.Alien);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            foreach (Enemy enemy in G.Enemies)
+            {
+                enemy.IsNeedToGo = false;
+            }
+            
+            GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
+            G.SmoothSlideY.Show();
+        }
         
         private void Start()
         {
@@ -668,6 +735,9 @@ namespace Battle
                     break;
                 case 12:
                     StartCoroutine(StartDialogueAct2Fight12());
+                    break;
+                case 13:
+                    StartCoroutine(StartDialogueAct2Fight13());
                     break;
                 default:
                     G.SmoothSlideY.Show();
