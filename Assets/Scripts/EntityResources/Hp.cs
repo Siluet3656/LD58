@@ -194,7 +194,7 @@ namespace EntityResources
                 }
                 else
                 { 
-                    _randomSoundPlayer.PlayRandomSound();
+                    
                         
                     switch (rand)
                     {
@@ -216,6 +216,8 @@ namespace EntityResources
                     }
                 }
             }
+            
+            _randomSoundPlayer.PlayRandomSound();
             
             if (_currentHealth <= 0)
                 Die();
