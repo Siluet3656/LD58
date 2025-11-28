@@ -25,7 +25,8 @@ namespace EntityResources
         [Header("Start Health")]
         [SerializeField, Range(0f,1f)] private float _startHealthPercent = 1f;
         
-        private RandomSoundPlayer _randomSoundPlayer;
+        [Header("Sound")]
+        [SerializeField]private RandomSoundPlayer _randomSoundPlayer;
         
         private float _maxHealth;
         private float _currentHealth;
@@ -217,7 +218,7 @@ namespace EntityResources
                 }
             }
             
-            _randomSoundPlayer.PlayRandomSound();
+            if (_randomSoundPlayer != null) _randomSoundPlayer.PlayRandomSound();
             
             if (_currentHealth <= 0)
                 Die();
