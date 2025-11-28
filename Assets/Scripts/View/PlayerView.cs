@@ -1,6 +1,4 @@
-﻿using System;
-using EntityResources;
-using UnityEditor.VersionControl;
+﻿using EntityResources;
 using UnityEngine;
 using UnityEngine.UI;
 

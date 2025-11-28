@@ -5444,6 +5444,8 @@ MonoBehaviour:
   _damageParticles: {fileID: 1411055456}
   _shieldDuration: 0
   _soul: {fileID: 7080890843211138509, guid: b5ddf179ba54992478b962d94ff97fbe, type: 3}
+  _startHealthPercent: 1
+  _randomSoundPlayer: {fileID: 297432354}
 --- !u!114 &4062323349122862635
 MonoBehaviour:
   m_ObjectHideFlags: 0
