@@ -1835,6 +1835,8 @@ MonoBehaviour:
   _damageParticles: {fileID: 8334718168745805107}
   _shieldDuration: 1
   _soul: {fileID: 7080890843211138509, guid: b5ddf179ba54992478b962d94ff97fbe, type: 3}
+  _startHealthPercent: 1
+  _randomSoundPlayer: {fileID: 0}
 --- !u!114 &266820882849889828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8730,7 +8732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1667471640043192688
 Transform:
   m_ObjectHideFlags: 0
@@ -8997,7 +8999,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
