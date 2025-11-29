@@ -76,11 +76,18 @@ public class GameRuler : MonoBehaviour
             _act0.SetActive(false);
             _act1.SetActive(true);
         }
-        else if (GameState.State > 7 && GameState.State < 10)
+        else if (GameState.State > 7 && GameState.State <= 10)
         {
             _camera.transform.position = new Vector3(_point3.transform.position.x,_point3.transform.position.y, -10);
             _act0.SetActive(false);
             _act1.SetActive(true);
+        }
+        else if (GameState.State > 11 && GameState.State <= 16)
+        {
+            _camera.transform.position = _point4.transform.position;
+            _act0.SetActive(false);
+            _act1.SetActive(false);
+            _act2.SetActive(true);
         }
         else
         {

@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3351800674917304798, guid: c375d822da67cd3429b0d2def722dc33, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3351800674917304799, guid: c375d822da67cd3429b0d2def722dc33, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2503,7 +2503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862628, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: _defaultMaxHealth
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862628, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: _startHealthPercent

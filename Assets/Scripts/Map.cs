@@ -51,6 +51,24 @@ public class Map : MonoBehaviour
             case 10:
                 _animator.SetTrigger("Church");
                 break;
+            case 11:
+                _animator.SetTrigger("2-1");
+                break;
+            case 12:
+                _animator.SetTrigger("2-2");
+                break;
+            case 13:
+                _animator.SetTrigger("2-3");
+                break;
+            case 14:
+                _animator.SetTrigger("2-4");
+                break;
+            case 15:
+                _animator.SetTrigger("2-5");
+                break;
+            case 16:
+                _animator.SetTrigger("2-6");
+                break;
         }
     }
     
@@ -98,5 +116,10 @@ public class Map : MonoBehaviour
     public void IncrementGameState()
     {
         StartCoroutine(GoActWithFade(1));
+    }
+
+    public void IncrementGameState2()
+    {
+        StartCoroutine(GoActWithFade(2));
     }
 }
