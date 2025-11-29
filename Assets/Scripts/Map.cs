@@ -69,7 +69,17 @@ public class Map : MonoBehaviour
     {
         yield return StartCoroutine(G.ScreenFader.FadeOut());
         GameState.State++;
-        G.GameRuler.GoActOne();
+
+        switch (id)
+        {
+            case 1:
+                G.GameRuler.GoActOne();
+                break;
+            case 2:
+                G.GameRuler.GoActTwo();
+                break;
+        }
+        
         G.ScreenFader.Clear();
     }
 
@@ -87,6 +97,6 @@ public class Map : MonoBehaviour
 
     public void IncrementGameState()
     {
-        StartCoroutine(GoActWithFade(0));
+        StartCoroutine(GoActWithFade(1));
     }
 }

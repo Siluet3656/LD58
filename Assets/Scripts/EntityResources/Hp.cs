@@ -370,6 +370,8 @@ namespace EntityResources
         
         public void ApplyShield(AbilityButton abilityButton)
         {
+            if (BattleRuler.Instance.IsFighting == false) return;
+            
             if (_isShielded) return;
             //Sound
             if (G.Player.GetComponent<SkillResources>()

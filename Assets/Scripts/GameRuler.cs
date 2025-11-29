@@ -11,6 +11,7 @@ public class GameRuler : MonoBehaviour
     [SerializeField] private GameObject _map0;
     [SerializeField] private GameObject _point2;
     [SerializeField] private GameObject _point3;
+    [SerializeField] private GameObject _point4;
     [Header("MAPS")] 
     [SerializeField] private GameObject _act0;
     [SerializeField] private GameObject _act1;
@@ -97,5 +98,12 @@ public class GameRuler : MonoBehaviour
         _camera.transform.position = _point2.transform.position;
         _text.ShowText("ACT 1");
         _act0.SetActive(false);
+    }
+
+    public void GoActTwo()
+    {
+        _camera.transform.position = _point4.transform.position;
+        _text.ShowText("ACT 2");
+        _act1.SetActive(false);
     }
 }

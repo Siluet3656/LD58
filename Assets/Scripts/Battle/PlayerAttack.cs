@@ -191,6 +191,8 @@ namespace Battle
 
         public void SoulBeam(AbilityButton abilityButton)
         {
+            if (BattleRuler.Instance.IsFighting == false) return;
+            
             if (G.Player.GetComponent<SkillResources>()
                     .HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(SkillType.Beam).cost) == false)
             {
