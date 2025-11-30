@@ -56,4 +56,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Act 2/Fight 15.unity
     guid: 2a717e4d3b1b7314fb71200177ab098e
+  - enabled: 1
+    path: Assets/Scenes/ACT3/Fight 16.unity
+    guid: 3cdc8bbcca83fd044a7a003062332b3a
+  - enabled: 1
+    path: Assets/Scenes/ACT3/Fight 17.unity
+    guid: 777bd511dab67a64f8e12224b260e6e9
+  - enabled: 1
+    path: Assets/Scenes/ACT3/Fight 18.unity
+    guid: d74036566a7a60a4fac3a721419c64f3
   m_configObjects: {}

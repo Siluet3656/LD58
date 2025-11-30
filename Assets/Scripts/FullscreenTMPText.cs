@@ -115,6 +115,10 @@ public class FullscreenTMPText : MonoBehaviour
             {
                 G.Map.Animator.SetTrigger("2-1");
             }
+            else if (GameState.State == 18)
+            {
+                G.Map.Animator.SetTrigger("3-1");
+            }
         }
     }
 

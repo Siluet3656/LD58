@@ -90,7 +90,7 @@ public class GameRuler : MonoBehaviour
             _act1.SetActive(false);
             _act2.SetActive(true);
         }
-        else if (GameState.State > 17 && GameState.State <= 19)
+        else if (GameState.State > 17 && GameState.State <= 21)
         {
             _camera.transform.position = _point5.transform.position;
             _act0.SetActive(false);

@@ -839,6 +839,89 @@ namespace Battle
             GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
             G.SmoothSlideY.Show();
         }
+
+        private IEnumerator StartDialogueAct3Fight16()
+        {
+            yield return new WaitForSeconds(2f);
+            IsLBM = false;
+            
+            ShowDialog("The Guest from Afar walks along the empty streets. His mind blurs and splits.",
+                "", VoiceType.None);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("What does any of this mean? \"Best result achievable with a living subject\"...",
+                "Guest from afar", VoiceType.Alien);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("This expedition... was a mistake.",
+                "Guest from afar", VoiceType.Alien);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("Strange figures emerge ahead, shaped from memory and regret.",
+                "", VoiceType.None);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
+            G.SmoothSlideY.Show();
+        }
+
+        private IEnumerator StartDialogueAct3Fight17()
+        {
+            yield return new WaitForSeconds(2f);
+            IsLBM = false;
+            
+            ShowDialog("The streets twist endlessly. His thoughts scatter into echoes.",
+                "", VoiceType.None);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("I need... to find... my way back.",
+                "Guest from afar", VoiceType.Alien);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            ShowDialog("The shadows take form once again.",
+                "", VoiceType.None);
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
+            G.SmoothSlideY.Show();
+        }
+
+        private IEnumerator StartDialogueAct3Fight18()
+        {
+            yield return new WaitForSeconds(2f);
+            IsLBM = false;
+            
+            ShowDialog("The last echoes approach — fragments of what was.",
+                "", VoiceType.None);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
+            G.SmoothSlideY.Show();
+        }
         
         private void Start()
         {
@@ -888,6 +971,15 @@ namespace Battle
                     break;
                 case 15:
                     StartCoroutine(StartDialogueAct2Fight15());
+                    break;
+                case 16:
+                    StartCoroutine(StartDialogueAct3Fight16());
+                    break;
+                case 17:
+                    StartCoroutine(StartDialogueAct3Fight17());
+                    break;
+                case 18:
+                    StartCoroutine(StartDialogueAct3Fight18());
                     break;
                 default:
                     G.SmoothSlideY.Show();
