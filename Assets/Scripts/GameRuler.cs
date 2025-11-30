@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameRuler : MonoBehaviour
 {
@@ -12,10 +11,12 @@ public class GameRuler : MonoBehaviour
     [SerializeField] private GameObject _point2;
     [SerializeField] private GameObject _point3;
     [SerializeField] private GameObject _point4;
+    [SerializeField] private GameObject _point5;
     [Header("MAPS")] 
     [SerializeField] private GameObject _act0;
     [SerializeField] private GameObject _act1;
     [SerializeField] private GameObject _act2;
+    [SerializeField] private GameObject _act3;
 
     private Camera _camera;
 
@@ -76,18 +77,26 @@ public class GameRuler : MonoBehaviour
             _act0.SetActive(false);
             _act1.SetActive(true);
         }
-        else if (GameState.State > 7 && GameState.State <= 10)
+        else if (GameState.State > 7 && GameState.State <= 11)
         {
             _camera.transform.position = new Vector3(_point3.transform.position.x,_point3.transform.position.y, -10);
             _act0.SetActive(false);
             _act1.SetActive(true);
         }
-        else if (GameState.State > 11 && GameState.State <= 16)
+        else if (GameState.State > 11 && GameState.State <= 17)
         {
             _camera.transform.position = _point4.transform.position;
             _act0.SetActive(false);
             _act1.SetActive(false);
             _act2.SetActive(true);
+        }
+        else if (GameState.State > 17 && GameState.State <= 19)
+        {
+            _camera.transform.position = _point5.transform.position;
+            _act0.SetActive(false);
+            _act1.SetActive(false);
+            _act2.SetActive(false);
+            _act3.SetActive(true);
         }
         else
         {
@@ -112,5 +121,12 @@ public class GameRuler : MonoBehaviour
         _camera.transform.position = _point4.transform.position;
         _text.ShowText("ACT 2");
         _act1.SetActive(false);
+    }
+
+    public void GoActThree()
+    {
+        _camera.transform.position = _point5.transform.position;
+        _text.ShowText("ACT 3");
+        _act2.SetActive(false);
     }
 }

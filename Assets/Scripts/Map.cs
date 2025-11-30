@@ -69,6 +69,18 @@ public class Map : MonoBehaviour
             case 16:
                 _animator.SetTrigger("2-6");
                 break;
+            case 17:
+                _animator.SetTrigger("Shiza");
+                break;
+            case 18:
+                _animator.SetTrigger("3-1");
+                break;
+            case 19:
+                _animator.SetTrigger("3-2");
+                break;
+            case 20:
+                _animator.SetTrigger("3-3");
+                break;
         }
     }
     
@@ -96,6 +108,9 @@ public class Map : MonoBehaviour
             case 2:
                 G.GameRuler.GoActTwo();
                 break;
+            case 3:
+                G.GameRuler.GoActThree();
+                break;
         }
         
         G.ScreenFader.Clear();
@@ -121,5 +136,10 @@ public class Map : MonoBehaviour
     public void IncrementGameState2()
     {
         StartCoroutine(GoActWithFade(2));
+    }
+
+    public void IncrementGameState3()
+    {
+        StartCoroutine(GoActWithFade(3));
     }
 }
