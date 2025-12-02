@@ -1,8 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
 
 public class DeveloperIntro : MonoBehaviour
@@ -11,14 +11,7 @@ public class DeveloperIntro : MonoBehaviour
     public float screenDuration = 3f;
     public float fadeDuration = 1f;
     public Color textColor = Color.white;
-
-    [Header("Content")]
-    [TextArea]
-    public string firstScreenText = "Studio";
-    [TextArea]
-    public string secondScreenText = "Developer Name";
-    [TextArea]
-    public string thirdScreenText = "Something";
+    [SerializeField] private GameObject languageSelectionPanel;
     
     [Header("Font Settings")]
     public TMP_FontAsset fontAsset;
@@ -29,12 +22,57 @@ public class DeveloperIntro : MonoBehaviour
     private TextMeshProUGUI textComponent;
     private Canvas canvas;
 
+    private string firstScreenText;
+    private string secondScreenText;
+    private string thirdScreenText;
 
     public GameObject bg;
-    void Start()
+    private async void Start()
     {
+        // 1. Показываем панель выбора языка
+        languageSelectionPanel.SetActive(true);
+        
+        // 2. Ждем выбора языка асинхронно
+        string selectedLanguage = await WaitForLanguageSelectionAsync();
+        
+        // 3. Устанавливаем язык
+        LocalizationManager.Instance.LoadLanguage(selectedLanguage);
+        
+        // 4. Инициализируем текст
+        InitializeLocalizedText();
+        
+        // 5. Создаем UI и запускаем последовательность
         CreateUIElements();
         StartCoroutine(ShowScreensSequence());
+    }
+    
+    private Task<string> WaitForLanguageSelectionAsync()
+    {
+        var tcs = new TaskCompletionSource<string>();
+        
+        // Получаем кнопки
+        Button[] buttons = languageSelectionPanel.GetComponentsInChildren<Button>();
+        
+        foreach (Button button in buttons)
+        {
+            // Определяем язык по имени кнопки или компоненту
+            string languageCode = button.name; // или button.GetComponent<LanguageButton>().LanguageCode
+            
+            button.onClick.AddListener(() =>
+            {
+                languageSelectionPanel.SetActive(false);
+                tcs.TrySetResult(languageCode);
+            });
+        }
+        
+        return tcs.Task;
+    }
+    
+    private void InitializeLocalizedText()
+    {
+        firstScreenText = LocalizationManager.Instance.Get("firstScreenText");
+        secondScreenText = LocalizationManager.Instance.Get("secondScreenText");
+        thirdScreenText = LocalizationManager.Instance.Get("thirdScreenText");
     }
 
     void CreateUIElements()
