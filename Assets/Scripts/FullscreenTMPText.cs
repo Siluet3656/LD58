@@ -107,6 +107,10 @@ public class FullscreenTMPText : MonoBehaviour
             textClick.SetActive(false);
             StartCoroutine(FadeOut());
 
+            if (GameState.State == 0)
+            {
+                G.Map.Animator.SetTrigger("0-1");
+            }
             if (GameState.State == 5)
             {
                 G.Map.Animator.SetTrigger("1-1");

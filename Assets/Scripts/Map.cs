@@ -19,7 +19,7 @@ public class Map : MonoBehaviour
         switch (GameState.State)
         {
             case 0:
-                _animator.SetTrigger("0-1");
+                //_animator.SetTrigger("0-1");
                 break;
             case 1:
                 _animator.SetTrigger("0-2");
