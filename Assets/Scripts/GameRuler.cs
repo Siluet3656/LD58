@@ -69,7 +69,7 @@ public class GameRuler : MonoBehaviour
         
         if (GameState.State == 0)
         {
-            _text.ShowText("ACT 0");
+            _text.ShowText(LocalizationManager.Instance.Get("ACT0"));
         }
         else if (GameState.State > 4 && GameState.State < 8)
         {
@@ -112,21 +112,21 @@ public class GameRuler : MonoBehaviour
     public void GoActOne()
     {
         _camera.transform.position = _point2.transform.position;
-        _text.ShowText("ACT 1");
+        _text.ShowText(LocalizationManager.Instance.Get("ACT1"));
         _act0.SetActive(false);
     }
 
     public void GoActTwo()
     {
         _camera.transform.position = _point4.transform.position;
-        _text.ShowText("ACT 2");
+        _text.ShowText(LocalizationManager.Instance.Get("ACT2"));
         _act1.SetActive(false);
     }
 
     public void GoActThree()
     {
         _camera.transform.position = _point5.transform.position;
-        _text.ShowText("ACT 3");
+        _text.ShowText(LocalizationManager.Instance.Get("ACT3"));
         _act2.SetActive(false);
     }
 }

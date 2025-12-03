@@ -26,7 +26,7 @@ public class DeveloperIntro : MonoBehaviour
     private string secondScreenText;
     private string thirdScreenText;
 
-    public GameObject bg;
+    public RandomSoundPlayer rsp;
     private async void Start()
     {
         // 1. Показываем панель выбора языка
@@ -40,6 +40,8 @@ public class DeveloperIntro : MonoBehaviour
         
         // 4. Инициализируем текст
         InitializeLocalizedText();
+        
+        rsp.PlayRandomSound();
         
         // 5. Создаем UI и запускаем последовательность
         CreateUIElements();
