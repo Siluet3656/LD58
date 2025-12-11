@@ -825,13 +825,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: 'Shield '
-  _abilityDescription: 'Creates a temporary barrier.
-
-    Barrier: Grants invulnerability
-    to all damage for 1 second.
-
-    Cost: 50 Energy'
+  _titleKey: 
+  _abilityDescriptionKey: 
 --- !u!114 &442400980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3082,6 +3077,14 @@ PrefabInstance:
       propertyPath: _abilityDescription
       value: 'On hit: steals 10 Energy.'
       objectReference: {fileID: 0}
+    - target: {fileID: 137065910779205537, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitGreedy
+      objectReference: {fileID: 0}
+    - target: {fileID: 137065910779205537, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitGreedyDiscription
+      objectReference: {fileID: 0}
     - target: {fileID: 266048306173626717, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 2
@@ -3209,6 +3212,22 @@ PrefabInstance:
     - target: {fileID: 5998679172840352572, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941991841423764832, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitSteady
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941991841423764832, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitSteadyDiscription
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130027814575499164, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitHopeful
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130027814575499164, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitHopefulDiscription
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}

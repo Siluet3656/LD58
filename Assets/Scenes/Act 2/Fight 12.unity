@@ -2025,8 +2025,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Defiled
-  _abilityDescription: 'On hit: Consumes 2 Health.'
+  _titleKey: traitDefiled
+  _abilityDescriptionKey: traitDefiledDiscription
 --- !u!114 &1029540052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2568,16 +2568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Susp. pure soul
-  _abilityDescription: 'Decreases time between auto-attacks by 0.5 seconds. Each
-    attack consumes 10 Energy.
-
-    Cost: 5
-
-    A soul gained during the experiment.
-    Definitely not a pure soul.
-
-    Purity Level: 424.242%'
+  _titleKey: 
+  _abilityDescriptionKey: 
 --- !u!114 &1840803243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3396,6 +3388,14 @@ PrefabInstance:
       value: Increases Attack by +1 for each unit participating in the fight (ally
         or enemy).
       objectReference: {fileID: 0}
+    - target: {fileID: 137065910779205537, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitWellTrained
+      objectReference: {fileID: 0}
+    - target: {fileID: 137065910779205537, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitWellTrainedDiscription
+      objectReference: {fileID: 0}
     - target: {fileID: 256633630168668128, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3431,6 +3431,14 @@ PrefabInstance:
     - target: {fileID: 1216099517277698175, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: _abilityDescription
       value: 'On hit: Restores 5% of max Health.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216099517277698175, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitPure
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216099517277698175, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitPureDiscription
       objectReference: {fileID: 0}
     - target: {fileID: 1581919458449985232, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_Sprite
@@ -3564,6 +3572,14 @@ PrefabInstance:
       propertyPath: _abilityDescription
       value: Passively regenerates 3 Health per second.
       objectReference: {fileID: 0}
+    - target: {fileID: 6941991841423764832, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitScientist
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941991841423764832, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitScientistDiscription
+      objectReference: {fileID: 0}
     - target: {fileID: 8130027814575499164, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: _title
       value: Hateful
@@ -3571,6 +3587,14 @@ PrefabInstance:
     - target: {fileID: 8130027814575499164, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: _abilityDescription
       value: Instantly loses 50% of health if the enemy has the Soul of the Follower.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130027814575499164, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitHateful
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130027814575499164, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitHatefulDiscription
       objectReference: {fileID: 0}
     - target: {fileID: 8294320383138304308, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_Sprite

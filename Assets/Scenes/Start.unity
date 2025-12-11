@@ -374,7 +374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundClips:
-  - {fileID: 8300000, guid: 0bff77f0d9c718b48a4029e49cb0bf4f, type: 3}
+  - {fileID: 8300000, guid: 49aa26c2741f0d543a59a050505ae7fb, type: 3}
   audioSource: {fileID: 19855915}
   minDelay: 1
   minPitch: 1
@@ -1247,7 +1247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundClips:
-  - {fileID: 8300000, guid: 0bff77f0d9c718b48a4029e49cb0bf4f, type: 3}
+  - {fileID: 8300000, guid: 49aa26c2741f0d543a59a050505ae7fb, type: 3}
   audioSource: {fileID: 19855915}
   minDelay: 1
   minPitch: 1

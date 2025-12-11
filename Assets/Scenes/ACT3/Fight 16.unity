@@ -544,30 +544,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &351071877 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2080212302518241689, guid: 70adb13d76d44604495014b7162b1514, type: 3}
-  m_PrefabInstance: {fileID: 2080212301575874624}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &351071878
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351071877}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 919cefefd0ec06f40831448fa6656fcf, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &373539406
 GameObject:
   m_ObjectHideFlags: 0
@@ -3539,10 +3515,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2145297814}
-    - target: {fileID: 2080212302518241691, guid: 70adb13d76d44604495014b7162b1514, type: 3}
-      propertyPath: m_Transition
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70adb13d76d44604495014b7162b1514, type: 3}
 --- !u!1001 &2690180495419647262
@@ -3559,6 +3531,14 @@ PrefabInstance:
     - target: {fileID: 137065910779205537, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: _abilityDescription
       value: 'Once per fight: when health drops below 40%, restores full health.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 137065910779205537, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitHopeful
+      objectReference: {fileID: 0}
+    - target: {fileID: 137065910779205537, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitHopefulDiscription
       objectReference: {fileID: 0}
     - target: {fileID: 256633630168668128, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_Sprite
@@ -3599,6 +3579,14 @@ PrefabInstance:
     - target: {fileID: 1216099517277698175, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: _abilityDescription
       value: 'On hit: steals 10 Energy.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216099517277698175, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitGreedy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216099517277698175, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitGreedyDiscription
       objectReference: {fileID: 0}
     - target: {fileID: 1581919458449985232, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_Sprite
@@ -3732,6 +3720,14 @@ PrefabInstance:
       propertyPath: _abilityDescription
       value: When health drops below 50%, damage is doubled.
       objectReference: {fileID: 0}
+    - target: {fileID: 6941991841423764832, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitFury
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941991841423764832, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitFuryDiscription
+      objectReference: {fileID: 0}
     - target: {fileID: 8130027814575499164, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: _title
       value: Steady
@@ -3739,6 +3735,14 @@ PrefabInstance:
     - target: {fileID: 8130027814575499164, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: _abilityDescription
       value: Each attack restores 2 HP.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130027814575499164, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitSteady
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130027814575499164, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitSteadyDiscription
       objectReference: {fileID: 0}
     - target: {fileID: 8294320383138304308, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_Sprite

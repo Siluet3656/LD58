@@ -1899,8 +1899,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Defiled
-  _abilityDescription: 'On hit: Consumes 2 Health.'
+  _titleKey: 
+  _abilityDescriptionKey: 
 --- !u!114 &1029540052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4885,6 +4885,14 @@ PrefabInstance:
     - target: {fileID: 6941991841423764832, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: _abilityDescription
       value: Health is locked at 1. Invulnerable while all allies remain alive.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941991841423764832, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitArtificial
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941991841423764832, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitArtificialDiscription
       objectReference: {fileID: 0}
     - target: {fileID: 8130027814575499164, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: _title

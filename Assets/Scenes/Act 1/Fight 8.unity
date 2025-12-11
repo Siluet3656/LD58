@@ -2725,6 +2725,14 @@ PrefabInstance:
       propertyPath: _abilityDescription
       value: Instantly loses 50% of health if the enemy has the Soul of the Follower.
       objectReference: {fileID: 0}
+    - target: {fileID: 137065910779205537, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitHateful
+      objectReference: {fileID: 0}
+    - target: {fileID: 137065910779205537, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitHatefulDiscription
+      objectReference: {fileID: 0}
     - target: {fileID: 256633630168668128, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2864,6 +2872,14 @@ PrefabInstance:
     - target: {fileID: 6941991841423764832, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: _abilityDescription
       value: When health drops below 50%, damage is doubled.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941991841423764832, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitFury
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941991841423764832, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitFuryDiscription
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}

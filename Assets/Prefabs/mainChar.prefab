@@ -2617,9 +2617,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Strike
-  _abilityDescription: "Deals damage and interrupts the enemy\u2019s attack.\r\nInterrupt:
-    Resets the target\u2019s auto-attack progress.\r\nCost: 60 Energy"
+  _titleKey: skillStrike
+  _abilityDescriptionKey: skillStrikeDiscription
 --- !u!1 &554895767810552774
 GameObject:
   m_ObjectHideFlags: 0
@@ -2890,10 +2889,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: 'Soul splash '
-  _abilityDescription: 'Deals 5 damage to all enemies.
-
-    Cost: 100 Energy'
+  _titleKey: 'skillSoulSplash '
+  _abilityDescriptionKey: skillSoulSplashDiscription
 --- !u!1 &1249428641539928496
 GameObject:
   m_ObjectHideFlags: 0
@@ -3056,13 +3053,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Punch
-  _abilityDescription: 'Deals damage and inflicts Stun.
-
-    Stun: The target is
-    unable to attack for 3 seconds or until taking damage.
-
-    Cost: 80 Energy'
+  _titleKey: skillPunch
+  _abilityDescriptionKey: skillPunchDiscription
 --- !u!1 &1871101901120888270
 GameObject:
   m_ObjectHideFlags: 0
@@ -13747,13 +13739,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: 'Shield '
-  _abilityDescription: 'Creates a temporary barrier.
-
-    Barrier: Grants invulnerability
-    to all damage for 1 second.
-
-    Cost: 50 Energy'
+  _titleKey: 'skillShield '
+  _abilityDescriptionKey: skillShieldDiscription
 --- !u!1 &9003693593017288459
 GameObject:
   m_ObjectHideFlags: 0

@@ -3593,6 +3593,14 @@ PrefabInstance:
       propertyPath: _abilityDescription
       value: 'Once per fight: when health drops below 40%, restores full health.'
       objectReference: {fileID: 0}
+    - target: {fileID: 137065910779205537, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitHopeful
+      objectReference: {fileID: 0}
+    - target: {fileID: 137065910779205537, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitHopefulDiscription
+      objectReference: {fileID: 0}
     - target: {fileID: 256633630168668128, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3632,6 +3640,14 @@ PrefabInstance:
     - target: {fileID: 1216099517277698175, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: _abilityDescription
       value: 'On hit: steals 10 Energy.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216099517277698175, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitGreedy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216099517277698175, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitGreedyDiscription
       objectReference: {fileID: 0}
     - target: {fileID: 1581919458449985232, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_Sprite
@@ -3765,6 +3781,14 @@ PrefabInstance:
       propertyPath: _abilityDescription
       value: When health drops below 50%, damage is doubled.
       objectReference: {fileID: 0}
+    - target: {fileID: 6941991841423764832, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitFury
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941991841423764832, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitFuryDiscription
+      objectReference: {fileID: 0}
     - target: {fileID: 8130027814575499164, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: _title
       value: Steady
@@ -3772,6 +3796,14 @@ PrefabInstance:
     - target: {fileID: 8130027814575499164, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: _abilityDescription
       value: Each attack restores 2 HP.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130027814575499164, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitSteady
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130027814575499164, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitSteadyDiscription
       objectReference: {fileID: 0}
     - target: {fileID: 8294320383138304308, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_Sprite

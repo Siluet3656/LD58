@@ -2348,13 +2348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: 'Punch '
-  _abilityDescription: 'Deals damage and inflicts Stun.
-
-    Stun: The target is
-    unable to attack for 3 seconds or until taking damage.
-
-    Cost: 80 Energy'
+  _titleKey: 
+  _abilityDescriptionKey: 
 --- !u!114 &1282042853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3230,6 +3225,14 @@ PrefabInstance:
       value: Increases max health by +5 for each unit participating in the fight
         (ally or enemy).
       objectReference: {fileID: 0}
+    - target: {fileID: 137065910779205537, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitLeader
+      objectReference: {fileID: 0}
+    - target: {fileID: 137065910779205537, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitLeaderDiscription
+      objectReference: {fileID: 0}
     - target: {fileID: 266048306173626717, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 1
@@ -3341,6 +3344,14 @@ PrefabInstance:
     - target: {fileID: 5998679172840352572, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941991841423764832, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: traitSteadyDiscription
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941991841423764832, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
+      propertyPath: _titleKey
+      value: traitSteady
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e601c12eedecaee4cbb00d5d5485682a, type: 3}
