@@ -1736,6 +1736,24 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: ec8c4f3dd8b74d0488c6207b1db8cb79, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
+--- !u!1 &914636791 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1333776136, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
+  m_PrefabInstance: {fileID: 914636790}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &914636792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914636791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037ed1e54f2186c48b158bc1846791a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: nameNikita
 --- !u!1 &948457631
 GameObject:
   m_ObjectHideFlags: 0
@@ -3308,9 +3326,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Soul of bandit
-  _abilityDescription: "Auto-attacks grant 10 Energy. \r\nCost: 2\r\nA soul of a
-    true anarchist, untamed and reckless.\r\nPurity Level: 2.43%"
+  _titleKey: 
+  _abilityDescriptionKey: 
 --- !u!1001 &2040810207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3538,6 +3555,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
+--- !u!1 &2050635538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1333776136, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
+  m_PrefabInstance: {fileID: 2050635537}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2050635539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050635538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037ed1e54f2186c48b158bc1846791a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: nameAnton
 --- !u!1 &2077716360
 GameObject:
   m_ObjectHideFlags: 0

@@ -2274,6 +2274,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abed2f4c89122e044a3d945015c6b2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1153950659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1333776136, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
+  m_PrefabInstance: {fileID: 1153950655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1153950660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153950659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037ed1e54f2186c48b158bc1846791a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: nameCrystal
 --- !u!1001 &1155491245
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2716,6 +2734,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abed2f4c89122e044a3d945015c6b2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1203141552 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1333776136, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
+  m_PrefabInstance: {fileID: 1203141548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1203141553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203141552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037ed1e54f2186c48b158bc1846791a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: nameCrystal
 --- !u!224 &1210884570 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2080212302518241690, guid: 70adb13d76d44604495014b7162b1514, type: 3}
@@ -3627,6 +3663,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abed2f4c89122e044a3d945015c6b2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1792150170 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1333776136, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
+  m_PrefabInstance: {fileID: 1792150166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1792150171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792150170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037ed1e54f2186c48b158bc1846791a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: nameCrystal
 --- !u!1 &1847511284
 GameObject:
   m_ObjectHideFlags: 0
@@ -4361,6 +4415,24 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4062323350269094056, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
   m_PrefabInstance: {fileID: 2073349443}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2073349447 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1333776136, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
+  m_PrefabInstance: {fileID: 2073349443}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2073349448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073349447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037ed1e54f2186c48b158bc1846791a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 'nameArchivist '
 --- !u!1 &2077716360
 GameObject:
   m_ObjectHideFlags: 0

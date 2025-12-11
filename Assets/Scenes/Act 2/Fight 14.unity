@@ -2664,6 +2664,24 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4062323350269094056, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
   m_PrefabInstance: {fileID: 2073349443}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2073349447 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1333776136, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
+  m_PrefabInstance: {fileID: 2073349443}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2073349448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073349447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037ed1e54f2186c48b158bc1846791a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: nameVictoria2
 --- !u!1 &2077716360
 GameObject:
   m_ObjectHideFlags: 0

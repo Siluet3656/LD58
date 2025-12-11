@@ -1703,6 +1703,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abed2f4c89122e044a3d945015c6b2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &770925012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1333776136, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
+  m_PrefabInstance: {fileID: 770925010}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &770925013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770925012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037ed1e54f2186c48b158bc1846791a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: nameAlex
 --- !u!1001 &839074914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2597,6 +2615,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abed2f4c89122e044a3d945015c6b2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1718584382 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1333776136, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
+  m_PrefabInstance: {fileID: 1718584380}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1718584383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718584382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037ed1e54f2186c48b158bc1846791a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: nameAlice
 --- !u!1 &1847511284
 GameObject:
   m_ObjectHideFlags: 0
@@ -2993,7 +3029,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef27390557582e14e8962d64203e06fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isReturnToCity: 0
   _victoryPanel: {fileID: 1490504276}
   _defeatPanel: {fileID: 1458134496}
   _floatingTextPrefab: {fileID: 2715349566576225611, guid: f74d7f7e93a680947b3729e2b7bd975b, type: 3}
