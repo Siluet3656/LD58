@@ -102,16 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Soul of scientist
-  _abilityDescription: 'For every 10 Energy consumed, heals 1 Health.
-
-    Cost:
-    8
-
-    A soul gained during the experiment. What is happening here?
-
-    Purity
-    Level: 99.1%'
+  _titleKey: soulName12
+  _abilityDescriptionKey: soulDiscription12
 --- !u!1 &668073763271338545
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,15 +206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Soul of knight
-  _abilityDescription: 'Each skill used restores 2 HP.
-
-    Cost: 2
-
-    A warm soul
-    of a brave warrior.
-
-    Purity Level: 18.4%'
+  _titleKey: soulName4
+  _abilityDescriptionKey: soulDiscription4
 --- !u!1 &1260766503469541615
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,9 +971,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Soul of poor man
-  _abilityDescription: "Gain +1 to Attack, lose 2 Max HP. Removable. \r\nCost: 1\r\nA
-    soul of someone easily forgotten.\r\nPurity Level: 0.61%"
+  _titleKey: soulName1
+  _abilityDescriptionKey: soulDiscription1
 --- !u!1 &1260766504067348804
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,7 +983,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1260766504067348807}
   - component: {fileID: 1260766504067348801}
-  - component: {fileID: 1260766504067348806}
+  - component: {fileID: 3136725397003291069}
+  - component: {fileID: 6076200526165812896}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1034,7 +1019,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1260766504067348804}
   m_CullTransparentMesh: 0
---- !u!114 &1260766504067348806
+--- !u!114 &3136725397003291069
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1043,7 +1028,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1260766504067348804}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: 037ed1e54f2186c48b158bc1846791a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: btnFight
+--- !u!114 &6076200526165812896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260766504067348804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -1054,20 +1052,75 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: b2ca34a06cba4f34aa929858718fb9f9, type: 3}
-    m_FontSize: 52
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 87
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Fight!
+  m_text: Fight!
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 137edcbbd8c81c84e827b6a8b82cf223, type: 2}
+  m_sharedMaterial: {fileID: -3575996941641997046, guid: 137edcbbd8c81c84e827b6a8b82cf223, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 46.3
+  m_fontSizeBase: 46.3
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1260766504121609662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,9 +1895,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Soul of exiled
-  _abilityDescription: "Regenerates +5 Energy per tick. \r\nCost: 2\r\nA soul full
-    of determination.\r\nPurity Level: 12.42%"
+  _titleKey: soulName3
+  _abilityDescriptionKey: soulDiscription3
 --- !u!1 &1260766504690776021
 GameObject:
   m_ObjectHideFlags: 0
@@ -2038,9 +2090,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Soul of bandit
-  _abilityDescription: "Auto-attacks grant 10 Energy. \r\nCost: 2\r\nA soul of a
-    true anarchist, untamed and reckless.\r\nPurity Level: 2.43%"
+  _titleKey: soulName2
+  _abilityDescriptionKey: soulDiscription2
 --- !u!1 &1260766504843318974
 GameObject:
   m_ObjectHideFlags: 0
@@ -2923,17 +2974,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Soul of Leader
-  _abilityDescription: 'Increases max health by +5 for each unit participating in
-    the fight (ally or enemy).
-
-    Cost: 5
-
-    A soul that grows stronger when
-    others gather around it. Authority is both burden and fuel.
-
-    Purity Level:
-    63.1%'
+  _titleKey: soulName8
+  _abilityDescriptionKey: soulDiscription8
 --- !u!1 &5611488962476547004
 GameObject:
   m_ObjectHideFlags: 0
@@ -3036,15 +3078,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Soul of follower
-  _abilityDescription: 'Once per fight: when health drops below 40%, restores full
-    health.
-
-    Cost: 4
-
-    A soul of a true beliver.
-
-    Purity Level: 26.73%'
+  _titleKey: soulName6
+  _abilityDescriptionKey: soulDiscription6
 --- !u!1 &6402337657584009768
 GameObject:
   m_ObjectHideFlags: 0
@@ -3147,10 +3182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Artificial Soul
-  _abilityDescription: "Doubles Max Energy and Energy regeneration. Cannot perform
-    auto-attacks.\r\nCost: 10\r\nThe strangest soul I\u2019ve ever seen. What should
-    I do with it?\r\nPurity Level: 42%"
+  _titleKey: soulName14
+  _abilityDescriptionKey: soulDiscription14
 --- !u!1 &6781888728091412271
 GameObject:
   m_ObjectHideFlags: 0
@@ -3253,16 +3286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Susp. defiled soul
-  _abilityDescription: 'Decreases time between auto-attacks by 0.5 seconds. Each
-    attack consumes 2 Health.
-
-    Cost: 5
-
-    A soul gained during the experiment.
-    Negative purity? How is that possible?
-
-    Purity Level: -424.242%'
+  _titleKey: soulName10
+  _abilityDescriptionKey: soulDiscription10
 --- !u!1 &6831488993671564581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3365,15 +3390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Soul of berserk
-  _abilityDescription: 'When health below 50%, damage is doubled.
-
-    Cost: 4
-
-    The
-    soul of a man who lost all his sanity.
-
-    Purity Level: 87.4%'
+  _titleKey: soulName7
+  _abilityDescriptionKey: soulDiscription7
 --- !u!1 &6903095948693149110
 GameObject:
   m_ObjectHideFlags: 0
@@ -3476,15 +3494,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Pure soul?
-  _abilityDescription: 'Doubles Health and Attack. Energy no longer regenerates.
-
-    Cost:
-    10
-
-    Is it truly a Pure Soul?
-
-    Purity Level: 99.9%'
+  _titleKey: soulName13
+  _abilityDescriptionKey: soulDiscription13
 --- !u!1 &7364135282853337922
 GameObject:
   m_ObjectHideFlags: 0
@@ -3587,17 +3598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Soul of soldier
-  _abilityDescription: 'Increases Attack by +1 for each unit participating in the
-    fight (ally or enemy).
-
-    Cost: 5
-
-    A soul that grows stronger when others
-    gather around it. Loyalty is both a burden and a source of power.
-
-    Purity
-    Level: 71.41%'
+  _titleKey: soulName9
+  _abilityDescriptionKey: soulDiscription9
 --- !u!1 &8594923927807837270
 GameObject:
   m_ObjectHideFlags: 0
@@ -3700,16 +3702,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Susp. pure soul
-  _abilityDescription: 'Decreases time between auto-attacks by 0.5 seconds. Each
-    attack consumes 10 Energy.
-
-    Cost: 5
-
-    A soul gained during the experiment.
-    Definitely not a pure soul.
-
-    Purity Level: 424.242%'
+  _titleKey: soulName11
+  _abilityDescriptionKey: soulDiscription11
 --- !u!1 &9170642158188313542
 GameObject:
   m_ObjectHideFlags: 0
@@ -3812,7 +3806,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: Soul of merchant
-  _abilityDescription: "Each skill used deals 2 damage to all units, including yourself.\r\nCost:
-    3\r\nA soul of someone who knew the price of everything \u2014 even his own life.\r\nPurity
-    Level: 10%"
+  _titleKey: soulName5
+  _abilityDescriptionKey: soulDiscription5

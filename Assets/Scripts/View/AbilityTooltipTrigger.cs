@@ -5,13 +5,12 @@ namespace View
 {
     public class AbilityTooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        [SerializeField] private string _title;
-        [TextArea(5, 10)]
-        [SerializeField] private string _abilityDescription;
+        [SerializeField] private string _titleKey;
+        [SerializeField] private string _abilityDescriptionKey;
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            TooltipManager.Instance.ShowTooltip(_title, _abilityDescription);
+            TooltipManager.Instance.ShowTooltip(LocalizationManager.Instance.Get(_titleKey), LocalizationManager.Instance.Get(_abilityDescriptionKey));
         }
 
         public void OnPointerExit(PointerEventData eventData)
