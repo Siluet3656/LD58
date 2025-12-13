@@ -58,18 +58,18 @@ Material:
     m_Floats:
     - _AlphaFade: 0
     - _BumpScale: 1
-    - _ColorShift: 0.24530913
+    - _ColorShift: 0.23681746
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DistortionSpeed: 1.8378279
-    - _DistortionStrength: 0.07849892
+    - _DistortionSpeed: 2.841367
+    - _DistortionStrength: 0.075781584
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
-    - _NoiseScale: 0.06320458
+    - _NoiseScale: 0.06513641
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0

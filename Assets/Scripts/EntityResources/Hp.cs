@@ -174,7 +174,7 @@ namespace EntityResources
             
             if (_currentHealth <= _maxHealth / 2)
             {
-                int rand = Random.Range(0, 15);
+                int rand = Random.Range(0, 20);
 
                 if (_currentHealth <= 1) rand = 7;
                 
@@ -185,10 +185,10 @@ namespace EntityResources
                     switch (rand)
                     {
                         case 7:
-                            ShowDialog("My experiments are at risk");
+                            ShowDialog(LocalizationManager.Instance.Get("playerPhrase1"));
                             break;
                         case 14:
-                            ShowDialog("Is this really the end?");
+                            ShowDialog(LocalizationManager.Instance.Get("playerPhrase2"));
                             break;
                     }
                     
@@ -200,19 +200,19 @@ namespace EntityResources
                     switch (rand)
                     {
                         case 0:
-                            ShowDialog("Help me! Anyone?!");
+                            ShowDialog(LocalizationManager.Instance.Get("enemyPhrase1"));
                             break;
                         case 4:
-                            ShowDialog("Not today!");
+                            ShowDialog(LocalizationManager.Instance.Get("enemyPhrase2"));
                             break;
                         case 6:
-                            ShowDialog("I need a break...");
+                            ShowDialog(LocalizationManager.Instance.Get("enemyPhrase3"));
                             break;
                         case 7:
-                            ShowDialog("Too hard!");
+                            ShowDialog(LocalizationManager.Instance.Get("enemyPhrase4"));
                             break;
                         case 13:
-                            ShowDialog("You can’t stop me!");
+                            ShowDialog(LocalizationManager.Instance.Get("enemyPhrase5"));
                             break;
                     }
                 }
