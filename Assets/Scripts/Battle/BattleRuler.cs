@@ -35,23 +35,15 @@ namespace Battle
         private bool _tutorEnd = false;
         private bool _afterbattleend = false;
 
-        private const string TutorialText1 = "Your health. If it reaches 0, your journey ends.";
-
-        private const string TutorialText2 =
-            "Your auto-attack power. \nAuto-attacks are performed automatically every 1.5 seconds.";
-
-        private const string TutorialText3 = "The white bar below your health bar indicates auto-attack progress.";
-
-        private const string TutorialText4 = "All souls you've collected will appear here.";
-        private const string TutorialText5 = "You can drag and drop souls into upgrade slots.";
-        private const string TutorialText6 = "Upgrade has limits on how many souls can be used on total capacity.";
-
-        private const string TutorialText7 = "Here’s your abilities panel.";
-
-        private const string TutorialText8 =
-            "Energy is consumed when using abilities. It recovers at 20 Energy per second.";
-
-        private const string TutorialText9 = "Click the ability icon or press (Q) to use it.";
+        private readonly string _tutorialText1 = LocalizationManager.Instance.Get("TutorialText1");
+        private readonly string _tutorialText2 = LocalizationManager.Instance.Get("TutorialText2");
+        private readonly string _tutorialText3 = LocalizationManager.Instance.Get("TutorialText3");
+        private readonly string _tutorialText4 = LocalizationManager.Instance.Get("TutorialText4");
+        private readonly string _tutorialText5 = LocalizationManager.Instance.Get("TutorialText5");
+        private readonly string _tutorialText6 = LocalizationManager.Instance.Get("TutorialText6");
+        private readonly string _tutorialText7 = LocalizationManager.Instance.Get("TutorialText7");
+        private readonly string _tutorialText8 = LocalizationManager.Instance.Get("TutorialText8");
+        private readonly string _tutorialText9 = LocalizationManager.Instance.Get("TutorialText9");
 
         private static readonly int StartTutorial1 = Animator.StringToHash("StartTutorial1");
         private static readonly int StartTutorial2 = Animator.StringToHash("StartTutorial2");
@@ -87,14 +79,16 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
 
-            ShowDialog("Is this a city?\n I heard they have these kinds of things on Earth.", "Guest from afar",
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText1"),
+                LocalizationManager.Instance.Get("nameGuest"),
                 VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("I hope it's worth it.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText2"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -102,21 +96,21 @@ namespace Battle
 
             _tutorialPanel.SetActive(true);
             _tutorialPanelAnimator.SetTrigger(StartTutorial1);
-            _tutorialText.text = TutorialText1;
+            _tutorialText.text = _tutorialText1;
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
             _tutorialPanelAnimator.SetTrigger(TutorialStep);
-            _tutorialText.text = TutorialText2;
+            _tutorialText.text = _tutorialText2;
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
             _tutorialPanelAnimator.SetTrigger(TutorialStep);
-            _tutorialText.text = TutorialText3;
+            _tutorialText.text = _tutorialText3;
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -130,19 +124,22 @@ namespace Battle
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("Who are you?\n What’s a thing like you doing around here?", "Victor", VoiceType.Man);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText3"),
+                "Victor", VoiceType.Man);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("Are you familiar with the concept of a soul?", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText4"), 
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("What? What do you think you are?\n You’re gonna see souls with your own eyes.", "Victor",
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText5"),
+                LocalizationManager.Instance.Get("nameVictor"),
                 VoiceType.Man);
 
             yield return new WaitForSeconds(0.5f);
@@ -159,32 +156,37 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
 
-            ShowDialog("Hey! What have you done to him?!", "Alice", VoiceType.Woman);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText6"),
+                LocalizationManager.Instance.Get("nameAlice"), VoiceType.Woman);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("His soul is now part of my collection.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText7"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("If you don't want to end up where he did,\nyou'd better not get in my way.", "Guest from afar",
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText8"), 
+                LocalizationManager.Instance.Get("nameGuest"),
                 VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("Uh-huh, like we’d believe you.", "Alice", VoiceType.Woman);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText9"),
+                LocalizationManager.Instance.Get("nameAlice"), VoiceType.Woman);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("You're exactly the kind who waits to stab someone in the back.", "Alex", VoiceType.Man);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText10"),
+                LocalizationManager.Instance.Get("nameAlex"), VoiceType.Man);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -193,14 +195,14 @@ namespace Battle
             G.SmoothSlideY.Show();
             _tutorialPanel.SetActive(true);
             _tutorialPanelAnimator.SetTrigger(StartTutorial2);
-            _tutorialText.text = TutorialText4;
+            _tutorialText.text = _tutorialText4;
 
             yield return new WaitForSeconds(1.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
             _tutorialPanelAnimator.SetTrigger(TutorialStep);
-            _tutorialText.text = TutorialText5;
+            _tutorialText.text = _tutorialText5;
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -208,7 +210,7 @@ namespace Battle
 
 
             _tutorialPanelAnimator.SetTrigger(TutorialStep);
-            _tutorialText.text = TutorialText6;
+            _tutorialText.text = _tutorialText6;
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -226,21 +228,23 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
 
-            ShowDialog("Hey, we’re not your enemies, dude. Got a little mixed up—everyone makes mistakes.", "Anton",
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText11"),
+                LocalizationManager.Instance.Get("nameAnton"),
                 VoiceType.Man);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("These souls of yours are very interesting. They’ll surely help me achieve the Pure Soul.",
-                "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText12"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("Oh man, bro, looks like we’ve really messed up.", "Nikita", VoiceType.Man);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText13"),
+                LocalizationManager.Instance.Get("nameNikita"), VoiceType.Man);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -249,21 +253,21 @@ namespace Battle
             G.SmoothSlideY.Show();
             _tutorialPanel.SetActive(true);
             _tutorialPanelAnimator.SetTrigger(StartTutorial3);
-            _tutorialText.text = TutorialText7;
+            _tutorialText.text = _tutorialText7;
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
             _tutorialPanelAnimator.SetTrigger(TutorialStep);
-            _tutorialText.text = TutorialText8;
+            _tutorialText.text = _tutorialText8;
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
             _tutorialPanelAnimator.SetTrigger(TutorialStep);
-            _tutorialText.text = TutorialText9;
+            _tutorialText.text = _tutorialText9;
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -279,20 +283,22 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
 
-            ShowDialog("We’re just simple hermits. There’s nothing to take from us.", "Igor", VoiceType.Man);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText14"), 
+                LocalizationManager.Instance.Get("nameIgor"), VoiceType.Man);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("I could always take your soul — and right now it's the oddest one I've come across.",
-                "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText15"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("Alright, all of us, together — now we must finally stop him!", "Igor", VoiceType.Man);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText16"),
+                LocalizationManager.Instance.Get("nameIgor"), VoiceType.Man);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -307,19 +313,22 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
 
-            ShowDialog("It seems I've reached the city's entrance.", "Guest from Afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText17"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("Countless souls, yet none shine with truth.", "Guest from Afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText18"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("I must continue. Somewhere among them lies the Pure Soul.", "Guest from Afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText19"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -327,25 +336,29 @@ namespace Battle
 
             _enemies[0].IsNeedToGo = true;
 
-            ShowDialog("Halt, intruder!! Don't think your crimes went unnoticed!!", "Victoria", VoiceType.Woman);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText20"),
+                LocalizationManager.Instance.Get("nameVictoria"), VoiceType.Woman);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("Her soul... it resonates differently from the rest.", "Guest from Afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText21"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("Stop mumbling like I can't hear you!!", "Victoria", VoiceType.Woman);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText22"),
+                LocalizationManager.Instance.Get("nameVictoria"), VoiceType.Woman);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("Guards! We have a situation here!!", "Victoria", VoiceType.Woman);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText23"),
+                LocalizationManager.Instance.Get("nameVictoria"), VoiceType.Woman);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -360,7 +373,8 @@ namespace Battle
 
         private IEnumerator Act1Fight5AfterBattle()
         {
-            ShowDialog("Hostiles neutralized. Her signal is fading...", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText24"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             yield return new WaitForSeconds(2f);
             IsLBM = false;
 
@@ -368,7 +382,8 @@ namespace Battle
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("She's retreating... I must find her again.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText25"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -382,21 +397,23 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
 
-            ShowDialog("Welcome, stranger! Looking to buy? We trade in everything — even souls.", "Richard",
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText26"),
+                LocalizationManager.Instance.Get("nameRichard"),
                 VoiceType.Man);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("Sell, buy, bargain — same thing. I have anything you need if you have enough money of course.",
-                "Richard", VoiceType.Man);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText27"),
+                LocalizationManager.Instance.Get("nameRichard"), VoiceType.Man);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("I take what I need. I do not pay.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText28"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -411,26 +428,30 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
 
-            ShowDialog("I can sense the Pure Soul near you. You're hiding it.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText29"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("You defile the sacred with your greed! The Pure Soul will never be yours!", "Ashley",
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText30"),
+                LocalizationManager.Instance.Get("nameAshley"),
                 VoiceType.Woman);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("You're cursed! Show no mercy!", "Anna", VoiceType.Woman);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText31"),
+                LocalizationManager.Instance.Get("nameAnna"), VoiceType.Woman);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("It blasphemes! Offer your souls for purification!", "Andrey", VoiceType.Man);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText32"),
+                LocalizationManager.Instance.Get("nameAndrey"), VoiceType.Man);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -445,31 +466,36 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
             
-            ShowDialog("She... doesn’t... understand...", "Konstantin", VoiceType.Man);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText33"), 
+                LocalizationManager.Instance.Get("nameKonstantin"), VoiceType.Man);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("I’m in pursuit of the Pure Soul. Step aside if you wish to live.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText34"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("I no longer seek any soul... except the Pure one.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText35"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Soul... pure... not... pure...", "Konstantin", VoiceType.Man);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText36"),
+                LocalizationManager.Instance.Get("nameKonstantin"), VoiceType.Man);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("It’s no use. He can’t hear me.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText37"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -484,25 +510,29 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
             
-            ShowDialog("Halt, intruder! Your greed consumes you!!", "Victoria", VoiceType.Woman);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText38"),
+                LocalizationManager.Instance.Get("nameVictoria"), VoiceType.Woman);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("It’s not greed. It’s the experiment… the data must be complete.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText39"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Enough of your lies! Your corruption ends here!!", "Victoria", VoiceType.Woman);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText40"),
+                LocalizationManager.Instance.Get("nameVictoria"), VoiceType.Woman);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Heh... finally found you. Nowhere to run. Nowhere to hide.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText41"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -517,19 +547,22 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
             
-            ShowDialog("She's escaping... again...", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText42"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Help me! Someone—help me, I command you!!", "Victoria", VoiceType.Woman);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText43"),
+                LocalizationManager.Instance.Get("nameVictoria"), VoiceType.Woman);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Yes, Your Holiness!", "Pakhoma", VoiceType.Woman);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText44"),
+                LocalizationManager.Instance.Get("namePakhoma"), VoiceType.Woman);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -544,13 +577,15 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
             
-            ShowDialog("Help me! Someone—help me, I command you!!", "Victoria", VoiceType.Woman);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText45"),
+                LocalizationManager.Instance.Get("nameVictoria"), VoiceType.Woman);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Yes, Your Holiness!", "Henry", VoiceType.Man);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText46"),
+                LocalizationManager.Instance.Get("nameHenry"), VoiceType.Man);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -565,61 +600,71 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
             
-            ShowDialog("Help me! Someone—help me, I command you!!", "Victoria", VoiceType.Woman);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText47"), 
+                LocalizationManager.Instance.Get("nameVictoria"), VoiceType.Woman);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Huh?! We’re in the middle of something here.", "Patrick", VoiceType.Man);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText48"),
+                LocalizationManager.Instance.Get("namePatrick"), VoiceType.Man);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Hey! Don’t run in here!", "Bob", VoiceType.Man);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText49"),
+                LocalizationManager.Instance.Get("nameBob"), VoiceType.Man);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("...", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText50"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("...", "Patrick", VoiceType.Man);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText51"), 
+                LocalizationManager.Instance.Get("namePatrick"), VoiceType.Man);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Wait... you’re not one of us, are you?", "Patrick", VoiceType.Man);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText52"), 
+                LocalizationManager.Instance.Get("namePatrick"), VoiceType.Man);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Not your concern. Get out of my way.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText53"), 
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("You’re talking to the heads of the Soul Project, pal!", "Bob", VoiceType.Man);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText54"), 
+                LocalizationManager.Instance.Get("nameBob"), VoiceType.Man);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Exactly. And since you’ve seen our work... we can’t let you leave alive.", "Patrick", VoiceType.Man);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText55"), 
+                LocalizationManager.Instance.Get("namePatrick"), VoiceType.Man);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Heh, yeah. No witnesses — no problem.", "Bob", VoiceType.Man);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText56"), 
+                LocalizationManager.Instance.Get("nameBob"), VoiceType.Man);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -634,37 +679,43 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
             
-            ShowDialog("Those two were leaders of some kind of project...", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText57"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("What kind of experiments were they conducting here?", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText58"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Their souls... they look unnatural.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText59"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Even I couldn’t achieve results like this — not after years of experimentation.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText60"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Definitely... this expedition was worth it.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText61"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("Footsteps echo nearby", "", VoiceType.None);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText62"),
+                "", VoiceType.None);
 
             foreach (Enemy enemy in G.Enemies)
             {
@@ -675,13 +726,15 @@ namespace Battle
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("...", "Scientist", VoiceType.None);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText63"), 
+                LocalizationManager.Instance.Get("nameScientist"), VoiceType.None);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("I'm not alone.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText64"), 
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -701,37 +754,43 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
             
-            ShowDialog("This time, I’ve finished what I started.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText65"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("No chance to win... I’m done.", "Victoria", VoiceType.Woman);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText66"),
+                LocalizationManager.Instance.Get("nameVictoria"), VoiceType.Woman);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Surrendering? Already? Too easy.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText67"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("But... if only... my soul...", "Victoria", VoiceType.Woman);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText68"),
+                LocalizationManager.Instance.Get("nameVictoria"), VoiceType.Woman);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-            // Animation/transition???
-            ShowDialog("Victoria’s body begins to glow, her voice echoing with radiant force.", "", VoiceType.None);
             
-            yield return new WaitForSeconds(0.5f);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText69"),
+                "", VoiceType.None);
+            
+            yield return new WaitForSeconds(1.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-
-            ShowDialog("Only if my soul burns as bright as a thousand suns... can I defeat you!", "Victoria the Pure Soul", VoiceType.Woman);
+// Animation/transition???
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText70"),
+                LocalizationManager.Instance.Get("nameVictoria2"), VoiceType.Woman);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -746,91 +805,99 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
             
-            ShowDialog("Shadows and silhouettes flicker across the cracked walls of the underground archive. The air hums with static and whispers of forgotten data.", "", VoiceType.None);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText71"), 
+                "", VoiceType.None);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("I need answers... I think I can find them here.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText72"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Here—notes.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText73"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("'Experiment failure. Human is dead. Mismatch'", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText74"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("'Experiment failure. Human is dead. Mismatch'", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText75"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("'Experiment failure. Human is defiled. Mismatch'", "Guest from afar", VoiceType.Alien);
-            
-            yield return new WaitForSeconds(0.5f);
-            yield return new WaitUntil(() => IsLBM);
-            IsLBM = false;
-
-            ShowDialog("He flips through several worn pages, symbols blurring together.", "", VoiceType.None);
-            
-            yield return new WaitForSeconds(0.5f);
-            yield return new WaitUntil(() => IsLBM);
-            IsLBM = false;
-
-            ShowDialog("'Experiment failure. Only 99.1% purity.'", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText76"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("More pages fall away like ash.", "", VoiceType.None);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText77"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
 
-            ShowDialog("'Experiment failure. Only 99.9% purity. Best result achievable with a living subject'", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText78"),
+                "", VoiceType.None);
+            
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText79"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("That was last one.", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText80"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Pure Soul’? It’s... not actually pure?", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText81"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Access denied.", "Archivist", VoiceType.None); //VoiceType.AI
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText82"),
+                LocalizationManager.Instance.Get("nameArchivist"), VoiceType.None); //VoiceType.AI
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("What?", "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText83"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Defense protocol—activated.", "Archivist", VoiceType.None); //VoiceType.AI
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText84"),
+                LocalizationManager.Instance.Get("nameArchivist"), VoiceType.None); //VoiceType.AI
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -845,28 +912,28 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
             
-            ShowDialog("The Guest from Afar walks along the empty streets. His mind blurs and splits.",
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText85"),
                 "", VoiceType.None);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("What does any of this mean? \"Best result achievable with a living subject\"...",
-                "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText86"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("This expedition... was a mistake.",
-                "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText87"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("Strange figures emerge ahead, shaped from memory and regret.",
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText88"),
                 "", VoiceType.None);
 
             yield return new WaitForSeconds(0.5f);
@@ -882,21 +949,21 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
             
-            ShowDialog("The streets twist endlessly. His thoughts scatter into echoes.",
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText89"),
                 "", VoiceType.None);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("I need... to find... my way back.",
-                "Guest from afar", VoiceType.Alien);
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText90"),
+                LocalizationManager.Instance.Get("nameGuest"), VoiceType.Alien);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
-            ShowDialog("The shadows take form once again.",
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText91"),
                 "", VoiceType.None);
 
             yield return new WaitForSeconds(0.5f);
@@ -912,7 +979,7 @@ namespace Battle
             yield return new WaitForSeconds(2f);
             IsLBM = false;
             
-            ShowDialog("The last echoes approach — fragments of what was.",
+            ShowDialog(LocalizationManager.Instance.Get("DialogueText92"),
                 "", VoiceType.None);
             
             yield return new WaitForSeconds(0.5f);
