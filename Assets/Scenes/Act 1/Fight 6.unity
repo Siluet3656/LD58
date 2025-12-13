@@ -1514,6 +1514,14 @@ PrefabInstance:
         3\r\nA soul of someone who knew the price of everything \u2014 even his own
         life.\r\nPurity Level: 10%"
       objectReference: {fileID: 0}
+    - target: {fileID: 8396052897736060238, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
+      propertyPath: _titleKey
+      value: soulName5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396052897736060238, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: soulDiscription5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
 --- !u!224 &719667586 stripped

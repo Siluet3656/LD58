@@ -2483,6 +2483,14 @@ PrefabInstance:
         Purity
         Level: 99.1%'
       objectReference: {fileID: 0}
+    - target: {fileID: 8396052897736060238, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
+      propertyPath: _titleKey
+      value: soulName12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396052897736060238, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: soulDiscription12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
 --- !u!224 &719667586 stripped

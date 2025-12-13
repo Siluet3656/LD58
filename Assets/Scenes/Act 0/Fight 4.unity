@@ -1553,6 +1553,14 @@ PrefabInstance:
       value: "Regenerates +5 Energy per tick. \r\nCost: 2\r\nA soul full of determination.\r\nPurity
         Level: 12.42%"
       objectReference: {fileID: 0}
+    - target: {fileID: 8396052897736060238, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
+      propertyPath: _titleKey
+      value: soulName3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396052897736060238, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: soulDiscription3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
 --- !u!224 &719667586 stripped
@@ -2527,6 +2535,7 @@ GameObject:
   - component: {fileID: 1687463533}
   - component: {fileID: 1687463535}
   - component: {fileID: 1687463534}
+  - component: {fileID: 1687463536}
   m_Layer: 2
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2575,8 +2584,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Right mouse button = remove soul
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 137edcbbd8c81c84e827b6a8b82cf223, type: 2}
+  m_sharedMaterial: {fileID: -3575996941641997046, guid: 137edcbbd8c81c84e827b6a8b82cf223, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2650,6 +2659,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687463532}
   m_CullTransparentMesh: 0
+--- !u!114 &1687463536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687463532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037ed1e54f2186c48b158bc1846791a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: tutorRemove
 --- !u!1001 &1783014333
 PrefabInstance:
   m_ObjectHideFlags: 0

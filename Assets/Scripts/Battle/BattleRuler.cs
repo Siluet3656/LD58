@@ -35,15 +35,15 @@ namespace Battle
         private bool _tutorEnd = false;
         private bool _afterbattleend = false;
 
-        private readonly string _tutorialText1 = LocalizationManager.Instance.Get("TutorialText1");
-        private readonly string _tutorialText2 = LocalizationManager.Instance.Get("TutorialText2");
-        private readonly string _tutorialText3 = LocalizationManager.Instance.Get("TutorialText3");
-        private readonly string _tutorialText4 = LocalizationManager.Instance.Get("TutorialText4");
-        private readonly string _tutorialText5 = LocalizationManager.Instance.Get("TutorialText5");
-        private readonly string _tutorialText6 = LocalizationManager.Instance.Get("TutorialText6");
-        private readonly string _tutorialText7 = LocalizationManager.Instance.Get("TutorialText7");
-        private readonly string _tutorialText8 = LocalizationManager.Instance.Get("TutorialText8");
-        private readonly string _tutorialText9 = LocalizationManager.Instance.Get("TutorialText9");
+        private string _tutorialText1;
+        private string _tutorialText2;
+        private string _tutorialText3;
+        private string _tutorialText4;
+        private string _tutorialText5;
+        private string _tutorialText6;
+        private string _tutorialText7;
+        private string _tutorialText8;
+        private string _tutorialText9;
 
         private static readonly int StartTutorial1 = Animator.StringToHash("StartTutorial1");
         private static readonly int StartTutorial2 = Animator.StringToHash("StartTutorial2");
@@ -65,6 +65,16 @@ namespace Battle
 
             if (_tutorialPanel != null)
                 _tutorialPanelAnimator = _tutorialPanel.GetComponent<Animator>();
+            
+            _tutorialText1 = LocalizationManager.Instance.Get("TutorialText1");
+            _tutorialText2 = LocalizationManager.Instance.Get("TutorialText2");
+            _tutorialText3 = LocalizationManager.Instance.Get("TutorialText3");
+            _tutorialText4 = LocalizationManager.Instance.Get("TutorialText4");
+            _tutorialText5 = LocalizationManager.Instance.Get("TutorialText5");
+            _tutorialText6 = LocalizationManager.Instance.Get("TutorialText6");
+            _tutorialText7 = LocalizationManager.Instance.Get("TutorialText7");
+            _tutorialText8 = LocalizationManager.Instance.Get("TutorialText8");
+            _tutorialText9 = LocalizationManager.Instance.Get("TutorialText9");
         }
 
         private void ShowDialog(string message, string charecterName, VoiceType voiceType)

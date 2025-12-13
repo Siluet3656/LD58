@@ -5922,5 +5922,13 @@ PrefabInstance:
       value: "Gain +1 to Attack, lose 2 Max HP. Removable. \r\nCost: 1\r\nA soul
         of someone easily forgotten.\r\nPurity Level: 0.61%"
       objectReference: {fileID: 0}
+    - target: {fileID: 8396052897736060238, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
+      propertyPath: _titleKey
+      value: soulName1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396052897736060238, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: soulDiscription1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8155546ce82aade46861497b45ea1b64, type: 3}

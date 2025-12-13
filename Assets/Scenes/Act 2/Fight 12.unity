@@ -1745,6 +1745,14 @@ PrefabInstance:
 
         Purity Level: -424.242%'
       objectReference: {fileID: 0}
+    - target: {fileID: 8396052897736060238, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
+      propertyPath: _titleKey
+      value: soulName10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396052897736060238, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: soulDiscription10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
 --- !u!224 &719667586 stripped
@@ -2586,8 +2594,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a48e6701444f0b418815e31ae999793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _titleKey: 
-  _abilityDescriptionKey: 
+  _titleKey: soulName11
+  _abilityDescriptionKey: soulDiscription11
 --- !u!114 &1840803243
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 142698109}
   - component: {fileID: 142698111}
   - component: {fileID: 142698110}
+  - component: {fileID: 142698112}
   m_Layer: 5
   m_Name: Target switch = Left mouse button on any enemy
   m_TagString: Target switch
@@ -296,7 +297,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Target switch = Left mouse button on any enemy
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 137edcbbd8c81c84e827b6a8b82cf223, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -360,7 +361,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -926.34344, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &142698111
@@ -371,6 +372,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142698108}
   m_CullTransparentMesh: 0
+--- !u!114 &142698112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142698108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037ed1e54f2186c48b158bc1846791a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: tutorSwitch
 --- !u!1 &265395471
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,6 +1511,7 @@ GameObject:
   m_Component:
   - component: {fileID: 720259114}
   - component: {fileID: 720259116}
+  - component: {fileID: 720259117}
   - component: {fileID: 720259115}
   m_Layer: 5
   m_Name: Put soul in soul spot
@@ -1514,15 +1529,15 @@ RectTransform:
   m_GameObject: {fileID: 720259113}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -5}
-  m_LocalScale: {x: 0.014814815, y: 0.014814815, z: 0.014814815}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 540195324}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -3.35, y: -8.291321}
-  m_SizeDelta: {x: 689.10547, y: 446.11316}
+  m_AnchoredPosition: {x: -0.029994, y: -6.84}
+  m_SizeDelta: {x: 5.911134, y: 4.1229343}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &720259115
 MonoBehaviour:
@@ -1548,8 +1563,8 @@ MonoBehaviour:
 
     (Drag and drop)'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 137edcbbd8c81c84e827b6a8b82cf223, type: 2}
+  m_sharedMaterial: {fileID: -3575996941641997046, guid: 137edcbbd8c81c84e827b6a8b82cf223, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1573,8 +1588,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.7
-  m_fontSizeBase: 56.7
+  m_fontSize: 0.5
+  m_fontSizeBase: 0.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1609,7 +1624,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -439.38733, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1623,6 +1638,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 720259113}
   m_CullTransparentMesh: 0
+--- !u!114 &720259117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720259113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037ed1e54f2186c48b158bc1846791a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: tutorDrag
 --- !u!1001 &770925010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2514,6 +2542,14 @@ PrefabInstance:
       propertyPath: _abilityDescription
       value: "Deals damage and interrupts the enemy\u2019s attack.\r\nInterrupt:
         Resets the target\u2019s auto-attack progress.\r\nCost: 60 Energy"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396052897736060238, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
+      propertyPath: _titleKey
+      value: skillStrike
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396052897736060238, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
+      propertyPath: _abilityDescriptionKey
+      value: skillStrikeDiscription
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8155546ce82aade46861497b45ea1b64, type: 3}
