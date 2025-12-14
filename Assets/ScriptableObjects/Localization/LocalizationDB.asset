@@ -588,29 +588,29 @@ MonoBehaviour:
   - key: namePakhoma
     en: Pakhoma
     ru: "\u041F\u0430\u0445\u043E\u043C\u0430"
-  - key: 'nameCultist '
+  - key: nameCultist
     en: 'Cultist '
     ru: "\u041A\u0443\u043B\u044C\u0442\u0438\u0441\u0442"
-  - key: 'nameHenry '
+  - key: nameHenry
     en: 'Henry '
     ru: "\u0413\u0435\u043D\u0440\u0438"
-  - key: 'nameKnight '
+  - key: nameKnight
     en: 'Knight '
     ru: "\u0420\u044B\u0446\u0430\u0440\u044C"
-  - key: 'namePatrick '
+  - key: namePatrick
     en: 'Patrick '
     ru: "\u041F\u0430\u0442\u0440\u0438\u043A"
-  - key: 'nameBob '
+  - key: nameBob
     en: 'Bob '
     ru: "\u0411\u043E\u0431"
-  - key: 'nameScientist '
+  - key: nameScientist
     en: 'Scientist '
     ru: "\u0423\u0447\u0451\u043D\u044B\u0439"
   - key: nameVictoria2
     en: Victoria the Pure Soul
     ru: "\u0412\u0438\u043A\u0442\u043E\u0440\u0438\u044F \u0427\u0438\u0441\u0442\u0430\u044F
       \u0414\u0443\u0448\u0430"
-  - key: 'nameArchivist '
+  - key: nameArchivist
     en: 'Archivist '
     ru: "\u0410\u0440\u0445\u0438\u0432\u0430\u0440\u0438\u0443\u0441"
   - key: nameCrystal

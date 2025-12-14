@@ -135,7 +135,7 @@ namespace Battle
             IsLBM = false;
 
             ShowDialog(LocalizationManager.Instance.Get("DialogueText3"),
-                "Victor", VoiceType.Man);
+                LocalizationManager.Instance.Get("nameVictor"), VoiceType.Man);
 
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);

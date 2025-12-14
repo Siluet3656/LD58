@@ -38,6 +38,7 @@ public class LocalizationManager : MonoBehaviour
 
     public string Get(string key)
     {
+        key = key.Trim();
         return dict.TryGetValue(key, out var value) ? value : key;
     }
 }
