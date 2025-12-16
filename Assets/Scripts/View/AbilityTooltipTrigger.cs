@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace View
@@ -7,14 +8,53 @@ namespace View
     {
         [SerializeField] private string _titleKey;
         [SerializeField] private string _abilityDescriptionKey;
+        
+        private float _delay = 0.25f;
+        private bool _isTooltipScheduled = false;
+        private const string SHOW_TOOLTIP_METHOD = "ShowTooltipDelayed";
 
+        private void OnDisable()
+        {
+            CancelInvoke(SHOW_TOOLTIP_METHOD);
+            
+            if (_isTooltipScheduled || TooltipManager.Instance != null)
+            {
+                TooltipManager.Instance?.HideTooltip();
+            }
+        }
+        
+        private void ShowTooltipDelayed()
+        {
+            if (gameObject.activeInHierarchy)
+            {
+                TooltipManager.Instance.ShowTooltip(
+                    LocalizationManager.Instance.Get(_titleKey),
+                    LocalizationManager.Instance.Get(_abilityDescriptionKey)
+                );
+                _isTooltipScheduled = false;
+            }
+        }
+        
+        private IEnumerator DelayAndShowTooltip()
+        {
+            yield return new WaitForSeconds(_delay);
+            TooltipManager.Instance.ShowTooltip(LocalizationManager.Instance.Get(_titleKey),
+                LocalizationManager.Instance.Get(_abilityDescriptionKey));
+        }
+        
         public void OnPointerEnter(PointerEventData eventData)
         {
-            TooltipManager.Instance.ShowTooltip(LocalizationManager.Instance.Get(_titleKey), LocalizationManager.Instance.Get(_abilityDescriptionKey));
+            CancelInvoke(SHOW_TOOLTIP_METHOD);
+            
+            Invoke(SHOW_TOOLTIP_METHOD, _delay);
+            _isTooltipScheduled = true;
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            CancelInvoke(SHOW_TOOLTIP_METHOD);
+            _isTooltipScheduled = false;
+
             TooltipManager.Instance.HideTooltip();
         }
     }

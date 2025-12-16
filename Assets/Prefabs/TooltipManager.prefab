@@ -46,5 +46,6 @@ MonoBehaviour:
   _tooltipObject: {fileID: 0}
   _tooltipTitle: {fileID: 0}
   _tooltipText: {fileID: 0}
-  _offset: {x: 400, y: 0}
-  _closeDelay: 0.15
+  _offset: {x: 300, y: -300}
+  _closeDelay: 0.05
+  _screenEdgeMargin: 5
