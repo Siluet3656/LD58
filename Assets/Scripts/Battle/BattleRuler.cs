@@ -26,6 +26,8 @@ namespace Battle
         [SerializeField] private GameObject _targetSwitch;
         [SerializeField] private GameObject _handAnim;
         [SerializeField] private GameObject _anotherTutorialText;
+        
+        //private ExistAndDestroy _pop;
 
         private Animator _tutorialPanelAnimator;
 
@@ -75,6 +77,8 @@ namespace Battle
             _tutorialText7 = LocalizationManager.Instance.Get("TutorialText7");
             _tutorialText8 = LocalizationManager.Instance.Get("TutorialText8");
             _tutorialText9 = LocalizationManager.Instance.Get("TutorialText9");
+
+            //_pop = Resources.Load<ExistAndDestroy>("Prefabs/FloatingSoulPOP");
         }
 
         private void ShowDialog(string message, string charecterName, VoiceType voiceType)
@@ -1128,6 +1132,12 @@ namespace Battle
 
         private void Defeat()
         {
+            /*foreach (var floatingSoul in G.SoulsManager.FloatingSouls)
+            {
+                if (floatingSoul.isActiveAndEnabled)
+                    Instantiate(_pop, floatingSoul.transform.position, Quaternion.identity, null);
+            }*/
+            
             _isFighting = false;
             _defeatPanel.SetActive(true);
             _player.GetComponent<PlayerTargeting>().ClearArrow();

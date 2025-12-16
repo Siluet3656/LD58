@@ -30,4 +30,6 @@ public class FloatingSoulsManager : MonoBehaviour
             }
         }
     }
+    
+    public List<FloatingSoul> FloatingSouls => _floatingSouls;
 }

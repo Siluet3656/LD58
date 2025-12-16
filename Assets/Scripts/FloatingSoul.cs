@@ -12,8 +12,6 @@ public class FloatingSoul : MonoBehaviour
     [SerializeField] private bool _moveOnXAxis = true;
     [SerializeField] private bool _moveOnYAxis = false;
     [SerializeField] private bool _moveOnZAxis = false;
-
-    [Header("Смэрть")] [SerializeField] private ExistAndDestroy _pop;
     
     private Vector3 _startPosition;
     private float _timer = 0f;
@@ -22,6 +20,13 @@ public class FloatingSoul : MonoBehaviour
     private bool _isAtPosition = false;
     private Vector3 _positionToMove;
     private float _toPositionSpeed = 3f;
+    
+    private ExistAndDestroy _pop;
+
+    private void Awake()
+    {
+        _pop = Resources.Load<ExistAndDestroy>("Prefabs/FloatingSoulPOP");
+    }
 
     void Update()
     {
@@ -54,7 +59,11 @@ public class FloatingSoul : MonoBehaviour
 
     private void OnDisable()
     {
-        Instantiate(_pop, transform.position, Quaternion.identity, null);
+        foreach (var floatingSoul in G.SoulsManager.FloatingSouls)
+        {
+            if (floatingSoul.isActiveAndEnabled)
+                Instantiate(_pop, floatingSoul.transform.position, Quaternion.identity, null);
+        }
     }
 
     private bool CheckRangeToPosition()
