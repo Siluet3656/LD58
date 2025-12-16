@@ -27,6 +27,7 @@ namespace EntityResources
         
         [Header("Refs")]
         [SerializeField] private RandomSoundPlayer _randomSoundPlayer;
+        [SerializeField] private RandomSoundPlayer _shieldSoundPlayer;
         
         private float _maxHealth;
         private float _currentHealth;
@@ -375,7 +376,7 @@ namespace EntityResources
             if (BattleRuler.Instance.IsFighting == false) return;
             
             if (_isShielded) return;
-            //Sound
+            
             if (G.Player.GetComponent<SkillResources>()
                     .HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(SkillType.Shield).cost) == false)
             {
@@ -386,6 +387,8 @@ namespace EntityResources
             StartCoroutine(ShieldRoutine());
             
             G.SkillResources.ConsumeResources(AbilityDataCms.Instance.GetSpellConfig(SkillType.Shield).cost);
+            
+            _shieldSoundPlayer.PlayRandomSound();
 
             int merchantSouls = BattleRuler.Instance.EnemiesOnScene[0].MerchantSouls;
             

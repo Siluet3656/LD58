@@ -12,6 +12,7 @@ namespace Battle
         [SerializeField] private GameObject _spawnPoint;
         [SerializeField] private RandomSoundPlayer _randomSoundPlayer;
         [SerializeField] private RandomSoundPlayer _strikeSoundPlayer;
+        [SerializeField] private RandomSoundPlayer _punchSoundPlayer;
 
         [Header("Traits")] 
         [SerializeField] private int _steady;
@@ -185,7 +186,7 @@ namespace Battle
                 case SkillType.Punch:
                     if (G.SkillResources.HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(skillType).cost))
                     {
-                        //Sound
+                        _punchSoundPlayer.PlayRandomSound();
                         _myHp.TryToTakeDamage(AbilityDataCms.Instance.GetSpellConfig(skillType).damage, false);
                         G.SkillResources.ConsumeResources(AbilityDataCms.Instance.GetSpellConfig(skillType).cost);
                         _enemyAttack.Interrupt();
