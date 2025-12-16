@@ -7,6 +7,7 @@ namespace Data
     {
         public string soulName;
         public Sprite icon;
+        public Sprite floating;
         [TextArea]
         public string description;
         public SoulType soulType;

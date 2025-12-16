@@ -1178,6 +1178,8 @@ namespace Battle
             _isFighting = true;
             
             OnFighting?.Invoke();
+            
+            G.SoulsManager.StartFloat();
 
             if (_sceneID == 3)
             {

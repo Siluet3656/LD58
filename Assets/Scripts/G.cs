@@ -21,4 +21,5 @@ public static class G
     public static ScreenFader ScreenFader;
     public static GameRuler GameRuler;
     public static Map Map;
+    public static FloatingSoulsManager SoulsManager;
 }

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Berserk
   m_EditorClassIdentifier: 
   soulName: 123
-  icon: {fileID: 21300000, guid: b8730a32ae77ac947b9feb591e13f626, type: 3}
+  icon: {fileID: 21300000, guid: 916cadb85fd5fbd47a476577babf217a, type: 3}
+  floating: {fileID: 21300000, guid: 916cadb85fd5fbd47a476577babf217a, type: 3}
   description: 123
   soulType: 7
   cost: 4

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soulName: 123
   icon: {fileID: 21300000, guid: e4933ea98e0ba9c4887db9a218343770, type: 3}
+  floating: {fileID: 21300000, guid: f6485d0643e9b9a4dbefddd3b956d811, type: 3}
   description: 123
   soulType: 10
   cost: 5

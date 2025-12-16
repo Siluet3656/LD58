@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soulName: Poor man's soul
   icon: {fileID: 21300000, guid: a9cc03235bd2afe48ae0bec75a574bd8, type: 3}
+  floating: {fileID: 21300000, guid: 08d61edb2b4445044b010f723861b054, type: 3}
   description: The soul of someone not that important
   soulType: 1
   cost: 1
