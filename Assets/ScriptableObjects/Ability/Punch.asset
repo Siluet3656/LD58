@@ -17,4 +17,4 @@ MonoBehaviour:
   description: 123
   skillType: 2
   cost: 80
-  damage: 1
+  damage: 0

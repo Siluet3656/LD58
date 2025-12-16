@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using View;
 
 namespace Effects
 {
@@ -50,6 +51,11 @@ namespace Effects
         {
             _isShown = true;
             _targetY = _shownY;
+
+            foreach (var enemy in G.Enemies)
+            {
+                enemy.GetComponent<EnemyView>().SetDialogueEndTrigger();
+            }
         }
     
         public void Hide()

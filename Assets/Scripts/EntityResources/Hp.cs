@@ -25,8 +25,8 @@ namespace EntityResources
         [Header("Start Health")]
         [SerializeField, Range(0f,1f)] private float _startHealthPercent = 1f;
         
-        [Header("Sound")]
-        [SerializeField]private RandomSoundPlayer _randomSoundPlayer;
+        [Header("Refs")]
+        [SerializeField] private RandomSoundPlayer _randomSoundPlayer;
         
         private float _maxHealth;
         private float _currentHealth;
@@ -313,6 +313,8 @@ namespace EntityResources
         public void TryToTakeDamage(float damage, bool isDamageAdditional)
         {
             if (_isInvulnerable) return;
+            
+            if (damage == 0) return;
             
             if (isDamageAdditional == false) OnAnyDamageReceived?.Invoke(damage);
                 

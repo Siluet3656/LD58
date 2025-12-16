@@ -9,6 +9,9 @@ namespace View
         private static readonly int AttackEnd = Animator.StringToHash("AttackEnd");
         private static readonly int Attack = Animator.StringToHash("Attack");
         private static readonly int Death = Animator.StringToHash("Death");
+        private static readonly int Hit = Animator.StringToHash("Hit");
+        private static readonly int HitEnd = Animator.StringToHash("HitEnd");
+        
         [SerializeField] private Image _swingBar;
         [SerializeField] private Image _energyBar;
         [SerializeField] private Text _attackText;
@@ -32,13 +35,22 @@ namespace View
         {
             _animator.SetTrigger(AttackEnd);
         }
+        
+        private void SetTriggerHitEnd()
+        {
+            _animator.SetTrigger(HitEnd);
+        }
 
         private void OnEnable()
         {
             _animationEventCatcher.OnAttackEnd += SetTrigger;
             _animationEventCatcher.OnDeathAnimEnd += OnDeath;
+            _animationEventCatcher.OnHitAnimEnd += SetTriggerHitEnd;
+            
             _myHp.OnDeath += () => _animator.SetTrigger(Death);
             _shieldAnimationEventCatcher.OnShieldAnimEnd += StopShieldAnimation;
+            
+            _myHp.OnAnyDamageReceived += dmg => StartHitAnimation();
         }
 
         private void OnDisable()
@@ -51,6 +63,11 @@ namespace View
         private void OnDeath()
         {
             gameObject.SetActive(false);
+        }
+        
+        public void StartHitAnimation()
+        {
+            _animator.SetTrigger(Hit);
         }
 
         public void UpdateAttackSwingBar(float currentSwipeProgress)

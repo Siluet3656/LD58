@@ -33,6 +33,7 @@ namespace Battle
         
         private Hp _myHp;
         private EnemyAttack _enemyAttack;
+        private EnemyView _myView;
 
         public bool IsNeedToGo = false;
         private bool isPlaying = false;
@@ -45,6 +46,7 @@ namespace Battle
             G.Enemies.Add(this);
             _myHp = GetComponent<Hp>();
             _enemyAttack = GetComponent<EnemyAttack>();
+            _myView = GetComponent<EnemyView>();
             IsTargetable = true;
             _merchantSouls = 0;
             _followerSouls = 0;
@@ -188,6 +190,7 @@ namespace Battle
                         G.SkillResources.ConsumeResources(AbilityDataCms.Instance.GetSpellConfig(skillType).cost);
                         _enemyAttack.Interrupt();
                         _enemyAttack.ApplyStun();
+                        _myView.StartStunAnimation();
                     }
                     break;
             }

@@ -7519,7 +7519,6 @@ MonoBehaviour:
   _moveOnXAxis: 1
   _moveOnYAxis: 0
   _moveOnZAxis: 0
-  _pop: {fileID: 8799260323369522318, guid: 24acd6fc72457f140a43dc0b646079b8, type: 3}
 --- !u!1 &382772135414590917
 GameObject:
   m_ObjectHideFlags: 0
@@ -12712,7 +12711,6 @@ MonoBehaviour:
   _moveOnXAxis: 1
   _moveOnYAxis: 0
   _moveOnZAxis: 0
-  _pop: {fileID: 8799260323369522318, guid: 24acd6fc72457f140a43dc0b646079b8, type: 3}
 --- !u!1 &1228069318158575501
 GameObject:
   m_ObjectHideFlags: 0
@@ -18076,7 +18074,6 @@ MonoBehaviour:
   _moveOnXAxis: 1
   _moveOnYAxis: 0
   _moveOnZAxis: 0
-  _pop: {fileID: 8799260323369522318, guid: 24acd6fc72457f140a43dc0b646079b8, type: 3}
 --- !u!1 &3669779114001929679
 GameObject:
   m_ObjectHideFlags: 0
@@ -22962,7 +22959,6 @@ MonoBehaviour:
   _moveOnXAxis: 1
   _moveOnYAxis: 0
   _moveOnZAxis: 0
-  _pop: {fileID: 8799260323369522318, guid: 24acd6fc72457f140a43dc0b646079b8, type: 3}
 --- !u!1 &4581438158440911274
 GameObject:
   m_ObjectHideFlags: 0
@@ -28267,7 +28263,6 @@ MonoBehaviour:
   _moveOnXAxis: 1
   _moveOnYAxis: 0
   _moveOnZAxis: 0
-  _pop: {fileID: 8799260323369522318, guid: 24acd6fc72457f140a43dc0b646079b8, type: 3}
 --- !u!1 &6470604577858810769
 GameObject:
   m_ObjectHideFlags: 0
@@ -43355,7 +43350,6 @@ MonoBehaviour:
   _moveOnXAxis: 1
   _moveOnYAxis: 0
   _moveOnZAxis: 0
-  _pop: {fileID: 8799260323369522318, guid: 24acd6fc72457f140a43dc0b646079b8, type: 3}
 --- !u!1 &9003693593017288459
 GameObject:
   m_ObjectHideFlags: 0
