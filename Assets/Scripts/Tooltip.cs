@@ -1,5 +1,4 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -31,10 +30,20 @@ public class Tooltip : MonoBehaviour
     
     private Vector2 CalculatePivot(Vector2 normalizedPosition)
     {
-        var pivotTopLeft = new Vector2(-0.05f, 1.05f);
-        var pivotTopRight = new Vector2(1.05f, 1.05f);
-        var pivotBottomLeft = new Vector2(-0.05f, -0.05f);
-        var pivotBottomRight = new Vector2(1.05f, -0.05f);
+        var pivotTopLeft = new Vector2(0f, 1f);
+        var pivotTopRight = new Vector2(1f, 1f);
+        var pivotBottomLeft = new Vector2(0f, 0f);
+        var pivotBottomRight = new Vector2(1f, 0f);
+        
+        float centerThreshold = 0.25f;
+    
+        float distFromCenterX = Mathf.Abs(normalizedPosition.x - 0.5f);
+        float distFromCenterY = Mathf.Abs(normalizedPosition.y - 0.5f);
+        
+        if (distFromCenterX < centerThreshold && distFromCenterY < centerThreshold)
+        {
+            return pivotBottomLeft;
+        }
         
         if (normalizedPosition.x < 0.5f && normalizedPosition.y >= 0.5f)
         {

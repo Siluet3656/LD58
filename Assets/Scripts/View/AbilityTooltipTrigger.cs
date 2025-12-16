@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace View
@@ -33,13 +32,6 @@ namespace View
                 );
                 _isTooltipScheduled = false;
             }
-        }
-        
-        private IEnumerator DelayAndShowTooltip()
-        {
-            yield return new WaitForSeconds(_delay);
-            TooltipManager.Instance.ShowTooltip(LocalizationManager.Instance.Get(_titleKey),
-                LocalizationManager.Instance.Get(_abilityDescriptionKey));
         }
         
         public void OnPointerEnter(PointerEventData eventData)
