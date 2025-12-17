@@ -147,7 +147,14 @@ namespace Battle
             
             _playerHp.TryToTakeDamage(_attackDamage, false);
             _myHp.Heal(_restoreHpByAttack);
-            G.SkillResources.ConsumeResources((int)_stealEnergyByAttack);
+            if (_playerHp.IsInvulnerable == false)
+            {
+                G.SkillResources.ConsumeResources((int)_stealEnergyByAttack);
+            }
+            else
+            {
+                G.SoundBank.ReflectSound.PlayRandomSound();
+            }
             _myHp.TryToTakeDamage(_healthOnHitConsumed,false);
             
             StartAttackCooldown();

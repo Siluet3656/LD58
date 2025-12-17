@@ -228,6 +228,7 @@ namespace Battle
                 hp.TryToTakeDamage(2 * merchantSouls, false);
             }
             G.PlayerHp.TryToTakeDamage(2 * merchantSouls, false);
+            G.PlayerHp.RestoreHpForKnightSouls();
         }
     }
 }

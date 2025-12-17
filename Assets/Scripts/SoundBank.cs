@@ -7,6 +7,7 @@ public class SoundBank : MonoBehaviour
     public RandomSoundPlayer PLaceSound;
     public RandomSoundPlayer WrongSound;
     public RandomSoundPlayer DeleteSound;
+    public RandomSoundPlayer ReflectSound;
 
     private void Awake()
     {
