@@ -138,7 +138,7 @@ namespace Prepare
             G.PlayerHp.InitializeHealth();
             int attack = (int)(G.PlayerAttack.DefaultDamage + (1 * poorManSouls) + soldierSouls * (1 * (G.Enemies.Count + 1))) * (1 + 1 * pureSouls);
             G.PlayerAttack.AdjustDamage(attack);
-            G.PlayerView.UpdateAttackText(attack);
+            G.PlayerView.UpdateAttackText(attack, G.PlayerAttack.DefaultCooldownTime);
             
             G.PlayerAttack.SetUpEnergyRestorePerAttack(banditsSouls * 10 - suspiciouslyPureSouls * 10);
             

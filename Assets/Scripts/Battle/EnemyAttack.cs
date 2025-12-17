@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using EntityResources;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using View;
 
@@ -54,7 +53,7 @@ namespace Battle
         private void Start()
         {
             _playerHp = G.Player.GetComponent<Hp>();
-            _myView.UpdateDamage(_attackDamage);
+            _myView.UpdateDamage(_attackDamage, _attackCooldownTime);
         }
 
         private void Update()
@@ -253,7 +252,7 @@ namespace Battle
         public void SetDamage(float amount)
         {
             _attackDamage = amount;
-            _myView.UpdateDamage(_attackDamage);
+            _myView.UpdateDamage(_attackDamage, _attackCooldownTime);
         }
 
         public void SetFury(int amount)

@@ -1,4 +1,5 @@
 ﻿using EntityResources;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,7 @@ namespace View
         
         [SerializeField] private Image _swingBar;
         [SerializeField] private Image _energyBar;
-        [SerializeField] private Text _attackText;
+        [SerializeField] private TMP_Text _attackText;
         [SerializeField] private Text _energyText;
         
         [SerializeField] private Animator _animator;
@@ -81,9 +82,9 @@ namespace View
             _energyText.text = $"{currentEnergy}/{maxEnergy}";
         }
 
-        public void UpdateAttackText(int currentAttack)
+        public void UpdateAttackText(int currentAttack, float currentAttackCooldown)
         {
-            _attackText.text = $"{currentAttack}";
+            _attackText.text = $"{currentAttack}\n---\n{currentAttackCooldown}";
         }
 
         public void StartAttackAnimation()

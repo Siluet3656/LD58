@@ -1,4 +1,5 @@
 ﻿using EntityResources;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +18,7 @@ namespace View
         
         [SerializeField] private Image _swingBar;
         [SerializeField] private Image _stunSprite;
-        [SerializeField] private Text _textDamage;
+        [SerializeField] private TMP_Text _textDamage;
         
         [SerializeField] private Animator _animator;
         [SerializeField] private AnimationEventCatcher _animationEventCatcher;
@@ -61,9 +62,9 @@ namespace View
             _swingBar.fillAmount = currentSwipeProgress;
         }
 
-        public void UpdateDamage(float currentDamage)
+        public void UpdateDamage(float currentDamage, float currentCooldownTime)
         {
-            _textDamage.text = $"{currentDamage}";
+            _textDamage.text = $"{currentDamage}\n---\n{currentCooldownTime}";
         }
         
         public void StartAttackAnimation()

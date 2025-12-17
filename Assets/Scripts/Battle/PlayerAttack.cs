@@ -66,7 +66,7 @@ namespace Battle
                 {
                     _currentAttackDamage *= 2;
                     _isDoubled = true;
-                    G.PlayerView.UpdateAttackText((int)_currentAttackDamage);
+                    G.PlayerView.UpdateAttackText((int)_currentAttackDamage,_defaultAttackCooldownTime);
                     _berserkProcEffect.SetActive(true);
                     
                 }
@@ -77,7 +77,7 @@ namespace Battle
                 {
                     _currentAttackDamage /= 2;
                     _isDoubled = false;
-                    G.PlayerView.UpdateAttackText((int)_currentAttackDamage);
+                    G.PlayerView.UpdateAttackText((int)_currentAttackDamage,_defaultAttackCooldownTime);
                     _berserkProcEffect.SetActive(false);
                 }
             }
