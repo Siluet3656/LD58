@@ -10,6 +10,7 @@ namespace Battle
     {
         [SerializeField] private GameObject _arrowPrefab;
         [SerializeField] private SkillType _skillType;
+        [SerializeField] private RandomSoundPlayer _noResourceSoundPlayer;
         
         private SkillArrowToTarget _arrow;
         private Camera _mainCamera;
@@ -54,6 +55,7 @@ namespace Battle
                     .HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(_skillType).cost) == false)
             {
                 DamagePopup.Instance.AddText("Not enough energy!!", transform.position, Color.red);
+                _noResourceSoundPlayer.PlayRandomSound();
                 return;
             }
             

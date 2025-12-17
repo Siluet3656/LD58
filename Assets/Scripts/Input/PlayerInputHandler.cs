@@ -121,7 +121,7 @@ namespace Input
             
             SoulPlace soulPlace = hitSoulButton.collider.GetComponent<SoulPlace>();
 
-            if (soulPlace != null)
+            if (soulPlace != null && soulPlace.SoulType != SoulType.None)
             {
                 soulPlace.RemoveSpell();
             }

@@ -16,6 +16,7 @@ namespace Battle
         [SerializeField] private RandomSoundPlayer _randomSoundPlayer;
         [SerializeField] private GameObject _soul;
         [SerializeField] private ParticleSystem _soulParticles;
+        [SerializeField] private RandomSoundPlayer _noResourceSoundPlayer;
 
         private float _currentAttackDamage;
         private float  _currentCooldownTime;
@@ -196,6 +197,7 @@ namespace Battle
             if (G.Player.GetComponent<SkillResources>()
                     .HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(SkillType.Beam).cost) == false)
             {
+                _noResourceSoundPlayer.PlayRandomSound();
                 DamagePopup.Instance.AddText("Not enough energy!!", abilityButton.transform.position, Color.red);
                 return;
             }

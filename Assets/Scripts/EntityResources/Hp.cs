@@ -28,6 +28,10 @@ namespace EntityResources
         [Header("Refs")]
         [SerializeField] private RandomSoundPlayer _randomSoundPlayer;
         [SerializeField] private RandomSoundPlayer _shieldSoundPlayer;
+        [SerializeField] private RandomSoundPlayer _noResourceSoundPlayer;
+        [SerializeField] private GameObject _spriteGameObject;
+
+        private GameObject _followerProcPrfab;
         
         private float _maxHealth;
         private float _currentHealth;
@@ -66,6 +70,8 @@ namespace EntityResources
                 _healAfterHealthDrop = 0;
                 _isRegenerated = false;
             }
+            
+            _followerProcPrfab = Resources.Load<GameObject>("Prefabs/FollowerProc");
         }
 
         private void OnEnable()
@@ -102,6 +108,15 @@ namespace EntityResources
                 {
                     Heal(_maxHealth);
                     _followerSouls--;
+                    Instantiate(_followerProcPrfab, transform.position, Quaternion.identity, _spriteGameObject.transform);
+                    for (int i = 0; i < G.SoulsManager.FloatingSouls.Count; i++)
+                    {
+                        if (G.SoulsManager.FloatingSouls[i].isActiveAndEnabled && G.SoulsManager.FloatingSouls[i].SoulType == SoulType.Follower)
+                        {
+                            G.SoulsManager.FloatingSouls[i].gameObject.SetActive(false);
+                            break;
+                        }
+                    }
                 }
             }
 
@@ -123,6 +138,7 @@ namespace EntityResources
                 {
                     Heal(_maxHealth);
                     _healAfterHealthDrop--;
+                    Instantiate(_followerProcPrfab, transform.position, Quaternion.identity, _spriteGameObject.transform);
                 }
             }
 
@@ -374,15 +390,16 @@ namespace EntityResources
         public void ApplyShield(AbilityButton abilityButton)
         {
             if (BattleRuler.Instance.IsFighting == false) return;
-            
-            if (_isShielded) return;
-            
+
             if (G.Player.GetComponent<SkillResources>()
                     .HasEnoughResources(AbilityDataCms.Instance.GetSpellConfig(SkillType.Shield).cost) == false)
             {
+                _noResourceSoundPlayer.PlayRandomSound();
                 DamagePopup.Instance.AddText("Not enough energy!!", abilityButton.transform.position, Color.red);
                 return;
             }
+            
+            if (_isShielded) return;
             
             StartCoroutine(ShieldRoutine());
             

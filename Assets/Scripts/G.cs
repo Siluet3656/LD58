@@ -22,4 +22,5 @@ public static class G
     public static GameRuler GameRuler;
     public static Map Map;
     public static FloatingSoulsManager SoulsManager;
+    public static SoundBank SoundBank;
 }

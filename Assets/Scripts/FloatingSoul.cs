@@ -21,6 +21,8 @@ public class FloatingSoul : MonoBehaviour
     private Vector3 _positionToMove;
     private float _toPositionSpeed = 3f;
     
+    private SoulType _currentSoulType;
+    
     private ExistAndDestroy _pop;
 
     private void Awake()
@@ -59,11 +61,7 @@ public class FloatingSoul : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach (var floatingSoul in G.SoulsManager.FloatingSouls)
-        {
-            if (floatingSoul.isActiveAndEnabled)
-                Instantiate(_pop, floatingSoul.transform.position, Quaternion.identity, null);
-        }
+        Instantiate(_pop, transform.position, Quaternion.identity, null);
     }
 
     private bool CheckRangeToPosition()
@@ -71,11 +69,18 @@ public class FloatingSoul : MonoBehaviour
         return Vector3.Distance(transform.position, _positionToMove) < 0.1f;
     }
 
+    public SoulType SoulType => _currentSoulType;
+    
     public void StartMoveToPosition(Vector3 position)
     {
         _positionToMove = position;
         _startPosition = position;
         _timer = _initialPhase;
         _isMoving = true;
+    }
+
+    public void SetSoulType(SoulType type)
+    {
+        _currentSoulType = type;
     }
 }

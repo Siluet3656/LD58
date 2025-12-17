@@ -24,6 +24,7 @@ public class FloatingSoulsManager : MonoBehaviour
             {
                 _floatingSouls[i].transform.position = _soulPlaces[i].transform.position;
                 _floatingSouls[i].gameObject.SetActive(true);
+                _floatingSouls[i].SetSoulType(_soulPlaces[i].SoulType);
                 _floatingSouls[i].StartMoveToPosition(_soulsPositions[i].position);
                 _floatingSouls[i].GetComponent<Image>().sprite =
                     SoulDataCms.Instance.GetSpellConfig(_soulPlaces[i].SoulType).floating;

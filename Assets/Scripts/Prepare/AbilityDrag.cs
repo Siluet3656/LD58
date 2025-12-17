@@ -1,4 +1,5 @@
-﻿using Battle;
+﻿using System;
+using Battle;
 using Data;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,12 @@ namespace Prepare
         private SoulType _draggingSoul;
         
         private readonly Vector2 _offset = new Vector2(0.5f,-0.5f); // Костыль
-
+        
+        private RandomSoundPlayer _placeSound;
+        private RandomSoundPlayer _dropSound;
+        private RandomSoundPlayer _pickupSound;
+        private RandomSoundPlayer _wrongSound;
+        
         private void Awake()
         {
             G.AbilityDrag = this;
@@ -27,6 +33,15 @@ namespace Prepare
             
             _isDragging = false;
             _isDraggingSoul = false;
+        }
+
+        private void Start()
+        {
+            SoundBank soundBank = G.SoundBank;
+            _placeSound = soundBank.PLaceSound;
+            _dropSound = soundBank.DropSound;
+            _pickupSound = soundBank.PickupSound;
+            _wrongSound = soundBank.WrongSound;
         }
 
         private void Update()
@@ -87,6 +102,8 @@ namespace Prepare
             
             _draggingSoul = soulName;
             _handIcon.sprite = config.icon;
+            
+            _pickupSound.PlayRandomSound();
         }
         
         public void TryToDropASpell(RaycastHit2D hit)
@@ -110,14 +127,26 @@ namespace Prepare
             if (_isDraggingSoul)
             {
                 SoulPlace SoulBarButton = null;
-            
-                if (hit.collider == null) { DropSpell(); return; }
+
+                if (hit.collider == null)
+                {
+                    DropSpell();
+                    _dropSound.PlayRandomSound();
+                    return;
+                }
+
+                if (G.SoulChecker.IsSoulPlacingBlocked)
+                {
+                    _wrongSound.PlayRandomSound();
+                    return;
+                }
 
                 SoulBarButton = hit.collider.gameObject.GetComponent<SoulPlace>();  
                 
                 if (SoulBarButton != null)
                 {
                     SoulBarButton.PlaceSpell(_draggingSoul);
+                    _placeSound.PlayRandomSound();
                 }
                 
                 DropSpell();

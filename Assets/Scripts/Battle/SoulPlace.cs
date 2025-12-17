@@ -13,6 +13,8 @@ namespace Battle
         private Camera _mainCamera;
         private SoulType _soulType;
         private Image _spriteRenderer;
+        
+        private RandomSoundPlayer _deleteSound;
 
         private void Awake()
         {
@@ -30,6 +32,8 @@ namespace Battle
             {
                 G.SoulPlaces.Add(_id, _soulType);
             }
+
+            _deleteSound = G.SoundBank.DeleteSound;
         }
         
         public SoulType SoulType => _soulType;
@@ -52,6 +56,8 @@ namespace Battle
             G.SoulPlaces[_id] = SoulType.None;
             
             _spriteRenderer.sprite = SoulDataCms.Instance.GetSpellConfig(SoulType.None).icon;
+            
+            _deleteSound.PlayRandomSound();
         }
     }
 }
