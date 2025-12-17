@@ -2,7 +2,6 @@
 using Data;
 using UnityEngine;
 using EntityResources;
-using UnityEngine.Serialization;
 using View;
 
 namespace Battle
@@ -17,6 +16,7 @@ namespace Battle
         [SerializeField] private GameObject _soul;
         [SerializeField] private ParticleSystem _soulParticles;
         [SerializeField] private RandomSoundPlayer _noResourceSoundPlayer;
+        [SerializeField] private GameObject _berserkProcEffect;
 
         private float _currentAttackDamage;
         private float  _currentCooldownTime;
@@ -67,6 +67,8 @@ namespace Battle
                     _currentAttackDamage *= 2;
                     _isDoubled = true;
                     G.PlayerView.UpdateAttackText((int)_currentAttackDamage);
+                    _berserkProcEffect.SetActive(true);
+                    
                 }
             }
             else
@@ -76,6 +78,7 @@ namespace Battle
                     _currentAttackDamage /= 2;
                     _isDoubled = false;
                     G.PlayerView.UpdateAttackText((int)_currentAttackDamage);
+                    _berserkProcEffect.SetActive(false);
                 }
             }
             
