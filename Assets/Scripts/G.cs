@@ -24,4 +24,5 @@ public static class G
     public static FloatingSoulsManager SoulsManager;
     public static SoundBank SoundBank;
     public static VictoriaEscape VictoriaEscape;
+    public static Steps Steps;
 }

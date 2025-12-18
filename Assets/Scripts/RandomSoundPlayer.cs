@@ -36,7 +36,7 @@ public class RandomSoundPlayer : MonoBehaviour
         Play = true;
     }
 
-    void StopPlay()
+    public void StopPlay()
     {
         StartCoroutine(FadeOutAudio(audioSource, 0.5f));
     }

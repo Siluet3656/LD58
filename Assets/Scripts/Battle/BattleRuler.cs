@@ -26,6 +26,7 @@ namespace Battle
         [SerializeField] private GameObject _targetSwitch;
         [SerializeField] private GameObject _handAnim;
         [SerializeField] private GameObject _anotherTutorialText;
+        [SerializeField] private GameObject _victoriaPureSoul;
         
         //private ExistAndDestroy _pop;
 
@@ -768,6 +769,8 @@ namespace Battle
                 enemy.IsNeedToGo = true;
             }
             
+            G.Steps.GoSteps();
+            
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
@@ -828,13 +831,17 @@ namespace Battle
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
+            G.VictoriaEscape.Flip();
+            
             ShowDialog(LocalizationManager.Instance.Get("DialogueText69"),
                 "", VoiceType.None);
             
             yield return new WaitForSeconds(1.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
-// Animation/transition???
+            
+            G.VictoriaEscape.Escape();
+            
             ShowDialog(LocalizationManager.Instance.Get("DialogueText70"),
                 LocalizationManager.Instance.Get("nameVictoria2"), VoiceType.Woman);
             
@@ -1249,6 +1256,9 @@ namespace Battle
             }
             if (G.VictoriaEscape)
                 G.VictoriaEscape.Skip();
+            
+            if (_victoriaPureSoul)
+                _victoriaPureSoul.SetActive(true);
             
             G.SmoothSlideY.Show();
 
