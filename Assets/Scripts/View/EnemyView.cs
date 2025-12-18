@@ -1,7 +1,9 @@
-﻿using EntityResources;
+﻿using System;
+using EntityResources;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace View
 {
@@ -15,6 +17,7 @@ namespace View
         private static readonly int Stun = Animator.StringToHash("Stun");
         private static readonly int StunEnd = Animator.StringToHash("StunEnd");
         private static readonly int DialogueEnd = Animator.StringToHash("DialogueEnd");
+        private static readonly int IdleOffset = Animator.StringToHash("IdleOffset");
         
         [SerializeField] private Image _swingBar;
         [SerializeField] private Image _stunSprite;
@@ -23,7 +26,12 @@ namespace View
         [SerializeField] private Animator _animator;
         [SerializeField] private AnimationEventCatcher _animationEventCatcher;
         [SerializeField] private Hp _myHp;
-        
+
+        private void Awake()
+        {
+            _animator.SetFloat(IdleOffset, Random.Range(0f, 1f));
+        }
+
         private void SetTriggerAttackEnd()
         {
             _animator.SetTrigger(AttackEnd);
