@@ -68,9 +68,6 @@ namespace Input
             Ray raySoulButton = _mainCamera.ScreenPointToRay(_inputActions.UI.MousePosition.ReadValue<Vector2>());
             RaycastHit2D hitSoulButton = Physics2D.Raycast(raySoulButton.origin, raySoulButton.direction, Mathf.Infinity, LayerMask.GetMask("SoulButton"));
             
-            Ray rayTargetable = _mainCamera.ScreenPointToRay(_inputActions.UI.MousePosition.ReadValue<Vector2>());
-            RaycastHit2D hitTargetable = Physics2D.Raycast(rayTargetable.origin, rayTargetable.direction, Mathf.Infinity, LayerMask.GetMask("Enemy"));
-            
             RaycastHit2D hitAbility = Physics2D.Raycast(_mainCamera.ScreenToWorldPoint(MousePosition), Vector2.zero);
 
             if (BattleRuler.Instance.IsCastStarted)
@@ -99,11 +96,6 @@ namespace Input
                 _hand.TryToDropASpell(hitSoulButton);
             }
 
-            if (hitSpellButton.collider == null)
-            {
-                _targeting.OnMouseTargetSelect(hitTargetable);
-            }
-
             foreach (var VARIABLE in G.ClickFloatingTexts)
             {
                 VARIABLE.OnLBM();
@@ -116,6 +108,9 @@ namespace Input
         {
             Ray raySoulButton = _mainCamera.ScreenPointToRay(_inputActions.UI.MousePosition.ReadValue<Vector2>());
             RaycastHit2D hitSoulButton = Physics2D.Raycast(raySoulButton.origin, raySoulButton.direction, Mathf.Infinity, LayerMask.GetMask("SoulButton"));
+            
+            Ray rayTargetable = _mainCamera.ScreenPointToRay(_inputActions.UI.MousePosition.ReadValue<Vector2>());
+            RaycastHit2D hitTargetable = Physics2D.Raycast(rayTargetable.origin, rayTargetable.direction, Mathf.Infinity, LayerMask.GetMask("Enemy"));
 
             if (hitSoulButton. collider == null) return;
             
@@ -124,6 +119,11 @@ namespace Input
             if (soulPlace != null && soulPlace.SoulType != SoulType.None)
             {
                 soulPlace.RemoveSpell();
+            }
+            
+            if (hitSoulButton.collider == null)
+            {
+                _targeting.OnMouseTargetSelect(hitTargetable);
             }
         }
         

@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class Tooltip : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _header;
@@ -12,7 +12,7 @@ public class Tooltip : MonoBehaviour
     
     private void Awake()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     private void Update()

@@ -15,18 +15,18 @@ namespace View
 
         public void ShowTooltip(string header, string content)
         {
-            Instance._tooltip.SetText(header, content);
-            Instance._tooltip.gameObject.SetActive(true);
+            _tooltip.SetText(header, content);
+            _tooltip.gameObject.SetActive(true);
         }
 
         public void HideTooltip()
         {
-            Instance._tooltip.gameObject.SetActive(false);
+            _tooltip.gameObject.SetActive(false);
         }
 
         public void SetMousePosition(Vector2 mousePosition)
         {
-            Instance._tooltip.SetMousePosition(mousePosition);
+            _tooltip.SetMousePosition(mousePosition);
         }
     }
 }
