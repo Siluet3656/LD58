@@ -51,11 +51,13 @@ namespace Battle
             IsTargetable = true;
             _merchantSouls = 0;
             _followerSouls = 0;
+            GameObject = gameObject;
+            
+            _myHp.OnDeath += () => OnTargetDie?.Invoke();
         }
 
         private void OnDisable()
         {
-            OnTargetDie?.Invoke();
             G.Enemies.Remove(this);
             IsTargetable = false;
         }
@@ -150,7 +152,7 @@ namespace Battle
             
         }
 
-        public GameObject GameObject { get; }
+        public GameObject GameObject { get; private set; }
         public event Action OnTargetDie;
         public event Action OnRetreat;
 
@@ -159,18 +161,6 @@ namespace Battle
         public void ApplyAbility(SkillType skillType)
         {
             if (BattleRuler.Instance.IsFighting == false) return;
-
-            if (skillType != SkillType.None)
-            {
-                G.PlayerHp.RestoreHpForKnightSouls();
-
-                foreach (Enemy enemy in BattleRuler.Instance.EnemiesOnScene)
-                {
-                    Hp hp = enemy.GetComponent<Hp>();
-                    hp.TryToTakeDamage(2 * _merchantSouls, false);
-                }
-                G.PlayerHp.TryToTakeDamage(2 * _merchantSouls, false);
-            }
             
             switch (skillType)
             {
@@ -194,6 +184,18 @@ namespace Battle
                         _myView.StartStunAnimation();
                     }
                     break;
+            }
+            
+            if (skillType != SkillType.None)
+            {
+                G.PlayerHp.RestoreHpForKnightSouls();
+
+                foreach (Enemy enemy in BattleRuler.Instance.EnemiesOnScene)
+                {
+                    Hp hp = enemy.GetComponent<Hp>();
+                    hp.TryToTakeDamage(2 * _merchantSouls, false);
+                }
+                G.PlayerHp.TryToTakeDamage(2 * _merchantSouls, false);
             }
         }
 

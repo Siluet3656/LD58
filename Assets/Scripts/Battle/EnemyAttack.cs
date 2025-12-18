@@ -151,7 +151,7 @@ namespace Battle
             {
                 G.SkillResources.ConsumeResources((int)_stealEnergyByAttack);
             }
-            else
+            else if (BattleRuler.Instance.IsFighting)
             {
                 G.SoundBank.ReflectSound.PlayRandomSound();
             }

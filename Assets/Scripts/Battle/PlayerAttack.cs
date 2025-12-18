@@ -82,7 +82,7 @@ namespace Battle
                 }
             }
             
-            PerformAttack();
+            if (_playerTargeting.HasTarget) PerformAttack();
         }
 
         private void OnEnable()
