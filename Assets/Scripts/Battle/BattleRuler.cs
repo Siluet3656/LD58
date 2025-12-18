@@ -952,6 +952,8 @@ namespace Battle
             ShowDialog(LocalizationManager.Instance.Get("DialogueText84"),
                 LocalizationManager.Instance.Get("nameArchivist"), VoiceType.None); //VoiceType.AI
             
+            G.SpawnCrystals.SpawnCrystal();
+            
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
@@ -1259,6 +1261,11 @@ namespace Battle
             
             if (_victoriaPureSoul)
                 _victoriaPureSoul.SetActive(true);
+
+            if (_sceneID == 15)
+            {
+                G.SpawnCrystals.SpawnCrystal();
+            }
             
             G.SmoothSlideY.Show();
 

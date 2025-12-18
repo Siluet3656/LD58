@@ -25,4 +25,5 @@ public static class G
     public static SoundBank SoundBank;
     public static VictoriaEscape VictoriaEscape;
     public static Steps Steps;
+    public static SpawnCrystals SpawnCrystals;
 }
