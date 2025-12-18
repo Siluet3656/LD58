@@ -24,10 +24,10 @@ namespace Battle
         {
             foreach (var enemy in G.Enemies)
             {
-                enemy.GetComponent<Enemy>().OnTargetDie += AutoTarget;
+                enemy.GetComponent<Enemy>().OnTargetDie += AutoTargetPlusCheck;
                 enemy.GetComponent<Hp>().OnDeath += () => _arrowToTarget.SetupArrow(transform, null);
                 enemy.GetComponent<Enemy>().OnRetreat += () => _arrowToTarget.SetupArrow(transform, null);
-                enemy.GetComponent<Enemy>().OnRetreat += AutoTarget;
+                enemy.GetComponent<Enemy>().OnRetreat += AutoTargetPlusCheck;
             }
         }
 

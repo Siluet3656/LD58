@@ -112,13 +112,14 @@ namespace Input
             Ray rayTargetable = _mainCamera.ScreenPointToRay(_inputActions.UI.MousePosition.ReadValue<Vector2>());
             RaycastHit2D hitTargetable = Physics2D.Raycast(rayTargetable.origin, rayTargetable.direction, Mathf.Infinity, LayerMask.GetMask("Enemy"));
 
-            if (hitSoulButton. collider == null) return;
-            
-            SoulPlace soulPlace = hitSoulButton.collider.GetComponent<SoulPlace>();
-
-            if (soulPlace != null && soulPlace.SoulType != SoulType.None)
+            if (hitSoulButton.collider != null)
             {
-                soulPlace.RemoveSpell();
+                SoulPlace soulPlace = hitSoulButton.collider.GetComponent<SoulPlace>();
+
+                if (soulPlace != null && soulPlace.SoulType != SoulType.None)
+                {
+                    soulPlace.RemoveSpell();
+                }
             }
             
             if (hitSoulButton.collider == null)
