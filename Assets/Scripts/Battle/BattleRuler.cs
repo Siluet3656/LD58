@@ -46,10 +46,13 @@ namespace Battle
         private string _tutorialText7;
         private string _tutorialText8;
         private string _tutorialText9;
+        private string _tutorialText10;
+        private string _tutorialText11;
 
         private static readonly int StartTutorial1 = Animator.StringToHash("StartTutorial1");
         private static readonly int StartTutorial2 = Animator.StringToHash("StartTutorial2");
         private static readonly int StartTutorial3 = Animator.StringToHash("StartTutorial3");
+        private static readonly int StartTutorial4 = Animator.StringToHash("StartTutorial4");
         private static readonly int TutorialStep = Animator.StringToHash("TutorialStep");
 
         private void Awake()
@@ -77,6 +80,8 @@ namespace Battle
             _tutorialText7 = LocalizationManager.Instance.Get("TutorialText7");
             _tutorialText8 = LocalizationManager.Instance.Get("TutorialText8");
             _tutorialText9 = LocalizationManager.Instance.Get("TutorialText9");
+            _tutorialText10 = LocalizationManager.Instance.Get("TutorialText10");
+            _tutorialText11 = LocalizationManager.Instance.Get("TutorialText11");
 
             //_pop = Resources.Load<ExistAndDestroy>("Prefabs/FloatingSoulPOP");
         }
@@ -380,7 +385,24 @@ namespace Battle
 
             _enemies[1].IsNeedToGo = true;
             _enemies[2].IsNeedToGo = true;
+            
+            _tutorialPanel.SetActive(true);
+            _tutorialPanelAnimator.SetTrigger(StartTutorial4);
+            _tutorialText.text = _tutorialText10;
 
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+            
+            _tutorialPanel.SetActive(true);
+            _tutorialPanelAnimator.SetTrigger(TutorialStep);
+            _tutorialText.text = _tutorialText11;
+
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitUntil(() => IsLBM);
+            IsLBM = false;
+
+            _tutorialPanel.SetActive(false);
             GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
             G.SmoothSlideY.Show();
         }
@@ -571,6 +593,8 @@ namespace Battle
             ShowDialog(LocalizationManager.Instance.Get("DialogueText43"),
                 LocalizationManager.Instance.Get("nameVictoria"), VoiceType.Woman);
             
+            G.VictoriaEscape.Flip();
+            
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
@@ -581,6 +605,8 @@ namespace Battle
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
+            
+            G.VictoriaEscape.Escape();
             
             GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
             G.SmoothSlideY.Show();
@@ -605,6 +631,9 @@ namespace Battle
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
             
+            G.VictoriaEscape.Flip();
+            G.VictoriaEscape.Escape();
+            
             GameObject.FindGameObjectWithTag("SKIP").SetActive(false);
             G.SmoothSlideY.Show();
         }
@@ -620,6 +649,9 @@ namespace Battle
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
             IsLBM = false;
+            
+            G.VictoriaEscape.Flip();
+            G.VictoriaEscape.Escape();
             
             ShowDialog(LocalizationManager.Instance.Get("DialogueText48"),
                 LocalizationManager.Instance.Get("namePatrick"), VoiceType.Man);
@@ -1154,7 +1186,9 @@ namespace Battle
                 _handAnim.SetActive(false);
             }
             
-            FindObjectOfType<ArrowToTarget>().gameObject.SetActive(false);
+            ArrowToTarget arrowToTarget = FindObjectOfType<ArrowToTarget>();
+            if (arrowToTarget)
+                arrowToTarget.gameObject.SetActive(false);
         }
 
         private void CheckVictory()
@@ -1213,6 +1247,8 @@ namespace Battle
             {
                 enemy.IsNeedToGo = true;
             }
+            if (G.VictoriaEscape)
+                G.VictoriaEscape.Skip();
             
             G.SmoothSlideY.Show();
 

@@ -23,4 +23,5 @@ public static class G
     public static Map Map;
     public static FloatingSoulsManager SoulsManager;
     public static SoundBank SoundBank;
+    public static VictoriaEscape VictoriaEscape;
 }
