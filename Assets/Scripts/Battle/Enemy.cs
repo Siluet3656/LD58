@@ -52,8 +52,6 @@ namespace Battle
             _merchantSouls = 0;
             _followerSouls = 0;
             GameObject = gameObject;
-            
-            _myHp.OnDeath += () => OnTargetDie?.Invoke();
         }
 
         private void OnDisable()

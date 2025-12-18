@@ -1153,6 +1153,8 @@ namespace Battle
             {
                 _handAnim.SetActive(false);
             }
+            
+            FindObjectOfType<ArrowToTarget>().gameObject.SetActive(false);
         }
 
         private void CheckVictory()

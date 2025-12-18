@@ -25,8 +25,6 @@ namespace Battle
             foreach (var enemy in G.Enemies)
             {
                 enemy.GetComponent<Hp>().OnDeath += AutoTarget;
-                enemy.GetComponent<Hp>().OnDeath += () => _arrowToTarget.SetupArrow(transform, null);
-                enemy.GetComponent<Enemy>().OnRetreat += () => _arrowToTarget.SetupArrow(transform, null);
                 enemy.GetComponent<Enemy>().OnRetreat += AutoTarget;
             }
         }
@@ -55,9 +53,9 @@ namespace Battle
             if (HasTarget)
             {
                 _currentTarget.OnUntargeted();
-                _currentTarget.OnTargetDie -= ClearTarget;
+                //_currentTarget.OnTargetDie -= ClearTarget;
                 _currentTarget = null;
-                _arrowToTarget.SetupArrow(null, null);
+                _arrowToTarget.SetupArrow(transform, null);
             }
         }
         

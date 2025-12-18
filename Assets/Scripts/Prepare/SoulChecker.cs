@@ -134,8 +134,11 @@ namespace Prepare
 
             int health = (int)(G.PlayerHp.DefaultMaxHealth - (2 * poorManSouls) +
                          leaderSouls * (5 * (G.Enemies.Count + 1))) * (1 + 1 * pureSouls)  ;
-            G.PlayerHp.SetMaxHealth(health);
-            G.PlayerHp.InitializeHealth();
+            if (G.PlayerHp.IsInvulnerable == false)
+            {
+                G.PlayerHp.SetMaxHealth(health);
+                G.PlayerHp.InitializeHealth();
+            }
             int attack = (int)(G.PlayerAttack.DefaultDamage + (1 * poorManSouls) + soldierSouls * (1 * (G.Enemies.Count + 1))) * (1 + 1 * pureSouls);
             G.PlayerAttack.AdjustDamage(attack);
             G.PlayerView.UpdateAttackText(attack, G.PlayerAttack.DefaultCooldownTime);

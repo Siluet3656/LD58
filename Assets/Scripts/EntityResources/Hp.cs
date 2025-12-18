@@ -106,17 +106,7 @@ namespace EntityResources
             {
                 if (_currentHealth <= _maxHealth * 0.4f)
                 {
-                    Heal(_maxHealth);
-                    _followerSouls--;
-                    Instantiate(_followerProcPrfab, transform.position, Quaternion.identity, _spriteGameObject.transform);
-                    for (int i = 0; i < G.SoulsManager.FloatingSouls.Count; i++)
-                    {
-                        if (G.SoulsManager.FloatingSouls[i].isActiveAndEnabled && G.SoulsManager.FloatingSouls[i].SoulType == SoulType.Follower)
-                        {
-                            G.SoulsManager.FloatingSouls[i].gameObject.SetActive(false);
-                            break;
-                        }
-                    }
+                    FollowerProc();
                 }
             }
 
@@ -159,6 +149,21 @@ namespace EntityResources
             }
         }
 
+        private void FollowerProc()
+        {
+            Heal(_maxHealth);
+            _followerSouls--;
+            Instantiate(_followerProcPrfab, transform.position, Quaternion.identity, _spriteGameObject.transform);
+            for (int i = 0; i < G.SoulsManager.FloatingSouls.Count; i++)
+            {
+                if (G.SoulsManager.FloatingSouls[i].isActiveAndEnabled && G.SoulsManager.FloatingSouls[i].SoulType == SoulType.Follower)
+                {
+                    G.SoulsManager.FloatingSouls[i].gameObject.SetActive(false);
+                    break;
+                }
+            }
+        }
+        
         private void ShowDialog(string message)
         {
             GameObject ft = Instantiate(_floatingTextPrefab, transform.position, Quaternion.identity);
@@ -237,8 +242,18 @@ namespace EntityResources
             
             if (_randomSoundPlayer != null) _randomSoundPlayer.PlayRandomSound();
             
-            if (_currentHealth <= 0)
-                Die();
+            if (_followerSouls > 0)
+            {
+                if (_currentHealth <= _maxHealth * 0.4f)
+                {
+                    FollowerProc();
+                }
+            }
+            else
+            {
+                if (_currentHealth <= 0)
+                    Die();
+            }
         }
 
         private IEnumerator ParticlesAndFade()
@@ -256,7 +271,7 @@ namespace EntityResources
             OnDeath?.Invoke();
             
             GetInvulnerable();
-
+            
             if (CompareTag("Enemy"))
             {
                 WavyMoveToTarget soul = Instantiate(_soul, transform.position, Quaternion.identity).GetComponent<WavyMoveToTarget>();
