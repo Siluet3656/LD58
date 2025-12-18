@@ -118,7 +118,8 @@ namespace Battle
             if (_pure > 0)
             {
                 _myHp.SetRegenerate(true);
-                _myHp.SetRegenerateAmount((int)(_myHp.MaxHealth * 0.01f));
+                int regenerateAmount = Mathf.Max(1, Mathf.CeilToInt(_myHp.MaxHealth / 100f));
+                _myHp.SetRegenerateAmount(regenerateAmount);
             }
 
             _enemyAttack.SetFury(_fury);
