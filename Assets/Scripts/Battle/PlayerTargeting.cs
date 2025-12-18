@@ -9,6 +9,7 @@ namespace Battle
         [SerializeField] private ArrowToTarget _arrowToTarget;
         
         private ITargetable _currentTarget;
+        private Hp _targetHp;
 
         private void OnEnable()
         {
@@ -19,7 +20,7 @@ namespace Battle
         {
             BattleRuler.Instance.OnFighting -= AutoTargetPlusCheck;
         }
-        
+
         private void Start()
         {
             foreach (var enemy in G.Enemies)
@@ -27,6 +28,12 @@ namespace Battle
                 enemy.GetComponent<Hp>().OnDeath += AutoTarget;
                 enemy.GetComponent<Enemy>().OnRetreat += AutoTarget;
             }
+        }
+
+        private void Update()
+        {
+            if (_targetHp != null)
+                if (_targetHp.CurrentHealth == 0) AutoTarget();
         }
 
         private void OnDestroy()
@@ -38,6 +45,7 @@ namespace Battle
         {
             target.OnTargeted();
             _currentTarget = target;
+            _targetHp = _currentTarget.GameObject.GetComponent<Hp>();
 
             if (_currentTarget is Enemy enemy)
             { 
