@@ -4840,7 +4840,7 @@ MonoBehaviour:
   waveAmplitude: 3
   waveFrequency: 25
   disappearDistance: 5
-  shrinkSpeed: 1
+  shrinkSpeed: 4
 --- !u!82 &7080890843211138546
 AudioSource:
   m_ObjectHideFlags: 0

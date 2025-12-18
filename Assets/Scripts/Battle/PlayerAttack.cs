@@ -209,7 +209,7 @@ namespace Battle
             
             foreach (Enemy enemy in G.Enemies)
             {
-                enemy.GetComponent<Hp>().TryToTakeDamage(AbilityDataCms.Instance.GetSpellConfig(SkillType.Beam).damage, false);
+                //enemy.GetComponent<Hp>().TryToTakeDamage(AbilityDataCms.Instance.GetSpellConfig(SkillType.Beam).damage, false);
                 var soul = Instantiate(_soul, transform.position, Quaternion.identity);
                 soul.GetComponent<WavyMoveToTarget>().target = enemy.transform;
                 

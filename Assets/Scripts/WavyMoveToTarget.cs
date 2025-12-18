@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Data;
+using EntityResources;
+using UnityEngine;
 
 public class WavyMoveToTarget : MonoBehaviour
 {
@@ -50,8 +52,14 @@ public class WavyMoveToTarget : MonoBehaviour
         if (isDisappearing)
         {
             transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime * shrinkSpeed);
-            if (transform.localScale.magnitude < 0.06f)
+            if (transform.localScale.magnitude < 0.1f)
+            {
+                if (target.CompareTag("Enemy"))
+                {
+                    target.transform.GetComponent<Hp>().TryToTakeDamage(AbilityDataCms.Instance.GetSpellConfig(SkillType.Beam).damage, false);
+                }
                 Destroy(gameObject);
+            }
         }
     }
 }
