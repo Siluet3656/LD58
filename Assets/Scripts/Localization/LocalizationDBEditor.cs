@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(LocalizationDB))]
@@ -88,3 +89,4 @@ public class LocalizationDBEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+#endif
