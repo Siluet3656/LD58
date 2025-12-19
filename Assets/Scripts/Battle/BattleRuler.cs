@@ -55,6 +55,8 @@ namespace Battle
         private static readonly int StartTutorial3 = Animator.StringToHash("StartTutorial3");
         private static readonly int StartTutorial4 = Animator.StringToHash("StartTutorial4");
         private static readonly int TutorialStep = Animator.StringToHash("TutorialStep");
+        
+        private string _levelName;
 
         private void Awake()
         {
@@ -1049,61 +1051,84 @@ namespace Battle
         
         private void Start()
         {
+            _levelName = "unknown";
+            
             switch (_sceneID)
             {
                 case 1:
                     StartCoroutine(StartGameTutorial1());
+                    _levelName = LocalizationManager.Instance.Get("0-1name");
                     break;
                 case 2:
                     StartCoroutine(StartGameTutorial2());
+                    _levelName = LocalizationManager.Instance.Get("0-2name");
                     break;
                 case 3:
                     StartCoroutine(StartGameTutorial3());
+                    _levelName = LocalizationManager.Instance.Get("0-3name");
                     break;
                 case 4:
                     StartCoroutine(StartDialogueAct0Fight4());
+                    _levelName = LocalizationManager.Instance.Get("0-4name");
                     break;
                 case 5:
                     StartCoroutine(StartDialogueAct1Fight5());
+                    _levelName = LocalizationManager.Instance.Get("1-1name");
                     break;
                 case 6:
                     StartCoroutine(StartDialogueAct1Fight6());
+                    _levelName = LocalizationManager.Instance.Get("1-2name");
                     break;
                 case 7:
                     StartCoroutine(StartDialogueAct1Fight7());
+                    _levelName = LocalizationManager.Instance.Get("1-3name");
                     break;
                 case 8:
                     StartCoroutine(StartDialogueAct1Fight8());
+                    _levelName = LocalizationManager.Instance.Get("1-4name");
                     break;
                 case 9:
                     StartCoroutine(StartDialogueAct1Fight9());
+                    _levelName = LocalizationManager.Instance.Get("1-5name");
                     break;
                 case 10:
                     StartCoroutine(StartDialogueAct2Fight10());
+                    _levelName = LocalizationManager.Instance.Get("2-1name");
                     break;
                 case 11:
                     StartCoroutine(StartDialogueAct2Fight11());
+                    _levelName = LocalizationManager.Instance.Get("2-2name");
                     break;
                 case 12:
                     StartCoroutine(StartDialogueAct2Fight12());
+                    _levelName = LocalizationManager.Instance.Get("2-3name");
                     break;
                 case 13:
                     StartCoroutine(StartDialogueAct2Fight13());
+                    _levelName = LocalizationManager.Instance.Get("2-4name");
                     break;
                 case 14:
                     StartCoroutine(StartDialogueAct2Fight14());
+                    _levelName = LocalizationManager.Instance.Get("2-5name");
                     break;
                 case 15:
                     StartCoroutine(StartDialogueAct2Fight15());
+                    _levelName = LocalizationManager.Instance.Get("2-6name");
                     break;
                 case 16:
                     StartCoroutine(StartDialogueAct3Fight16());
+                    _levelName = LocalizationManager.Instance.Get("3-1name");
                     break;
                 case 17:
                     StartCoroutine(StartDialogueAct3Fight17());
+                    _levelName = LocalizationManager.Instance.Get("3-2name");
                     break;
                 case 18:
                     StartCoroutine(StartDialogueAct3Fight18());
+                    _levelName = LocalizationManager.Instance.Get("3-3name");
+                    break;
+                case 19:
+                    _levelName = LocalizationManager.Instance.Get("Ending");
                     break;
                 default:
                     if (G.SmoothSlideY)
@@ -1111,6 +1136,7 @@ namespace Battle
                     break;
             }
             
+            AnalyticsManager.Instance.LevelStarted(_sceneID, _levelName, null); 
         }
 
         private void Update()
@@ -1185,10 +1211,11 @@ namespace Battle
                 if (floatingSoul.isActiveAndEnabled)
                     Instantiate(_pop, floatingSoul.transform.position, Quaternion.identity, null);
             }*/
-            
             _isFighting = false;
             _defeatPanel.SetActive(true);
             _player.GetComponent<PlayerTargeting>().ClearArrow();
+            
+            AnalyticsManager.Instance.LevelFailed(_sceneID, _levelName, null); 
         }
         
         private void Victory()
@@ -1207,6 +1234,15 @@ namespace Battle
             ArrowToTarget arrowToTarget = FindObjectOfType<ArrowToTarget>();
             if (arrowToTarget)
                 arrowToTarget.gameObject.SetActive(false);
+
+            PlayerBuild build = new PlayerBuild();
+
+            foreach (var soulType in G.SoulPlaces.Values)
+            {
+                build.souls.Add(soulType.ToString());
+            }
+            
+            AnalyticsManager.Instance.LevelCompleted(_sceneID, _levelName, build);
         }
 
         private void CheckVictory()
