@@ -151,7 +151,14 @@ namespace Prepare
             int total = baseEnergy + bonusFromExiled;
 
             if (artificialSouls > 0)
+            {
                 total *= 2 * artificialSouls;
+                G.PlayerAttack.IsAttackBlocked = true;
+            }
+            else
+            {
+                G.PlayerAttack.IsAttackBlocked = false;
+            }
             int extra = total - baseEnergy;
 
             G.SkillResources.AdjustResources(extra);

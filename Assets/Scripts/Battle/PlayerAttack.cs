@@ -82,7 +82,7 @@ namespace Battle
                 }
             }
             
-            if (_playerTargeting.HasTarget) PerformAttack();
+            if (_playerTargeting.HasTarget && IsAttackBlocked == false) PerformAttack();
         }
 
         private void OnEnable()
@@ -159,6 +159,7 @@ namespace Battle
         public float DefaultDamage => _defaultAttackDamage;
         public float CurrentCooldownTime => _currentCooldownTime;
         public float DefaultCooldownTime => _defaultAttackCooldownTime;
+        public bool IsAttackBlocked;
 
         public void AdjustDamage(int amount)
         {
