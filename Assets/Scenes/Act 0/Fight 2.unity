@@ -2641,7 +2641,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2184545997588785199, guid: aa13992279f2cc44fbbd7cf7f366b7ed, type: 3}
       propertyPath: m_Text
-      value: TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText
+      value: TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184545997588785199, guid: aa13992279f2cc44fbbd7cf7f366b7ed, type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3468131152134972516, guid: aa13992279f2cc44fbbd7cf7f366b7ed, type: 3}
       propertyPath: m_Enabled
@@ -2955,6 +2959,7 @@ MonoBehaviour:
   _victoriaPureSoul: {fileID: 0}
   IsLBM: 0
   IsCastStarted: 0
+  IsVictory: 0
 --- !u!4 &2145297815
 Transform:
   m_ObjectHideFlags: 0
