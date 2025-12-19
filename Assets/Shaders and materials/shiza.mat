@@ -61,7 +61,7 @@ Material:
     - _ColorShift: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DistortionSpeed: 1.8200097
+    - _DistortionSpeed: 1.9165344
     - _DistortionStrength: 0
     - _DstBlend: 0
     - _GlossMapScale: 1
@@ -69,7 +69,7 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
-    - _NoiseScale: 0.063239574
+    - _NoiseScale: 0.060727783
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0

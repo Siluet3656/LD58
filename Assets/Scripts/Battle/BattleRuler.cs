@@ -1106,7 +1106,8 @@ namespace Battle
                     StartCoroutine(StartDialogueAct3Fight18());
                     break;
                 default:
-                    G.SmoothSlideY.Show();
+                    if (G.SmoothSlideY)
+                        G.SmoothSlideY.Show();
                     break;
             }
             
@@ -1144,13 +1145,17 @@ namespace Battle
 
         private void OnEnable()
         {
-            foreach (var enemy in EnemiesOnScene)
+            if (EnemiesOnScene.Count > 0)
             {
-                enemy.GetComponent<Hp>().OnDeath += CheckVictory;
-                enemy.GetComponent<Enemy>().OnRetreat += CheckVictory;
+                foreach (var enemy in EnemiesOnScene)
+                {
+                    enemy.GetComponent<Hp>().OnDeath += CheckVictory;
+                    enemy.GetComponent<Enemy>().OnRetreat += CheckVictory;
+                }
             }
             
-            _player.GetComponent<Hp>().OnDeath += Defeat;
+            if (_player)
+                _player.GetComponent<Hp>().OnDeath += Defeat;
         }
 
         private void OnDisable()

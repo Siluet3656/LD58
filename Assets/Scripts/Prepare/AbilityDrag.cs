@@ -38,10 +38,13 @@ namespace Prepare
         private void Start()
         {
             SoundBank soundBank = G.SoundBank;
-            _placeSound = soundBank.PLaceSound;
-            _dropSound = soundBank.DropSound;
-            _pickupSound = soundBank.PickupSound;
-            _wrongSound = soundBank.WrongSound;
+            if (soundBank)
+            {
+                _placeSound = soundBank.PLaceSound;
+                _dropSound = soundBank.DropSound;
+                _pickupSound = soundBank.PickupSound;
+                _wrongSound = soundBank.WrongSound;
+            }
         }
 
         private void Update()

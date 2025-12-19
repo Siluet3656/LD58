@@ -26,4 +26,5 @@ public static class G
     public static VictoriaEscape VictoriaEscape;
     public static Steps Steps;
     public static SpawnCrystals SpawnCrystals;
+    public static Ending Ending;
 }

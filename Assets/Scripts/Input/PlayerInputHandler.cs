@@ -52,9 +52,11 @@ namespace Input
         {
             _mousePosition = _inputActions.UI.MousePosition.ReadValue<Vector2>();
             
-            _hand.SetPoint(_mainCamera.ScreenToWorldPoint(_mousePosition));
+            if (_hand)
+                _hand.SetPoint(_mainCamera.ScreenToWorldPoint(_mousePosition));
             
-            TooltipManager.Instance.SetMousePosition(_mousePosition);
+            if (TooltipManager.Instance)
+                TooltipManager.Instance.SetMousePosition(_mousePosition);
         }
 
         private void OnEnable() => _inputActions.Enable();
@@ -102,6 +104,9 @@ namespace Input
             }
 
             BattleRuler.Instance.IsLBM = true;
+            
+            if (G.Ending)
+                G.Ending.IsLBM = true;
         }
 
         private void OnRightMouseButtonClicked()

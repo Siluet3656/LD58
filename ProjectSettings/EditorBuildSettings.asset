@@ -65,4 +65,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ACT3/Fight 18.unity
     guid: d74036566a7a60a4fac3a721419c64f3
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 4dd6b8bd559ff6140ba080decaec2d33
   m_configObjects: {}
