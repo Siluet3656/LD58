@@ -3073,7 +3073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862628, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: _defaultMaxHealth
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862629, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3161,7 +3161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862635, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: _attackCooldownTime
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4062323349122862635, guid: 4d4280c6d97320645a1c89391e2a38dc, type: 3}
       propertyPath: _defaultDamage
@@ -3286,8 +3286,10 @@ MonoBehaviour:
   _targetSwitch: {fileID: 0}
   _handAnim: {fileID: 0}
   _anotherTutorialText: {fileID: 0}
+  _victoriaPureSoul: {fileID: 0}
   IsLBM: 0
   IsCastStarted: 0
+  IsVictory: 0
 --- !u!4 &2145297815
 Transform:
   m_ObjectHideFlags: 0

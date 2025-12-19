@@ -81,6 +81,9 @@ public class Map : MonoBehaviour
             case 20:
                 _animator.SetTrigger("3-3");
                 break;
+            case 21:
+                LoadSceneMode(20);
+                break;
         }
     }
     
