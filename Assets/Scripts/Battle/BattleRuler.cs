@@ -67,6 +67,8 @@ namespace Battle
                 Destroy(gameObject);
             }
 
+            IsVictory = false;
+
             EnemiesOnScene.AddRange(_enemies);
 
             if (_tutorialPanel != null)
@@ -1189,6 +1191,8 @@ namespace Battle
             _isFighting = false;
             //Анимация победы?
             _victoryPanel.SetActive(true);
+
+            IsVictory = true;
             
             if (_sceneID == 3)
             {
@@ -1227,6 +1231,7 @@ namespace Battle
         public bool DialogueSkipped => _dialogueSkiped;
         public readonly List<Enemy> EnemiesOnScene = new List<Enemy>();
         public bool IsCastStarted;
+        public bool IsVictory;
         
         public void StartFight()
         {

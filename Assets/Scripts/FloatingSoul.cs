@@ -1,4 +1,5 @@
 ﻿using System;
+using Battle;
 using UnityEngine;
 
 public class FloatingSoul : MonoBehaviour
@@ -61,7 +62,8 @@ public class FloatingSoul : MonoBehaviour
 
     private void OnDisable()
     {
-        Instantiate(_pop, transform.position, Quaternion.identity, null);
+        if( BattleRuler.Instance.IsVictory == false)
+            Instantiate(_pop, transform.position, Quaternion.identity, null);
     }
 
     private bool CheckRangeToPosition()
