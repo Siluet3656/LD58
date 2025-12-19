@@ -898,12 +898,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicTracks:
-  - {fileID: 8300000, guid: 015e07d271b9b0940a2b93a5726969ec, type: 3}
-  - {fileID: 8300000, guid: 8f3be5c016f177b4ab7837b8c624a66b, type: 3}
+  - {fileID: 8300000, guid: 7e76f4d445d5af141b5b61c452b3d955, type: 3}
+  - {fileID: 8300000, guid: 7e76f4d445d5af141b5b61c452b3d955, type: 3}
   audioSource: {fileID: 519420033}
   fadeDuration: 3
   segmentDuration: 120
-  volume: 0.07
+  volume: 0.02
 --- !u!1 &521795585
 GameObject:
   m_ObjectHideFlags: 0
