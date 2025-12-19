@@ -62,7 +62,7 @@ public class FloatingSoul : MonoBehaviour
 
     private void OnDisable()
     {
-        if( BattleRuler.Instance.IsVictory == false)
+        if(BattleRuler.Instance.IsVictory == false)
             Instantiate(_pop, transform.position, Quaternion.identity, null);
     }
 

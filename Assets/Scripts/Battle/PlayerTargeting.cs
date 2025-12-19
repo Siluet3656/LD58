@@ -32,8 +32,8 @@ namespace Battle
 
         private void Update()
         {
-            if (_targetHp != null)
-                if (_targetHp.CurrentHealth == 0) AutoTarget();
+            //if (_targetHp != null)
+                //if (_targetHp.CurrentHealth == 0) AutoTarget();
         }
 
         private void OnDestroy()
@@ -45,6 +45,7 @@ namespace Battle
         {
             target.OnTargeted();
             G.SoundBank.TargetSwitchSound.PlayRandomSound();
+            
             _currentTarget = target;
             _targetHp = _currentTarget.GameObject.GetComponent<Hp>();
 
@@ -72,7 +73,7 @@ namespace Battle
         {
             foreach (Enemy enemy in G.Enemies)
             {
-                if (enemy.isActiveAndEnabled)
+                if (enemy.IsAlive)
                 {
                     SetTarget(enemy);
                     return;
@@ -88,7 +89,7 @@ namespace Battle
             {
                 foreach (Enemy enemy in G.Enemies)
                 {
-                    if (enemy.isActiveAndEnabled)
+                    if (enemy.IsAlive)
                     {
                         SetTarget(enemy);
                         return;

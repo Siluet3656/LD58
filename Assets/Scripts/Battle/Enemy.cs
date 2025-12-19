@@ -154,6 +154,8 @@ namespace Battle
         public GameObject GameObject { get; private set; }
         public event Action OnTargetDie;
         public event Action OnRetreat;
+        
+        public bool IsAlive => _myHp.CurrentHealth > 0;
 
         public int MerchantSouls => _merchantSouls;
 

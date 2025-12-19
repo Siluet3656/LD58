@@ -38,7 +38,8 @@ public class RandomSoundPlayer : MonoBehaviour
 
     public void StopPlay()
     {
-        StartCoroutine(FadeOutAudio(audioSource, 0.5f));
+        //StartCoroutine(FadeOutAudio(audioSource, 0.5f));
+        audioSource.Stop();
     }
 
     public void PlayRandomSound()

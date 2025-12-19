@@ -938,7 +938,7 @@ namespace Battle
             IsLBM = false;
             
             ShowDialog(LocalizationManager.Instance.Get("DialogueText82"),
-                LocalizationManager.Instance.Get("nameArchivist"), VoiceType.None); //VoiceType.AI
+                LocalizationManager.Instance.Get("nameArchivist"), VoiceType.AI); //VoiceType.AI
             
             yield return new WaitForSeconds(0.5f);
             yield return new WaitUntil(() => IsLBM);
@@ -952,7 +952,7 @@ namespace Battle
             IsLBM = false;
             
             ShowDialog(LocalizationManager.Instance.Get("DialogueText84"),
-                LocalizationManager.Instance.Get("nameArchivist"), VoiceType.None); //VoiceType.AI
+                LocalizationManager.Instance.Get("nameArchivist"), VoiceType.AI); //VoiceType.AI
             
             G.SpawnCrystals.SpawnCrystal();
             
