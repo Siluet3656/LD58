@@ -44,6 +44,7 @@ namespace Battle
         private void SetTarget(ITargetable target)
         {
             target.OnTargeted();
+            G.SoundBank.TargetSwitchSound.PlayRandomSound();
             _currentTarget = target;
             _targetHp = _currentTarget.GameObject.GetComponent<Hp>();
 

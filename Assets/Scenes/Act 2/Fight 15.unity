@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3351800674917304798, guid: c375d822da67cd3429b0d2def722dc33, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3351800674917304799, guid: c375d822da67cd3429b0d2def722dc33, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4549,6 +4549,7 @@ MonoBehaviour:
   _victoriaPureSoul: {fileID: 0}
   IsLBM: 0
   IsCastStarted: 0
+  IsVictory: 0
 --- !u!4 &2145297815
 Transform:
   m_ObjectHideFlags: 0

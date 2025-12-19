@@ -38678,6 +38678,7 @@ GameObject:
   - component: {fileID: 5129572450930870881}
   - component: {fileID: 5626751651509931476}
   - component: {fileID: 1743411285400506182}
+  - component: {fileID: 2345133916854758609}
   m_Layer: 0
   m_Name: SoundBank
   m_TagString: Untagged
@@ -38717,6 +38718,7 @@ MonoBehaviour:
   WrongSound: {fileID: 5129572450930870881}
   DeleteSound: {fileID: 5626751651509931476}
   ReflectSound: {fileID: 1743411285400506182}
+  TargetSwitchSound: {fileID: 2345133916854758609}
 --- !u!82 &7061467253908888128
 AudioSource:
   m_ObjectHideFlags: 0
@@ -38938,6 +38940,27 @@ MonoBehaviour:
   maxPitch: 1.2
   minValue: 0.3
   maxValue: 0.4
+  Play: 0
+--- !u!114 &2345133916854758609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7777485835851307386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e20ffb21247a34ab569e18f4f495e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundClips:
+  - {fileID: 8300000, guid: dbb4d249c1e1c8745b15af2367777597, type: 3}
+  audioSource: {fileID: 7061467253908888128}
+  minDelay: 0.7
+  minPitch: 0.9
+  maxPitch: 1
+  minValue: 0.7
+  maxValue: 0.8
   Play: 0
 --- !u!1 &8334718168745805107
 GameObject:
