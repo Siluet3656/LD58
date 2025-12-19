@@ -826,7 +826,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.348
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -929,6 +929,10 @@ MonoBehaviour:
   fontAsset: {fileID: 11400000, guid: 137edcbbd8c81c84e827b6a8b82cf223, type: 2}
   fontSize: 72
   fontSpacing: 0.1
+  source: {fileID: 770149290}
+  audioClip1: {fileID: 8300000, guid: fc2771e2d0402164186e50a1a7a5c502, type: 3}
+  audioClip2: {fileID: 8300000, guid: fc2771e2d0402164186e50a1a7a5c502, type: 3}
+  audioClip3: {fileID: 8300000, guid: 034e04038b000414ba5dbbbcad15dc03, type: 3}
   rsp: {fileID: 770149293}
 --- !u!114 &770149293
 MonoBehaviour:

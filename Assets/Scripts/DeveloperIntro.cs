@@ -17,6 +17,12 @@ public class DeveloperIntro : MonoBehaviour
     public TMP_FontAsset fontAsset;
     public int fontSize = 72;
     [Range(0, 1)] public float fontSpacing = 0.1f;
+    
+    [Header("Sounds")]
+    public AudioSource source;
+    public AudioClip audioClip1;
+    public AudioClip audioClip2;
+    public AudioClip audioClip3;
 
     private CanvasGroup canvasGroup;
     private TextMeshProUGUI textComponent;
@@ -129,24 +135,30 @@ public class DeveloperIntro : MonoBehaviour
     {
         // Initial black screen
         yield return new WaitForSeconds(0.5f);
-
+        
+        source.PlayOneShot(audioClip1);
+        
         // First screen
         textComponent.text = firstScreenText;
         yield return Fade(0, 1); // Fade in
         yield return new WaitForSeconds(screenDuration);
         yield return Fade(1, 0); // Fade out
-
+        
+        source.PlayOneShot(audioClip2);
+        
         // Second screen
         textComponent.text = secondScreenText;
         yield return Fade(0, 1); // Fade in
         yield return new WaitForSeconds(screenDuration);
         yield return Fade(1, 0); // Fade out
         
+        source.PlayOneShot(audioClip3);
+        
         textComponent.text = thirdScreenText;
         yield return Fade(0, 1); // Fade in
         yield return new WaitForSeconds(screenDuration);
         yield return Fade(1, 0); // Fade out
-
+        
         // Final delay before destruction
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
