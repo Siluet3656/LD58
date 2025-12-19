@@ -16,6 +16,12 @@ public class Map : MonoBehaviour
 
     private void Start()
     {
+        SaveData data = new SaveData
+        {
+            _levelId = GameState.State
+        };
+        SaveManager.Save(data);
+        
         switch (GameState.State)
         {
             case 0:

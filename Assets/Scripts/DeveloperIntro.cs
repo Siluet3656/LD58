@@ -12,6 +12,8 @@ public class DeveloperIntro : MonoBehaviour
     public float fadeDuration = 1f;
     public Color textColor = Color.white;
     [SerializeField] private GameObject languageSelectionPanel;
+    [SerializeField] private GameObject gameStatePanel;
+    [SerializeField] private GameObject surePanel;
     
     [Header("Font Settings")]
     public TMP_FontAsset fontAsset;
@@ -23,6 +25,11 @@ public class DeveloperIntro : MonoBehaviour
     public AudioClip audioClip1;
     public AudioClip audioClip2;
     public AudioClip audioClip3;
+    
+    [Header("Buttons")]
+    [SerializeField] Button buttonContinue;
+    [SerializeField] Button buttonNewGame;
+    [SerializeField] Button sureButton;
 
     private CanvasGroup canvasGroup;
     private TextMeshProUGUI textComponent;
@@ -49,11 +56,58 @@ public class DeveloperIntro : MonoBehaviour
         
         rsp.PlayRandomSound();
         
-        // 5. Создаем UI и запускаем последовательность
-        CreateUIElements();
-        StartCoroutine(ShowScreensSequence());
+        int gameState = await WaitForGameStateAsync();
+
+        GameState.State = gameState;
+
+        if (gameState > 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            // 5. Создаем UI и запускаем последовательность
+            CreateUIElements();
+            StartCoroutine(ShowScreensSequence());
+        }
     }
-    
+
+    private Task<int> WaitForGameStateAsync()
+    {
+        var tcs = new TaskCompletionSource<int>();
+        gameStatePanel.SetActive(true);
+
+        SaveData data = SaveManager.Load();
+
+        if (data._levelId == 0)
+        {
+            buttonContinue.gameObject.SetActive(false);
+        }
+        else
+        {
+            buttonContinue.onClick.AddListener(() =>
+            {
+                gameStatePanel.SetActive(false);
+                tcs.TrySetResult(data._levelId);
+                surePanel.gameObject.SetActive(false);
+            });
+        }
+        
+        buttonNewGame.onClick.AddListener(() =>
+        {
+            surePanel.SetActive(!surePanel.activeSelf);
+        });
+        
+        sureButton.onClick.AddListener(() =>
+            {
+                gameStatePanel.SetActive(false);
+                tcs.TrySetResult(0);
+                surePanel.gameObject.SetActive(false);
+            });
+        
+        return tcs.Task;
+    }
+
     private Task<string> WaitForLanguageSelectionAsync()
     {
         var tcs = new TaskCompletionSource<string>();
