@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using GameAnalyticsSDK;
-using System.Collections.Generic;
 
 public class AnalyticsManager : MonoBehaviour
 {
@@ -22,11 +22,29 @@ public class AnalyticsManager : MonoBehaviour
     {
         if (!initialized)
         {
+#if UNITY_WEBGL
+            Debug.Log("Initializing GameAnalytics for WebGL");
             GameAnalytics.Initialize();
+#elif UNITY_STANDALONE_WIN
+            Debug.Log("Initializing GameAnalytics for Windows");
+            GameAnalytics.Initialize();
+#endif
+
             initialized = true;
             Debug.Log("GameAnalytics initialized");
+            StartCoroutine(SendEventWhenReady());
         }
     }
+    
+    IEnumerator SendEventWhenReady()
+    {
+        while (!GameAnalytics.Initialized)
+            yield return null;
+
+        GameAnalytics.NewDesignEvent("test_event_initialized");
+        Debug.Log("GA test event sent");
+    }
+
 
     // =========================
     // LEVEL EVENTS
@@ -83,7 +101,7 @@ public class AnalyticsManager : MonoBehaviour
         // Билд
         if (build != null)
         {
-            string buildStr = build.Serialize();
+            string buildStr = build.SerializeForGA();
             GameAnalytics.NewDesignEvent($"level_build:{levelNumber}_{levelName}:{buildStr}");
             Debug.Log($"Level completed with build: {buildStr}");
         }

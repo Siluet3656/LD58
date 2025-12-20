@@ -1057,78 +1057,78 @@ namespace Battle
             {
                 case 1:
                     StartCoroutine(StartGameTutorial1());
-                    _levelName = LocalizationManager.Instance.Get("0-1name");
+                    _levelName = "First soul";
                     break;
                 case 2:
                     StartCoroutine(StartGameTutorial2());
-                    _levelName = LocalizationManager.Instance.Get("0-2name");
+                    _levelName = "Rumors";
                     break;
                 case 3:
                     StartCoroutine(StartGameTutorial3());
-                    _levelName = LocalizationManager.Instance.Get("0-3name");
+                    _levelName = "Bandits";
                     break;
                 case 4:
                     StartCoroutine(StartDialogueAct0Fight4());
-                    _levelName = LocalizationManager.Instance.Get("0-4name");
+                    _levelName = "Reunion";
                     break;
                 case 5:
                     StartCoroutine(StartDialogueAct1Fight5());
-                    _levelName = LocalizationManager.Instance.Get("1-1name");
+                    _levelName = "Gates";
                     break;
                 case 6:
                     StartCoroutine(StartDialogueAct1Fight6());
-                    _levelName = LocalizationManager.Instance.Get("1-2name");
+                    _levelName = "Slum Market";
                     break;
                 case 7:
                     StartCoroutine(StartDialogueAct1Fight7());
-                    _levelName = LocalizationManager.Instance.Get("1-3name");
+                    _levelName = "The Cult";
                     break;
                 case 8:
                     StartCoroutine(StartDialogueAct1Fight8());
-                    _levelName = LocalizationManager.Instance.Get("1-4name");
+                    _levelName = "Berserk";
                     break;
                 case 9:
                     StartCoroutine(StartDialogueAct1Fight9());
-                    _levelName = LocalizationManager.Instance.Get("1-5name");
+                    _levelName = "Church entrance";
                     break;
                 case 10:
                     StartCoroutine(StartDialogueAct2Fight10());
-                    _levelName = LocalizationManager.Instance.Get("2-1name");
+                    _levelName = "Halls";
                     break;
                 case 11:
                     StartCoroutine(StartDialogueAct2Fight11());
-                    _levelName = LocalizationManager.Instance.Get("2-2name");
+                    _levelName = "Secret passage";
                     break;
                 case 12:
                     StartCoroutine(StartDialogueAct2Fight12());
-                    _levelName = LocalizationManager.Instance.Get("2-3name");
+                    _levelName = "The point of no return";
                     break;
                 case 13:
                     StartCoroutine(StartDialogueAct2Fight13());
-                    _levelName = LocalizationManager.Instance.Get("2-4name");
+                    _levelName = "Science";
                     break;
                 case 14:
                     StartCoroutine(StartDialogueAct2Fight14());
-                    _levelName = LocalizationManager.Instance.Get("2-5name");
+                    _levelName = "Duel";
                     break;
                 case 15:
                     StartCoroutine(StartDialogueAct2Fight15());
-                    _levelName = LocalizationManager.Instance.Get("2-6name");
+                    _levelName = "Archive";
                     break;
                 case 16:
                     StartCoroutine(StartDialogueAct3Fight16());
-                    _levelName = LocalizationManager.Instance.Get("3-1name");
+                    _levelName = "Shadow mirages 1";
                     break;
                 case 17:
                     StartCoroutine(StartDialogueAct3Fight17());
-                    _levelName = LocalizationManager.Instance.Get("3-2name");
+                    _levelName = "Shadow mirages 2";
                     break;
                 case 18:
                     StartCoroutine(StartDialogueAct3Fight18());
-                    _levelName = LocalizationManager.Instance.Get("3-3name");
+                    _levelName = "Shadow mirages 3";
                     break;
                 case 19:
-                    _levelName = LocalizationManager.Instance.Get("Ending");
+                    _levelName = "Ending";
                     break;
                 default:
                     if (G.SmoothSlideY)
@@ -1241,8 +1241,15 @@ namespace Battle
             {
                 build.souls.Add(soulType.ToString());
             }
-            
-            AnalyticsManager.Instance.LevelCompleted(_sceneID, _levelName, build);
+
+            if (_sceneID == 1 || _sceneID == 19)
+            {
+                AnalyticsManager.Instance.LevelCompleted(_sceneID, _levelName, null);
+            }
+            else
+            {
+                AnalyticsManager.Instance.LevelCompleted(_sceneID, _levelName, build);
+            }
         }
 
         private void CheckVictory()

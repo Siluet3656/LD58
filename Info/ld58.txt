@@ -1,0 +1,259 @@
+Skills:
+Strike - урон + ошеломление
+Punch - ошеломление + бездействие на 3 сек или до получения урона
+Shield - временная неуязвимость
+Beam - масс урон по всем врагам без эффектов
+
+Effects???:
+ошеломление: сбивает полоску автоатаки
+кровотечение: наносит урон если цель получает урон
+
+Souls:
+Soul of poor man: + 1 к урону автоатак, но - 2 к хп. стоимость: 1
+Soul of bandit: автоатаки дабют 10 энергии. стоимость: 2
+Soul of exiled: регенерирует доп 5 энергии за раз. стоимость: 2
+Soul of steady solder: увеличивает на 1 задержку перед атакой. Здоровье увеличено на 5. + 1 к урону автоатак. стоимость: 2.
+Soul of brave solder: уменьшает на 1 задержку перед атакой. Здоровье уменьшено на 5. -1 к урону автоатак. стоимость: 2.
+
+Progress:
+Act 0 (tutorial) Guest from afar - слотов способностей 1 - лимит энергии душ 2 - урон автоатак 1: <<<< ЭТО ДЕЛАЮ 1/4
+Fight 1: Обучение автоатакам. 1 Враг. Награда: Strike <<<< DONE нужен полишинг
+Fight 2: Обучение Скиллам. 2 Врага Награда: Soul of poor man <<<< ЭТО ДЕЛАЮ
+Fight 3: Обучение Душам. 2 Врага Награда: Soul of exiled
+Fight 4: Закрпление. 3 Врага, у одного из них есть Strike Награда: Soul of bandit
+Act 1 (easy) Just a rumor - слотов способностей 2 - лимит энергии душ 5 - урон автоатак 2:
+Fight 1:
+
+Do you understand what a soul is? What kind of power it can grant to you? You play as "Guest from afar" - collector of souls that came from far away planet to research the true nature of soul.
+
+Guest absorbs their “Faith Souls” — giving temporary resistance but causing hallucinations (foreshadowing moral conflict). (Visual glitches)
+			
+			****>>SKILLS<<***
+Strike
+*******
+Deals damage and interrupts the enemy’s attack.
+Interrupt: Resets the target’s auto-attack progress.
+Cost: 60 Energy
+
+Punch 
+*******
+Deals damage and inflicts Stun.
+Stun: The target is unable to attack for 3 seconds or until taking damage.
+Cost: 80 Energy
+
+Shield 
+*******
+Creates a temporary barrier.
+Barrier: Grants invulnerability to all damage for 1 second.
+Cost: 50 Energy
+
+Soul splash 
+*******
+Deals 5 damage to all enemies.
+Cost: 100 Energy
+
+			****>>TRAITS<<***
+Steady
+*******
+Each attack restores 2 HP.
+
+Greedy
+*******
+On hit: steals 10 Energy.
+
+Hopeful
+********
+Once per fight: when health drops below 40%, restores full health.
+
+Fury
+****
+When health drops below 50%, damage is doubled.
+
+Hateful
+*******
+Instantly loses 50% of health if the enemy has the Soul of the Follower.
+
+Leader
+******
+Increases max health by +5 for each unit participating in the fight (ally or enemy).
+
+Well-Trained
+************
+Increases Attack by +1 for each unit participating in the fight (ally or enemy).
+
+Scientist
+*********
+Passively regenerates 3 Health per second.
+
+Pure
+****
+Passively regenerates 1% Health per second.
+
+Defiled
+*******
+On hit: Consumes 2 Health.
+
+Artificial
+**********
+Health is locked at 1. Invulnerable while all allies remain alive.
+
+			****>>SOULS<<***
+
+Soul of poor man
+****************
+Gain +1 to Attack, lose 2 Max HP. Removable. 
+Cost: 1
+A soul of someone easily forgotten.
+Purity Level: 0.61%
+
+Soul of bandit
+***************
+Auto-attacks grant 10 Energy. 
+Cost: 2
+A soul of a true anarchist, untamed and reckless.
+Purity Level: 2.43%
+
+Soul of exiled
+**************
+Regenerates +5 Energy per tick. 
+Cost: 2
+A soul full of determination.
+Purity Level: 12.42%
+
+Soul of knight
+**************
+Each skill used restores 2 HP.
+Cost: 2
+A warm soul of a brave warrior.
+Purity Level: 18.4%
+
+Soul of merchant
+****************
+Each skill used deals 2 damage to all units, including yourself.
+Cost: 3
+A soul of someone who knew the price of everything — even his own life.
+Purity Level: 10%
+
+Soul of follower
+****************
+Once per fight: when health drops below 40%, restores full health.
+Cost: 4
+A soul of a true beliver.
+Purity Level: 26.73%
+
+Soul of berserk
+****************
+When health below 50%, damage is doubled.
+Cost: 4
+The soul of a man who lost all his sanity.
+Purity Level: 87.4%
+
+Soul of Leader
+**************
+Increases max health by +5 for each unit participating in the fight (ally or enemy).
+Cost: 5
+A soul that grows stronger when others gather around it. Authority is both burden and fuel.
+Purity Level: 63.1%
+
+Soul of soldier
+***************
+Increases Attack by +1 for each unit participating in the fight (ally or enemy).
+Cost: 5
+A soul that grows stronger when others gather around it. Loyalty is both a burden and a source of power.
+Purity Level: 71.41%
+
+Suspiciously pure soul
+**********************
+Decreases time between auto-attacks by 0.5 seconds. Each attack consumes 10 Energy.
+Cost: 5
+A soul gained during the experiment. Definitely not a pure soul.
+Purity Level: 424.242%
+
+Suspiciously defiled soul
+*************************
+Decreases time between auto-attacks by 0.5 seconds. Each attack consumes 2 Health.
+Cost: 5
+A soul gained during the experiment. Negative purity? How is that possible?
+Purity Level: -424.242%
+
+Soul of scientist
+*****************
+For every 10 Energy consumed, heals 1 Health.
+Cost: 8
+A soul gained during the experiment. What is happening here?
+Purity Level: 99.1%
+
+Pure soul?
+**********
+Doubles Health and Attack. Energy no longer regenerates.
+Cost: 10
+Is it truly a Pure Soul?
+Purity Level: 99.9%
+
+Artificial Soul
+***************
+Doubles Max Energy and Energy regeneration. Cannot perform auto-attacks.
+Cost: 10
+The strangest soul I’ve ever seen. What should I do with it?
+Purity Level: 42%
+
+Fury of souls
+*************
+Soul capacity +5.
+
+чо делать:
+1) скиллы DONE
+2) трейты врагов DONE
+*) БГшки DONE
+3) акт 1 DONE
+*) тутор трейтов DONE
+4) акт 2 DONE
+5) акт 3 DONE
+*) Локали DONE
+6) полишинг HERE
+
+полишинг:
+- Души видны во время боя  DONE
+- Звуки МНОГА DONE
+- Поработать над тултипами DONE
+- Анимация стана DONE
+- Показать скорость атака (атк/аткспд) DONE
+- Особые проки должны отображатся:
+	- Прок фолловера DONE
+	- Активация берсерка DONE
+- "души" у некоторых врагов сделать жёлтыми
+- Переход в бой с щелчком и "затенением"
+- новые анимации врагов DONE
+- поправить текст
+- сделать анимации
+	- Анимация перед боем с Викторией DONE
+	- Анимации в архиве DONE
+	- Анимация тычка в ебало DONE
+	- Анимация стана DONE
+- Пауза и настройки звука
+- Выбор уровня + сохранения + сбросить сохранения DONE
+- Выбор цели на ПКМ? DONE
+- Другая анимация смерти миражей
+- КОНЦОВКА DONE
+- Портреты в диалогах
+- Справка в меню паузы
+- Сбор статистики (*)(*)(*)(*)(*)
+- Прикольные описания уровней
+- Прикольные описания актов
+- Рассинхронизация анимаций DONE
+- Отображение прока фолловера и берсерка у врага
+- Ещё звуков? (в сюжетке) DONE
+- Плохое понимание как бъёт душа мерчанта (дамаг с неё непонятен)
+- Звук выбора цели DONE
+
+баги:
+- Активация скиллов вне боя 3 и 4 скилл FIXED
+- Искусственная душа не блокирует автоатаки
+- чё бля с тултипами (не показывается при 1м показе) FIXED
+- в файте 1-1 пропадает стрелка если Виктроия отступает
+- Странное отображение на 2-1 в веб версии
+- Отображение текстов в туторах
+- Баг с хейтфулл что когда делаешь сначала душу последователя, а потом убираешь всеравно прокает эффект хейтфулл
+- На 2-3 маленькие иконки трофеев
+- Иногда почему-то пропадает панель в веб версии
+- ёбанная стрелка баля (Player targeting refacotoring)

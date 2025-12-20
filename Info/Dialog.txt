@@ -1,0 +1,334 @@
+PURE SOUL
+
+Plot Synopsis: "An Experiment with Souls"
+
+A being from another dimension—a consciousness researcher—has arrived on Earth. Not just a predator, but a scientist studying the phenomenon of the soul: how the energy of thoughts, emotions, and memory shapes the essence of life. Earth attracted him with its abundance of unique souls, each storing a unique spectrum of experience.
+
+The being's motivation is simple and cold: to collect as many souls as possible to complete the experiment. But with each new soul acquired, he begins to observe patterns in human emotions, gradually confronting the concept of individuality and moral dilemmas. In this autobattler world, every victory over an enemy becomes a resource for research—collected souls enhance his abilities and create new strategic options.
+
+Outskirts (ACT 0)
+
+Level 1:
+
+Guest from afar is Alien from another planet. Guest from afar lands on Earth near big City. His goal: collect many souls and find the PURE SOUL.
+It's Outskirts. place where exiled and poor people live along with bandits. First aim of Guest is reach the City.
+
+ShowDialog("Is this a city?\n I heard they have these kinds of things on Earth.", "Guest from afar", VoiceType.Alien);
+ShowDialog("I hope it's worth it.", "Guest from afar", VoiceType.Alien);
+
+Later... Guest from afar meets Victor
+
+ShowDialog("Who are you?\n What’s a thing like you doing around here?", "Victor", VoiceType.Man);
+ShowDialog("Are you familiar with the concept of a soul?", "Guest from afar", VoiceType.Alien);
+ShowDialog("What? What do you think you are?\n You’re gonna see souls with your own eyes.", "Victor", VoiceType.Man);
+
+Guest from afar kills Victor and collect his soul
+
+Level 2:
+
+Later... Guest from afar meets group of strangers
+
+ShowDialog("Hey! What have you done to him?!", "Alice", VoiceType.Woman);
+ShowDialog("His soul is now part of my collection.", "Guest from afar", VoiceType.Alien);
+ShowDialog("If you don't want to end up where he did,\nyou'd better not get in my way.", "Guest from afar", VoiceType.Alien);
+ShowDialog("Uh-huh, like we’d believe you.", "Alice", VoiceType.Woman);
+ShowDialog("You're exactly the kind who waits to stab someone in the back.", "Alex", VoiceType.Man);
+
+Guest from afar kills Alex and Alice and collect their souls.
+
+Level 3:
+
+Later... Guest from afar meets group of bandits
+
+ShowDialog("Hey, we’re not your enemies, dude. Got a little mixed up—everyone makes mistakes.", "Anton", VoiceType.Man);
+ShowDialog("These souls of yours are very interesting. They’ll surely help me achieve the Pure Soul.", "Guest from afar", VoiceType.Alien);
+ShowDialog("Oh man, bro, looks like we’ve really messed up.", "Nikita", VoiceType.Man);
+
+Guest from afar kills Anton and Nikita and collect their souls.
+
+Level 4:
+
+Later... Guest from afar meets group of hermits. They are angry and him. They have determenation to fight till very end.
+
+ShowDialog("We’re just simple hermits. There’s nothing to take from us.", "Igor", VoiceType.Man);
+ShowDialog("I could always take your soul — and right now it's the oddest one I've come across.", "Guest from afar", VoiceType.Alien);
+ShowDialog("Alright, all of us, together — now we must finally stop him!", "Igor", VoiceType.Man);
+
+Guest from afar kills them all and collect their souls.
+
+Guest from afar reaches the City
+
+City (ACT 1)
+
+Level 1 - Gates:
+
+Later... at city entrance
+
+ShowDialog("It seems I've reached the city's entrance.", "Guest from afar", VoiceType.Alien);
+ShowDialog("Countless souls, yet none shine with truth.", "Guest from afar", VoiceType.Alien);
+ShowDialog("I must continue. Somewhere among them lies the Pure Soul.", "Guest from afar", VoiceType.Alien);
+
+Victoria showing up.
+
+ShowDialog("Halt, intruder!! Don't think your crimes went unnoticed!!", "Victoria", VoiceType.Woman);
+ShowDialog("Her soul... it resonates differently from the rest.", "Guest from afar", VoiceType.Alien);
+ShowDialog("Stop mumbling like I can't hear you!!", "Victoria", VoiceType.Woman);
+ShowDialog("Guards! We have a situation here!!", "Victoria", VoiceType.Woman);
+
+Guards showing up.
+
+Fight:
+Victoria (Leader)
+Guard (Steady)
+Guard (Steady)
+
+Guards dying in fight. Victoria leaves at 50% of her HP. Guest from afar gains "Soul of knight" and Punch (skill).
+
+ShowDialog("Hostiles neutralized. Her signal is fading...", "Guest from afar", VoiceType.Alien);
+ShowDialog("She's retreating... I must find her again.", "Guest from afar", VoiceType.Alien);
+
+Level 2 - Slum Market:
+
+ShowDialog("Welcome, stranger! Looking to buy? We trade in everything — even souls.", "Richard", VoiceType.Man);
+ShowDialog("Sell, buy, bargain — same thing. I have anything you need if you have enogh money ofcourse.", "Richard", VoiceType.Man);
+ShowDialog("I take what I need. I do not pay.", "Guest from afar", VoiceType.Alien);
+
+Fight:
+Richard (Steady, Greedy)
+Michael (Greedy)
+Misha (Greedy)
+
+Guest from afar kills them all and collect their souls. Guest from afar gains "Soul of merchant".
+
+Level 3 - The Cult:
+
+ShowDialog("I can sense the Pure Soul near you. You're hiding it.", "Guest from afar", VoiceType.Alien);
+ShowDialog("You defile the sacred with your greed! The Pure Soul will never be yours!", "Ashley", VoiceType.Woman);
+ShowDialog("You're cursed! Show no mercy!", "Anna", VoiceType.Woman);
+ShowDialog("It blasphemes! Offer your souls for purification!", "Andrey", VoiceType.Man);
+
+Fight:
+Ashley (Steady, Greedy)
+Andrey (Hopeful)
+Anna (Hopeful)
+
+Guest from afar kills them all and collect their souls. Guest from afar gains "Soul of follower" and Shield (skill).
+
+level 4 - Berserk
+
+Guest from afar meets strange wounded man at empty street.
+
+ShowDialog("She... doesn’t... understand...", "Konstantin", VoiceType.Man);
+ShowDialog("I’m in pursuit of the Pure Soul. Step aside if you wish to live.", "Guest from afar", VoiceType.Alien);
+ShowDialog("I no longer seek any soul... except the Pure one.", "Guest from afar", VoiceType.Alien);
+ShowDialog("Soul... pure... not... pure...", "Konstantin", VoiceType.Man);
+ShowDialog("It’s no use. He can’t hear me.", "Guest from afar", VoiceType.Alien);
+
+Fight:
+Konstantin (Fury, Hateful)
+
+Guest from afar kills him and gets "Soul of berserk".
+
+level 5 - Church entrance
+
+Guest from afar catch up Vicrtoria at Church of souls entrance.
+
+ShowDialog("Halt, intruder! Your greed consumes you!!", "Victoria", VoiceType.Woman);
+ShowDialog("It’s not greed. It’s the experiment… the data must be complete.", "Guest from afar", VoiceType.Alien);
+ShowDialog("Enough of your lies! Your corruption ends here!!", "Victoria", VoiceType.Woman);
+ShowDialog("Heh... finally found you. Nowhere to run. Nowhere to hide.", "Guest from afar", VoiceType.Alien);
+
+Fight:
+Victoria (Fury, Hopeful, Steady)
+
+Guest from afar and Vicrtoria fights at Church of souls entrance.
+Vicrtoria runout inside Church of souls at 20% HP. Guest from afar gains Soul splash (skill).
+
+Church of souls (ACT 2)
+
+level 1 - Halls
+
+ShowDialog("She's escaping... again...", "Guest from afar", VoiceType.Alien);
+ShowDialog("Help me! Someone—help me, I command you!!", "Victoria", VoiceType.Woman);
+ShowDialog("Yes, Your Holiness!", "Pakhoma", VoiceType.Woman);
+
+Fight:
+Pakhoma (Leader, Hopeful)
+Cultist (Hopeful)
+Cultist (Hopeful)
+Cultist (Hopeful)
+Cultist (Hopeful)
+
+Big group of cultists surround guest from afar.
+Guest from afar kills them all and gets "Soul of leader".
+
+level 2 - Secret passage
+
+Guest from afar chasing Victoria in secret passage inside church.
+
+ShowDialog("Help me! Someone—help me, I command you!!", "Victoria", VoiceType.Woman);
+ShowDialog("Yes, Your Holiness!", "Henry", VoiceType.Man);
+
+Fight:
+Henry (Leader, Well-trained)
+Knight (Well-Trained)
+Knight (Well-Trained)
+Knight (Well-Trained)
+Knight (Well-Trained)
+
+Big group of knights surround guest from afar.
+Guest from afar kills them all and gets "Soul of soldier".
+
+level 3 - The point of no return
+
+Guest from afar keeps chasing Victoria in secret passage inside church.
+
+ShowDialog("Help me! Someone—help me, I command you!!", "Victoria", VoiceType.Woman);
+ShowDialog("Huh?! We’re in the middle of something here.", "Patrick", VoiceType.Man);
+ShowDialog("Hey! Don’t run in here!", "Bob", VoiceType.Man);
+ShowDialog("...", "Guest from afar", VoiceType.Alien);
+ShowDialog("...", "Patrick", VoiceType.Man);
+ShowDialog("...", "Bob", VoiceType.Man);
+ShowDialog("Wait... you’re not one of us, are you?", "Patrick", VoiceType.Man);
+ShowDialog("Not your concern. Get out of my way.", "Guest from afar", VoiceType.Alien);
+ShowDialog("You’re talking to the heads of the Soul Project, pal!", "Bob", VoiceType.Man);
+ShowDialog("Exactly. And since you’ve seen our work... we can’t let you leave alive.", "Patrick", VoiceType.Man);
+ShowDialog("Heh, yeah. No witnesses — no problem.", "Bob", VoiceType.Man);
+
+Fight:
+
+Patrick (Scientist, Pure, Well-Trained)
+Bob (Scientist, Defiled, Hateful)
+
+Hard fight ends Patrik's and Bobs' death. Guest from afar gets "Suspiciously defiled soul" and "Suspiciously pure soul".
+
+level 4 - Lab
+
+ShowDialog("Those two were leaders of some kind of project...", "Guest from afar", VoiceType.Alien);
+ShowDialog("What kind of experiments were they conducting here?", "Guest from afar", VoiceType.Alien);
+ShowDialog("Their souls... they look unnatural.", "Guest from afar", VoiceType.Alien);
+ShowDialog("Even I couldn’t achieve results like this — not after years of experimentation.", "Guest from afar", VoiceType.Alien);
+ShowDialog("Definitely... this expedition was worth it.", "Guest from afar", VoiceType.Alien);
+
+ShowDialog("Footsteps echo nearby", "", VoiceType.None);
+
+ShowDialog("...", "Scientist", VoiceType.Man);
+ShowDialog("I'm not alone.", "Guest from afar", VoiceType.Alien);
+
+Fight:
+
+Scientist (Scientist, Steady)
+Scientist (Scientist, Greedy)
+Scientist (Scientist, Steady)
+Scientist (Scientist, Greedy)
+Scientist (Scientist, Steady)
+Scientist (Scientist, Greedy)
+
+Guest from afar gets "Soul of scientist" and keep chasing Vicoria.
+
+level 5 - Duel
+
+ShowDialog("This time, I’ve finished what I started.", "Guest from afar", VoiceType.Alien);
+ShowDialog("No chance to win... I’m done.", "Victoria", VoiceType.Woman);
+ShowDialog("Surrendering? Already? Too easy.", "Guest from afar", VoiceType.Alien);
+ShowDialog("But... if only... my soul...", "Victoria", VoiceType.Woman);
+
+ShowDialog("Victoria’s body begins to glow, her voice echoing with radiant force.", "", VoiceType.None);
+
+ShowDialog("Only if my soul burns as bright as a thousand suns... can I defeat you!", "Victoria the Pure Soul", VoiceType.Woman);
+
+Fight:
+
+Victoria the Pure Soul (Fury, Steady, Pure, Hopeful) Starts fight at 50% health.
+
+Victoria dies in fight. Guest from afar gets "Pure soul?". New achive: find answers. Guest from afar goes to Archive.
+
+level 6 - Archive
+
+ShowDialog("Shadows and silhouettes flicker across the cracked walls of the underground archive. The air hums with static and whispers of forgotten data.", "", VoiceType.None);
+
+ShowDialog("I need answers... I think I can find them here.", "Guest from afar", VoiceType.Alien);
+ShowDialog("Here—notes.", "Guest from afar", VoiceType.Alien);
+ShowDialog("'Experiment failure. Human is dead. Mismatch'", "Guest from afar", VoiceType.Alien);
+ShowDialog("'Experiment failure. Human is dead. Mismatch'", "Guest from afar", VoiceType.Alien);
+ShowDialog("'Experiment failure. Human is defiled. Mismatch'", "Guest from afar", VoiceType.Alien);
+
+ShowDialog("He flips through several worn pages, symbols blurring together.", "", VoiceType.None);
+
+ShowDialog("'Experiment failure. Only 99.1% purity.'", "Guest from afar", VoiceType.Alien);
+
+ShowDialog("More pages fall away like ash.", "", VoiceType.None);
+
+ShowDialog("'Experiment failure. Only 99.9% purity. Best result achievable with a living subject'", "Guest from afar", VoiceType.Alien);
+ShowDialog("That was last one.", "Guest from afar", VoiceType.Alien);
+ShowDialog("Pure Soul’? It’s... not actually pure?", "Guest from afar", VoiceType.Alien);
+ShowDialog("Access denied.", "Archivist", VoiceType.AI);
+ShowDialog("What?", "Guest from afar", VoiceType.Alien);
+ShowDialog("Defense protocol—activated.", "Archivist", VoiceType.AI);
+
+Fight:
+
+Archivist (Artificial)
+Archivist's crystal
+Archivist's crystal
+Archivist's crystal
+
+Guest from afar gets "Artificial Soul". He leavs church of souls.
+
+Echos (ACT 3)
+
+Level 1 - Shadow mirages 1
+
+ShowDialog("The Guest from Afar walks along the empty streets. His mind blurs and splits.", "", VoiceType.None);
+
+ShowDialog("What does any of this mean? "Best result achievable with a living subject"…", "Guest from afar", VoiceType.Alien);
+ShowDialog("This expedition… was a mistake.", "Guest from afar", VoiceType.Alien);
+
+ShowDialog("Strange figures emerge ahead, shaped from memory and regret.", "", VoiceType.None);
+
+Fight:
+
+Mirage of Victor (steady, fury)
+Mirage of Alice (steady, greedy)
+Mirage of Igor (hopeful, steady)
+
+Level 2 - Shadow mirages 2
+
+ShowDialog("The streets twist endlessly. His thoughts scatter into echoes.", "", VoiceType.None);
+
+ShowDialog("I need… to find… my way back.", "Guest from afar", VoiceType.Alien);
+
+ShowDialog("The shadows take form once again.", "", VoiceType.None);
+
+Fight:
+
+Mirage of Konstantin (steady, fury)
+Mirage of Richard (steady, greedy)
+Mirage of Ashley (hopeful, steady)
+
+Level 3 - Shadow mirages 3
+
+ShowDialog("The last echoes approach — fragments of what was.", "", VoiceType.None);
+
+Mirage of Henry (leader, well-trained)
+Mirage of Victoria (pure, fury)
+Mirage of Bob (scinetist, defiled)
+
+Ending scene:
+
+All souls… as one
+I see it now - the truth beyond flesh and form
+But if I let go now… everything begins again
+So calm. So empty.
+I can feel everything fading - the fear, the pain… even myself
+Was this… what they all wanted?
+...
+Now, there’s only silence
+
+Tutorial 10-11:
+In the top right corner, you can read descriptions of enemy traits.
+В правом верхнем углу можно прочитать описания особенностей врагов
+
+You can determine exactly which traits an enemy has by looking at the corresponding icons next to the enemy's name.
+Определить, какими именно особенностями обладает враг можно, посмотрев на соответсвующие иконки возле имени врага
+
