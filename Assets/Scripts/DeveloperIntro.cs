@@ -79,6 +79,15 @@ public class DeveloperIntro : MonoBehaviour
 
         SaveData data = SaveManager.Load();
 
+        if (data == null)
+        {
+            data = new SaveData
+            {
+                _levelId = 0
+            };
+            SaveManager.Save(data);
+        }
+        
         if (data._levelId == 0)
         {
             buttonContinue.gameObject.SetActive(false);
