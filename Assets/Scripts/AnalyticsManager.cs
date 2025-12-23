@@ -67,14 +67,6 @@ public class AnalyticsManager : MonoBehaviour
 
         // Для всех попыток
         GameAnalytics.NewDesignEvent($"level_started:{levelNumber}_{levelName}");
-
-        // Логируем билд
-        if (build != null)
-        {
-            string buildStr = build.Serialize();
-            GameAnalytics.NewDesignEvent($"level_build:{levelNumber}_{levelName}:{buildStr}");
-            Debug.Log($"Level started with build: {buildStr}");
-        }
     }
 
     public void LevelCompleted(int levelNumber, string levelName, PlayerBuild build)
@@ -114,13 +106,5 @@ public class AnalyticsManager : MonoBehaviour
             GAProgressionStatus.Fail,
             $"{levelNumber}_{levelName}"
         );
-
-        // Билд
-        if (build != null)
-        {
-            string buildStr = build.Serialize();
-            GameAnalytics.NewDesignEvent($"level_build:{levelNumber}_{levelName}:{buildStr}");
-            Debug.Log($"Level failed with build: {buildStr}");
-        }
     }
 }

@@ -1225,6 +1225,8 @@ namespace Battle
             _victoryPanel.SetActive(true);
 
             IsVictory = true;
+
+            _afterbattleend = false;
             
             if (_sceneID == 3)
             {
@@ -1242,6 +1244,7 @@ namespace Battle
                 build.souls.Add(soulType.ToString());
             }
 
+            Debug.Log("Vicroty!");
             if (_sceneID == 1 || _sceneID == 19)
             {
                 AnalyticsManager.Instance.LevelCompleted(_sceneID, _levelName, null);
